@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.site-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+.main-content {
+    padding: 2rem 0;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+h2, h3 {
+    color: #1e3a8a;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 3px solid #3b82f6;
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+.welcome-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.welcome-section p {
+    font-size: 1.1rem;
+    color: #4b5563;
+}
+
+.daily-tip {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 5px solid #3b82f6;
+    margin-bottom: 2rem;
+}
+
+.tip-content {
+    font-style: italic;
+    color: #374151;
+}
+
+.ad-container {
+    margin: 2rem 0;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+}
+
+.ad-top, .ad-bottom {
+    min-height: 120px;
+}
+
+.ad-middle {
+    min-height: 300px;
+}
+
+.ad-autorelaxed {
+    min-height: 200px;
+    margin: 3rem 0;
+}
+
+.resources-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.resource-item {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resource-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.resource-item h4 {
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.resource-item p {
+    color: #6b7280;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.resource-item a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.resource-item a:hover {
+    border-bottom-color: #3b82f6;
+}
+
+.calculator-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.calculator-widget {
+    max-width: 350px;
+    margin: 0 auto;
+    background: #1e3a8a;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.calc-display {
+    margin-bottom: 1rem;
+}
+
+#calc-screen {
+    width: 100%;
+    height: 60px;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    text-align: right;
+    padding: 0 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.calc-buttons button {
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #f1f5f9;
+    color: #1e3a8a;
+}
+
+.calc-buttons button:hover {
+    background: #e2e8f0;
+    transform: scale(1.05);
+}
+
+.calc-buttons button:active {
+    transform: scale(0.95);
+}
+
+.equals {
+    background: #3b82f6 !important;
+    color: white !important;
+    grid-row: span 2;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+.coming-soon {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid #f59e0b;
+}
+
+.coming-soon ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.coming-soon li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #92400e;
+}
+
+.coming-soon li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #f59e0b;
+    font-weight: bold;
+}
+
+.site-footer {
+    background: #1e3a8a;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.footer-links {
+    margin-top: 1rem;
+}
+
+.footer-links a {
+    color: #93c5fd;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .site-title {
+        font-size: 2.5rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .resources-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .resource-item {
+        padding: 1rem;
+    }
+    
+    .calculator-widget {
+        max-width: 300px;
+    }
+    
+    .calc-buttons button {
+        height: 45px;
+        font-size: 1rem;
+    }
+    
+    #calc-screen {
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
+    .footer-links a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 2rem;
+    }
+    
+    .welcome-section, .resources-section, .calculator-section {
+        padding: 1.5rem;
+    }
+    
+    .daily-tip, .coming-soon {
+        padding: 1rem;
+    }
+    
+    .calculator-widget {
+        max-width: 280px;
+        padding: 1rem;
+    }
+    
+    .calc-buttons button {
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
