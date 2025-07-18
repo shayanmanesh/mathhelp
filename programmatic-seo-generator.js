@@ -303,6 +303,7 @@ class ProgrammaticSEOGenerator {
         // Add required sections to all pages
         content.sections['interactive-tools'] = this.generateInteractiveTools(pageData);
         content.sections['research-papers'] = this.generateResearchPapers(pageData);
+        content.sections['keyword-glossary'] = this.generateKeywordGlossary(pageData);
         content.sections['ad-placement-middle'] = this.generateAdPlacement('middle', pageData);
         content.sections['ad-placement-bottom'] = this.generateAdPlacement('bottom', pageData);
         
@@ -978,6 +979,111 @@ Allow: /guides/`;
                 </div>
             `
         };
+    }
+
+    // Keyword Glossary Integration
+    generateKeywordGlossary(pageData) {
+        const topicKeywords = this.getTopicKeywords(pageData.topic);
+        
+        return {
+            title: `${pageData.formattedTopic} Glossary`,
+            content: `
+                <div class="keyword-glossary-section">
+                    <h3>📚 Key Terms and Definitions</h3>
+                    <p>Hover over any highlighted term throughout this page to see its definition. Here are the most important terms for ${pageData.formattedTopic}:</p>
+                    
+                    <div class="glossary-grid">
+                        ${topicKeywords.map(keyword => `
+                            <div class="glossary-item">
+                                <dt class="glossary-term">${keyword.term}</dt>
+                                <dd class="glossary-definition">${keyword.definition}</dd>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="glossary-features">
+                        <h4>🎯 Interactive Features</h4>
+                        <ul>
+                            <li><strong>Hover Definitions:</strong> Move your mouse over any highlighted mathematical term to see its definition</li>
+                            <li><strong>Smart Highlighting:</strong> Terms are automatically highlighted throughout the page</li>
+                            <li><strong>Contextual Learning:</strong> Definitions are tailored to the current topic</li>
+                            <li><strong>Progressive Complexity:</strong> Terms are explained at the appropriate level</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glossary-cta">
+                        <p>💡 <strong>Pro Tip:</strong> Use the keyword definitions to build your mathematical vocabulary as you learn!</p>
+                    </div>
+                </div>
+            `
+        };
+    }
+
+    getTopicKeywords(topic) {
+        const topicKeywords = {
+            algebra: [
+                { term: 'Equation', definition: 'A mathematical statement showing that two expressions are equal' },
+                { term: 'Variable', definition: 'A symbol (usually a letter) representing an unknown or changing quantity' },
+                { term: 'Coefficient', definition: 'A numerical factor that multiplies a variable' },
+                { term: 'Polynomial', definition: 'An expression with variables and coefficients using addition, subtraction, and multiplication' },
+                { term: 'Quadratic', definition: 'An equation or expression of the second degree, containing a squared term' },
+                { term: 'Linear', definition: 'Relating to equations of the first degree that form straight lines' },
+                { term: 'Factoring', definition: 'Breaking down a mathematical expression into its component factors' },
+                { term: 'Exponent', definition: 'A number showing how many times a base is multiplied by itself' }
+            ],
+            calculus: [
+                { term: 'Derivative', definition: 'A measure of how a function changes as its input changes' },
+                { term: 'Integral', definition: 'The reverse of differentiation; represents area under a curve' },
+                { term: 'Limit', definition: 'The value a function approaches as input approaches a certain value' },
+                { term: 'Continuity', definition: 'A function property where small input changes result in small output changes' },
+                { term: 'Chain Rule', definition: 'A formula for computing the derivative of composite functions' },
+                { term: 'Optimization', definition: 'Finding maximum or minimum values of functions' },
+                { term: 'Convergence', definition: 'The property of approaching a finite limit' },
+                { term: 'Divergence', definition: 'The property of not approaching a finite limit' }
+            ],
+            geometry: [
+                { term: 'Triangle', definition: 'A polygon with three sides and three angles' },
+                { term: 'Circle', definition: 'A round shape where every point is equidistant from the center' },
+                { term: 'Area', definition: 'The amount of space inside a two-dimensional shape' },
+                { term: 'Perimeter', definition: 'The distance around the outside of a shape' },
+                { term: 'Angle', definition: 'The space between two intersecting lines, measured in degrees' },
+                { term: 'Parallel', definition: 'Lines that never meet and are always the same distance apart' },
+                { term: 'Congruent', definition: 'Having the same shape and size' },
+                { term: 'Similar', definition: 'Having the same shape but not necessarily the same size' }
+            ],
+            trigonometry: [
+                { term: 'Sine', definition: 'The ratio of the opposite side to the hypotenuse in a right triangle' },
+                { term: 'Cosine', definition: 'The ratio of the adjacent side to the hypotenuse in a right triangle' },
+                { term: 'Tangent', definition: 'The ratio of the opposite side to the adjacent side in a right triangle' },
+                { term: 'Unit Circle', definition: 'A circle with radius 1 centered at the origin' },
+                { term: 'Amplitude', definition: 'The maximum displacement from the center line in a periodic function' },
+                { term: 'Period', definition: 'The length of one complete cycle in a periodic function' },
+                { term: 'Radian', definition: 'A unit of angle measurement equal to about 57.3 degrees' },
+                { term: 'Identity', definition: 'An equation that is true for all values of the variable' }
+            ],
+            statistics: [
+                { term: 'Mean', definition: 'The average of a set of numbers' },
+                { term: 'Median', definition: 'The middle value in a sorted list of numbers' },
+                { term: 'Mode', definition: 'The most frequently occurring value in a data set' },
+                { term: 'Variance', definition: 'A measure of how spread out the numbers in a data set are' },
+                { term: 'Standard Deviation', definition: 'The square root of variance; measures spread around the mean' },
+                { term: 'Probability', definition: 'The likelihood of an event occurring, between 0 and 1' },
+                { term: 'Correlation', definition: 'A statistical measure of how closely two variables are related' },
+                { term: 'Histogram', definition: 'A bar chart showing the frequency distribution of data' }
+            ],
+            precalculus: [
+                { term: 'Function', definition: 'A mathematical relationship where each input has exactly one output' },
+                { term: 'Domain', definition: 'The set of all possible input values for a function' },
+                { term: 'Range', definition: 'The set of all possible output values for a function' },
+                { term: 'Inverse', definition: 'A function that reverses the effect of another function' },
+                { term: 'Logarithm', definition: 'The exponent to which a base must be raised to produce a given number' },
+                { term: 'Exponential', definition: 'A function of the form f(x) = aˣ where a is a positive constant' },
+                { term: 'Asymptote', definition: 'A line that a curve approaches but never touches' },
+                { term: 'Sequence', definition: 'An ordered list of numbers following a specific pattern' }
+            ]
+        };
+        
+        return topicKeywords[topic] || topicKeywords.algebra;
     }
 }
 

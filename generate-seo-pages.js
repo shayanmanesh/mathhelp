@@ -87,6 +87,7 @@ class SEOPageGenerator {
     
     <!-- Enhanced CSS -->
     <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="stylesheet" href="tooltip-styles.css">
     
     <!-- Critical CSS -->
     <style>
