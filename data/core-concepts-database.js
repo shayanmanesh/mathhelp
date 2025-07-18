@@ -1,7 +1,28 @@
-// Core Mathematical Concepts Database - 100 Essential Concepts
+// Core Mathematical Concepts Database - 1,000 Essential Concepts
 // Phase 11 Implementation for MathVerse - Multi-Level Explanations (1-10)
+// Now includes comprehensive auto-generated database
 
 function getCoreConceptsDatabase() {
+    // In browser environment, comprehensive database should be loaded first
+    if (typeof getComprehensiveConceptsDatabase === 'function') {
+        return getComprehensiveConceptsDatabase();
+    }
+    
+    // In Node.js environment, try to require it
+    try {
+        if (typeof require !== 'undefined') {
+            const { getComprehensiveConceptsDatabase } = require('./comprehensive-concepts-database.js');
+            return getComprehensiveConceptsDatabase();
+        }
+    } catch (error) {
+        console.warn('Comprehensive database not available, falling back to original concepts');
+    }
+    
+    // Fallback to original concepts
+    return getCoreConceptsDatabaseFallback();
+}
+
+function getCoreConceptsDatabaseFallback() {
     return [
         // FUNDAMENTALS (1-20)
         {
