@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Chunked Database</title>
+</head>
+<body>
+    <h1>Testing Chunked Database</h1>
+    <div id="results"></div>
+
+    <!-- Load chunk scripts -->
+    <script src="data/massive-concepts-database-chunk1.js"></script>
+    <script src="data/massive-concepts-database-chunk2.js"></script>
+    <script src="data/massive-concepts-database-chunk3.js"></script>
+    <script src="data/massive-concepts-database-chunk4.js"></script>
+    <script src="data/massive-concepts-database-chunked.js"></script>
+
+    <script>
+        function testChunkedDatabase() {
+            const results = document.getElementById('results');
+            
+            try {
+                // Test synchronous loading
+                const concepts = getMassiveConceptsDatabaseSync();
+                
+                results.innerHTML = `
+                    <h2>Test Results:</h2>
+                    <p><strong>Total concepts loaded:</strong> ${concepts.length}</p>
+                    <p><strong>Chunk 1 loaded:</strong> ${window.getMassiveConceptsDatabaseChunk1 ? 'Yes' : 'No'}</p>
+                    <p><strong>Chunk 2 loaded:</strong> ${window.getMassiveConceptsDatabaseChunk2 ? 'Yes' : 'No'}</p>
+                    <p><strong>Chunk 3 loaded:</strong> ${window.getMassiveConceptsDatabaseChunk3 ? 'Yes' : 'No'}</p>
+                    <p><strong>Chunk 4 loaded:</strong> ${window.getMassiveConceptsDatabaseChunk4 ? 'Yes' : 'No'}</p>
+                    <p><strong>Cache created:</strong> ${window.MASSIVE_CONCEPTS_CACHE ? 'Yes' : 'No'}</p>
+                    <p><strong>First concept:</strong> ${concepts[0] ? concepts[0].title : 'None'}</p>
+                    <p><strong>Last concept:</strong> ${concepts[concepts.length-1] ? concepts[concepts.length-1].title : 'None'}</p>
+                    <p style="color: green;"><strong>✅ Database loading successful!</strong></p>
+                `;
+            } catch (error) {
+                results.innerHTML = `
+                    <h2>Test Results:</h2>
+                    <p style="color: red;"><strong>❌ Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+        
+        // Run test when page loads
+        document.addEventListener('DOMContentLoaded', testChunkedDatabase);
+    </script>
+</body>
+</html>

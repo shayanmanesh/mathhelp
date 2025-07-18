@@ -416,7 +416,8 @@ class NLPQueryEngine {
     async getConceptData(conceptTerm) {
         // This would interface with the massive concepts database
         try {
-            const concepts = getMassiveConceptsDatabase ? getMassiveConceptsDatabase() : [];
+            // Use the chunked database loader
+            const concepts = getMassiveConceptsDatabaseSync ? getMassiveConceptsDatabaseSync() : [];
             return concepts.find(c => 
                 c.title.toLowerCase().includes(conceptTerm.toLowerCase()) ||
                 c.tags.some(tag => tag.toLowerCase().includes(conceptTerm.toLowerCase()))
