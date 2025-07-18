@@ -574,6 +574,11 @@
             reportingScript.src = 'performance-reporting.js';
             reportingScript.async = true;
             document.head.appendChild(reportingScript);
+            
+            const abTestingScript = document.createElement('script');
+            abTestingScript.src = 'ab-testing.js';
+            abTestingScript.async = true;
+            document.head.appendChild(abTestingScript);
         }, 2000);
     </script>
 </body>
