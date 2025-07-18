@@ -1,19 +1,26 @@
 {
   "name": "mathhelp",
   "version": "1.0.0",
-  "description": "Math.help - Master Mathematics Step by Step",
+  "description": "Math Help - Master Mathematics Step by Step",
   "main": "calculator.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build.js",
     "build:watch": "node build.js && chokidar '*.js' -c 'node build.js'",
-    "minify": "node build.js"
+    "minify": "node build.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "version": "auto-changelog -p && git add CHANGELOG.md",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
+    "release:patch": "standard-version --release-as patch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shayanmanesh/mathhelp.git"
   },
-  "keywords": ["math", "education", "calculator", "algebra", "calculus"],
+  "keywords": ["math", "education", "calculator", "algebra", "calculus", "design-system", "accessibility", "components", "mathjax", "mathml"],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -21,10 +28,43 @@
   },
   "homepage": "https://github.com/shayanmanesh/mathhelp#readme",
   "dependencies": {
-    "@anthropic-ai/claude-code": "^1.0.55"
+    "@anthropic-ai/claude-code": "^1.0.55",
+    "mathjax": "^3.2.2"
   },
   "devDependencies": {
     "terser": "^5.31.0",
-    "chokidar-cli": "^3.0.0"
+    "chokidar-cli": "^3.0.0",
+    "@storybook/addon-a11y": "^7.0.0",
+    "@storybook/addon-essentials": "^7.0.0",
+    "@storybook/addon-docs": "^7.0.0",
+    "@storybook/html": "^7.0.0",
+    "@storybook/builder-webpack5": "^7.0.0",
+    "storybook-addon-designs": "^6.3.1",
+    "storybook-dark-mode": "^3.0.0",
+    "auto-changelog": "^2.4.0",
+    "standard-version": "^9.5.0",
+    "conventional-changelog-cli": "^2.2.2"
+  },
+  "standard-version": {
+    "types": [
+      {"type": "feat", "section": "Features"},
+      {"type": "fix", "section": "Bug Fixes"},
+      {"type": "docs", "section": "Documentation"},
+      {"type": "style", "section": "Styles"},
+      {"type": "refactor", "section": "Code Refactoring"},
+      {"type": "perf", "section": "Performance Improvements"},
+      {"type": "test", "section": "Tests"},
+      {"type": "build", "section": "Build System"},
+      {"type": "ci", "section": "Continuous Integration"},
+      {"type": "chore", "section": "Chores"},
+      {"type": "revert", "section": "Reverts"}
+    ]
+  },
+  "auto-changelog": {
+    "output": "CHANGELOG.md",
+    "template": "keepachangelog",
+    "unreleased": true,
+    "commitLimit": false,
+    "sortCommits": "date-desc"
   }
 }

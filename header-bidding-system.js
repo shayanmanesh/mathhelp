@@ -1,4 +1,4 @@
-// Header Bidding & Ad Optimization System for Math.help
+// Header Bidding & Ad Optimization System for Math Help
 // Implements yield optimization, privacy-compliant tracking, and ML-driven ad serving
 
 class HeaderBiddingSystem {
@@ -52,6 +52,13 @@ class HeaderBiddingSystem {
                     bidderCode: 'amazon',
                     params: {
                         slotID: 'div-gpt-ad-1460505748561-0'
+                    }
+                },
+                {
+                    bidderCode: 'adsense',
+                    params: {
+                        publisherId: 'ca-pub-5635114711353420',
+                        slotName: 'math-help-header-bidding'
                     }
                 }
             ],
@@ -868,8 +875,277 @@ document.addEventListener('DOMContentLoaded', function() {
     // Delay initialization to ensure all dependencies are loaded
     setTimeout(() => {
         window.headerBiddingSystem = new HeaderBiddingSystem();
+        window.adSenseIntegration = new AdSenseIntegration();
+        
+        // Integrate AdSense with header bidding
+        window.adSenseIntegration.integrateWithHeaderBidding(window.headerBiddingSystem);
     }, 1000);
 });
+
+// AdSense Integration Class
+class AdSenseIntegration {
+    constructor() {
+        this.client = 'ca-pub-5635114711353420';
+        this.slots = new Map();
+        this.refreshInterval = 30000;
+        this.init();
+    }
+
+    init() {
+        this.loadAdSenseScript();
+        this.setupAdSlots();
+        this.setupRefreshMechanism();
+    }
+
+    loadAdSenseScript() {
+        if (!document.querySelector('script[src*="googlesyndication"]')) {
+            const script = document.createElement('script');
+            script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${this.client}`;
+            script.crossOrigin = 'anonymous';
+            script.async = true;
+            document.head.appendChild(script);
+        }
+    }
+
+    setupAdSlots() {
+        // Register standard ad slots with lazy loading
+        this.registerAdSlot('header-banner', '728x90', { lazyLoad: false }); // Above fold
+        this.registerAdSlot('sidebar-banner', '300x250', { lazyLoad: true });
+        this.registerAdSlot('content-banner', '336x280', { lazyLoad: true });
+        this.registerAdSlot('mobile-banner', '320x50', { lazyLoad: false }); // Above fold
+        
+        // Setup intersection observer for lazy loading
+        this.setupLazyLoading();
+    }
+
+    registerAdSlot(slotId, size, options = {}) {
+        this.slots.set(slotId, {
+            size: size,
+            element: null,
+            refreshCount: 0,
+            lastRefresh: Date.now(),
+            lazyLoad: options.lazyLoad || false,
+            loaded: false
+        });
+    }
+
+    setupLazyLoading() {
+        // Create intersection observer for lazy loading ads
+        this.lazyLoadObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const adElement = entry.target;
+                    const slotId = adElement.getAttribute('data-slot-id');
+                    this.loadAdSlot(slotId);
+                    this.lazyLoadObserver.unobserve(adElement);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '100px', // Load ads 100px before they become visible
+            threshold: 0.1
+        });
+
+        // Observe all lazy-loaded ad elements
+        setTimeout(() => {
+            this.observeLazyLoadElements();
+        }, 1000);
+    }
+
+    observeLazyLoadElements() {
+        document.querySelectorAll('[data-ad-lazy="true"]').forEach(element => {
+            this.lazyLoadObserver.observe(element);
+        });
+    }
+
+    loadAdSlot(slotId) {
+        const slot = this.slots.get(slotId);
+        if (slot && !slot.loaded) {
+            try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                slot.loaded = true;
+            } catch (error) {
+                console.error('AdSense lazy load error:', error);
+            }
+        }
+    }
+
+    setupRefreshMechanism() {
+        setInterval(() => {
+            this.refreshEligibleAds();
+        }, this.refreshInterval);
+    }
+
+    refreshEligibleAds() {
+        this.slots.forEach((slot, slotId) => {
+            if (slot.refreshCount < 5 && Date.now() - slot.lastRefresh > this.refreshInterval) {
+                this.refreshAdSlot(slotId);
+            }
+        });
+    }
+
+    refreshAdSlot(slotId) {
+        const slot = this.slots.get(slotId);
+        if (slot && slot.element) {
+            // Refresh the ad unit
+            try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                slot.refreshCount++;
+                slot.lastRefresh = Date.now();
+            } catch (error) {
+                console.error('AdSense refresh error:', error);
+            }
+        }
+    }
+
+    integrateWithHeaderBidding(headerBiddingSystem) {
+        // Integrate AdSense with header bidding for yield optimization
+        if (headerBiddingSystem && headerBiddingSystem.yieldOptimizer) {
+            headerBiddingSystem.yieldOptimizer.addAdSenseSupport(this);
+        }
+    }
+
+    optimizeAdPlacements() {
+        // Dynamic ad placement optimization based on user behavior
+        const optimizations = {
+            viewabilityThreshold: 0.5,
+            engagementMetrics: this.collectEngagementMetrics(),
+            screenSize: this.getScreenSize(),
+            scrollBehavior: this.getScrollBehavior()
+        };
+
+        // Adjust ad placements based on optimization data
+        this.adjustAdPlacements(optimizations);
+    }
+
+    collectEngagementMetrics() {
+        return {
+            timeOnPage: Date.now() - window.pageLoadTime,
+            scrollDepth: window.scrollY / document.body.scrollHeight,
+            clickThroughRate: this.calculateCTR(),
+            adViewability: this.measureAdViewability()
+        };
+    }
+
+    getScreenSize() {
+        return {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            isMobile: window.innerWidth <= 768,
+            isTablet: window.innerWidth > 768 && window.innerWidth <= 1024
+        };
+    }
+
+    getScrollBehavior() {
+        return {
+            averageScrollSpeed: this.calculateScrollSpeed(),
+            scrollDirection: this.getScrollDirection(),
+            pausePoints: this.identifyScrollPauses()
+        };
+    }
+
+    adjustAdPlacements(optimizations) {
+        // Optimize ad density based on engagement
+        if (optimizations.engagementMetrics.scrollDepth > 0.8) {
+            this.increaseAdDensity();
+        } else if (optimizations.engagementMetrics.scrollDepth < 0.3) {
+            this.decreaseAdDensity();
+        }
+
+        // Adjust ad sizes for mobile
+        if (optimizations.screenSize.isMobile) {
+            this.optimizeForMobile();
+        }
+
+        // Position ads at scroll pause points
+        this.positionAdsAtPausePoints(optimizations.scrollBehavior.pausePoints);
+    }
+
+    calculateCTR() {
+        // Calculate click-through rate from stored metrics
+        const clicks = localStorage.getItem('adClicks') || 0;
+        const impressions = localStorage.getItem('adImpressions') || 0;
+        return impressions > 0 ? clicks / impressions : 0;
+    }
+
+    measureAdViewability() {
+        // Measure ad viewability using intersection observer
+        let visibleAds = 0;
+        let totalAds = 0;
+
+        document.querySelectorAll('[data-ad-unit]').forEach(ad => {
+            totalAds++;
+            const rect = ad.getBoundingClientRect();
+            const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+            if (isVisible) visibleAds++;
+        });
+
+        return totalAds > 0 ? visibleAds / totalAds : 0;
+    }
+
+    calculateScrollSpeed() {
+        // Simple scroll speed calculation
+        return Math.abs(window.scrollY - (window.lastScrollY || 0)) / 100;
+    }
+
+    getScrollDirection() {
+        const currentScroll = window.scrollY;
+        const lastScroll = window.lastScrollY || 0;
+        window.lastScrollY = currentScroll;
+        return currentScroll > lastScroll ? 'down' : 'up';
+    }
+
+    identifyScrollPauses() {
+        // Identify points where users pause scrolling (potential ad placement spots)
+        return [0.25, 0.5, 0.75].map(point => Math.floor(document.body.scrollHeight * point));
+    }
+
+    increaseAdDensity() {
+        // Add more ad units for highly engaged users
+        console.log('Increasing ad density for engaged user');
+    }
+
+    decreaseAdDensity() {
+        // Reduce ad units for less engaged users
+        console.log('Decreasing ad density for less engaged user');
+    }
+
+    optimizeForMobile() {
+        // Optimize ad sizes and positions for mobile devices
+        this.slots.forEach((slot, slotId) => {
+            if (slot.size === '728x90') {
+                // Replace leaderboard with mobile banner
+                slot.size = '320x50';
+            }
+        });
+    }
+
+    positionAdsAtPausePoints(pausePoints) {
+        // Position ads at points where users typically pause
+        pausePoints.forEach(point => {
+            const element = document.elementFromPoint(window.innerWidth / 2, point);
+            if (element && !element.querySelector('[data-ad-unit]')) {
+                this.insertAdNearElement(element);
+            }
+        });
+    }
+
+    insertAdNearElement(element) {
+        // Insert ad unit near the specified element
+        const adContainer = document.createElement('div');
+        adContainer.className = 'ad-container dynamic-ad';
+        adContainer.innerHTML = `
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5635114711353420"
+                 data-ad-slot="dynamic-slot"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        `;
+        element.parentNode.insertBefore(adContainer, element.nextSibling);
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    }
+}
 
 // Export for use in other modules
 window.HeaderBiddingSystem = HeaderBiddingSystem;
@@ -878,3 +1154,4 @@ window.YieldOptimizer = YieldOptimizer;
 window.MLYieldModel = MLYieldModel;
 window.ConsentManager = ConsentManager;
 window.PerformanceMonitor = PerformanceMonitor;
+window.AdSenseIntegration = AdSenseIntegration;

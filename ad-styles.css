@@ -1,5 +1,5 @@
 /**
- * Advanced Ad Optimization Styles for Math.help
+ * Advanced Ad Optimization Styles for Math Help
  * Phase 5: Premium Ad Integration
  * 
  * Optimized for:
@@ -369,7 +369,7 @@ body.debug-ads .ad-container::after {
 }
 
 .ad-container.blocked::after {
-    content: "Please consider disabling your ad blocker to support Math.help";
+    content: "Please consider disabling your ad blocker to support Math Help";
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,4 +1,4 @@
-// Mathematical Keyword Definitions System for Math.help
+// Mathematical Keyword Definitions System for Math Help
 // Comprehensive dictionary with hover tooltips for all mathematical terms
 
 class MathKeywordDefinitions {

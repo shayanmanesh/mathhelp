@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#3498db">
+    
+    <title>Math Help - Platform Integration Demo</title>
+    
+    <!-- Critical CSS (inlined for performance) -->
+    <style id="critical-css">
+        /* Reset and base styles */
+        *,*::before,*::after{box-sizing:border-box}
+        body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+        
+        /* Layout critical styles */
+        .container{max-width:1200px;margin:0 auto;padding:0 1rem}
+        .header{position:sticky;top:0;background:#fff;z-index:1000;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+        
+        /* Typography critical */
+        h1,h2,h3{margin-top:0;line-height:1.2}
+        h1{font-size:2.5rem}
+        h2{font-size:2rem}
+        h3{font-size:1.5rem}
+        p{margin-top:0}
+        
+        /* Math expression placeholders */
+        .math-expression{display:inline-block;min-height:1.5em;min-width:3em;background:#f0f0f0;border-radius:4px}
+        .math-expression.loaded{background:transparent}
+        
+        /* Status indicators */
+        .status{padding:1rem;margin:1rem 0;border-radius:8px;font-family:monospace}
+        .status.loading{background:#f0f0f0;color:#333}
+        .status.ready{background:#2ecc71;color:#fff}
+        .status.error{background:#e74c3c;color:#fff}
+        
+        /* System status grid */
+        .systems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:2rem 0}
+        .system-card{padding:1rem;border:1px solid #ddd;border-radius:8px;transition:all 0.3s}
+        .system-card.loaded{border-color:#2ecc71;background:#f0fff4}
+        .system-card.error{border-color:#e74c3c;background:#fff5f5}
+        
+        /* Metrics display */
+        .metrics{background:#f8f9fa;padding:1rem;border-radius:8px;margin:1rem 0}
+        .metric-item{display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid #dee2e6}
+        .metric-item:last-child{border-bottom:none}
+        .metric-value{font-weight:bold;color:#2c3e50}
+        
+        /* Loading animation */
+        .spinner{width:40px;height:40px;border:4px solid #f3f3f3;border-top:4px solid #3498db;border-radius:50%;animation:spin 1s linear infinite}
+        @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    </style>
+    
+    <!-- Resource hints -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    
+    <!-- Design Tokens -->
+    <link rel="preload" href="/design-tokens/tokens.css" as="style">
+    <link rel="stylesheet" href="/design-tokens/tokens.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Math Help Platform Integration</h1>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Platform Status -->
+        <section id="platform-status">
+            <h2>Platform Status</h2>
+            <div id="status-indicator" class="status loading">
+                <div class="spinner" style="display:inline-block;vertical-align:middle;margin-right:1rem"></div>
+                <span>Initializing platform...</span>
+            </div>
+        </section>
+        
+        <!-- Systems Status -->
+        <section id="systems-status">
+            <h2>System Components</h2>
+            <div class="systems-grid" id="systems-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+        
+        <!-- Performance Metrics -->
+        <section id="performance-metrics">
+            <h2>Performance Metrics</h2>
+            <div class="metrics" id="metrics-display">
+                <div class="metric-item">
+                    <span>Platform Load Time</span>
+                    <span class="metric-value" id="load-time">--</span>
+                </div>
+                <div class="metric-item">
+                    <span>LCP (Largest Contentful Paint)</span>
+                    <span class="metric-value" id="lcp-metric">--</span>
+                </div>
+                <div class="metric-item">
+                    <span>INP (Interaction to Next Paint)</span>
+                    <span class="metric-value" id="inp-metric">--</span>
+                </div>
+                <div class="metric-item">
+                    <span>CLS (Cumulative Layout Shift)</span>
+                    <span class="metric-value" id="cls-metric">--</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Math Expression Demo -->
+        <section id="math-demo">
+            <h2>Math Expression Rendering</h2>
+            <p>The quadratic formula: 
+                <span class="math-expression" data-math="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}">
+                    Loading...
+                </span>
+            </p>
+            <p>Euler's identity: 
+                <span class="math-expression" data-math="e^{i\pi} + 1 = 0">
+                    Loading...
+                </span>
+            </p>
+        </section>
+        
+        <!-- Ad Placement Demo -->
+        <section id="ad-demo">
+            <h2>Ad Optimization Demo</h2>
+            <div id="ad-container-header" class="ad-container" data-ad-size="728x90" data-ad-type="banner">
+                <!-- Ad will be placed here -->
+            </div>
+        </section>
+    </main>
+    
+    <!-- Load optimization systems -->
+    <script src="/core-web-vitals/cwv-optimizer.js" async></script>
+    <script src="/core-web-vitals/mathjax-performance.js" async></script>
+    <script src="/monitoring/performance-tracker.js" async></script>
+    <script src="/accessibility/math-a11y.js" async></script>
+    <script src="/technical-seo/math-seo.js" async></script>
+    <script src="/mobile/mobile-optimizer.js" async></script>
+    <script src="/ad-optimization-system.js" async></script>
+    <script src="/header-bidding-enhanced.js" async></script>
+    <script src="/schema-markup-enhanced.js" async></script>
+    
+    <!-- Component system -->
+    <script src="/components/atoms.js" async></script>
+    <script src="/components/molecules.js" async></script>
+    <script src="/components/organisms.js" async></script>
+    <script src="/components/templates.js" async></script>
+    <script src="/components/pages.js" async></script>
+    
+    <!-- Platform Integration -->
+    <script src="/integration/platform-integration.js" async></script>
+    
+    <!-- MathJax -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    
+    <!-- Demo Controller -->
+    <script>
+        // System status tracking
+        const systemsToLoad = [
+            'designTokens',
+            'coreWebVitals',
+            'mathJaxOptimization',
+            'performanceTracking',
+            'accessibility',
+            'technicalSEO',
+            'componentSystem',
+            'adOptimization',
+            'headerBidding',
+            'schemaMarkup',
+            'mobileOptimization'
+        ];
+        
+        // Create system cards
+        const systemsGrid = document.getElementById('systems-grid');
+        systemsToLoad.forEach(system => {
+            const card = document.createElement('div');
+            card.className = 'system-card';
+            card.id = `system-${system}`;
+            card.innerHTML = `
+                <h3>${formatSystemName(system)}</h3>
+                <p class="status-text">Loading...</p>
+                <div class="load-time" style="font-size:0.9em;color:#666"></div>
+            `;
+            systemsGrid.appendChild(card);
+        });
+        
+        function formatSystemName(name) {
+            return name.replace(/([A-Z])/g, ' $1').trim()
+                .replace(/^./, str => str.toUpperCase());
+        }
+        
+        // Platform ready handler
+        window.addEventListener('platform-ready', (event) => {
+            const statusEl = document.getElementById('status-indicator');
+            statusEl.className = 'status ready';
+            statusEl.innerHTML = `✓ Platform ready in ${event.detail.loadTime.toFixed(2)}ms`;
+            
+            document.getElementById('load-time').textContent = `${event.detail.loadTime.toFixed(2)}ms`;
+            
+            // Update system statuses
+            event.detail.systems.forEach(system => {
+                const card = document.getElementById(`system-${system}`);
+                if (card) {
+                    card.classList.add('loaded');
+                    card.querySelector('.status-text').textContent = 'Loaded';
+                    
+                    // Show load time if available
+                    if (window.mathHelpPlatform) {
+                        const loadTime = window.mathHelpPlatform.metrics.loadTime[system];
+                        if (loadTime) {
+                            card.querySelector('.load-time').textContent = `${loadTime.toFixed(2)}ms`;
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Fallback ready handler
+        window.addEventListener('platform-fallback-ready', (event) => {
+            const statusEl = document.getElementById('status-indicator');
+            statusEl.className = 'status error';
+            statusEl.innerHTML = '⚠️ Platform running in fallback mode';
+        });
+        
+        // CWV metrics handler
+        window.addEventListener('cwv-metric', (event) => {
+            const { metric, value, status } = event.detail;
+            const element = document.getElementById(`${metric.toLowerCase()}-metric`);
+            
+            if (element) {
+                const formattedValue = metric === 'CLS' ? value.toFixed(3) : `${value.toFixed(0)}ms`;
+                element.textContent = formattedValue;
+                element.style.color = status === 'good' ? '#27ae60' : 
+                                     status === 'needs-improvement' ? '#f39c12' : '#e74c3c';
+            }
+        });
+        
+        // Performance alerts
+        window.addEventListener('performance-alert', (event) => {
+            console.warn('Performance Alert:', event.detail);
+            
+            // Show alert in UI
+            const alert = document.createElement('div');
+            alert.className = `status ${event.detail.level === 'critical' ? 'error' : 'loading'}`;
+            alert.textContent = `${event.detail.level.toUpperCase()}: ${event.detail.type} = ${event.detail.value}ms (threshold: ${event.detail.threshold}ms)`;
+            alert.style.marginTop = '1rem';
+            
+            document.getElementById('platform-status').appendChild(alert);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => alert.remove(), 5000);
+        });
+        
+        // Platform health monitoring
+        window.addEventListener('platform-health', (event) => {
+            const health = event.detail;
+            
+            // Update overall status if degraded
+            if (health.overall !== 'healthy') {
+                const statusEl = document.getElementById('status-indicator');
+                statusEl.className = 'status error';
+                statusEl.innerHTML = `⚠️ Platform ${health.overall}`;
+            }
+            
+            // Update system cards based on health
+            Object.entries(health.systems).forEach(([system, status]) => {
+                const card = document.getElementById(`system-${system}`);
+                if (card && status.status === 'error') {
+                    card.classList.add('error');
+                    card.querySelector('.status-text').textContent = `Error: ${status.error || 'Unknown'}`;
+                }
+            });
+        });
+        
+        // Math rendering complete
+        window.addEventListener('mathjax-ready', () => {
+            console.log('MathJax ready for rendering');
+        });
+        
+        // Ad events
+        window.addEventListener('ad-loaded', (event) => {
+            console.log('Ad loaded:', event.detail);
+        });
+        
+        // Error handling
+        window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+        });
+        
+        // Initialize demo data
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add sample content for testing
+            console.log('Math Help Platform Integration Demo loaded');
+        });
+    </script>
+</body>
+</html>

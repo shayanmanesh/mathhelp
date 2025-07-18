@@ -35,5 +35,5 @@ Sitemap: https://math.help/sitemap.xml
 # Sitemap: https://math.help/sitemap-calculators.xml
 # Sitemap: https://math.help/sitemap-topics.xml
 
-# SEO-friendly robots.txt for Math.help
+# SEO-friendly robots.txt for Math Help
 # Comprehensive math education platform with calculators and tutorials

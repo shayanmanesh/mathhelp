@@ -1,4 +1,4 @@
-# Premium Ad Network Applications - Math.help
+# Premium Ad Network Applications - Math Help
 
 ## Phase 5: Premium Ad Integration Status
 

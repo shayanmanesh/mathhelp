@@ -1,4 +1,4 @@
-// Viral Growth System for Math.help - Revenue Maximizing Strategy
+// Viral Growth System for Math Help - Revenue Maximizing Strategy
 // Implements viral mechanics, user segmentation, and intelligent ad serving
 
 class ViralGrowthSystem {
@@ -113,7 +113,7 @@ class ViralGrowthSystem {
 
         const shareData = {
             title: `Can you solve this ${challenge.problem.type} problem?`,
-            text: `I just solved this on Math.help! Think you can do better?`,
+            text: `I just solved this on Math Help! Think you can do better?`,
             url: challenge.shareUrl
         };
 

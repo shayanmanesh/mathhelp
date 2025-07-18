@@ -1,4 +1,4 @@
-// Core Web Vitals Optimization System for Math.help
+// Core Web Vitals Optimization System for Math Help
 // Implements LCP, FID, CLS optimization with real-time monitoring and automatic fixes
 
 class CoreWebVitalsOptimizer {

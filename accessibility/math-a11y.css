@@ -1,0 +1,428 @@
+/* Math Accessibility Styles */
+/* Enhanced styles for accessible mathematical content */
+
+/* ============================================
+   MATH EXPRESSION ACCESSIBILITY
+   ============================================ */
+
+/* Base math expression styles */
+.math-expression,
+.MathJax,
+[role="math"] {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--easing-in-out);
+}
+
+/* Focus styles for keyboard navigation */
+.math-expression:focus,
+.MathJax:focus,
+[role="math"]:focus {
+  outline: 3px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+/* Focus visible enhancement */
+.math-expression:focus-visible,
+.MathJax:focus-visible,
+[role="math"]:focus-visible {
+  outline: 3px solid var(--color-border-focus);
+  outline-offset: 4px;
+  box-shadow: var(--shadow-focus-default);
+  animation: pulse-focus 2s ease-in-out infinite;
+}
+
+@keyframes pulse-focus {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Math exploration mode */
+.math-exploring {
+  background-color: rgba(52, 152, 219, 0.1);
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+}
+
+/* Math part highlighting */
+.math-highlight {
+  background-color: rgba(52, 152, 219, 0.3);
+  outline: 2px solid var(--color-border-focus);
+  border-radius: var(--radius-sm);
+  padding: 0 0.2em;
+  animation: highlight-fade-in var(--duration-fast) var(--easing-in-out);
+}
+
+@keyframes highlight-fade-in {
+  from {
+    background-color: rgba(52, 152, 219, 0);
+    outline-color: transparent;
+  }
+  to {
+    background-color: rgba(52, 152, 219, 0.3);
+    outline-color: var(--color-border-focus);
+  }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+
+.high-contrast-math {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.high-contrast-math .math-expression,
+.high-contrast-math .MathJax,
+.high-contrast-math [role="math"] {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 0.25em 0.5em;
+}
+
+.high-contrast-math .math-variable { color: #00ff00; }
+.high-contrast-math .math-constant { color: #ffffff; }
+.high-contrast-math .math-operator { color: #ffff00; }
+.high-contrast-math .math-function { color: #00ffff; }
+.high-contrast-math .math-delimiter { color: #ffffff; }
+
+.high-contrast-math .math-expression:focus,
+.high-contrast-math .MathJax:focus,
+.high-contrast-math [role="math"]:focus {
+  outline: 4px solid #00ffff;
+  outline-offset: 2px;
+  background-color: #111111;
+}
+
+.high-contrast-math .math-highlight {
+  background-color: #ffff00;
+  color: #000000;
+  outline: 3px solid #ffff00;
+}
+
+/* ============================================
+   MATH TOOLTIPS
+   ============================================ */
+
+.math-tooltip {
+  position: fixed;
+  z-index: var(--z-index-tooltip);
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity var(--duration-fast) var(--easing-in-out),
+              transform var(--duration-fast) var(--easing-in-out);
+  pointer-events: none;
+  max-width: 300px;
+}
+
+.math-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.math-tooltip .tooltip-header {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-2);
+  color: var(--color-brand-primary);
+}
+
+.math-tooltip .tooltip-description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-2);
+}
+
+.math-tooltip .tooltip-hint {
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+/* ============================================
+   MATH CONTEXT MENU
+   ============================================ */
+
+.math-context-menu {
+  position: fixed;
+  z-index: var(--z-index-popover);
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  padding: var(--spacing-2);
+  min-width: 180px;
+}
+
+.math-context-menu .menu-item {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--easing-in-out);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.math-context-menu .menu-item:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.math-context-menu .menu-item:focus {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: -2px;
+}
+
+.math-context-menu .menu-divider {
+  height: 1px;
+  background-color: var(--color-border-light);
+  margin: var(--spacing-2) 0;
+}
+
+/* ============================================
+   MATH SETTINGS DIALOG
+   ============================================ */
+
+.math-settings-dialog {
+  padding: var(--spacing-6);
+  border: none;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-2xl);
+  max-width: 500px;
+  width: 90%;
+}
+
+.math-settings-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.math-settings-dialog h2 {
+  margin-bottom: var(--spacing-6);
+  color: var(--color-text-primary);
+}
+
+.math-settings-dialog fieldset {
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.math-settings-dialog legend {
+  font-weight: var(--font-weight-semibold);
+  padding: 0 var(--spacing-2);
+}
+
+.math-settings-dialog label {
+  display: block;
+  margin-bottom: var(--spacing-3);
+  cursor: pointer;
+}
+
+.math-settings-dialog input[type="radio"],
+.math-settings-dialog input[type="checkbox"] {
+  margin-right: var(--spacing-2);
+}
+
+.math-settings-dialog input[type="range"] {
+  width: 100%;
+  margin-top: var(--spacing-2);
+}
+
+.math-settings-dialog .dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-6);
+}
+
+.math-settings-dialog button {
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--easing-in-out);
+}
+
+.math-settings-dialog button.save {
+  background-color: var(--color-brand-primary);
+  color: white;
+}
+
+.math-settings-dialog button.save:hover {
+  background-color: var(--color-brand-secondary);
+}
+
+.math-settings-dialog button.cancel {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.math-settings-dialog button.cancel:hover {
+  background-color: var(--color-bg-tertiary);
+}
+
+/* ============================================
+   SCREEN READER HELPERS
+   ============================================ */
+
+/* MathML for screen readers */
+.mathml-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip links for complex expressions */
+.math-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  padding: var(--spacing-2) var(--spacing-3);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  z-index: var(--z-index-tooltip);
+}
+
+.math-skip-link:focus {
+  top: 0;
+}
+
+/* ============================================
+   MATH ZOOM
+   ============================================ */
+
+.math-expression[style*="scale"],
+.MathJax[style*="scale"],
+[role="math"][style*="scale"] {
+  transform-origin: center;
+  transition: transform var(--duration-normal) var(--easing-in-out);
+}
+
+/* Zoom controls */
+.math-zoom-controls {
+  position: absolute;
+  top: -35px;
+  right: 0;
+  display: none;
+  gap: var(--spacing-1);
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-1);
+  box-shadow: var(--shadow-md);
+}
+
+.math-expression:hover .math-zoom-controls,
+.MathJax:hover .math-zoom-controls,
+[role="math"]:hover .math-zoom-controls {
+  display: flex;
+}
+
+.math-zoom-controls button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--duration-fast) var(--easing-in-out);
+}
+
+.math-zoom-controls button:hover {
+  background-color: var(--color-bg-tertiary);
+}
+
+/* ============================================
+   TOUCH DEVICE ENHANCEMENTS
+   ============================================ */
+
+@media (pointer: coarse) {
+  .math-expression,
+  .MathJax,
+  [role="math"] {
+    min-height: var(--size-touch-target-minimum);
+    min-width: var(--size-touch-target-minimum);
+    padding: var(--spacing-2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .math-context-menu .menu-item {
+    min-height: var(--size-touch-target-recommended);
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .math-expression,
+  .MathJax,
+  [role="math"],
+  .math-tooltip,
+  .math-highlight,
+  .math-context-menu .menu-item {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  
+  .math-expression:focus-visible,
+  .MathJax:focus-visible,
+  [role="math"]:focus-visible {
+    animation: none;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .math-tooltip,
+  .math-context-menu,
+  .math-zoom-controls,
+  .math-skip-link {
+    display: none !important;
+  }
+  
+  .math-expression,
+  .MathJax,
+  [role="math"] {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .math-highlight {
+    background-color: transparent;
+    outline: 2px solid #000;
+  }
+}

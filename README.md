@@ -1,8 +1,8 @@
-# Math.help - Revenue-Optimized Mathematics Education Platform
+# Math Help - Revenue-Optimized Mathematics Education Platform
 
 ## Overview
 
-Math.help is a high-performance mathematics education platform designed to generate substantial revenue through strategic ad placement while providing exceptional educational value. The platform implements research-backed strategies targeting $15-40 CPM rates with 2-5% click-through rates.
+Math Help is a high-performance mathematics education platform designed to generate substantial revenue through strategic ad placement while providing exceptional educational value. The platform implements research-backed strategies targeting $15-40 CPM rates with 2-5% click-through rates.
 
 ## Key Features
 

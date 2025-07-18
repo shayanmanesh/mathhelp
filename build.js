@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Build script for Math.help
+ * Build script for Math Help
  * Bundles and minifies JavaScript files for production
  */
 
@@ -28,13 +28,13 @@ const config = {
     },
     format: {
       comments: false,
-      preamble: '/* Math.help Optimized Script Bundle - v1.0 */'
+      preamble: '/* Math Help Optimized Script Bundle - v1.0 */'
     }
   }
 };
 
 async function bundleAndMinify() {
-  console.log('🚀 Building Math.help scripts...\n');
+  console.log('🚀 Building Math Help scripts...\n');
   
   try {
     // Read all input files
@@ -79,7 +79,7 @@ async function bundleAndMinify() {
     console.log(`\n📦 Output: ${config.outputFile}`);
     
     // Create a non-minified bundle for development
-    const devBundle = `/* Math.help Script Bundle - Development Version */
+    const devBundle = `/* Math Help Script Bundle - Development Version */
 ${bundledCode}`;
     fs.writeFileSync('scripts-bundle.js', devBundle);
     console.log(`📦 Development bundle: scripts-bundle.js`);

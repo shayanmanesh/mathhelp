@@ -1,4 +1,4 @@
-// Math.help Calculator - Enhanced for engagement and usability
+// Math Help Calculator - Enhanced for engagement and usability
 // Tracks usage for analytics and optimization
 
 let display = '';

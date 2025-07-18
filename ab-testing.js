@@ -1,4 +1,4 @@
-/* Math.help A/B Testing Framework for Content Optimization */
+/* Math Help A/B Testing Framework for Content Optimization */
 
 class ABTestingFramework {
     constructor() {

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Help - Offline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .offline-container {
+            text-align: center;
+            max-width: 600px;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .offline-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+            filter: grayscale(1);
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .offline-features {
+            text-align: left;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .offline-features h2 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .offline-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .offline-features li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .offline-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .offline-calculator {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .offline-calculator h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .calc-display {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            font-size: 1.5em;
+            text-align: right;
+            margin-bottom: 15px;
+            min-height: 50px;
+        }
+        
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .calc-btn {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .calc-btn:hover {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .calc-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .calc-btn.operator {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .calc-btn.equals {
+            grid-column: span 2;
+            background: #27ae60;
+            color: white;
+            border-color: #27ae60;
+        }
+        
+        .retry-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .retry-button:hover {
+            background: #2980b9;
+        }
+        
+        .offline-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e74c3c;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📡</div>
+        <h1>You're Offline</h1>
+        
+        <div class="offline-status">
+            <span class="status-dot"></span>
+            No internet connection
+        </div>
+        
+        <p>Don't worry! Math Help works offline too. You can still access previously viewed content and use our offline tools.</p>
+        
+        <div class="offline-features">
+            <h2>Available Offline:</h2>
+            <ul>
+                <li>Basic calculator functions</li>
+                <li>Previously viewed lessons and examples</li>
+                <li>Cached formulas and references</li>
+                <li>Your saved progress and notes</li>
+            </ul>
+        </div>
+        
+        <div class="offline-calculator">
+            <h3>Offline Calculator</h3>
+            <div class="calc-display" id="display">0</div>
+            <div class="calc-buttons">
+                <button class="calc-btn" onclick="clearCalc()">C</button>
+                <button class="calc-btn" onclick="appendToDisplay('/')">/</button>
+                <button class="calc-btn" onclick="appendToDisplay('*')">×</button>
+                <button class="calc-btn" onclick="deleteLast()">←</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
+                <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
+                <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('-')">-</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
+                <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
+                <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
+                <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
+                <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
+                <button class="calc-btn" onclick="appendToDisplay('.')">.</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('0')">0</button>
+                <button class="calc-btn equals" onclick="calculate()">=</button>
+            </div>
+        </div>
+        
+        <a href="/" class="retry-button" onclick="retryConnection(event)">Try Again</a>
+    </div>
+    
+    <script>
+        // Offline calculator functionality
+        let display = document.getElementById('display');
+        let currentValue = '0';
+        let shouldResetDisplay = false;
+        
+        function updateDisplay() {
+            display.textContent = currentValue;
+        }
+        
+        function appendToDisplay(value) {
+            if (shouldResetDisplay) {
+                currentValue = '0';
+                shouldResetDisplay = false;
+            }
+            
+            if (currentValue === '0' && value !== '.') {
+                currentValue = value;
+            } else {
+                currentValue += value;
+            }
+            updateDisplay();
+        }
+        
+        function clearCalc() {
+            currentValue = '0';
+            updateDisplay();
+        }
+        
+        function deleteLast() {
+            if (currentValue.length > 1) {
+                currentValue = currentValue.slice(0, -1);
+            } else {
+                currentValue = '0';
+            }
+            updateDisplay();
+        }
+        
+        function calculate() {
+            try {
+                // Replace × with * for evaluation
+                let expression = currentValue.replace(/×/g, '*');
+                let result = eval(expression);
+                currentValue = result.toString();
+                shouldResetDisplay = true;
+                updateDisplay();
+            } catch (error) {
+                currentValue = 'Error';
+                shouldResetDisplay = true;
+                updateDisplay();
+            }
+        }
+        
+        // Try to reconnect
+        function retryConnection(event) {
+            event.preventDefault();
+            
+            // Check if we're back online
+            if (navigator.onLine) {
+                window.location.href = '/';
+            } else {
+                // Show a message that we're still offline
+                alert('Still offline. Please check your internet connection and try again.');
+            }
+        }
+        
+        // Listen for online event
+        window.addEventListener('online', () => {
+            window.location.href = '/';
+        });
+        
+        // Check if service worker is controlling the page
+        if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+            // We have offline capabilities
+            const features = document.querySelector('.offline-features ul');
+            const newFeature = document.createElement('li');
+            newFeature.textContent = 'Full offline mode enabled';
+            features.insertBefore(newFeature, features.firstChild);
+        }
+    </script>
+</body>
+</html>

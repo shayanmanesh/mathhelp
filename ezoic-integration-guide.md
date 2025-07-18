@@ -1,4 +1,4 @@
-# Ezoic Integration Guide - Math.help
+# Ezoic Integration Guide - Math Help
 
 ## Phase 5: Premium Ad Integration - Ezoic Setup
 
@@ -110,7 +110,7 @@ Ezoic is an AI-driven ad optimization platform that automatically tests differen
 
 ### 1. Site Settings
 ```
-Site Name: Math.help
+Site Name: Math Help
 Category: Education
 Primary Language: English
 Geographic Focus: Global (US-heavy)

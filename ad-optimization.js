@@ -1,5 +1,5 @@
 /**
- * Advanced Ad Optimization Framework for Math.help
+ * Advanced Ad Optimization Framework for Math Help
  * Phase 5: Premium Ad Integration
  * 
  * This script handles:

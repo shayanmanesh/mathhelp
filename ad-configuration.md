@@ -1,4 +1,4 @@
-# Math.help Ad Configuration Strategy
+# Math Help Ad Configuration Strategy
 
 ## Available Ad Units
 

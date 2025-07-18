@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math.help - Master Mathematics Step by Step | Free Calculators & Guides</title>
+    <title>Math Help - Master Mathematics Step by Step | Free Calculators & Guides</title>
     <meta name="description" content="Master mathematics with comprehensive guides, step-by-step solutions, and interactive calculators. Free algebra, calculus, geometry, and statistics resources for all levels.">
     <meta name="keywords" content="math help, how to solve math problems step by step, free online math calculator, quadratic equation solver, derivative calculator, linear algebra help, calculus homework help, geometry formulas, statistics calculator, trigonometry identities, math study guides, algebra word problems solver, step by step math solutions">
     <meta name="robots" content="index, follow">
@@ -25,6 +25,13 @@
         <link rel="stylesheet" href="tooltip-styles.css">
     </noscript>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
     
     <!-- Resource hints for faster loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -59,7 +66,7 @@
             {
                 "@type": "WebSite",
                 "@id": "https://math.help/#website",
-                "name": "Math.help",
+                "name": "Math Help",
                 "description": "Master mathematics with comprehensive guides, interactive calculators, and step-by-step solutions for algebra, calculus, geometry, and more.",
                 "url": "https://math.help",
                 "inLanguage": "en-US",
@@ -76,7 +83,7 @@
             {
                 "@type": "EducationalOrganization",
                 "@id": "https://math.help/#organization",
-                "name": "Math.help",
+                "name": "Math Help",
                 "url": "https://math.help",
                 "description": "Educational platform providing free mathematics resources, calculators, and learning materials",
                 "sameAs": [
@@ -187,7 +194,7 @@
 <body data-page-type="homepage" data-page-data='{"topic": "general", "difficulty": "all", "concept": "mathematics", "breadcrumbs": [{"name": "Home", "url": "/"}]}'>
     <header class="site-header">
         <div class="container">
-            <h1 class="site-title">Math.help</h1>
+            <h1 class="site-title">Math Help</h1>
             <p class="tagline">Master Mathematics Step by Step</p>
         </div>
     </header>
@@ -567,7 +574,7 @@
                     <!-- Basic Calculator -->
                     <div id="basic-calc" class="calculator-widget active">
                         <div class="calc-display">
-                            <input type="text" id="calc-screen" readonly placeholder="0">
+                            <input type="text" id="calc-screen" readonly placeholder="0" data-math-keyboard="true">
                         </div>
                         <div class="calc-buttons">
                             <button onclick="clearCalculator()">C</button>
@@ -598,7 +605,7 @@
                     <!-- Scientific Calculator -->
                     <div id="scientific-calc" class="calculator-widget">
                         <div class="calc-display">
-                            <input type="text" id="sci-calc-screen" readonly placeholder="0">
+                            <input type="text" id="sci-calc-screen" readonly placeholder="0" data-math-keyboard="true" data-math-type="scientific">
                         </div>
                         <div class="sci-calc-buttons">
                             <button onclick="sciFunction('sin')">sin</button>
@@ -619,7 +626,7 @@
                     <div id="graphing-calc" class="calculator-widget">
                         <div class="graphing-interface">
                             <div class="function-input">
-                                <input type="text" id="function-input" placeholder="Enter function: f(x) = x^2">
+                                <input type="text" id="function-input" placeholder="Enter function: f(x) = x^2" data-math-keyboard="true" data-math-type="equation">
                                 <button onclick="plotFunction()">Plot</button>
                             </div>
                             <canvas id="graph-canvas" width="400" height="300"></canvas>
@@ -636,7 +643,7 @@
                         <div class="equation-solver">
                             <h3>Solve Equations Step by Step</h3>
                             <div class="equation-input">
-                                <input type="text" id="equation-input" placeholder="Enter equation: 2x + 5 = 13">
+                                <input type="text" id="equation-input" placeholder="Enter equation: 2x + 5 = 13" data-math-keyboard="true" data-math-type="equation">
                                 <button onclick="solveEquation()">Solve</button>
                             </div>
                             <div id="solution-steps" class="solution-display"></div>
@@ -686,7 +693,7 @@
                                     <option value="integral">Integral</option>
                                     <option value="limit">Limit</option>
                                 </select>
-                                <input type="text" id="calculus-input" placeholder="Enter function: x^2 + 3x + 2">
+                                <input type="text" id="calculus-input" placeholder="Enter function: x^2 + 3x + 2" data-math-keyboard="true" data-math-type="equation">
                                 <button onclick="calculateCalculus()">Calculate</button>
                                 <div id="calculus-result"></div>
                             </div>
@@ -846,7 +853,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2024 Math.help. All rights reserved.</p>
+            <p>&copy; 2024 Math Help. All rights reserved.</p>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
@@ -864,6 +871,38 @@
     <script src="interactive-tools.js" defer></script>
     <script src="keyword-definitions.js" defer></script>
     <script src="content-scraper.js" defer></script>
+    
+    <!-- Mobile-First Components -->
+    <script src="mobile/math-keyboard.js" defer></script>
+    <script src="mobile/responsive-math.js" defer></script>
+    <script src="pwa-app.js" defer></script>
+    
+    <!-- Enhanced Schema Markup -->
+    <script src="schema-markup-enhanced.js" defer></script>
+    
+    <!-- Ad Optimization -->
+    <script src="ad-optimization-system.js" defer></script>
+    <script src="header-bidding-enhanced.js" defer></script>
+    
+    <!-- Component System -->
+    <script src="components/atoms.js" defer></script>
+    <script src="components/molecules.js" defer></script>
+    <script src="components/organisms.js" defer></script>
+    <script src="components/templates.js" defer></script>
+    <script src="components/pages.js" defer></script>
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="design-tokens/tokens.css">
+    
+    <!-- Engagement & Gamification -->
+    <script src="engagement/engagement-tracker.js" defer></script>
+    <script src="gamification/gamification-system.js" defer></script>
+    <script src="recommendations/recommendation-engine.js" defer></script>
+    <script src="interactive/math-quiz.js" defer></script>
+    
+    <!-- Core Web Vitals Optimization -->
+    <script src="core-web-vitals/cwv-optimizer.js" defer></script>
+    <script src="core-web-vitals/mathjax-performance.js" defer></script>
     
     <!-- Optimized bundled scripts for better performance -->
     <script src="scripts-bundle.min.js" defer></script>

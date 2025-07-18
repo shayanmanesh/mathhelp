@@ -1,4 +1,4 @@
-// Programmatic SEO Generator for Math.help
+// Programmatic SEO Generator for Math Help
 // Generates 50,000+ landing pages for specific math problems
 
 class ProgrammaticSEOGenerator {
@@ -15,7 +15,7 @@ class ProgrammaticSEOGenerator {
     initializeTemplates() {
         return {
             solve: {
-                title: 'How to Solve {problemType} - Step by Step with Examples | Math.help',
+                title: 'How to Solve {problemType} - Step by Step with Examples | Math Help',
                 metaDescription: 'Learn how to solve {problemType} problems with our step-by-step guide. Includes examples, practice problems, and interactive tools. Master {topic} today!',
                 h1: 'How to Solve {problemType}: Complete Step-by-Step Guide',
                 urlPattern: '/solve/{topic}/{difficulty}/{problemType}',
@@ -30,7 +30,7 @@ class ProgrammaticSEOGenerator {
                 ]
             },
             practice: {
-                title: '{problemType} Practice Problems - {difficulty} Level | Math.help',
+                title: '{problemType} Practice Problems - {difficulty} Level | Math Help',
                 metaDescription: 'Practice {problemType} problems with instant feedback. {difficulty} level exercises with detailed solutions. Perfect for {gradeLevel} students.',
                 h1: '{problemType} Practice Problems - {difficulty} Level',
                 urlPattern: '/practice/{gradeLevel}/{topic}/{problemType}',
@@ -43,7 +43,7 @@ class ProgrammaticSEOGenerator {
                 ]
             },
             visual: {
-                title: '{concept} Visual Guide - Interactive {topic} | Math.help',
+                title: '{concept} Visual Guide - Interactive {topic} | Math Help',
                 metaDescription: 'Understand {concept} with interactive visualizations and animations. See {topic} concepts come to life with our visual learning tools.',
                 h1: 'Visual Guide to {concept}',
                 urlPattern: '/visual/{topic}/{concept}',
@@ -56,7 +56,7 @@ class ProgrammaticSEOGenerator {
                 ]
             },
             worksheet: {
-                title: '{problemType} Worksheet - Printable {topic} Practice | Math.help',
+                title: '{problemType} Worksheet - Printable {topic} Practice | Math Help',
                 metaDescription: 'Download printable {problemType} worksheets for {gradeLevel} students. Includes answer keys and step-by-step solutions.',
                 h1: 'Printable {problemType} Worksheets',
                 urlPattern: '/worksheets/{gradeLevel}/{topic}/{problemType}',
@@ -69,7 +69,7 @@ class ProgrammaticSEOGenerator {
                 ]
             },
             calculator: {
-                title: '{problemType} Calculator - Free Online {topic} Tool | Math.help',
+                title: '{problemType} Calculator - Free Online {topic} Tool | Math Help',
                 metaDescription: 'Free online {problemType} calculator with step-by-step solutions. Solve {topic} problems instantly with our advanced calculator.',
                 h1: 'Free {problemType} Calculator',
                 urlPattern: '/calculators/{topic}/{problemType}',

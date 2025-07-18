@@ -1,4 +1,4 @@
-// Schema Markup Generator for Math.help - SEO Optimization
+// Schema Markup Generator for Math Help - SEO Optimization
 // Implements Educational/Course, FAQ, HowTo, and MathML schemas
 
 class SchemaMarkupGenerator {
@@ -11,7 +11,7 @@ class SchemaMarkupGenerator {
         return {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "Math.help",
+            "name": "Math Help",
             "url": this.baseUrl,
             "logo": `${this.baseUrl}/logo.png`,
             "description": "Interactive mathematics learning platform with step-by-step solutions and visual tools",
@@ -36,7 +36,7 @@ class SchemaMarkupGenerator {
             "description": `Learn ${concept} in ${topic} with interactive tools and step-by-step solutions`,
             "provider": {
                 "@type": "Organization",
-                "name": "Math.help",
+                "name": "Math Help",
                 "url": this.baseUrl
             },
             "courseCode": `${topic.toUpperCase()}-${difficulty.toUpperCase()}-${concept.replace(/\s+/g, '')}`,

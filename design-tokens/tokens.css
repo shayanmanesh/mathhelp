@@ -1,0 +1,433 @@
+/* CSS Custom Properties generated from Design Tokens */
+/* Mathematical Platform Design System */
+
+:root {
+  /* ============================================
+     COLOR TOKENS
+     ============================================ */
+  
+  /* Brand Colors */
+  --color-brand-primary: #3498db;
+  --color-brand-secondary: #2ecc71;
+  --color-brand-tertiary: #9b59b6;
+  --color-brand-quaternary: #f39c12;
+  
+  /* Mathematical Expression Colors */
+  --color-expression-variable: #3498db;
+  --color-expression-variable-highlighted: #2980b9;
+  --color-expression-variable-muted: #5dade2;
+  
+  --color-expression-constant: #2c3e50;
+  --color-expression-pi: #8e44ad;
+  --color-expression-e: #16a085;
+  --color-expression-infinity: #e74c3c;
+  
+  --color-expression-operator-basic: #34495e;
+  --color-expression-operator-advanced: #8e44ad;
+  --color-expression-operator-logic: #3498db;
+  --color-expression-operator-set: #16a085;
+  
+  --color-expression-function-trig: #e74c3c;
+  --color-expression-function-log: #f39c12;
+  --color-expression-function-special: #9b59b6;
+  --color-expression-function-custom: #1abc9c;
+  
+  --color-expression-delimiter-parenthesis: #7f8c8d;
+  --color-expression-delimiter-bracket: #95a5a6;
+  --color-expression-delimiter-brace: #bdc3c7;
+  --color-expression-delimiter-matched: #27ae60;
+  --color-expression-delimiter-unmatched: #e74c3c;
+  
+  /* Feedback Colors */
+  --color-feedback-correct: #27ae60;
+  --color-feedback-correct-light: #58d68d;
+  --color-feedback-correct-dark: #1e8449;
+  --color-feedback-correct-bg: #d5f4e6;
+  --color-feedback-correct-border: #27ae60;
+  
+  --color-feedback-incorrect: #e74c3c;
+  --color-feedback-incorrect-light: #ec7063;
+  --color-feedback-incorrect-dark: #c0392b;
+  --color-feedback-incorrect-bg: #fadbd8;
+  --color-feedback-incorrect-border: #e74c3c;
+  
+  --color-feedback-partial: #f39c12;
+  --color-feedback-partial-light: #f5b041;
+  --color-feedback-partial-dark: #ca8a04;
+  --color-feedback-partial-bg: #fef5e7;
+  --color-feedback-partial-border: #f39c12;
+  
+  --color-feedback-neutral: #95a5a6;
+  --color-feedback-neutral-light: #bdc3c7;
+  --color-feedback-neutral-dark: #7f8c8d;
+  --color-feedback-neutral-bg: #ecf0f1;
+  --color-feedback-neutral-border: #95a5a6;
+  
+  --color-feedback-hint: #3498db;
+  --color-feedback-hint-light: #5dade2;
+  --color-feedback-hint-dark: #2874a6;
+  --color-feedback-hint-bg: #d6eaf8;
+  --color-feedback-hint-border: #3498db;
+  
+  /* UI Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #e9ecef;
+  --color-bg-inverse: #2c3e50;
+  --color-bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  --color-surface-primary: #ffffff;
+  --color-surface-secondary: #f8f9fa;
+  --color-surface-elevated: #ffffff;
+  --color-surface-depressed: #e9ecef;
+  --color-surface-disabled: #dee2e6;
+  
+  --color-border-light: #dee2e6;
+  --color-border-default: #ced4da;
+  --color-border-dark: #adb5bd;
+  --color-border-focus: #3498db;
+  --color-border-error: #e74c3c;
+  
+  --color-text-primary: #212529;
+  --color-text-secondary: #6c757d;
+  --color-text-tertiary: #adb5bd;
+  --color-text-inverse: #ffffff;
+  --color-text-disabled: #adb5bd;
+  --color-text-link: #3498db;
+  --color-text-link-hover: #2874a6;
+  
+  /* Semantic Colors */
+  --color-info: #3498db;
+  --color-success: #27ae60;
+  --color-warning: #f39c12;
+  --color-error: #e74c3c;
+  --color-help: #9b59b6;
+  
+  /* ============================================
+     TYPOGRAPHY TOKENS
+     ============================================ */
+  
+  /* Font Families */
+  --font-family-text: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-text-secondary: Georgia, Cambria, "Times New Roman", serif;
+  --font-family-monospace: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", monospace;
+  
+  --font-family-math-serif: "Latin Modern Roman", "Computer Modern", "Times New Roman", serif;
+  --font-family-math-sans: "Latin Modern Sans", "Computer Modern Sans", Arial, sans-serif;
+  --font-family-math-script: "Latin Modern Math", "STIX Two Math", "Cambria Math", serif;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  
+  --font-size-math-inline: 1em;
+  --font-size-math-display: 1.2em;
+  --font-size-math-script: 0.7em;
+  --font-size-math-scriptscript: 0.5em;
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  --line-height-math-inline: 1.2;
+  --line-height-math-display: 1.8;
+  --line-height-math-fraction: 2.4;
+  --line-height-math-matrix: 2.2;
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* Letter Spacing */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+  
+  /* ============================================
+     SPACING TOKENS
+     ============================================ */
+  
+  /* Base Spacing */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-7: 1.75rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  
+  /* Math Spacing */
+  --spacing-math-operator-thin: 0.16667em;
+  --spacing-math-operator-medium: 0.22222em;
+  --spacing-math-operator-thick: 0.27778em;
+  --spacing-math-operator-very-thick: 0.33333em;
+  
+  --spacing-math-equation-before: 1em;
+  --spacing-math-equation-after: 1em;
+  --spacing-math-equation-interline: 0.5em;
+  --spacing-math-equation-multiline: 1.2em;
+  
+  --spacing-math-matrix-column-gap: 1em;
+  --spacing-math-matrix-row-gap: 0.5em;
+  --spacing-math-matrix-padding: 0.5em;
+  
+  --spacing-math-fraction-bar-thickness: 0.04em;
+  --spacing-math-fraction-bar-padding: 0.2em;
+  --spacing-math-fraction-script-space: 0.1em;
+  
+  /* ============================================
+     SIZING TOKENS
+     ============================================ */
+  
+  /* Interactive Elements */
+  --size-interactive-min-height-sm: 2rem;
+  --size-interactive-min-height-md: 2.5rem;
+  --size-interactive-min-height-lg: 3rem;
+  --size-interactive-min-height-xl: 3.5rem;
+  
+  --size-touch-target-minimum: 44px;
+  --size-touch-target-recommended: 48px;
+  
+  /* Math Elements */
+  --size-math-min-font: 14px;
+  --size-math-min-subscript: 10px;
+  --size-math-max-inline-height: 2em;
+  --size-math-max-display-width: 100%;
+  
+  /* Containers */
+  --size-container-xs: 20rem;
+  --size-container-sm: 24rem;
+  --size-container-md: 28rem;
+  --size-container-lg: 32rem;
+  --size-container-xl: 36rem;
+  --size-container-2xl: 42rem;
+  --size-container-3xl: 48rem;
+  --size-container-4xl: 56rem;
+  --size-container-5xl: 64rem;
+  --size-container-6xl: 72rem;
+  
+  /* ============================================
+     BORDER TOKENS
+     ============================================ */
+  
+  /* Border Radius */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Border Width */
+  --border-width-none: 0;
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 4px;
+  --border-width-heavy: 8px;
+  
+  /* ============================================
+     SHADOW TOKENS
+     ============================================ */
+  
+  /* Elevation Shadows */
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  
+  /* Focus Shadows */
+  --shadow-focus-default: 0 0 0 3px rgba(52, 152, 219, 0.5);
+  --shadow-focus-error: 0 0 0 3px rgba(231, 76, 60, 0.5);
+  --shadow-focus-success: 0 0 0 3px rgba(39, 174, 96, 0.5);
+  
+  /* ============================================
+     ANIMATION TOKENS
+     ============================================ */
+  
+  /* Duration */
+  --duration-instant: 0ms;
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 700ms;
+  
+  /* Easing */
+  --easing-linear: linear;
+  --easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Math Animations */
+  --duration-math-step: 500ms;
+  --duration-math-highlight: 200ms;
+  --duration-math-draw: 1000ms;
+  
+  /* ============================================
+     Z-INDEX TOKENS
+     ============================================ */
+  
+  --z-index-base: 0;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+  --z-index-notification: 1080;
+  --z-index-debug: 9999;
+  
+  /* ============================================
+     BREAKPOINTS
+     ============================================ */
+  
+  --breakpoint-xs: 0px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  :root {
+    /* Override colors for high contrast */
+    --color-bg-primary: #000000;
+    --color-bg-secondary: #000000;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #ffffff;
+    
+    --color-expression-variable: #00ff00;
+    --color-expression-constant: #ffffff;
+    --color-expression-operator-basic: #ffffff;
+    --color-expression-function-trig: #ffff00;
+    
+    --color-feedback-correct: #00ff00;
+    --color-feedback-incorrect: #ff0000;
+    --color-feedback-partial: #ffff00;
+    
+    --color-border-default: #ffffff;
+    --color-border-focus: #00ffff;
+    
+    --shadow-focus-default: 0 0 0 3px #00ffff;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION PREFERENCES
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0.01ms;
+    --duration-fast: 0.01ms;
+    --duration-normal: 0.01ms;
+    --duration-slow: 0.01ms;
+    --duration-slower: 0.01ms;
+    --duration-math-step: 0.01ms;
+    --duration-math-highlight: 0.01ms;
+    --duration-math-draw: 0.01ms;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus Visible */
+.focus-visible:focus-visible {
+  outline: var(--border-width-medium) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Math Expression Color Classes */
+.math-variable { color: var(--color-expression-variable); }
+.math-constant { color: var(--color-expression-constant); }
+.math-operator { color: var(--color-expression-operator-basic); }
+.math-function { color: var(--color-expression-function-trig); }
+.math-delimiter { color: var(--color-expression-delimiter-parenthesis); }
+
+/* Feedback Classes */
+.feedback-correct {
+  color: var(--color-feedback-correct);
+  background-color: var(--color-feedback-correct-bg);
+  border-color: var(--color-feedback-correct-border);
+}
+
+.feedback-incorrect {
+  color: var(--color-feedback-incorrect);
+  background-color: var(--color-feedback-incorrect-bg);
+  border-color: var(--color-feedback-incorrect-border);
+}
+
+.feedback-partial {
+  color: var(--color-feedback-partial);
+  background-color: var(--color-feedback-partial-bg);
+  border-color: var(--color-feedback-partial-border);
+}
+
+/* Animation Classes */
+.transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--easing-in-out);
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-duration: var(--duration-normal);
+  transition-timing-function: var(--easing-in-out);
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-duration: var(--duration-normal);
+  transition-timing-function: var(--easing-in-out);
+}

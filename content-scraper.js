@@ -1,4 +1,4 @@
-// Content Scraper for Math.help - Analyzes website content and enhances keyword definitions
+// Content Scraper for Math Help - Analyzes website content and enhances keyword definitions
 
 class ContentScraper {
     constructor() {
@@ -115,7 +115,7 @@ class ContentScraper {
 
     generateTitle(page) {
         const titles = {
-            homepage: 'Math.help - Master Mathematics Step by Step',
+            homepage: 'Math Help - Master Mathematics Step by Step',
             algebra: 'Algebra - Equations, Polynomials, and More',
             calculus: 'Calculus - Derivatives, Integrals, and Limits',
             geometry: 'Geometry - Shapes, Areas, and Spatial Relationships',

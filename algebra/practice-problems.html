@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra Practice Problems - Step-by-Step Solutions | Math Help</title>
+    <meta name="description" content="Practice algebra with carefully selected problems. Get instant feedback and step-by-step solutions for linear equations, quadratic equations, and more.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../enhanced-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <!-- Enhanced Schema Markup -->
+    <script src="../schema-markup-enhanced.js" defer></script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <style>
+        .practice-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .problem-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .problem-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .difficulty-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .difficulty-easy {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .difficulty-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .difficulty-hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .problem-content {
+            margin: 1.5rem 0;
+            font-size: 1.125rem;
+        }
+        
+        .math-expression {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+        
+        .answer-input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .answer-input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+        
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+        
+        .solution-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
+            display: none;
+        }
+        
+        .solution-section.show {
+            display: block;
+        }
+        
+        .solution-steps {
+            margin-top: 1rem;
+        }
+        
+        .step {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 4px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 0.5rem;
+        }
+        
+        .feedback {
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #27ae60;
+            transition: width 0.3s;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body data-page-type="practice" data-page-data='{
+    "topic": "algebra",
+    "breadcrumbs": [
+        {"name": "Home", "url": "/"},
+        {"name": "Algebra", "url": "/algebra/"},
+        {"name": "Practice Problems", "url": "/algebra/practice-problems.html"}
+    ],
+    "title": "Algebra Practice Problems",
+    "description": "Practice algebra with carefully selected problems featuring step-by-step solutions",
+    "level": "High School",
+    "estimatedTime": "PT45M",
+    "concepts": ["Linear equations", "Quadratic equations", "Factoring", "Systems of equations"],
+    "skills": ["Problem solving", "Algebraic manipulation", "Critical thinking"],
+    "problems": [
+        {
+            "title": "Linear Equation - Two Steps",
+            "type": "Exercise",
+            "question": "Solve for x: 3x + 7 = 22",
+            "expression": "3x + 7 = 22",
+            "difficulty": "Easy",
+            "answer": "x = 5",
+            "answerExpression": "x = 5",
+            "solution": "Subtract 7 from both sides, then divide by 3",
+            "steps": [
+                {
+                    "title": "Subtract 7 from both sides",
+                    "description": "3x + 7 - 7 = 22 - 7",
+                    "expression": "3x = 15"
+                },
+                {
+                    "title": "Divide both sides by 3",
+                    "description": "3x ÷ 3 = 15 ÷ 3",
+                    "expression": "x = 5"
+                }
+            ]
+        },
+        {
+            "title": "Quadratic Equation - Factoring",
+            "type": "Exercise",
+            "question": "Solve: x² - 7x + 12 = 0",
+            "expression": "x^2 - 7x + 12 = 0",
+            "difficulty": "Medium",
+            "answer": "x = 3 or x = 4",
+            "answerExpression": "x = 3, x = 4",
+            "solution": "Factor the quadratic expression",
+            "steps": [
+                {
+                    "title": "Find factors of 12 that add to -7",
+                    "description": "We need two numbers that multiply to 12 and add to -7",
+                    "expression": "-3 × -4 = 12, -3 + -4 = -7"
+                },
+                {
+                    "title": "Factor the expression",
+                    "description": "Write as a product of binomials",
+                    "expression": "(x - 3)(x - 4) = 0"
+                },
+                {
+                    "title": "Apply zero product property",
+                    "description": "If a product equals zero, at least one factor must be zero",
+                    "expression": "x - 3 = 0 or x - 4 = 0"
+                },
+                {
+                    "title": "Solve each equation",
+                    "description": "Solve for x in each case",
+                    "expression": "x = 3 or x = 4"
+                }
+            ]
+        }
+    ]
+}'>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math Help</h1>
+            <p class="tagline">Algebra Practice Problems</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../algebra/" class="active">Algebra</a></li>
+                <li><a href="../calculus/">Calculus</a></li>
+                <li><a href="../geometry/">Geometry</a></li>
+                <li><a href="../trigonometry/">Trigonometry</a></li>
+                <li><a href="../statistics/">Statistics</a></li>
+                <li><a href="../tools/">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="../">Home</a> › 
+            <a href="../algebra/">Algebra</a> › 
+            <span>Practice Problems</span>
+        </div>
+    </nav>
+    
+    <main class="practice-container">
+        <h1>Algebra Practice Problems</h1>
+        <p class="lead">Master algebra with these carefully selected practice problems. Each problem includes step-by-step solutions to help you learn.</p>
+        
+        <!-- Progress and Stats -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-value" id="problems-solved">0</div>
+                <div class="stat-label">Problems Solved</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="success-rate">0%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="current-streak">0</div>
+                <div class="stat-label">Current Streak</div>
+            </div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress" style="width: 0%"></div>
+        </div>
+        
+        <!-- AdSense Display Ad -->
+        <div class="ad-container" style="text-align: center; margin: 2rem 0;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5635114711353420"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <!-- Problem 1 -->
+        <div class="problem-card" id="problem-1">
+            <div class="problem-header">
+                <h2 class="problem-title">Problem 1: Linear Equation</h2>
+                <span class="difficulty-badge difficulty-easy">Easy</span>
+            </div>
+            
+            <div class="problem-content">
+                <p>Solve for x:</p>
+                <div class="math-expression">3x + 7 = 22</div>
+            </div>
+            
+            <div class="answer-section">
+                <label for="answer-1">Your Answer:</label>
+                <input type="text" id="answer-1" class="answer-input" placeholder="Enter your answer (e.g., x = 5)">
+                
+                <div class="feedback" id="feedback-1"></div>
+                
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(1, 'x = 5')">Check Answer</button>
+                    <button class="btn btn-secondary" onclick="showSolution(1)">Show Solution</button>
+                </div>
+            </div>
+            
+            <div class="solution-section" id="solution-1">
+                <h3>Solution:</h3>
+                <p>To solve 3x + 7 = 22, we need to isolate x.</p>
+                
+                <div class="solution-steps">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <strong>Subtract 7 from both sides:</strong>
+                        <div class="math-expression">3x + 7 - 7 = 22 - 7</div>
+                        <div class="math-expression">3x = 15</div>
+                    </div>
+                    
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <strong>Divide both sides by 3:</strong>
+                        <div class="math-expression">3x ÷ 3 = 15 ÷ 3</div>
+                        <div class="math-expression">x = 5</div>
+                    </div>
+                </div>
+                
+                <p><strong>Answer:</strong> x = 5</p>
+                <p><strong>Check:</strong> 3(5) + 7 = 15 + 7 = 22 ✓</p>
+            </div>
+        </div>
+        
+        <!-- Problem 2 -->
+        <div class="problem-card" id="problem-2">
+            <div class="problem-header">
+                <h2 class="problem-title">Problem 2: Quadratic Equation</h2>
+                <span class="difficulty-badge difficulty-medium">Medium</span>
+            </div>
+            
+            <div class="problem-content">
+                <p>Solve the quadratic equation:</p>
+                <div class="math-expression">x² - 7x + 12 = 0</div>
+            </div>
+            
+            <div class="answer-section">
+                <label for="answer-2">Your Answer:</label>
+                <input type="text" id="answer-2" class="answer-input" placeholder="Enter your answer (e.g., x = 3 or x = 4)">
+                
+                <div class="feedback" id="feedback-2"></div>
+                
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(2, 'x = 3 or x = 4')">Check Answer</button>
+                    <button class="btn btn-secondary" onclick="showSolution(2)">Show Solution</button>
+                </div>
+            </div>
+            
+            <div class="solution-section" id="solution-2">
+                <h3>Solution:</h3>
+                <p>To solve x² - 7x + 12 = 0, we'll use factoring.</p>
+                
+                <div class="solution-steps">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <strong>Find factors of 12 that add to -7:</strong>
+                        <p>We need two numbers that multiply to 12 and add to -7.</p>
+                        <p>-3 × -4 = 12 and -3 + -4 = -7 ✓</p>
+                    </div>
+                    
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <strong>Factor the expression:</strong>
+                        <div class="math-expression">x² - 7x + 12 = (x - 3)(x - 4)</div>
+                    </div>
+                    
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <strong>Apply zero product property:</strong>
+                        <div class="math-expression">(x - 3)(x - 4) = 0</div>
+                        <p>This means either (x - 3) = 0 or (x - 4) = 0</p>
+                    </div>
+                    
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <strong>Solve each equation:</strong>
+                        <div class="math-expression">x - 3 = 0 → x = 3</div>
+                        <div class="math-expression">x - 4 = 0 → x = 4</div>
+                    </div>
+                </div>
+                
+                <p><strong>Answer:</strong> x = 3 or x = 4</p>
+                <p><strong>Check:</strong> (3)² - 7(3) + 12 = 9 - 21 + 12 = 0 ✓</p>
+                <p><strong>Check:</strong> (4)² - 7(4) + 12 = 16 - 28 + 12 = 0 ✓</p>
+            </div>
+        </div>
+        
+        <!-- More problems can be added here -->
+        
+        <!-- AdSense Display Ad -->
+        <div class="ad-container" style="text-align: center; margin: 2rem 0;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5635114711353420"
+                 data-ad-slot="1234567891"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Math Help. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="../privacy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Service</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Practice problem functionality
+        let problemsAttempted = 0;
+        let problemsSolved = 0;
+        let currentStreak = 0;
+        
+        function checkAnswer(problemId, correctAnswer) {
+            const userAnswer = document.getElementById(`answer-${problemId}`).value.trim();
+            const feedback = document.getElementById(`feedback-${problemId}`);
+            
+            problemsAttempted++;
+            
+            // Normalize answers for comparison
+            const normalizedUser = userAnswer.toLowerCase().replace(/\s+/g, '');
+            const normalizedCorrect = correctAnswer.toLowerCase().replace(/\s+/g, '');
+            
+            if (normalizedUser === normalizedCorrect) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = '✓ Correct! Well done!';
+                feedback.style.display = 'block';
+                
+                problemsSolved++;
+                currentStreak++;
+                
+                // Update stats
+                updateStats();
+                
+                // Show solution after correct answer
+                setTimeout(() => showSolution(problemId), 1000);
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = '✗ Not quite. Try again or click "Show Solution" for help.';
+                feedback.style.display = 'block';
+                
+                currentStreak = 0;
+                updateStats();
+            }
+        }
+        
+        function showSolution(problemId) {
+            const solution = document.getElementById(`solution-${problemId}`);
+            solution.classList.add('show');
+            
+            // Scroll to solution
+            solution.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        function updateStats() {
+            document.getElementById('problems-solved').textContent = problemsSolved;
+            document.getElementById('current-streak').textContent = currentStreak;
+            
+            const successRate = problemsAttempted > 0 
+                ? Math.round((problemsSolved / problemsAttempted) * 100) 
+                : 0;
+            document.getElementById('success-rate').textContent = successRate + '%';
+            
+            // Update progress bar
+            const totalProblems = document.querySelectorAll('.problem-card').length;
+            const progress = (problemsSolved / totalProblems) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+            
+            // Save progress to localStorage
+            localStorage.setItem('algebraPracticeStats', JSON.stringify({
+                problemsSolved,
+                problemsAttempted,
+                currentStreak
+            }));
+        }
+        
+        // Load saved progress
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedStats = localStorage.getItem('algebraPracticeStats');
+            if (savedStats) {
+                const stats = JSON.parse(savedStats);
+                problemsSolved = stats.problemsSolved || 0;
+                problemsAttempted = stats.problemsAttempted || 0;
+                currentStreak = stats.currentStreak || 0;
+                updateStats();
+            }
+        });
+    </script>
+    
+    <!-- KaTeX rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+            onload="renderMathInElement(document.body);"></script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+/* Ad Optimization Styles - 30/70 Ratio, Native Ads, Strategic Placements */
+
+/* Base Ad Container Styles */
+.ad-container {
+    margin: 24px 0;
+    text-align: center;
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    position: relative;
+    min-height: 90px;
+}
+
+.ad-container::before {
+    content: 'Advertisement';
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+/* Native Ad Styles - 25-40% Better Performance */
+.native-ad-container {
+    margin: 32px 0;
+    position: relative;
+}
+
+.native-ad {
+    background: #ffffff;
+    border: 1px solid #e8eaed;
+    border-radius: 8px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.native-ad:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.native-ad-label {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 11px;
+    color: #70757a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* In-Feed Native Ad */
+.native-ad[data-format="in-feed"] {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+}
+
+.native-ad[data-format="in-feed"] .ad-image {
+    flex-shrink: 0;
+    width: 120px;
+    height: 90px;
+    background: #f0f2f5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.native-ad[data-format="in-feed"] .ad-content {
+    flex: 1;
+}
+
+.native-ad[data-format="in-feed"] .ad-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.native-ad[data-format="in-feed"] .ad-description {
+    font-size: 14px;
+    color: #5f6368;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.native-ad[data-format="in-feed"] .ad-cta {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #1a73e8;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.native-ad[data-format="in-feed"] .ad-cta:hover {
+    background: #1557b0;
+}
+
+/* In-Article Native Ad */
+.native-ad[data-format="in-article"] {
+    text-align: left;
+    max-width: 680px;
+    margin: 32px auto;
+}
+
+.native-ad[data-format="in-article"] .ad-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.native-ad[data-format="in-article"] .ad-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.native-ad[data-format="in-article"] .ad-description {
+    font-size: 16px;
+    color: #3c4043;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Sticky Ad Styles */
+.sticky-ad-container {
+    background: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Desktop Sticky Sidebar */
+.sticky-ad-container.sticky-sidebar {
+    position: sticky;
+    top: 80px;
+    margin-top: 24px;
+}
+
+.sticky-ad-container.sticky-sidebar .ad-container {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+/* Mobile Sticky Bottom */
+.sticky-ad-container.sticky-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 250px; /* Limited to 250px as per requirements */
+    background: white;
+    border-top: 1px solid #e8eaed;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sticky-ad-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.sticky-ad-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Above the Fold Ad */
+.above-fold-ad {
+    margin: 16px 0 32px 0;
+    min-height: 90px;
+}
+
+/* Contextual Ad Near Tools */
+.contextual-ad {
+    background: #f0f7ff;
+    border: 1px solid #d2e3fc;
+    margin: 24px 0;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.contextual-ad::before {
+    content: 'Related Resources';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: white;
+    padding: 0 8px;
+    font-size: 12px;
+    color: #5f6368;
+    font-weight: 500;
+}
+
+/* Video Ad Overlay Styles */
+.video-ad-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.video-ad-container {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 640px;
+    width: 90%;
+    position: relative;
+}
+
+.video-ad-container .ad-label {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #ff0000;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.video-ad-container .skip-button {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.video-ad-container .skip-button:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.video-ad-container .ad-countdown {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #5f6368;
+}
+
+.video-ad-container .ad-progress {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+    color: #5f6368;
+}
+
+/* Responsive Ad Adjustments */
+@media (max-width: 768px) {
+    /* Mobile optimizations */
+    .ad-container {
+        margin: 16px -16px;
+        border-radius: 0;
+    }
+    
+    .native-ad {
+        margin: 24px 0;
+    }
+    
+    .native-ad[data-format="in-feed"] {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .native-ad[data-format="in-feed"] .ad-image {
+        width: 100%;
+        height: 180px;
+        margin-bottom: 12px;
+    }
+    
+    /* Hide sidebar ads on mobile */
+    .sticky-sidebar {
+        display: none;
+    }
+    
+    /* Adjust sticky bottom for mobile */
+    .sticky-ad-container.sticky-bottom {
+        max-height: 100px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Tablet optimizations */
+    .native-ad[data-format="in-article"] {
+        max-width: 100%;
+    }
+}
+
+/* Ad Density Control */
+.content-section {
+    position: relative;
+}
+
+/* Ensure 30% max ad density */
+.content-section .ad-container:nth-of-type(4) ~ .ad-container {
+    display: none; /* Hide excess ads */
+}
+
+/* Performance Optimization */
+.ad-container.lazy-load {
+    min-height: 250px;
+    background: #f8f9fa url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Mb2FkaW5nIEFkLi4uPC90ZXh0Pjwvc3ZnPg==') center no-repeat;
+}
+
+/* High CTR Optimization */
+.ad-container.high-ctr {
+    border: 2px solid #1a73e8;
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+}
+
+.ad-container.high-ctr::after {
+    content: '📊 Popular Content';
+    position: absolute;
+    bottom: 4px;
+    left: 8px;
+    font-size: 12px;
+    color: #1a73e8;
+    font-weight: 500;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .ad-container {
+        background: #1f1f1f;
+        border-color: #333;
+    }
+    
+    .native-ad {
+        background: #1a1a1a;
+        border-color: #333;
+    }
+    
+    .native-ad .ad-title {
+        color: #e8eaed;
+    }
+    
+    .native-ad .ad-description {
+        color: #9aa0a6;
+    }
+    
+    .sticky-ad-container {
+        background: #1f1f1f;
+        border-color: #333;
+    }
+}
+
+/* Print Styles - Hide ads when printing */
+@media print {
+    .ad-container,
+    .native-ad-container,
+    .sticky-ad-container,
+    .video-ad-overlay {
+        display: none !important;
+    }
+}

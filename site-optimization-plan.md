@@ -1,4 +1,4 @@
-# Math.help Site Optimization Plan
+# Math Help Site Optimization Plan
 
 ## Current State Analysis
 

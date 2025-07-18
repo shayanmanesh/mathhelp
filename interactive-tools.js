@@ -1,4 +1,4 @@
-// Interactive Mathematical Tools for Math.help
+// Interactive Mathematical Tools for Math Help
 // Comprehensive calculator and tool functionality
 
 class InteractiveTools {

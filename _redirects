@@ -1,4 +1,4 @@
-# Redirect rules for Math.help
+# Redirect rules for Math Help
 
 # Force trailing slashes for directories
 /algebra /algebra/ 301

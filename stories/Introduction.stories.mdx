@@ -1,0 +1,174 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Introduction" />
+
+# Math Help Design System
+
+Welcome to the Math Help Design System documentation. This comprehensive system provides specialized components and design tokens for building accessible, beautiful mathematical educational interfaces.
+
+## 🎯 Overview
+
+The Math Help Design System is built on:
+
+- **Atomic Design Principles**: Scalable component architecture
+- **Accessibility First**: WCAG 2.1 AA compliant with math-specific enhancements
+- **Design Tokens**: Consistent, themeable design language
+- **Math-Optimized**: Specialized for mathematical content and expressions
+
+## 🚀 Getting Started
+
+### Installation
+
+```bash
+npm install @mathhelp/design-system
+```
+
+### Basic Usage
+
+```javascript
+// Import design tokens
+import { MathDesignTokens } from '@mathhelp/design-system/tokens';
+
+// Import components
+import { Button, MathExpression } from '@mathhelp/design-system/components';
+
+// Import accessibility
+import { MathAccessibility } from '@mathhelp/design-system/accessibility';
+```
+
+## 📚 Core Concepts
+
+### Design Tokens
+
+Our design tokens provide a consistent foundation for:
+
+- **Colors**: Math expression colors, feedback indicators, UI colors
+- **Typography**: Optimized for both text and mathematical notation
+- **Spacing**: Formula-friendly spacing system
+- **Animations**: Smooth, accessible transitions
+
+### Component Architecture
+
+Following atomic design principles:
+
+1. **Atoms**: Basic building blocks (Button, Input, Icon)
+2. **Molecules**: Functional components (SearchBar, MathExpression, ProblemCard)
+3. **Organisms**: Complex sections (Navigation, Dashboard, ProblemSet)
+4. **Templates**: Page layouts (Lesson, Practice, Assessment)
+5. **Pages**: Complete implementations
+
+### Accessibility Features
+
+- **MathML Support**: Screen reader compatible math expressions
+- **Keyboard Navigation**: Full keyboard control for complex expressions
+- **High Contrast Mode**: Automatic and manual contrast adjustments
+- **Speech Synthesis**: Math expression reading
+- **Focus Management**: Clear focus indicators and navigation
+
+## 🎨 Design Principles
+
+### 1. Clarity First
+Mathematical content should be clear and unambiguous. We use distinct colors for variables, constants, operators, and functions.
+
+### 2. Accessibility by Default
+Every component is built with accessibility in mind, from color contrast to keyboard navigation.
+
+### 3. Responsive & Adaptive
+Components adapt to different screen sizes and user preferences, including font size and spacing adjustments.
+
+### 4. Performance Optimized
+Lazy loading for heavy mathematical content and efficient rendering strategies.
+
+## 🛠 Development
+
+### Component Development
+
+```javascript
+// Example: Creating a new math component
+class MathMatrix extends MathHelpMolecules.BaseComponent {
+  constructor(options) {
+    super(options);
+    this.rows = options.rows || [];
+  }
+  
+  render() {
+    const matrix = document.createElement('div');
+    matrix.className = 'math-matrix';
+    matrix.setAttribute('role', 'math');
+    matrix.setAttribute('aria-label', this.generateDescription());
+    
+    // Render matrix content
+    this.rows.forEach(row => {
+      const rowElement = this.renderRow(row);
+      matrix.appendChild(rowElement);
+    });
+    
+    return matrix;
+  }
+}
+```
+
+### Testing
+
+All components include:
+- Unit tests
+- Accessibility tests
+- Visual regression tests
+- Performance benchmarks
+
+## 📖 Resources
+
+### Documentation
+- [Component API Reference](/docs/components)
+- [Design Token Reference](/docs/tokens)
+- [Accessibility Guide](/docs/accessibility)
+- [Migration Guide](/docs/migration)
+
+### Examples
+- [Basic Math Problems](/examples/problems)
+- [Interactive Lessons](/examples/lessons)
+- [Assessment Forms](/examples/assessments)
+- [Dashboard Layouts](/examples/dashboards)
+
+### Tools
+- [Token Generator](https://math.help/tools/tokens)
+- [Color Contrast Checker](https://math.help/tools/contrast)
+- [Component Playground](https://math.help/tools/playground)
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](https://github.com/mathhelp/design-system/CONTRIBUTING.md) for details.
+
+### Development Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/mathhelp/design-system.git
+
+# Install dependencies
+npm install
+
+# Start Storybook
+npm run storybook
+
+# Run tests
+npm test
+
+# Build for production
+npm run build
+```
+
+## 📝 License
+
+This design system is licensed under the MIT License. See [LICENSE](https://github.com/mathhelp/design-system/LICENSE) for details.
+
+## 🙏 Acknowledgments
+
+Special thanks to:
+- MathJax for mathematical rendering
+- Storybook for documentation platform
+- The accessibility community for invaluable feedback
+
+---
+
+Ready to explore? Check out our [Atoms](/story/components-atoms--page) to get started!
