@@ -3,465 +3,798 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Calculators & Tools - Free Online Calculators | Math.help</title>
-    <meta name="description" content="Free online math calculators and tools. Solve equations, graph functions, calculate derivatives, find areas, and more with our comprehensive collection of math tools.">
-    <meta name="keywords" content="math calculator, online calculator, equation solver, graphing calculator, derivative calculator, integral calculator, statistics calculator">
-    <meta name="robots" content="index, follow">
-    
+    <title>Mathematical Tools & Calculators | Math.help</title>
+    <meta name="description" content="Free mathematical calculators and tools. Solve equations, compute derivatives, calculate areas, and more with step-by-step solutions.">
     <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    <!-- KaTeX CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-    
-    <!-- Ezoic Integration Scripts -->
-    <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
-    <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
-    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
-    <script>
-        window.ezstandalone = window.ezstandalone || {};
-        ezstandalone.cmd = ezstandalone.cmd || [];
-    </script>
-    
-    <!-- KaTeX JavaScript -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
-    <script defer src="../katex-lazy.js"></script>
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "@id": "https://math.help/tools/",
-        "name": "Math Calculators & Tools",
-        "description": "Comprehensive collection of free online math calculators and tools",
-        "url": "https://math.help/tools/",
-        "applicationCategory": "EducationalApplication",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <style>
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
         }
-    }
-    </script>
-    
-    <meta name="google-adsense-account" content="ca-pub-5635114711353420">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
-    
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-ERGV6WWC21', {
-            page_path: window.location.pathname,
-            page_title: document.title,
-            send_page_view: true
-        });
-    </script>
-    
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "sgk1r5gd6a");
-    </script>
+        
+        .tool-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-grey-200);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            text-align: center;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .tool-icon {
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--space-4);
+            color: var(--color-accent);
+        }
+        
+        .tool-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary);
+            margin-bottom: var(--space-3);
+        }
+        
+        .tool-description {
+            color: var(--color-grey-600);
+            margin-bottom: var(--space-6);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        .use-tool-btn {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border: none;
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--border-radius);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all var(--transition-normal);
+        }
+        
+        .use-tool-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+            color: var(--color-white);
+        }
+        
+        .calculator-section {
+            background: var(--color-grey-50);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-8);
+            margin: var(--space-12) 0;
+        }
+        
+        .calculator-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--space-6);
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+        
+        .calc-tab {
+            background: var(--color-white);
+            border: 1px solid var(--color-grey-300);
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-weight: var(--font-weight-medium);
+        }
+        
+        .calc-tab.active {
+            background: var(--color-accent);
+            color: var(--color-white);
+            border-color: var(--color-accent);
+        }
+        
+        .calc-tab:hover:not(.active) {
+            background: var(--color-grey-100);
+        }
+        
+        .calculator-content {
+            display: none;
+        }
+        
+        .calculator-content.active {
+            display: block;
+        }
+        
+        .calc-input-group {
+            margin-bottom: var(--space-4);
+        }
+        
+        .calc-input-group label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-primary);
+        }
+        
+        .calc-input {
+            width: 100%;
+            padding: var(--space-3);
+            border: 1px solid var(--color-grey-300);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-mono);
+        }
+        
+        .calc-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .calc-result {
+            background: var(--color-white);
+            border: 1px solid var(--color-grey-200);
+            border-radius: var(--border-radius);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            min-height: 60px;
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-lg);
+        }
+        
+        .calc-steps {
+            background: var(--color-white);
+            border: 1px solid var(--color-grey-200);
+            border-radius: var(--border-radius);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+        }
+        
+        .step {
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--color-grey-100);
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+        }
+        
+        .step-number {
+            background: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            margin-right: var(--space-3);
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
         <div class="container">
-            <h1 class="site-title">Math.help</h1>
-            <p class="tagline">Master Mathematics Step by Step</p>
+            <h1 class="site-title">Mathematical Tools</h1>
+            <p class="tagline">Professional calculators for every mathematical need</p>
         </div>
     </header>
-    
+
     <nav class="main-nav">
         <div class="container">
             <ul class="nav-list">
-                <li><a href="/">Home</a></li>
-                <li><a href="/algebra/">Algebra</a></li>
-                <li><a href="/calculus/">Calculus</a></li>
-                <li><a href="/geometry/">Geometry</a></li>
-                <li><a href="/trigonometry/">Trigonometry</a></li>
-                <li><a href="/statistics/">Statistics</a></li>
-                <li><a href="/tools/" class="active">Calculators</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../mathverse.html">MathVerse</a></li>
+                <li><a href="../ai-assistant.html">🤖 AI Assistant</a></li>
+                <li><a href="../algebra/">Algebra</a></li>
+                <li><a href="../calculus/">Calculus</a></li>
+                <li><a href="../geometry/">Geometry</a></li>
+                <li><a href="../trigonometry/">Trigonometry</a></li>
+                <li><a href="../statistics/">Statistics</a></li>
+                <li><a href="../advanced/">Advanced</a></li>
+                <li><a href="index.html" class="active">Calculators</a></li>
             </ul>
         </div>
     </nav>
-    
-    <!-- Breadcrumb Navigation -->
-    <nav class="breadcrumb">
-        <div class="container">
-            <ol class="breadcrumb-list">
-                <li><a href="/">Home</a></li>
-                <li class="active">Calculators & Tools</li>
-            </ol>
-        </div>
-    </nav>
 
-    <main>
-        <div class="container">
-            <!-- Position 1: Below Navigation -->
-            <div class="ad-container ad-top">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5635114711353420"
-                     data-ad-slot="3137758017"
-                     data-ad-format="horizontal"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+    <main class="container">
+        <!-- Interactive Calculator Section -->
+        <section class="calculator-section">
+            <h2 class="text-center">Multi-Function Calculator</h2>
+            <div class="calculator-tabs">
+                <div class="calc-tab active" onclick="switchCalcTab('basic')">Basic</div>
+                <div class="calc-tab" onclick="switchCalcTab('quadratic')">Quadratic</div>
+                <div class="calc-tab" onclick="switchCalcTab('derivative')">Derivative</div>
+                <div class="calc-tab" onclick="switchCalcTab('area')">Area</div>
+                <div class="calc-tab" onclick="switchCalcTab('statistics')">Statistics</div>
             </div>
 
-            <section class="tools-overview">
-                <h1>Math Calculators & Tools</h1>
-                <p>Access our comprehensive collection of free online math calculators and tools. From basic arithmetic to advanced calculus, we have the tools you need to solve any math problem.</p>
-            </section>
-
-            <!-- Algebra Tools -->
-            <section class="tool-category">
-                <h2>Algebra Calculators</h2>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <h3>Equation Solver</h3>
-                        <p>Solve linear, quadratic, and polynomial equations step by step</p>
-                        <a href="/tools/equation-solver/" class="tool-link">Open Calculator →</a>
+            <!-- Basic Calculator -->
+            <div id="basic-calc" class="calculator-content active">
+                <div class="calculator">
+                    <div class="calc-display">
+                        <input type="text" id="basic-screen" readonly placeholder="0">
                     </div>
-                    <div class="tool-card">
-                        <h3>Quadratic Formula Calculator</h3>
-                        <p>Find roots of quadratic equations with detailed steps</p>
-                        <a href="/tools/quadratic-calculator/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>System of Equations Solver</h3>
-                        <p>Solve systems of linear equations using various methods</p>
-                        <a href="/tools/system-solver/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Factoring Calculator</h3>
-                        <p>Factor polynomials and find prime factorization</p>
-                        <a href="/tools/factoring/" class="tool-link">Open Calculator →</a>
+                    <div class="calc-buttons">
+                        <button onclick="clearBasic()">C</button>
+                        <button onclick="deleteLastBasic()">⌫</button>
+                        <button onclick="appendToBasic('/')" class="operator">÷</button>
+                        <button onclick="appendToBasic('*')" class="operator">×</button>
+                        
+                        <button onclick="appendToBasic('7')">7</button>
+                        <button onclick="appendToBasic('8')">8</button>
+                        <button onclick="appendToBasic('9')">9</button>
+                        <button onclick="appendToBasic('-')" class="operator">-</button>
+                        
+                        <button onclick="appendToBasic('4')">4</button>
+                        <button onclick="appendToBasic('5')">5</button>
+                        <button onclick="appendToBasic('6')">6</button>
+                        <button onclick="appendToBasic('+')" class="operator">+</button>
+                        
+                        <button onclick="appendToBasic('1')">1</button>
+                        <button onclick="appendToBasic('2')">2</button>
+                        <button onclick="appendToBasic('3')">3</button>
+                        <button onclick="calculateBasic()" class="equals" style="grid-row: span 2;">=</button>
+                        
+                        <button onclick="appendToBasic('0')" class="zero" style="grid-column: span 2;">0</button>
+                        <button onclick="appendToBasic('.')">.</button>
                     </div>
                 </div>
-            </section>
-
-            <!-- Position 2: Between sections -->
-            <div class="ad-container in-content">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5635114711353420"
-                     data-ad-slot="4431777949"
-                     data-ad-format="rectangle"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
 
-            <!-- Calculus Tools -->
-            <section class="tool-category">
-                <h2>Calculus Calculators</h2>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <h3>Derivative Calculator</h3>
-                        <p>Calculate derivatives with step-by-step solutions</p>
-                        <a href="/tools/derivative-calculator/" class="tool-link">Open Calculator →</a>
+            <!-- Quadratic Calculator -->
+            <div id="quadratic-calc" class="calculator-content">
+                <h3>Quadratic Equation Solver</h3>
+                <p class="text-muted">Solve equations of the form ax² + bx + c = 0</p>
+                
+                <div class="grid grid-cols-3">
+                    <div class="calc-input-group">
+                        <label for="quad-a">Coefficient a:</label>
+                        <input type="number" id="quad-a" class="calc-input" placeholder="1" value="1">
                     </div>
-                    <div class="tool-card">
-                        <h3>Integral Calculator</h3>
-                        <p>Evaluate definite and indefinite integrals</p>
-                        <a href="/tools/integral-calculator/" class="tool-link">Open Calculator →</a>
+                    <div class="calc-input-group">
+                        <label for="quad-b">Coefficient b:</label>
+                        <input type="number" id="quad-b" class="calc-input" placeholder="0" value="-5">
                     </div>
-                    <div class="tool-card">
-                        <h3>Limit Calculator</h3>
-                        <p>Find limits of functions as x approaches any value</p>
-                        <a href="/tools/limit-calculator/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Series Calculator</h3>
-                        <p>Test convergence and find sums of series</p>
-                        <a href="/tools/series-calculator/" class="tool-link">Open Calculator →</a>
+                    <div class="calc-input-group">
+                        <label for="quad-c">Coefficient c:</label>
+                        <input type="number" id="quad-c" class="calc-input" placeholder="0" value="6">
                     </div>
                 </div>
-            </section>
-
-            <!-- Geometry Tools -->
-            <section class="tool-category">
-                <h2>Geometry Calculators</h2>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <h3>Area Calculator</h3>
-                        <p>Calculate areas of various 2D shapes</p>
-                        <a href="/tools/area-calculator/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Volume Calculator</h3>
-                        <p>Find volumes of 3D shapes and solids</p>
-                        <a href="/tools/volume-calculator/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Triangle Calculator</h3>
-                        <p>Solve triangles using various properties</p>
-                        <a href="/tools/triangle-calculator/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Circle Calculator</h3>
-                        <p>Calculate circle properties: area, circumference, arc</p>
-                        <a href="/tools/circle-calculator/" class="tool-link">Open Calculator →</a>
-                    </div>
+                
+                <button class="btn btn-primary" onclick="solveQuadratic()">Solve Equation</button>
+                
+                <div id="quadratic-result" class="calc-result" style="display: none;">
+                    <h4>Solution:</h4>
+                    <div id="quadratic-solution"></div>
                 </div>
-            </section>
-
-            <!-- Position 3: Between sections -->
-            <div class="ad-container in-content">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5635114711353420"
-                     data-ad-slot="4431777949"
-                     data-ad-format="rectangle"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                
+                <div id="quadratic-steps" class="calc-steps" style="display: none;">
+                    <h4>Step-by-Step Solution:</h4>
+                    <div id="quadratic-steps-content"></div>
+                </div>
             </div>
 
-            <!-- Trigonometry Tools -->
-            <section class="tool-category">
-                <h2>Trigonometry Calculators</h2>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <h3>Trigonometric Functions</h3>
-                        <p>Calculate sin, cos, tan, and inverse trig functions</p>
-                        <a href="/tools/trig-calculator/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Unit Circle Calculator</h3>
-                        <p>Explore angles and values on the unit circle</p>
-                        <a href="/tools/unit-circle/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Triangle Solver</h3>
-                        <p>Solve triangles using Law of Sines and Cosines</p>
-                        <a href="/tools/triangle-solver/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Angle Converter</h3>
-                        <p>Convert between degrees, radians, and gradians</p>
-                        <a href="/tools/angle-converter/" class="tool-link">Open Calculator →</a>
-                    </div>
+            <!-- Derivative Calculator -->
+            <div id="derivative-calc" class="calculator-content">
+                <h3>Derivative Calculator</h3>
+                <p class="text-muted">Find the derivative of polynomial functions</p>
+                
+                <div class="calc-input-group">
+                    <label for="deriv-function">Function f(x):</label>
+                    <input type="text" id="deriv-function" class="calc-input" placeholder="x^3 + 2*x^2 - 5*x + 1" value="x^3 + 2*x^2 - 5*x + 1">
+                    <small class="text-muted">Use ^ for exponents, * for multiplication</small>
                 </div>
-            </section>
-
-            <!-- Statistics Tools -->
-            <section class="tool-category">
-                <h2>Statistics Calculators</h2>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <h3>Descriptive Statistics</h3>
-                        <p>Calculate mean, median, mode, and standard deviation</p>
-                        <a href="/tools/statistics-calculator/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Normal Distribution</h3>
-                        <p>Find probabilities and z-scores for normal distribution</p>
-                        <a href="/tools/normal-distribution/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Confidence Interval</h3>
-                        <p>Calculate confidence intervals for various parameters</p>
-                        <a href="/tools/confidence-interval/" class="tool-link">Open Calculator →</a>
-                    </div>
-                    <div class="tool-card">
-                        <h3>Regression Calculator</h3>
-                        <p>Perform linear regression analysis on data</p>
-                        <a href="/tools/regression/" class="tool-link">Open Calculator →</a>
-                    </div>
+                
+                <button class="btn btn-primary" onclick="calculateDerivative()">Find Derivative</button>
+                
+                <div id="derivative-result" class="calc-result" style="display: none;">
+                    <h4>Derivative:</h4>
+                    <div id="derivative-solution"></div>
                 </div>
-            </section>
-
-            <!-- Graphing Tools -->
-            <section class="tool-category">
-                <h2>Graphing Tools</h2>
-                <div class="tools-grid">
-                    <div class="tool-card featured">
-                        <h3>Graphing Calculator</h3>
-                        <p>Plot functions, find intersections, analyze graphs</p>
-                        <div class="desmos-embed" style="margin-top: 10px;">
-                            <iframe src="https://www.desmos.com/calculator?embed" 
-                                    width="100%" 
-                                    height="300" 
-                                    style="border: 1px solid #ccc" 
-                                    frameborder="0"></iframe>
-                        </div>
-                        <a href="/tools/graphing-calculator/" class="tool-link">Full Screen →</a>
-                    </div>
-                    <div class="tool-card featured">
-                        <h3>3D Graphing Calculator</h3>
-                        <p>Visualize surfaces and 3D functions</p>
-                        <div class="geogebra-embed" style="margin-top: 10px;">
-                            <iframe src="https://www.geogebra.org/3d?embed" 
-                                    width="100%" 
-                                    height="300" 
-                                    style="border: 1px solid #ccc" 
-                                    frameborder="0"></iframe>
-                        </div>
-                        <a href="/tools/3d-graphing/" class="tool-link">Full Screen →</a>
-                    </div>
+                
+                <div id="derivative-steps" class="calc-steps" style="display: none;">
+                    <h4>Differentiation Steps:</h4>
+                    <div id="derivative-steps-content"></div>
                 </div>
-            </section>
-
-            <!-- Position 4: Before footer -->
-            <div class="ad-container ad-matched-content">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-format="autorelaxed"
-                     data-ad-client="ca-pub-5635114711353420"
-                     data-ad-slot="2324489353"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
-        </div>
+
+            <!-- Area Calculator -->
+            <div id="area-calc" class="calculator-content">
+                <h3>Area Calculator</h3>
+                <p class="text-muted">Calculate areas of common geometric shapes</p>
+                
+                <div class="calc-input-group">
+                    <label for="shape-select">Select Shape:</label>
+                    <select id="shape-select" class="calc-input" onchange="updateAreaForm()">
+                        <option value="rectangle">Rectangle</option>
+                        <option value="triangle">Triangle</option>
+                        <option value="circle">Circle</option>
+                        <option value="trapezoid">Trapezoid</option>
+                    </select>
+                </div>
+                
+                <div id="area-inputs">
+                    <!-- Dynamic inputs based on shape -->
+                </div>
+                
+                <button class="btn btn-primary" onclick="calculateArea()">Calculate Area</button>
+                
+                <div id="area-result" class="calc-result" style="display: none;">
+                    <h4>Area:</h4>
+                    <div id="area-solution"></div>
+                </div>
+                
+                <div id="area-steps" class="calc-steps" style="display: none;">
+                    <h4>Calculation Steps:</h4>
+                    <div id="area-steps-content"></div>
+                </div>
+            </div>
+
+            <!-- Statistics Calculator -->
+            <div id="statistics-calc" class="calculator-content">
+                <h3>Statistics Calculator</h3>
+                <p class="text-muted">Calculate mean, median, mode, and standard deviation</p>
+                
+                <div class="calc-input-group">
+                    <label for="stats-data">Data Values:</label>
+                    <input type="text" id="stats-data" class="calc-input" placeholder="1, 2, 3, 4, 5, 6, 7, 8, 9, 10" value="1, 2, 3, 4, 5, 6, 7, 8, 9, 10">
+                    <small class="text-muted">Enter numbers separated by commas</small>
+                </div>
+                
+                <button class="btn btn-primary" onclick="calculateStatistics()">Calculate Statistics</button>
+                
+                <div id="statistics-result" class="calc-result" style="display: none;">
+                    <h4>Statistical Measures:</h4>
+                    <div id="statistics-solution"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool Categories -->
+        <section>
+            <h2 class="text-center">Calculator Categories</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🔢</div>
+                    <h3 class="tool-title">Basic Calculator</h3>
+                    <p class="tool-description">Standard arithmetic operations with clear display and memory functions.</p>
+                    <button class="use-tool-btn" onclick="switchCalcTab('basic')">Use Calculator</button>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📐</div>
+                    <h3 class="tool-title">Algebra Tools</h3>
+                    <p class="tool-description">Solve equations, factor polynomials, and work with algebraic expressions.</p>
+                    <a href="../algebra/" class="use-tool-btn">Explore Algebra</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3 class="tool-title">Graphing Tools</h3>
+                    <p class="tool-description">Plot functions, analyze graphs, and visualize mathematical relationships.</p>
+                    <a href="../calculus/" class="use-tool-btn">Open Graphing</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">∫</div>
+                    <h3 class="tool-title">Calculus Tools</h3>
+                    <p class="tool-description">Calculate derivatives, integrals, limits, and solve optimization problems.</p>
+                    <a href="../calculus/" class="use-tool-btn">Use Calculus Tools</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🔺</div>
+                    <h3 class="tool-title">Geometry Calculator</h3>
+                    <p class="tool-description">Calculate areas, perimeters, volumes, and solve geometric problems.</p>
+                    <a href="../geometry/" class="use-tool-btn">Calculate Geometry</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📈</div>
+                    <h3 class="tool-title">Statistics Tools</h3>
+                    <p class="tool-description">Analyze data, calculate probabilities, and perform statistical tests.</p>
+                    <a href="../statistics/" class="use-tool-btn">Analyze Data</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🌊</div>
+                    <h3 class="tool-title">Trigonometry</h3>
+                    <p class="tool-description">Calculate trigonometric functions, solve triangles, and work with angles.</p>
+                    <a href="../trigonometry/" class="use-tool-btn">Solve Triangles</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🧮</div>
+                    <h3 class="tool-title">Number Theory</h3>
+                    <p class="tool-description">Find factors, primes, GCD, LCM, and solve number theory problems.</p>
+                    <a href="../advanced/" class="use-tool-btn">Explore Numbers</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
         <div class="container">
             <p>&copy; 2024 Math.help. All rights reserved.</p>
             <div class="footer-links">
-                <a href="/privacy.html">Privacy Policy</a>
-                <a href="/terms.html">Terms of Service</a>
-                <a href="/contact.html">Contact</a>
-                <a href="/sitemap.xml">Sitemap</a>
+                <a href="../privacy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Service</a>
+                <a href="../contact.html">Contact</a>
             </div>
         </div>
     </footer>
 
-    <style>
-        /* Additional styles for tools page */
-        .tools-overview {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: var(--light-gray);
-            border-radius: 10px;
-            margin-bottom: 40px;
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script>
+        // Calculator functionality following Rams' principles - clear, functional, honest
+
+        // Basic Calculator
+        let basicDisplay = '';
+
+        function clearBasic() {
+            basicDisplay = '';
+            document.getElementById('basic-screen').value = '0';
         }
-        
-        .tools-overview h1 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
+
+        function deleteLastBasic() {
+            basicDisplay = basicDisplay.slice(0, -1);
+            document.getElementById('basic-screen').value = basicDisplay || '0';
         }
-        
-        .tool-category {
-            margin-bottom: 60px;
+
+        function appendToBasic(value) {
+            if (basicDisplay === '0' && value !== '.') {
+                basicDisplay = value;
+            } else {
+                basicDisplay += value;
+            }
+            document.getElementById('basic-screen').value = basicDisplay;
         }
-        
-        .tool-category h2 {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+
+        function calculateBasic() {
+            try {
+                // Replace display operators with JavaScript operators
+                let expression = basicDisplay
+                    .replace(/×/g, '*')
+                    .replace(/÷/g, '/');
+                    
+                let result = Function('"use strict"; return (' + expression + ')')();
+                
+                // Round to avoid floating point precision issues
+                result = Math.round(result * 100000000) / 100000000;
+                
+                basicDisplay = result.toString();
+                document.getElementById('basic-screen').value = basicDisplay;
+            } catch (error) {
+                document.getElementById('basic-screen').value = 'Error';
+                basicDisplay = '';
+            }
         }
-        
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
+
+        // Tab switching
+        function switchCalcTab(tabName) {
+            // Hide all calculator contents
+            document.querySelectorAll('.calculator-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.calc-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected content and activate tab
+            document.getElementById(tabName + '-calc').classList.add('active');
+            event.target.classList.add('active');
         }
-        
-        .tool-card {
-            background-color: white;
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: var(--secondary-color);
-        }
-        
-        .tool-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-        
-        .tool-card p {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 0.95em;
-        }
-        
-        .tool-link {
-            display: inline-block;
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 10px 20px;
-            border: 2px solid var(--secondary-color);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .tool-link:hover {
-            background-color: var(--secondary-color);
-            color: white;
-        }
-        
-        .tool-card.featured {
-            grid-column: span 2;
-            background-color: var(--light-gray);
-        }
-        
-        @media (max-width: 768px) {
-            .tools-grid {
-                grid-template-columns: 1fr;
+
+        // Quadratic Equation Solver
+        function solveQuadratic() {
+            const a = parseFloat(document.getElementById('quad-a').value) || 0;
+            const b = parseFloat(document.getElementById('quad-b').value) || 0;
+            const c = parseFloat(document.getElementById('quad-c').value) || 0;
+            
+            if (a === 0) {
+                showQuadraticResult('This is not a quadratic equation (a cannot be 0)', []);
+                return;
             }
             
-            .tool-card.featured {
-                grid-column: span 1;
+            const discriminant = b * b - 4 * a * c;
+            const steps = [
+                `Given equation: ${a}x² ${b >= 0 ? '+' : ''}${b}x ${c >= 0 ? '+' : ''}${c} = 0`,
+                `Identify coefficients: a = ${a}, b = ${b}, c = ${c}`,
+                `Calculate discriminant: Δ = b² - 4ac = ${b}² - 4(${a})(${c}) = ${discriminant}`
+            ];
+            
+            let solution = '';
+            
+            if (discriminant > 0) {
+                const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                solution = `Two real solutions:<br>x₁ = ${x1.toFixed(4)}<br>x₂ = ${x2.toFixed(4)}`;
+                steps.push(`Since Δ > 0, there are two real solutions:`);
+                steps.push(`x₁ = (-b + √Δ) / (2a) = (-${b} + √${discriminant}) / ${2*a} = ${x1.toFixed(4)}`);
+                steps.push(`x₂ = (-b - √Δ) / (2a) = (-${b} - √${discriminant}) / ${2*a} = ${x2.toFixed(4)}`);
+            } else if (discriminant === 0) {
+                const x = -b / (2 * a);
+                solution = `One real solution:<br>x = ${x.toFixed(4)}`;
+                steps.push(`Since Δ = 0, there is one real solution:`);
+                steps.push(`x = -b / (2a) = -${b} / ${2*a} = ${x.toFixed(4)}`);
+            } else {
+                const realPart = -b / (2 * a);
+                const imagPart = Math.sqrt(-discriminant) / (2 * a);
+                solution = `Two complex solutions:<br>x₁ = ${realPart.toFixed(4)} + ${imagPart.toFixed(4)}i<br>x₂ = ${realPart.toFixed(4)} - ${imagPart.toFixed(4)}i`;
+                steps.push(`Since Δ < 0, there are two complex solutions:`);
+                steps.push(`x₁ = (-b + i√|Δ|) / (2a) = ${realPart.toFixed(4)} + ${imagPart.toFixed(4)}i`);
+                steps.push(`x₂ = (-b - i√|Δ|) / (2a) = ${realPart.toFixed(4)} - ${imagPart.toFixed(4)}i`);
+            }
+            
+            showQuadraticResult(solution, steps);
+        }
+
+        function showQuadraticResult(solution, steps) {
+            document.getElementById('quadratic-solution').innerHTML = solution;
+            document.getElementById('quadratic-result').style.display = 'block';
+            
+            const stepsHtml = steps.map((step, index) => 
+                `<div class="step"><span class="step-number">${index + 1}</span>${step}</div>`
+            ).join('');
+            
+            document.getElementById('quadratic-steps-content').innerHTML = stepsHtml;
+            document.getElementById('quadratic-steps').style.display = 'block';
+        }
+
+        // Derivative Calculator (simplified polynomial derivatives)
+        function calculateDerivative() {
+            const functionStr = document.getElementById('deriv-function').value;
+            
+            try {
+                const derivative = differentiatePolynomial(functionStr);
+                const steps = generateDerivativeSteps(functionStr, derivative);
+                
+                document.getElementById('derivative-solution').innerHTML = `f'(x) = ${derivative}`;
+                document.getElementById('derivative-result').style.display = 'block';
+                
+                const stepsHtml = steps.map((step, index) => 
+                    `<div class="step"><span class="step-number">${index + 1}</span>${step}</div>`
+                ).join('');
+                
+                document.getElementById('derivative-steps-content').innerHTML = stepsHtml;
+                document.getElementById('derivative-steps').style.display = 'block';
+            } catch (error) {
+                document.getElementById('derivative-solution').innerHTML = 'Error: Unable to differentiate this function';
+                document.getElementById('derivative-result').style.display = 'block';
             }
         }
-    </style>
 
-    <script>
-        // Track tool page engagement
-        document.querySelectorAll('.tool-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const toolName = this.closest('.tool-card').querySelector('h3').textContent;
-                
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'tool_click', {
-                        event_category: 'Tools',
-                        event_label: toolName,
-                        transport_type: 'beacon'
-                    });
-                }
-            });
-        });
-        
-        // Track time on page
-        let timeOnPage = 0;
-        setInterval(() => {
-            timeOnPage += 5;
-            if (timeOnPage % 30 === 0 && typeof gtag !== 'undefined') {
-                gtag('event', 'time_on_page', {
-                    event_category: 'Engagement',
-                    event_label: 'Tools Directory',
-                    value: timeOnPage
-                });
+        function differentiatePolynomial(expr) {
+            // Simple polynomial differentiation
+            expr = expr.replace(/\s/g, '');
+            
+            // Handle basic polynomial terms
+            let result = expr
+                .replace(/(\d*)\*?x\^(\d+)/g, (match, coeff, power) => {
+                    coeff = coeff === '' ? 1 : parseInt(coeff);
+                    power = parseInt(power);
+                    if (power === 1) return coeff.toString();
+                    return `${coeff * power}*x^${power - 1}`;
+                })
+                .replace(/(\d*)\*?x(?!\^)/g, (match, coeff) => {
+                    coeff = coeff === '' ? 1 : parseInt(coeff);
+                    return coeff.toString();
+                })
+                .replace(/\b\d+\b/g, '0'); // Constants become 0
+            
+            // Clean up the result
+            result = result.replace(/\+\s*0/g, '').replace(/^0\s*\+\s*/, '').replace(/^\+/, '');
+            
+            return result || '0';
+        }
+
+        function generateDerivativeSteps(original, derivative) {
+            return [
+                `Original function: f(x) = ${original}`,
+                `Apply the power rule: d/dx(x^n) = n·x^(n-1)`,
+                `Apply the constant rule: d/dx(c) = 0`,
+                `Result: f'(x) = ${derivative}`
+            ];
+        }
+
+        // Area Calculator
+        function updateAreaForm() {
+            const shape = document.getElementById('shape-select').value;
+            const container = document.getElementById('area-inputs');
+            
+            let html = '';
+            
+            switch (shape) {
+                case 'rectangle':
+                    html = `
+                        <div class="grid grid-cols-2">
+                            <div class="calc-input-group">
+                                <label for="rect-length">Length:</label>
+                                <input type="number" id="rect-length" class="calc-input" placeholder="10" value="10">
+                            </div>
+                            <div class="calc-input-group">
+                                <label for="rect-width">Width:</label>
+                                <input type="number" id="rect-width" class="calc-input" placeholder="5" value="5">
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'triangle':
+                    html = `
+                        <div class="grid grid-cols-2">
+                            <div class="calc-input-group">
+                                <label for="tri-base">Base:</label>
+                                <input type="number" id="tri-base" class="calc-input" placeholder="8" value="8">
+                            </div>
+                            <div class="calc-input-group">
+                                <label for="tri-height">Height:</label>
+                                <input type="number" id="tri-height" class="calc-input" placeholder="6" value="6">
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'circle':
+                    html = `
+                        <div class="calc-input-group">
+                            <label for="circle-radius">Radius:</label>
+                            <input type="number" id="circle-radius" class="calc-input" placeholder="5" value="5">
+                        </div>
+                    `;
+                    break;
+                case 'trapezoid':
+                    html = `
+                        <div class="grid grid-cols-3">
+                            <div class="calc-input-group">
+                                <label for="trap-base1">Base 1:</label>
+                                <input type="number" id="trap-base1" class="calc-input" placeholder="10" value="10">
+                            </div>
+                            <div class="calc-input-group">
+                                <label for="trap-base2">Base 2:</label>
+                                <input type="number" id="trap-base2" class="calc-input" placeholder="6" value="6">
+                            </div>
+                            <div class="calc-input-group">
+                                <label for="trap-height">Height:</label>
+                                <input type="number" id="trap-height" class="calc-input" placeholder="4" value="4">
+                            </div>
+                        </div>
+                    `;
+                    break;
             }
-        }, 5000);
+            
+            container.innerHTML = html;
+        }
+
+        function calculateArea() {
+            const shape = document.getElementById('shape-select').value;
+            let area, formula, steps;
+            
+            switch (shape) {
+                case 'rectangle':
+                    const length = parseFloat(document.getElementById('rect-length').value);
+                    const width = parseFloat(document.getElementById('rect-width').value);
+                    area = length * width;
+                    formula = 'Area = length × width';
+                    steps = [
+                        `Formula: ${formula}`,
+                        `Given: length = ${length}, width = ${width}`,
+                        `Calculation: Area = ${length} × ${width} = ${area}`
+                    ];
+                    break;
+                    
+                case 'triangle':
+                    const base = parseFloat(document.getElementById('tri-base').value);
+                    const height = parseFloat(document.getElementById('tri-height').value);
+                    area = 0.5 * base * height;
+                    formula = 'Area = ½ × base × height';
+                    steps = [
+                        `Formula: ${formula}`,
+                        `Given: base = ${base}, height = ${height}`,
+                        `Calculation: Area = ½ × ${base} × ${height} = ${area}`
+                    ];
+                    break;
+                    
+                case 'circle':
+                    const radius = parseFloat(document.getElementById('circle-radius').value);
+                    area = Math.PI * radius * radius;
+                    formula = 'Area = π × r²';
+                    steps = [
+                        `Formula: ${formula}`,
+                        `Given: radius = ${radius}`,
+                        `Calculation: Area = π × ${radius}² = ${area.toFixed(4)}`
+                    ];
+                    break;
+                    
+                case 'trapezoid':
+                    const base1 = parseFloat(document.getElementById('trap-base1').value);
+                    const base2 = parseFloat(document.getElementById('trap-base2').value);
+                    const trapHeight = parseFloat(document.getElementById('trap-height').value);
+                    area = 0.5 * (base1 + base2) * trapHeight;
+                    formula = 'Area = ½ × (base₁ + base₂) × height';
+                    steps = [
+                        `Formula: ${formula}`,
+                        `Given: base₁ = ${base1}, base₂ = ${base2}, height = ${trapHeight}`,
+                        `Calculation: Area = ½ × (${base1} + ${base2}) × ${trapHeight} = ${area}`
+                    ];
+                    break;
+            }
+            
+            document.getElementById('area-solution').innerHTML = `${area.toFixed(4)} square units`;
+            document.getElementById('area-result').style.display = 'block';
+            
+            const stepsHtml = steps.map((step, index) => 
+                `<div class="step"><span class="step-number">${index + 1}</span>${step}</div>`
+            ).join('');
+            
+            document.getElementById('area-steps-content').innerHTML = stepsHtml;
+            document.getElementById('area-steps').style.display = 'block';
+        }
+
+        // Statistics Calculator
+        function calculateStatistics() {
+            const dataStr = document.getElementById('stats-data').value;
+            const data = dataStr.split(',').map(x => parseFloat(x.trim())).filter(x => !isNaN(x));
+            
+            if (data.length === 0) {
+                document.getElementById('statistics-solution').innerHTML = 'Error: No valid numbers found';
+                document.getElementById('statistics-result').style.display = 'block';
+                return;
+            }
+            
+            // Sort data for median calculation
+            const sortedData = [...data].sort((a, b) => a - b);
+            
+            // Calculate statistics
+            const mean = data.reduce((sum, x) => sum + x, 0) / data.length;
+            const median = sortedData.length % 2 === 0 
+                ? (sortedData[sortedData.length / 2 - 1] + sortedData[sortedData.length / 2]) / 2
+                : sortedData[Math.floor(sortedData.length / 2)];
+            
+            // Mode calculation
+            const freqMap = {};
+            data.forEach(x => freqMap[x] = (freqMap[x] || 0) + 1);
+            const maxFreq = Math.max(...Object.values(freqMap));
+            const modes = Object.keys(freqMap).filter(x => freqMap[x] === maxFreq);
+            const mode = modes.length === data.length ? 'No mode' : modes.join(', ');
+            
+            // Standard deviation
+            const variance = data.reduce((sum, x) => sum + Math.pow(x - mean, 2), 0) / data.length;
+            const stdDev = Math.sqrt(variance);
+            
+            const results = `
+                <div class="grid grid-cols-2">
+                    <div><strong>Count:</strong> ${data.length}</div>
+                    <div><strong>Sum:</strong> ${data.reduce((a, b) => a + b, 0)}</div>
+                    <div><strong>Mean:</strong> ${mean.toFixed(4)}</div>
+                    <div><strong>Median:</strong> ${median}</div>
+                    <div><strong>Mode:</strong> ${mode}</div>
+                    <div><strong>Range:</strong> ${Math.max(...data) - Math.min(...data)}</div>
+                    <div><strong>Variance:</strong> ${variance.toFixed(4)}</div>
+                    <div><strong>Std Dev:</strong> ${stdDev.toFixed(4)}</div>
+                    <div><strong>Min:</strong> ${Math.min(...data)}</div>
+                    <div><strong>Max:</strong> ${Math.max(...data)}</div>
+                </div>
+            `;
+            
+            document.getElementById('statistics-solution').innerHTML = results;
+            document.getElementById('statistics-result').style.display = 'block';
+        }
+
+        // Initialize the area calculator form
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAreaForm();
+        });
     </script>
 </body>
 </html>

@@ -3,492 +3,708 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algebra - Complete Guide with Examples | Math.help</title>
-    <meta name="description" content="Master algebra with our comprehensive guide. Learn algebraic equations, polynomials, quadratic formulas, and more with step-by-step examples and practice problems.">
-    <meta name="keywords" content="algebra, algebraic equations, quadratic formula, polynomials, factoring, algebra solver, algebra calculator">
-    <meta name="robots" content="index, follow">
-    
+    <title>Algebra - Equations, Polynomials & Variables | Math.help</title>
+    <meta name="description" content="Master algebra with interactive tools, step-by-step solutions, and comprehensive guides. Learn linear equations, quadratic equations, factoring, and more.">
     <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    <!-- KaTeX CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-    
-    <!-- Ezoic Integration Scripts -->
-    <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
-    <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
-    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
-    <script>
-        window.ezstandalone = window.ezstandalone || {};
-        ezstandalone.cmd = ezstandalone.cmd || [];
-    </script>
-    
-    <!-- KaTeX JavaScript -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
-    <script defer src="../katex-lazy.js"></script>
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "MathSolver",
-        "@id": "https://math.help/algebra/",
-        "name": "Algebra Complete Guide",
-        "description": "Comprehensive algebra guide with step-by-step solutions and practice problems",
-        "url": "https://math.help/algebra/",
-        "potentialAction": {
-            "@type": "SolveMathAction",
-            "target": "https://math.help/algebra/solver/"
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <style>
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
         }
-    }
-    </script>
-    
-    <meta name="google-adsense-account" content="ca-pub-5635114711353420">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
-    
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-ERGV6WWC21', {
-            page_path: window.location.pathname,
-            page_title: document.title,
-            send_page_view: true
-        });
-    </script>
-    
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "sgk1r5gd6a");
-    </script>
+        
+        .concept-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-grey-200);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .concept-icon {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--space-4);
+            color: var(--color-accent);
+        }
+        
+        .concept-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary);
+            margin-bottom: var(--space-3);
+        }
+        
+        .concept-description {
+            color: var(--color-grey-600);
+            margin-bottom: var(--space-4);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        .example-preview {
+            background: var(--color-grey-50);
+            border: 1px solid var(--color-grey-200);
+            border-radius: var(--border-radius);
+            padding: var(--space-4);
+            margin: var(--space-4) 0;
+            font-family: var(--font-family-mono);
+            text-align: center;
+        }
+        
+        .try-it-btn {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border: none;
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--border-radius);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all var(--transition-normal);
+        }
+        
+        .try-it-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+            color: var(--color-white);
+        }
+        
+        .interactive-section {
+            background: var(--color-grey-50);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-8);
+            margin: var(--space-12) 0;
+        }
+        
+        .solver-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--space-6);
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+        
+        .solver-tab {
+            background: var(--color-white);
+            border: 1px solid var(--color-grey-300);
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-weight: var(--font-weight-medium);
+        }
+        
+        .solver-tab.active {
+            background: var(--color-accent);
+            color: var(--color-white);
+            border-color: var(--color-accent);
+        }
+        
+        .solver-content {
+            display: none;
+        }
+        
+        .solver-content.active {
+            display: block;
+        }
+        
+        .input-group {
+            margin-bottom: var(--space-4);
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-primary);
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: var(--space-3);
+            border: 1px solid var(--color-grey-300);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-mono);
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .solution-display {
+            background: var(--color-white);
+            border: 1px solid var(--color-grey-200);
+            border-radius: var(--border-radius);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            min-height: 60px;
+        }
+        
+        .solution-steps {
+            background: var(--color-white);
+            border: 1px solid var(--color-grey-200);
+            border-radius: var(--border-radius);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+        }
+        
+        .step {
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--color-grey-100);
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+        }
+        
+        .step-number {
+            background: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            margin-right: var(--space-3);
+        }
+        
+        .learning-path {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #2980b9 100%);
+            color: var(--color-white);
+            padding: var(--space-8);
+            border-radius: var(--border-radius-lg);
+            margin: var(--space-12) 0;
+        }
+        
+        .path-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+        
+        .path-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--space-4);
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .path-step-number {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--color-white);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-2);
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
         <div class="container">
-            <h1 class="site-title">Math.help</h1>
-            <p class="tagline">Master Mathematics Step by Step</p>
+            <h1 class="site-title">Algebra</h1>
+            <p class="tagline">Master equations, variables, and algebraic thinking</p>
         </div>
     </header>
-    
+
     <nav class="main-nav">
         <div class="container">
             <ul class="nav-list">
-                <li><a href="/">Home</a></li>
-                <li><a href="/algebra/" class="active">Algebra</a></li>
-                <li><a href="/calculus/">Calculus</a></li>
-                <li><a href="/geometry/">Geometry</a></li>
-                <li><a href="/trigonometry/">Trigonometry</a></li>
-                <li><a href="/statistics/">Statistics</a></li>
-                <li><a href="/tools/">Calculators</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../mathverse.html">MathVerse</a></li>
+                <li><a href="../ai-assistant.html">🤖 AI Assistant</a></li>
+                <li><a href="index.html" class="active">Algebra</a></li>
+                <li><a href="../calculus/">Calculus</a></li>
+                <li><a href="../geometry/">Geometry</a></li>
+                <li><a href="../trigonometry/">Trigonometry</a></li>
+                <li><a href="../statistics/">Statistics</a></li>
+                <li><a href="../advanced/">Advanced</a></li>
+                <li><a href="../tools/">Calculators</a></li>
             </ul>
         </div>
     </nav>
-    
-    <!-- Breadcrumb Navigation -->
-    <nav class="breadcrumb">
-        <div class="container">
-            <ol class="breadcrumb-list">
-                <li><a href="/">Home</a></li>
-                <li class="active">Algebra</li>
-            </ol>
-        </div>
-    </nav>
 
-    <main>
-        <div class="container">
-            <div class="content-wrapper">
-                <!-- Main Content Area -->
-                <article class="main-content">
-                    
-                    <!-- Position 1: Below Navigation -->
-                    <div class="ad-container ad-top">
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-5635114711353420"
-                             data-ad-slot="3137758017"
-                             data-ad-format="horizontal"
-                             data-full-width-responsive="true"></ins>
-                        <script>
-                             (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                    </div>
-
-                    <section class="pillar-content">
-                        <h1>Algebra - Complete Guide with Examples and Practice</h1>
-                        
-                        <div class="table-of-contents">
-                            <h2>Table of Contents</h2>
-                            <ol>
-                                <li><a href="#introduction">Introduction and Real-World Applications</a></li>
-                                <li><a href="#core-concepts">Core Concepts and Definitions</a></li>
-                                <li><a href="#methods">Step-by-Step Methods</a></li>
-                                <li><a href="#common-mistakes">Common Mistakes to Avoid</a></li>
-                                <li><a href="#practice">Practice Problems (Progressive Difficulty)</a></li>
-                                <li><a href="#visualizations">Interactive Visualizations</a></li>
-                                <li><a href="#related">Related Topics and Next Steps</a></li>
-                            </ol>
-                        </div>
-
-                        <section id="introduction">
-                            <h2>Introduction and Real-World Applications</h2>
-                            <p>Algebra is the branch of mathematics that uses symbols and letters to represent numbers and quantities in mathematical expressions and equations. It forms the foundation for advanced mathematics and has countless real-world applications.</p>
-                            
-                            <h3>Why Learn Algebra?</h3>
-                            <ul>
-                                <li><strong>Problem Solving</strong>: Develop logical thinking and analytical skills</li>
-                                <li><strong>Career Opportunities</strong>: Essential for STEM fields, finance, and data analysis</li>
-                                <li><strong>Daily Life</strong>: Calculate budgets, understand loans, and make informed decisions</li>
-                                <li><strong>Academic Success</strong>: Foundation for calculus, physics, and engineering</li>
-                            </ul>
-                        </section>
-
-                        <!-- Position 2: In-Article After First Concept -->
-                        <div class="ad-container in-article">
-                            <ins class="adsbygoogle"
-                                 style="display:block; text-align:center;"
-                                 data-ad-layout="in-article"
-                                 data-ad-format="fluid"
-                                 data-ad-client="ca-pub-5635114711353420"
-                                 data-ad-slot="4431777949"></ins>
-                            <script>
-                                 (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
-                        </div>
-
-                        <section id="core-concepts">
-                            <h2>Core Concepts and Definitions</h2>
-                            
-                            <h3>1. Variables and Constants</h3>
-                            <div class="concept-box">
-                                <p><strong>Variable</strong>: A symbol (usually a letter) that represents an unknown value</p>
-                                <p><strong>Constant</strong>: A fixed value that doesn't change</p>
-                                <div class="math-example">
-                                    <p>In the expression $3x + 5$:</p>
-                                    <ul>
-                                        <li>$x$ is the variable</li>
-                                        <li>$3$ and $5$ are constants</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <h3>2. Algebraic Expressions</h3>
-                            <div class="concept-box">
-                                <p>An algebraic expression is a combination of variables, constants, and mathematical operations.</p>
-                                <div class="math-examples">
-                                    <div class="math-example">
-                                        <h4>Monomial</h4>
-                                        <p>Single term: $5x$, $-3y^2$, $7$</p>
-                                    </div>
-                                    <div class="math-example">
-                                        <h4>Binomial</h4>
-                                        <p>Two terms: $x + 3$, $2y - 5$</p>
-                                    </div>
-                                    <div class="math-example">
-                                        <h4>Polynomial</h4>
-                                        <p>Multiple terms: $x^2 + 3x - 4$</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3>3. Equations and Inequalities</h3>
-                            <div class="concept-box">
-                                <p><strong>Equation</strong>: A statement that two expressions are equal</p>
-                                <p>Example: $2x + 3 = 7$</p>
-                                <p><strong>Inequality</strong>: A statement comparing two expressions</p>
-                                <p>Example: $3x - 2 > 10$</p>
-                            </div>
-                        </section>
-
-                        <section id="methods">
-                            <h2>Step-by-Step Methods</h2>
-                            
-                            <h3>Solving Linear Equations</h3>
-                            <div class="method-box">
-                                <h4>Example: Solve $2x + 5 = 13$</h4>
-                                <div class="step-by-step">
-                                    <div class="step">
-                                        <span class="step-number">Step 1:</span>
-                                        <p>Subtract 5 from both sides</p>
-                                        <p>$2x + 5 - 5 = 13 - 5$</p>
-                                        <p>$2x = 8$</p>
-                                    </div>
-                                    <div class="step">
-                                        <span class="step-number">Step 2:</span>
-                                        <p>Divide both sides by 2</p>
-                                        <p>$\frac{2x}{2} = \frac{8}{2}$</p>
-                                        <p>$x = 4$</p>
-                                    </div>
-                                    <div class="step">
-                                        <span class="step-number">Step 3:</span>
-                                        <p>Check your answer</p>
-                                        <p>$2(4) + 5 = 8 + 5 = 13$ ✓</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3>Solving Quadratic Equations</h3>
-                            <div class="method-box">
-                                <h4>The Quadratic Formula</h4>
-                                <p>For any equation in the form $ax^2 + bx + c = 0$:</p>
-                                <p class="highlight-formula">$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</p>
-                                
-                                <h4>Example: Solve $x^2 - 5x + 6 = 0$</h4>
-                                <div class="step-by-step">
-                                    <div class="step">
-                                        <span class="step-number">Step 1:</span>
-                                        <p>Identify $a = 1$, $b = -5$, $c = 6$</p>
-                                    </div>
-                                    <div class="step">
-                                        <span class="step-number">Step 2:</span>
-                                        <p>Calculate discriminant: $b^2 - 4ac = (-5)^2 - 4(1)(6) = 25 - 24 = 1$</p>
-                                    </div>
-                                    <div class="step">
-                                        <span class="step-number">Step 3:</span>
-                                        <p>Apply the formula:</p>
-                                        <p>$x = \frac{-(-5) \pm \sqrt{1}}{2(1)} = \frac{5 \pm 1}{2}$</p>
-                                    </div>
-                                    <div class="step">
-                                        <span class="step-number">Step 4:</span>
-                                        <p>Find both solutions:</p>
-                                        <p>$x_1 = \frac{5 + 1}{2} = 3$</p>
-                                        <p>$x_2 = \frac{5 - 1}{2} = 2$</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Position 4: Between Problem Sets -->
-                        <div class="ad-container in-content">
-                            <ins class="adsbygoogle"
-                                 style="display:block"
-                                 data-ad-client="ca-pub-5635114711353420"
-                                 data-ad-slot="4431777949"
-                                 data-ad-format="rectangle"
-                                 data-full-width-responsive="true"></ins>
-                            <script>
-                                 (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
-                        </div>
-
-                        <section id="common-mistakes">
-                            <h2>Common Mistakes to Avoid</h2>
-                            <div class="mistake-grid">
-                                <div class="mistake-item">
-                                    <h4>❌ Sign Errors</h4>
-                                    <p><strong>Wrong:</strong> $-3x = 9$ → $x = 3$</p>
-                                    <p><strong>Correct:</strong> $-3x = 9$ → $x = -3$</p>
-                                </div>
-                                <div class="mistake-item">
-                                    <h4>❌ Distribution Errors</h4>
-                                    <p><strong>Wrong:</strong> $2(x + 3) = 2x + 3$</p>
-                                    <p><strong>Correct:</strong> $2(x + 3) = 2x + 6$</p>
-                                </div>
-                                <div class="mistake-item">
-                                    <h4>❌ Division by Zero</h4>
-                                    <p><strong>Wrong:</strong> $\frac{5}{x-2}$ when $x = 2$</p>
-                                    <p><strong>Correct:</strong> Check for restrictions first</p>
-                                </div>
-                                <div class="mistake-item">
-                                    <h4>❌ Order of Operations</h4>
-                                    <p><strong>Wrong:</strong> $2 + 3 × 4 = 20$</p>
-                                    <p><strong>Correct:</strong> $2 + 3 × 4 = 2 + 12 = 14$</p>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section id="practice">
-                            <h2>Practice Problems (Progressive Difficulty)</h2>
-                            
-                            <div class="practice-section">
-                                <h3>Beginner Level</h3>
-                                <ol class="practice-list">
-                                    <li>Solve: $x + 7 = 12$</li>
-                                    <li>Solve: $3x = 15$</li>
-                                    <li>Simplify: $2x + 3x$</li>
-                                    <li>Evaluate $2x - 5$ when $x = 4$</li>
-                                </ol>
-                            </div>
-
-                            <div class="practice-section">
-                                <h3>Intermediate Level</h3>
-                                <ol class="practice-list">
-                                    <li>Solve: $2x - 3 = 5x + 9$</li>
-                                    <li>Solve: $\frac{x}{3} + 2 = 7$</li>
-                                    <li>Factor: $x^2 - 9$</li>
-                                    <li>Solve: $x^2 - 7x + 12 = 0$</li>
-                                </ol>
-                            </div>
-
-                            <div class="practice-section">
-                                <h3>Advanced Level</h3>
-                                <ol class="practice-list">
-                                    <li>Solve: $\frac{2}{x-1} + \frac{3}{x+2} = 1$</li>
-                                    <li>Solve the system: $\begin{cases} 2x + y = 7 \\ x - y = 2 \end{cases}$</li>
-                                    <li>Solve: $|2x - 5| = 7$</li>
-                                    <li>Find the vertex of $y = x^2 - 6x + 5$</li>
-                                </ol>
-                            </div>
-                        </section>
-
-                        <section id="visualizations">
-                            <h2>Interactive Visualizations</h2>
-                            <div class="visualization-container">
-                                <h3>Graphing Linear Equations</h3>
-                                <p>Understanding how changing coefficients affects the graph of $y = mx + b$</p>
-                                <div class="desmos-embed">
-                                    <iframe src="https://www.desmos.com/calculator/yvzsstizqg?embed" 
-                                            width="100%" 
-                                            height="400" 
-                                            style="border: 1px solid #ccc" 
-                                            frameborder="0"></iframe>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section id="related">
-                            <h2>Related Topics and Next Steps</h2>
-                            <div class="related-grid">
-                                <div class="related-item">
-                                    <h4>📐 Geometry</h4>
-                                    <p>Apply algebraic concepts to geometric problems</p>
-                                    <a href="/geometry/">Explore Geometry →</a>
-                                </div>
-                                <div class="related-item">
-                                    <h4>📊 Functions</h4>
-                                    <p>Understand relationships between variables</p>
-                                    <a href="/algebra/functions/">Learn Functions →</a>
-                                </div>
-                                <div class="related-item">
-                                    <h4>📈 Calculus</h4>
-                                    <p>Take your math skills to the next level</p>
-                                    <a href="/calculus/">Start Calculus →</a>
-                                </div>
-                                <div class="related-item">
-                                    <h4>🔢 Number Theory</h4>
-                                    <p>Explore properties of integers</p>
-                                    <a href="/algebra/number-theory/">Discover More →</a>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Position 5: Before Comments/Footer (AutoRelaxed) -->
-                        <div class="ad-container ad-matched-content">
-                            <ins class="adsbygoogle"
-                                 style="display:block"
-                                 data-ad-format="autorelaxed"
-                                 data-ad-client="ca-pub-5635114711353420"
-                                 data-ad-slot="2324489353"></ins>
-                            <script>
-                                 (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
-                        </div>
-                    </section>
-                </article>
-                
-                <!-- Sidebar -->
-                <aside class="sidebar">
-                    <!-- Sticky Sidebar Ad (Display Vertical) -->
-                    <div class="ad-container ad-sidebar sticky">
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-5635114711353420"
-                             data-ad-slot="4175507517"
-                             data-ad-format="auto"
-                             data-full-width-responsive="true"></ins>
-                        <script>
-                             (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                    </div>
-                    
-                    <!-- Quick Links -->
-                    <section class="quick-links">
-                        <h3>Quick Topics</h3>
-                        <ul class="topic-list">
-                            <li><a href="/algebra/linear-equations/">Linear Equations</a></li>
-                            <li><a href="/algebra/quadratic-equations/">Quadratic Equations</a></li>
-                            <li><a href="/algebra/polynomials/">Polynomials</a></li>
-                            <li><a href="/algebra/factoring/">Factoring</a></li>
-                            <li><a href="/algebra/systems/">Systems of Equations</a></li>
-                            <li><a href="/algebra/inequalities/">Inequalities</a></li>
-                            <li><a href="/algebra/exponents/">Exponents & Radicals</a></li>
-                        </ul>
-                    </section>
-                    
-                    <!-- Calculator Widget -->
-                    <section class="sidebar-calculator">
-                        <h3>Quick Calculator</h3>
-                        <div class="mini-calculator">
-                            <input type="text" id="sidebar-calc" placeholder="Enter expression">
-                            <button onclick="sidebarCalculate()">Calculate</button>
-                            <div id="sidebar-result"></div>
-                        </div>
-                    </section>
-                    
-                    <!-- Study Tips -->
-                    <section class="study-tips">
-                        <h3>Study Tips</h3>
-                        <ul class="tips-list">
-                            <li>Practice daily for 15-30 minutes</li>
-                            <li>Work through problems step-by-step</li>
-                            <li>Check your answers</li>
-                            <li>Learn from mistakes</li>
-                            <li>Use visual aids when possible</li>
-                        </ul>
-                    </section>
-                </aside>
+    <main class="container">
+        <!-- Interactive Algebra Solver -->
+        <section class="interactive-section">
+            <h2 class="text-center">Interactive Algebra Solver</h2>
+            <div class="solver-tabs">
+                <div class="solver-tab active" onclick="switchSolverTab('linear')">Linear Equations</div>
+                <div class="solver-tab" onclick="switchSolverTab('quadratic')">Quadratic Equations</div>
+                <div class="solver-tab" onclick="switchSolverTab('polynomial')">Polynomial Operations</div>
+                <div class="solver-tab" onclick="switchSolverTab('factoring')">Factoring</div>
             </div>
-        </div>
+
+            <!-- Linear Equations Solver -->
+            <div id="linear-solver" class="solver-content active">
+                <h3>Linear Equation Solver</h3>
+                <p class="text-muted">Solve equations of the form ax + b = c</p>
+                
+                <div class="grid grid-cols-3">
+                    <div class="input-group">
+                        <label for="linear-a">Coefficient a:</label>
+                        <input type="number" id="linear-a" class="input-field" placeholder="2" value="2">
+                    </div>
+                    <div class="input-group">
+                        <label for="linear-b">Constant b:</label>
+                        <input type="number" id="linear-b" class="input-field" placeholder="3" value="3">
+                    </div>
+                    <div class="input-group">
+                        <label for="linear-c">Right side c:</label>
+                        <input type="number" id="linear-c" class="input-field" placeholder="7" value="7">
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" onclick="solveLinear()">Solve Equation</button>
+                
+                <div id="linear-result" class="solution-display" style="display: none;">
+                    <h4>Solution:</h4>
+                    <div id="linear-solution"></div>
+                </div>
+                
+                <div id="linear-steps" class="solution-steps" style="display: none;">
+                    <h4>Step-by-Step Solution:</h4>
+                    <div id="linear-steps-content"></div>
+                </div>
+            </div>
+
+            <!-- Quadratic Equations Solver -->
+            <div id="quadratic-solver" class="solver-content">
+                <h3>Quadratic Equation Solver</h3>
+                <p class="text-muted">Solve equations of the form ax² + bx + c = 0</p>
+                
+                <div class="grid grid-cols-3">
+                    <div class="input-group">
+                        <label for="quad-a">Coefficient a:</label>
+                        <input type="number" id="quad-a" class="input-field" placeholder="1" value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="quad-b">Coefficient b:</label>
+                        <input type="number" id="quad-b" class="input-field" placeholder="-5" value="-5">
+                    </div>
+                    <div class="input-group">
+                        <label for="quad-c">Coefficient c:</label>
+                        <input type="number" id="quad-c" class="input-field" placeholder="6" value="6">
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" onclick="solveQuadratic()">Solve Equation</button>
+                
+                <div id="quadratic-result" class="solution-display" style="display: none;">
+                    <h4>Solution:</h4>
+                    <div id="quadratic-solution"></div>
+                </div>
+                
+                <div id="quadratic-steps" class="solution-steps" style="display: none;">
+                    <h4>Step-by-Step Solution:</h4>
+                    <div id="quadratic-steps-content"></div>
+                </div>
+            </div>
+
+            <!-- Polynomial Operations -->
+            <div id="polynomial-solver" class="solver-content">
+                <h3>Polynomial Operations</h3>
+                <p class="text-muted">Add, subtract, multiply polynomials</p>
+                
+                <div class="grid grid-cols-2">
+                    <div class="input-group">
+                        <label for="poly1">First polynomial:</label>
+                        <input type="text" id="poly1" class="input-field" placeholder="x^2 + 3*x + 2" value="x^2 + 3*x + 2">
+                    </div>
+                    <div class="input-group">
+                        <label for="poly2">Second polynomial:</label>
+                        <input type="text" id="poly2" class="input-field" placeholder="2*x + 1" value="2*x + 1">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="poly-operation">Operation:</label>
+                    <select id="poly-operation" class="input-field">
+                        <option value="add">Addition (+)</option>
+                        <option value="subtract">Subtraction (-)</option>
+                        <option value="multiply">Multiplication (×)</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-primary" onclick="calculatePolynomial()">Calculate</button>
+                
+                <div id="polynomial-result" class="solution-display" style="display: none;">
+                    <h4>Result:</h4>
+                    <div id="polynomial-solution"></div>
+                </div>
+            </div>
+
+            <!-- Factoring -->
+            <div id="factoring-solver" class="solver-content">
+                <h3>Polynomial Factoring</h3>
+                <p class="text-muted">Factor quadratic and simple polynomial expressions</p>
+                
+                <div class="input-group">
+                    <label for="factor-expr">Expression to factor:</label>
+                    <input type="text" id="factor-expr" class="input-field" placeholder="x^2 + 5*x + 6" value="x^2 + 5*x + 6">
+                    <small class="text-muted">Use x^2 for x squared, * for multiplication</small>
+                </div>
+                
+                <button class="btn btn-primary" onclick="factorExpression()">Factor</button>
+                
+                <div id="factoring-result" class="solution-display" style="display: none;">
+                    <h4>Factored Form:</h4>
+                    <div id="factoring-solution"></div>
+                </div>
+                
+                <div id="factoring-steps" class="solution-steps" style="display: none;">
+                    <h4>Factoring Steps:</h4>
+                    <div id="factoring-steps-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Algebra Concepts -->
+        <section>
+            <h2 class="text-center">Algebra Concepts</h2>
+            
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <div class="concept-icon">📐</div>
+                    <h3 class="concept-title">Linear Equations</h3>
+                    <p class="concept-description">Equations with variables to the first power. Learn to solve for unknown values systematically.</p>
+                    <div class="example-preview">2x + 5 = 13<br>x = 4</div>
+                    <a href="linear-equations/" class="try-it-btn">Learn Linear Equations</a>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">🔄</div>
+                    <h3 class="concept-title">Quadratic Equations</h3>
+                    <p class="concept-description">Second-degree equations with powerful solution methods including factoring and the quadratic formula.</p>
+                    <div class="example-preview">x² - 5x + 6 = 0<br>x = 2 or x = 3</div>
+                    <a href="quadratic-equations/" class="try-it-btn">Master Quadratics</a>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">🧩</div>
+                    <h3 class="concept-title">Factoring</h3>
+                    <p class="concept-description">Break down complex expressions into simpler multiplicative components for easier manipulation.</p>
+                    <div class="example-preview">x² + 7x + 12<br>= (x + 3)(x + 4)</div>
+                    <a href="factoring/" class="try-it-btn">Practice Factoring</a>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">📊</div>
+                    <h3 class="concept-title">Functions</h3>
+                    <p class="concept-description">Understand the relationship between inputs and outputs in mathematical expressions.</p>
+                    <div class="example-preview">f(x) = 2x + 1<br>f(3) = 7</div>
+                    <a href="../calculus/" class="try-it-btn">Explore Functions</a>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">📈</div>
+                    <h3 class="concept-title">Graphing</h3>
+                    <p class="concept-description">Visualize algebraic relationships through coordinate planes and function graphs.</p>
+                    <div class="example-preview">y = mx + b<br>Linear relationships</div>
+                    <a href="../tools/" class="try-it-btn">Graph Functions</a>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">⚖️</div>
+                    <h3 class="concept-title">Inequalities</h3>
+                    <p class="concept-description">Work with mathematical statements that show ranges of possible values.</p>
+                    <div class="example-preview">2x + 3 > 7<br>x > 2</div>
+                    <a href="../tools/" class="try-it-btn">Solve Inequalities</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Path -->
+        <section class="learning-path">
+            <h2 class="text-center">Algebra Learning Path</h2>
+            <p class="text-center">Follow this structured approach to master algebra systematically</p>
+            
+            <div class="path-steps">
+                <div class="path-step">
+                    <div class="path-step-number">1</div>
+                    <h4>Variables & Expressions</h4>
+                    <p>Learn to work with algebraic symbols and basic operations</p>
+                </div>
+                
+                <div class="path-step">
+                    <div class="path-step-number">2</div>
+                    <h4>Linear Equations</h4>
+                    <p>Solve equations with one variable using systematic methods</p>
+                </div>
+                
+                <div class="path-step">
+                    <div class="path-step-number">3</div>
+                    <h4>Polynomials</h4>
+                    <p>Add, subtract, multiply, and divide polynomial expressions</p>
+                </div>
+                
+                <div class="path-step">
+                    <div class="path-step-number">4</div>
+                    <h4>Factoring</h4>
+                    <p>Break down complex expressions into simpler factors</p>
+                </div>
+                
+                <div class="path-step">
+                    <div class="path-step-number">5</div>
+                    <h4>Quadratic Equations</h4>
+                    <p>Master second-degree equations and their solution methods</p>
+                </div>
+                
+                <div class="path-step">
+                    <div class="path-step-number">6</div>
+                    <h4>Functions & Graphs</h4>
+                    <p>Understand relationships and their visual representations</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
         <div class="container">
             <p>&copy; 2024 Math.help. All rights reserved.</p>
             <div class="footer-links">
-                <a href="/privacy.html">Privacy Policy</a>
-                <a href="/terms.html">Terms of Service</a>
-                <a href="/contact.html">Contact</a>
-                <a href="/sitemap.xml">Sitemap</a>
+                <a href="../privacy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Service</a>
+                <a href="../contact.html">Contact</a>
             </div>
         </div>
     </footer>
 
-    <script src="../calculator.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
     <script>
-        // Sidebar calculator functionality
-        function sidebarCalculate() {
-            const input = document.getElementById('sidebar-calc').value;
-            const resultDiv = document.getElementById('sidebar-result');
+        // Algebra solver functionality following Rams' principles
+
+        // Tab switching
+        function switchSolverTab(tabName) {
+            // Hide all solver contents
+            document.querySelectorAll('.solver-content').forEach(content => {
+                content.classList.remove('active');
+            });
             
-            try {
-                // Basic expression evaluation
-                const result = Function('"use strict"; return (' + input + ')')();
-                resultDiv.textContent = '= ' + result;
-                resultDiv.style.color = 'green';
-            } catch (e) {
-                resultDiv.textContent = 'Invalid expression';
-                resultDiv.style.color = 'red';
+            // Remove active class from all tabs
+            document.querySelectorAll('.solver-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected content and activate tab
+            document.getElementById(tabName + '-solver').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Linear Equation Solver: ax + b = c
+        function solveLinear() {
+            const a = parseFloat(document.getElementById('linear-a').value) || 0;
+            const b = parseFloat(document.getElementById('linear-b').value) || 0;
+            const c = parseFloat(document.getElementById('linear-c').value) || 0;
+            
+            if (a === 0) {
+                showLinearResult('Invalid equation: coefficient a cannot be 0', []);
+                return;
+            }
+            
+            const x = (c - b) / a;
+            
+            const steps = [
+                `Given equation: ${a}x + ${b} = ${c}`,
+                `Subtract ${b} from both sides: ${a}x = ${c} - ${b} = ${c - b}`,
+                `Divide both sides by ${a}: x = ${c - b} / ${a} = ${x.toFixed(4)}`
+            ];
+            
+            const solution = `x = ${x.toFixed(4)}`;
+            showLinearResult(solution, steps);
+        }
+
+        function showLinearResult(solution, steps) {
+            document.getElementById('linear-solution').innerHTML = solution;
+            document.getElementById('linear-result').style.display = 'block';
+            
+            if (steps.length > 0) {
+                const stepsHtml = steps.map((step, index) => 
+                    `<div class="step"><span class="step-number">${index + 1}</span>${step}</div>`
+                ).join('');
+                
+                document.getElementById('linear-steps-content').innerHTML = stepsHtml;
+                document.getElementById('linear-steps').style.display = 'block';
             }
         }
-        
-        // Track page engagement
-        let timeOnPage = 0;
-        setInterval(() => {
-            timeOnPage += 5;
-            if (timeOnPage % 30 === 0 && typeof gtag !== 'undefined') {
-                gtag('event', 'time_on_page', {
-                    event_category: 'Engagement',
-                    event_label: 'Algebra Page',
-                    value: timeOnPage
+
+        // Quadratic Equation Solver
+        function solveQuadratic() {
+            const a = parseFloat(document.getElementById('quad-a').value) || 0;
+            const b = parseFloat(document.getElementById('quad-b').value) || 0;
+            const c = parseFloat(document.getElementById('quad-c').value) || 0;
+            
+            if (a === 0) {
+                showQuadraticResult('This is not a quadratic equation (a cannot be 0)', []);
+                return;
+            }
+            
+            const discriminant = b * b - 4 * a * c;
+            const steps = [
+                `Given equation: ${a}x² ${b >= 0 ? '+' : ''}${b}x ${c >= 0 ? '+' : ''}${c} = 0`,
+                `Identify coefficients: a = ${a}, b = ${b}, c = ${c}`,
+                `Calculate discriminant: Δ = b² - 4ac = ${b}² - 4(${a})(${c}) = ${discriminant}`
+            ];
+            
+            let solution = '';
+            
+            if (discriminant > 0) {
+                const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                solution = `Two real solutions:<br>x₁ = ${x1.toFixed(4)}<br>x₂ = ${x2.toFixed(4)}`;
+                steps.push(`Since Δ > 0, there are two real solutions:`);
+                steps.push(`x₁ = (-b + √Δ) / (2a) = ${x1.toFixed(4)}`);
+                steps.push(`x₂ = (-b - √Δ) / (2a) = ${x2.toFixed(4)}`);
+            } else if (discriminant === 0) {
+                const x = -b / (2 * a);
+                solution = `One real solution:<br>x = ${x.toFixed(4)}`;
+                steps.push(`Since Δ = 0, there is one real solution:`);
+                steps.push(`x = -b / (2a) = ${x.toFixed(4)}`);
+            } else {
+                const realPart = -b / (2 * a);
+                const imagPart = Math.sqrt(-discriminant) / (2 * a);
+                solution = `Two complex solutions:<br>x₁ = ${realPart.toFixed(4)} + ${imagPart.toFixed(4)}i<br>x₂ = ${realPart.toFixed(4)} - ${imagPart.toFixed(4)}i`;
+                steps.push(`Since Δ < 0, there are two complex solutions:`);
+                steps.push(`x₁ = (-b + i√|Δ|) / (2a) = ${realPart.toFixed(4)} + ${imagPart.toFixed(4)}i`);
+                steps.push(`x₂ = (-b - i√|Δ|) / (2a) = ${realPart.toFixed(4)} - ${imagPart.toFixed(4)}i`);
+            }
+            
+            showQuadraticResult(solution, steps);
+        }
+
+        function showQuadraticResult(solution, steps) {
+            document.getElementById('quadratic-solution').innerHTML = solution;
+            document.getElementById('quadratic-result').style.display = 'block';
+            
+            const stepsHtml = steps.map((step, index) => 
+                `<div class="step"><span class="step-number">${index + 1}</span>${step}</div>`
+            ).join('');
+            
+            document.getElementById('quadratic-steps-content').innerHTML = stepsHtml;
+            document.getElementById('quadratic-steps').style.display = 'block';
+        }
+
+        // Polynomial Operations (simplified)
+        function calculatePolynomial() {
+            const poly1 = document.getElementById('poly1').value;
+            const poly2 = document.getElementById('poly2').value;
+            const operation = document.getElementById('poly-operation').value;
+            
+            let result = '';
+            
+            switch (operation) {
+                case 'add':
+                    result = `(${poly1}) + (${poly2})`;
+                    break;
+                case 'subtract':
+                    result = `(${poly1}) - (${poly2})`;
+                    break;
+                case 'multiply':
+                    result = `(${poly1}) × (${poly2})`;
+                    break;
+            }
+            
+            result += '<br><br><em>Note: This is a simplified display. For detailed polynomial arithmetic, use our advanced tools.</em>';
+            
+            document.getElementById('polynomial-solution').innerHTML = result;
+            document.getElementById('polynomial-result').style.display = 'block';
+        }
+
+        // Factoring (simplified for common quadratics)
+        function factorExpression() {
+            const expr = document.getElementById('factor-expr').value.replace(/\s/g, '');
+            
+            // Simple pattern matching for x^2 + bx + c
+            const quadraticPattern = /x\^2([+-]\d*)x([+-]\d+)/;
+            const match = expr.match(quadraticPattern);
+            
+            if (match) {
+                const b = parseInt(match[1]) || 0;
+                const c = parseInt(match[2]) || 0;
+                
+                // Try to factor x^2 + bx + c = (x + p)(x + q) where p + q = b and p * q = c
+                const factors = findFactors(c);
+                let factored = null;
+                
+                for (const [p, q] of factors) {
+                    if (p + q === b) {
+                        factored = `(x ${p >= 0 ? '+' : ''}${p})(x ${q >= 0 ? '+' : ''}${q})`;
+                        break;
+                    }
+                }
+                
+                if (factored) {
+                    const steps = [
+                        `Expression: ${expr}`,
+                        `Looking for two numbers that multiply to ${c} and add to ${b}`,
+                        `Found: ${factored}`,
+                        `Verification: Expanding gives the original expression`
+                    ];
+                    
+                    document.getElementById('factoring-solution').innerHTML = factored;
+                    document.getElementById('factoring-result').style.display = 'block';
+                    
+                    const stepsHtml = steps.map((step, index) => 
+                        `<div class="step"><span class="step-number">${index + 1}</span>${step}</div>`
+                    ).join('');
+                    
+                    document.getElementById('factoring-steps-content').innerHTML = stepsHtml;
+                    document.getElementById('factoring-steps').style.display = 'block';
+                } else {
+                    document.getElementById('factoring-solution').innerHTML = 'Cannot factor easily with integer values';
+                    document.getElementById('factoring-result').style.display = 'block';
+                }
+            } else {
+                document.getElementById('factoring-solution').innerHTML = 'This factoring tool works with expressions of the form x² + bx + c';
+                document.getElementById('factoring-result').style.display = 'block';
+            }
+        }
+
+        function findFactors(n) {
+            const factors = [];
+            for (let i = -Math.abs(n); i <= Math.abs(n); i++) {
+                if (i !== 0 && n % i === 0) {
+                    factors.push([i, n / i]);
+                }
+            }
+            return factors;
+        }
+
+        // Initialize KaTeX rendering
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render any math expressions
+            if (window.katex) {
+                document.querySelectorAll('.example-preview').forEach(element => {
+                    try {
+                        katex.render(element.textContent, element, {
+                            throwOnError: false,
+                            displayMode: true
+                        });
+                    } catch (e) {
+                        // Keep original text if KaTeX fails
+                    }
                 });
             }
-        }, 5000);
+        });
     </script>
 </body>
 </html>
