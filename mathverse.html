@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathVerse - The Ultimate Mathematics Encyclopedia | Math.help</title>
+    <meta name="description" content="Explore 5,000 years of mathematical knowledge through interactive visualizations, multi-level explanations, and interconnected concepts. Your journey from counting to quantum mathematics starts here.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <!-- Visualization Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <style>
+        .mathverse-hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mathverse-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><g stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"><circle cx="100" cy="100" r="50"/><path d="M200,200 Q300,100 400,200"/><line x1="500" y1="100" x2="600" y2="200"/></g></svg>') no-repeat center;
+            opacity: 0.3;
+        }
+        
+        .mathverse-hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .mathverse-tagline {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .concept-search {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .concept-search:focus {
+            outline: none;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+        
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .exploration-modes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .mode-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+        
+        .mode-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+        }
+        
+        .mode-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .mode-title {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .connection-viz {
+            width: 100%;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .concept-spotlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .concept-spotlight h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .spotlight-equation {
+            font-size: 2em;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .learning-paths {
+            margin: 40px 0;
+        }
+        
+        .path-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .path-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s;
+        }
+        
+        .path-card:hover {
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .path-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .path-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .interactive-demo {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .level-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .level-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .level-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .explanation-content {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 20px 0;
+            min-height: 150px;
+        }
+        
+        .features-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+            margin: 40px 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .cta-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .cta-button {
+            padding: 15px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .cta-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">MathVerse - Where Mathematics Comes Alive</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/mathverse.html" class="active">MathVerse</a></li>
+                <li><a href="/concepts/">Concepts</a></li>
+                <li><a href="/tools/">Tools</a></li>
+                <li><a href="/advanced/">Advanced</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="mathverse-hero">
+            <div class="container">
+                <h1>Welcome to MathVerse</h1>
+                <p class="mathverse-tagline">5,000 Years of Mathematical Knowledge at Your Fingertips</p>
+                <div class="search-container">
+                    <input type="text" class="concept-search" placeholder="Search any mathematical concept..." id="concept-search">
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Quick Stats -->
+            <section class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Interconnected Concepts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,500+</div>
+                    <div class="stat-label">Historical Figures</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2,000+</div>
+                    <div class="stat-label">Research Papers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,000+</div>
+                    <div class="stat-label">Interactive Tools</div>
+                </div>
+            </section>
+
+            <!-- Exploration Modes -->
+            <section class="exploration-section">
+                <h2>Choose Your Journey</h2>
+                <div class="exploration-modes">
+                    <div class="mode-card" onclick="navigateTo('/concepts/')">
+                        <div class="mode-icon">🎨</div>
+                        <div class="mode-title">Visual Explorer</div>
+                        <p>Navigate mathematics through interactive visualizations and diagrams</p>
+                    </div>
+                    <div class="mode-card" onclick="navigateTo('/concepts/')">
+                        <div class="mode-icon">🔗</div>
+                        <div class="mode-title">Connection Engine</div>
+                        <p>Discover how any two concepts connect through our knowledge graph</p>
+                    </div>
+                    <div class="mode-card" onclick="navigateTo('/advanced/')">
+                        <div class="mode-icon">📅</div>
+                        <div class="mode-title">Advanced Topics</div>
+                        <p>Explore cutting-edge mathematics research</p>
+                    </div>
+                    <div class="mode-card" onclick="navigateTo('/tools/')">
+                        <div class="mode-icon">🎯</div>
+                        <div class="mode-title">Interactive Tools</div>
+                        <p>Calculators, solvers, and mathematical explorers</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Connection Visualization Preview -->
+            <section class="connection-section">
+                <h2>Everything is Connected</h2>
+                <p>See how mathematical concepts relate to each other in our interactive knowledge graph</p>
+                <div id="connection-preview" class="connection-viz"></div>
+            </section>
+
+            <!-- Concept Spotlight -->
+            <section class="concept-spotlight">
+                <h2>Concept of the Day: Euler's Identity</h2>
+                <div class="spotlight-equation">e^(iπ) + 1 = 0</div>
+                <p>"The most beautiful equation in mathematics" - connecting five fundamental constants</p>
+                <a href="/concepts/eulers-identity.html" class="cta-button cta-primary">Explore This Concept</a>
+            </section>
+
+            <!-- Interactive Demo -->
+            <section class="interactive-demo">
+                <h2>Experience Multi-Level Explanations</h2>
+                <p>Every concept explained at your level - from elementary to research</p>
+                
+                <div class="level-selector">
+                    <button class="level-btn active" onclick="showLevel('elementary')">Elementary</button>
+                    <button class="level-btn" onclick="showLevel('middle')">Middle School</button>
+                    <button class="level-btn" onclick="showLevel('high')">High School</button>
+                    <button class="level-btn" onclick="showLevel('undergrad')">Undergraduate</button>
+                    <button class="level-btn" onclick="showLevel('research')">Research</button>
+                </div>
+                
+                <div class="explanation-content" id="explanation-content">
+                    <h3>Pythagorean Theorem - Elementary Level</h3>
+                    <p>Imagine you have a right triangle (that's a triangle with one square corner). The longest side is special - if you make squares on all three sides, the big square has the same area as the two smaller squares combined! It's like a puzzle that always fits perfectly! 🔺</p>
+                </div>
+            </section>
+
+            <!-- Learning Paths -->
+            <section class="learning-paths">
+                <h2>Popular Learning Paths</h2>
+                <div class="path-grid">
+                    <div class="path-card">
+                        <div class="path-title">From Counting to Calculus</div>
+                        <div class="path-description">A complete journey through mathematical foundations</div>
+                    </div>
+                    <div class="path-card">
+                        <div class="path-title">The Physics Connection</div>
+                        <div class="path-description">Mathematics that powers our understanding of the universe</div>
+                    </div>
+                    <div class="path-card">
+                        <div class="path-title">Computer Science Fundamentals</div>
+                        <div class="path-description">Essential math for programming and algorithms</div>
+                    </div>
+                    <div class="path-card">
+                        <div class="path-title">Art & Mathematics</div>
+                        <div class="path-description">Discover the beauty of mathematical patterns in art</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <div class="container">
+                    <h2>Revolutionary Features</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🧠</div>
+                            <div class="feature-title">Personal Relevance Engine</div>
+                            <p>Get examples and applications tailored to your interests - whether it's music, sports, gaming, or art</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌐</div>
+                            <div class="feature-title">Six Degrees of Mathematics</div>
+                            <p>Find the shortest path between any two mathematical concepts</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-title">Impact Visualization</div>
+                            <p>See how each concept influenced technology, society, and human progress</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎮</div>
+                            <div class="feature-title">Interactive Tools</div>
+                            <p>Play with concepts through simulations, calculators, and explorers</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔬</div>
+                            <div class="feature-title">Research Integration</div>
+                            <p>Access simplified explanations of groundbreaking papers</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <div class="feature-title">Adaptive Learning</div>
+                            <p>Content that adjusts to your understanding level automatically</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="cta-section">
+                <h2>Start Your Mathematical Journey Today</h2>
+                <p>Join millions exploring the beauty and power of mathematics</p>
+                <div class="cta-buttons">
+                    <a href="/concepts/" class="cta-button cta-primary">Explore Concepts</a>
+                    <a href="/advanced/" class="cta-button cta-secondary">Advanced Topics</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Connection Graph Preview
+        function createConnectionPreview() {
+            const width = document.getElementById('connection-preview').clientWidth;
+            const height = 500;
+            
+            const svg = d3.select('#connection-preview')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Sample nodes for preview
+            const nodes = [
+                { id: 1, label: 'Numbers', x: width * 0.5, y: height * 0.5, size: 40 },
+                { id: 2, label: 'Algebra', x: width * 0.3, y: height * 0.3, size: 30 },
+                { id: 3, label: 'Geometry', x: width * 0.7, y: height * 0.3, size: 30 },
+                { id: 4, label: 'Calculus', x: width * 0.5, y: height * 0.2, size: 30 },
+                { id: 5, label: 'Trigonometry', x: width * 0.6, y: height * 0.6, size: 25 },
+                { id: 6, label: 'Statistics', x: width * 0.4, y: height * 0.6, size: 25 },
+                { id: 7, label: 'Linear Algebra', x: width * 0.2, y: height * 0.5, size: 25 },
+                { id: 8, label: 'Number Theory', x: width * 0.8, y: height * 0.5, size: 25 }
+            ];
+            
+            const links = [
+                { source: 1, target: 2 },
+                { source: 1, target: 3 },
+                { source: 2, target: 4 },
+                { source: 3, target: 4 },
+                { source: 3, target: 5 },
+                { source: 2, target: 7 },
+                { source: 1, target: 6 },
+                { source: 1, target: 8 }
+            ];
+            
+            // Create gradient
+            const gradient = svg.append('defs')
+                .append('radialGradient')
+                .attr('id', 'node-gradient');
+            
+            gradient.append('stop')
+                .attr('offset', '0%')
+                .attr('stop-color', '#667eea')
+                .attr('stop-opacity', 0.8);
+            
+            gradient.append('stop')
+                .attr('offset', '100%')
+                .attr('stop-color', '#764ba2')
+                .attr('stop-opacity', 0.6);
+            
+            // Draw links
+            const link = svg.selectAll('.link')
+                .data(links)
+                .enter()
+                .append('line')
+                .attr('class', 'link')
+                .attr('x1', d => nodes.find(n => n.id === d.source).x)
+                .attr('y1', d => nodes.find(n => n.id === d.source).y)
+                .attr('x2', d => nodes.find(n => n.id === d.target).x)
+                .attr('y2', d => nodes.find(n => n.id === d.target).y)
+                .attr('stroke', '#ccc')
+                .attr('stroke-width', 2)
+                .attr('opacity', 0.6);
+            
+            // Draw nodes
+            const node = svg.selectAll('.node')
+                .data(nodes)
+                .enter()
+                .append('g')
+                .attr('class', 'node')
+                .attr('transform', d => `translate(${d.x}, ${d.y})`);
+            
+            node.append('circle')
+                .attr('r', d => d.size)
+                .attr('fill', 'url(#node-gradient)')
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 3)
+                .style('cursor', 'pointer')
+                .on('mouseover', function(event, d) {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr('r', d.size * 1.2);
+                })
+                .on('mouseout', function(event, d) {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr('r', d.size);
+                });
+            
+            node.append('text')
+                .text(d => d.label)
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.3em')
+                .attr('fill', 'white')
+                .style('font-weight', 'bold')
+                .style('pointer-events', 'none');
+            
+            // Add animation
+            function animateLinks() {
+                link.transition()
+                    .duration(2000)
+                    .attr('stroke-width', 4)
+                    .attr('opacity', 1)
+                    .transition()
+                    .duration(2000)
+                    .attr('stroke-width', 2)
+                    .attr('opacity', 0.6)
+                    .on('end', animateLinks);
+            }
+            animateLinks();
+        }
+        
+        // Multi-level explanation demo
+        const explanations = {
+            elementary: {
+                title: "Pythagorean Theorem - Elementary Level",
+                content: "Imagine you have a right triangle (that's a triangle with one square corner). The longest side is special - if you make squares on all three sides, the big square has the same area as the two smaller squares combined! It's like a puzzle that always fits perfectly! 🔺"
+            },
+            middle: {
+                title: "Pythagorean Theorem - Middle School Level",
+                content: "In any right triangle, the square of the hypotenuse (the longest side) equals the sum of squares of the other two sides. If we call the sides a, b, and c (where c is the longest), then: a² + b² = c². This helps us find missing sides!"
+            },
+            high: {
+                title: "Pythagorean Theorem - High School Level",
+                content: "For a right triangle with legs of length a and b, and hypotenuse c: a² + b² = c². This fundamental relationship extends to coordinate geometry (distance formula), trigonometry (sin²θ + cos²θ = 1), and vectors. It's the foundation for understanding Euclidean space."
+            },
+            undergrad: {
+                title: "Pythagorean Theorem - Undergraduate Level",
+                content: "The Pythagorean theorem defines the Euclidean metric in ℝⁿ: ||x - y|| = √(Σᵢ(xᵢ - yᵢ)²). It's a special case of the law of cosines and generalizes to inner product spaces via ||x + y||² = ||x||² + ||y||² + 2⟨x,y⟩, fundamental to Hilbert spaces and functional analysis."
+            },
+            research: {
+                title: "Pythagorean Theorem - Research Level",
+                content: "The Pythagorean theorem characterizes Euclidean spaces among Riemannian manifolds via flatness. Its generalization to curved spaces involves the metric tensor gᵢⱼ. In algebraic geometry, Pythagorean triples parametrize rational points on the unit circle, connecting to Fermat's Last Theorem and the Birch-Swinnerton-Dyer conjecture."
+            }
+        };
+        
+        function showLevel(level) {
+            // Update button states
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update content
+            const content = explanations[level];
+            document.getElementById('explanation-content').innerHTML = `
+                <h3>${content.title}</h3>
+                <p>${content.content}</p>
+            `;
+        }
+        
+        // Search functionality
+        document.getElementById('concept-search').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value.toLowerCase();
+                window.location.href = `/concepts/?search=${encodeURIComponent(query)}`;
+            }
+        });
+        
+        function navigateTo(path) {
+            window.location.href = path;
+        }
+        
+        // Initialize visualizations
+        document.addEventListener('DOMContentLoaded', function() {
+            createConnectionPreview();
+        });
+    </script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
