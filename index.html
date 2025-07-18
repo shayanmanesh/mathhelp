@@ -558,32 +558,8 @@
         </div>
     </footer>
 
-    <script src="calculator.js"></script>
-    <script src="ad-optimization.js"></script>
-    
-    <!-- Mobile navigation functionality -->
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            const navList = document.getElementById('navList');
-            
-            if (mobileToggle && navList) {
-                mobileToggle.addEventListener('click', function() {
-                    navList.classList.toggle('active');
-                    this.setAttribute('aria-expanded', navList.classList.contains('active'));
-                });
-                
-                // Close menu when clicking on a link
-                navList.addEventListener('click', function(e) {
-                    if (e.target.tagName === 'A') {
-                        navList.classList.remove('active');
-                        mobileToggle.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            }
-        });
-    </script>
+    <!-- Optimized bundled scripts for better performance -->
+    <script src="scripts-bundle.min.js" defer></script>
     
     <!-- Defer heavy analytics until after initial load -->
     <script>
