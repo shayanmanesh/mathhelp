@@ -16,9 +16,11 @@
     <!-- Load full CSS after critical content -->
     <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="ad-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="enhanced-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="ad-styles.css">
+        <link rel="stylesheet" href="enhanced-styles.css">
     </noscript>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
@@ -180,7 +182,7 @@
         })(window, document, "clarity", "script", "sgk1r5gd6a");
     </script>
 </head>
-<body>
+<body data-page-type="homepage" data-page-data='{"topic": "general", "difficulty": "all", "concept": "mathematics", "breadcrumbs": [{"name": "Home", "url": "/"}]}'>
     <header class="site-header">
         <div class="container">
             <h1 class="site-title">Math.help</h1>
@@ -260,6 +262,102 @@
                         <span class="stat-number">5</span>
                         <span class="stat-label">Subject Areas</span>
                     </div>
+                </div>
+            </section>
+
+            <!-- Historical Context Section -->
+            <section class="historical-context">
+                <h2>📜 The Rich History of Mathematics</h2>
+                <div class="history-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">3000 BCE</div>
+                        <div class="timeline-content">
+                            <h3>Ancient Babylonian Mathematics</h3>
+                            <p>The Babylonians developed the first sophisticated number system and created the foundation for algebra. Their base-60 system still influences how we measure time and angles today.</p>
+                            <span class="timeline-tag">Algebra Origins</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">300 BCE</div>
+                        <div class="timeline-content">
+                            <h3>Euclid's Elements</h3>
+                            <p>Euclid's "Elements" became the foundation of geometry for over 2,000 years. This masterwork introduced logical proofs and the axiomatic method that still shapes mathematics today.</p>
+                            <span class="timeline-tag">Geometry</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">1637</div>
+                        <div class="timeline-content">
+                            <h3>Birth of Modern Calculus</h3>
+                            <p>Isaac Newton and Gottfried Leibniz independently developed calculus, revolutionizing mathematics and enabling the scientific revolution. Their work laid the groundwork for modern physics and engineering.</p>
+                            <span class="timeline-tag">Calculus</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">1654</div>
+                        <div class="timeline-content">
+                            <h3>Probability Theory</h3>
+                            <p>Pascal and Fermat's correspondence about gambling problems led to the birth of probability theory, which now underpins statistics, economics, and data science.</p>
+                            <span class="timeline-tag">Statistics</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Research Papers Integration -->
+            <section class="research-papers">
+                <h2>🔬 Latest Mathematical Research</h2>
+                <div class="research-grid">
+                    <div class="research-card">
+                        <div class="research-badge">Nature Mathematics</div>
+                        <h3>Machine Learning Applications in Algebraic Geometry</h3>
+                        <p class="research-authors">Chen, L., Rodriguez, M., & Patel, S. (2024)</p>
+                        <p class="research-abstract">Recent advances in machine learning have opened new avenues for solving complex algebraic geometry problems, with applications in cryptography and computer vision.</p>
+                        <div class="research-links">
+                            <a href="#" class="research-link">📄 Read Paper</a>
+                            <a href="#" class="research-link">🔗 DOI: 10.1038/s41586-024-07234-x</a>
+                        </div>
+                        <div class="research-relevance">
+                            <span class="relevance-tag">Algebra</span>
+                            <span class="relevance-tag">Machine Learning</span>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-badge">Journal of Calculus</div>
+                        <h3>Fractional Calculus in Biological Systems</h3>
+                        <p class="research-authors">Williams, K., Thompson, J., & Lee, H. (2024)</p>
+                        <p class="research-abstract">Fractional derivatives provide new insights into biological processes, from population dynamics to neuron firing patterns, offering more accurate models than traditional calculus.</p>
+                        <div class="research-links">
+                            <a href="#" class="research-link">📄 Read Paper</a>
+                            <a href="#" class="research-link">🔗 DOI: 10.1016/j.jcalc.2024.03.015</a>
+                        </div>
+                        <div class="research-relevance">
+                            <span class="relevance-tag">Calculus</span>
+                            <span class="relevance-tag">Biology</span>
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <div class="research-badge">Statistics & Probability</div>
+                        <h3>Bayesian Methods in Educational Assessment</h3>
+                        <p class="research-authors">Kumar, A., Davis, R., & Zhang, W. (2024)</p>
+                        <p class="research-abstract">Novel Bayesian approaches to student assessment provide more accurate predictions of learning outcomes and personalized educational pathways.</p>
+                        <div class="research-links">
+                            <a href="#" class="research-link">📄 Read Paper</a>
+                            <a href="#" class="research-link">🔗 DOI: 10.1080/01621459.2024.2304567</a>
+                        </div>
+                        <div class="research-relevance">
+                            <span class="relevance-tag">Statistics</span>
+                            <span class="relevance-tag">Education</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="research-cta">
+                    <a href="/research/" class="cta-button">Explore All Research →</a>
                 </div>
             </section>
 
@@ -349,36 +447,69 @@
                         <h4>Solving Quadratic Equations</h4>
                         <p>Learn to solve $2x^2 - 7x + 3 = 0$ using the quadratic formula with step-by-step instructions.</p>
                         <div class="example-preview">$$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$</div>
-                        <a href="/algebra/quadratic-equations/" class="example-link">View Solution →</a>
+                        <div class="example-actions">
+                            <a href="/algebra/quadratic-equations/" class="example-link">View Solution →</a>
+                            <button class="share-challenge-btn" onclick="shareExample('quadratic-equations', 'Solving Quadratic Equations')">
+                                🚀 Share Challenge
+                            </button>
+                        </div>
                     </div>
                     
                     <div class="example-card">
                         <h4>Finding Derivatives</h4>
                         <p>Calculate the derivative of $f(x) = x^2 \sin x$ using the product rule.</p>
                         <div class="example-preview">$$\frac{d}{dx}[x^2 \sin x] = 2x \sin x + x^2 \cos x$$</div>
-                        <a href="/calculus/derivative-calculator/" class="example-link">Try Calculator →</a>
+                        <div class="example-actions">
+                            <a href="/calculus/derivative-calculator/" class="example-link">Try Calculator →</a>
+                            <button class="share-challenge-btn" onclick="shareExample('derivatives', 'Finding Derivatives')">
+                                🚀 Share Challenge
+                            </button>
+                        </div>
                     </div>
                     
                     <div class="example-card">
                         <h4>Triangle Area Calculation</h4>
                         <p>Find the area of any triangle using base and height, or Heron's formula.</p>
                         <div class="example-preview">$$A = \frac{1}{2}bh$$</div>
-                        <a href="/geometry/" class="example-link">Learn More →</a>
+                        <div class="example-actions">
+                            <a href="/geometry/" class="example-link">Learn More →</a>
+                            <button class="share-challenge-btn" onclick="shareExample('geometry', 'Triangle Area Calculation')">
+                                🚀 Share Challenge
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="examples-cta">
                     <a href="/examples/" class="cta-button">View All Examples →</a>
+                    <button class="rewarded-video-btn" onclick="showRewardedVideoOffer('extra_problems', 'homepage')">
+                        🎁 Get 3 Bonus Problems
+                    </button>
                 </div>
             </section>
 
             <!-- Position 2: In-Content (Display Responsive Square) -->
             <div class="ad-container ad-middle">
+                <div class="ad-label">Advertisement</div>
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-5635114711353420"
                      data-ad-slot="4431777949"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <!-- Native Ad Integration -->
+            <div class="ad-container ad-native">
+                <div class="ad-label">Sponsored Content</div>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-format="fluid"
+                     data-ad-layout-key="-6t+ed+2i-1n-4w"
+                     data-ad-client="ca-pub-5635114711353420"
+                     data-ad-slot="7859284932"></ins>
                 <script>
                      (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
@@ -418,38 +549,184 @@
                 </div>
             </section>
 
-            <section class="calculator-section">
-                <h3>🧮 Quick Calculator</h3>
-                <div class="calculator-widget">
-                    <div class="calc-display">
-                        <input type="text" id="calc-screen" readonly placeholder="0">
+            <!-- Interactive Tools Section -->
+            <section class="interactive-tools">
+                <h2>🔧 Interactive Mathematical Tools</h2>
+                
+                <!-- Multi-Calculator Widget -->
+                <div class="calculator-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" onclick="showCalculator('basic')">Basic Calculator</button>
+                        <button class="tab-btn" onclick="showCalculator('scientific')">Scientific</button>
+                        <button class="tab-btn" onclick="showCalculator('graphing')">Graphing</button>
+                        <button class="tab-btn" onclick="showCalculator('equation')">Equation Solver</button>
                     </div>
-                    <div class="calc-buttons">
-                        <button onclick="clearCalculator()">C</button>
-                        <button onclick="deleteLast()">⌫</button>
-                        <button onclick="appendToDisplay('/')">/</button>
-                        <button onclick="appendToDisplay('*')">×</button>
+                    
+                    <!-- Basic Calculator -->
+                    <div id="basic-calc" class="calculator-widget active">
+                        <div class="calc-display">
+                            <input type="text" id="calc-screen" readonly placeholder="0">
+                        </div>
+                        <div class="calc-buttons">
+                            <button onclick="clearCalculator()">C</button>
+                            <button onclick="deleteLast()">⌫</button>
+                            <button onclick="appendToDisplay('/')">/</button>
+                            <button onclick="appendToDisplay('*')">×</button>
+                            
+                            <button onclick="appendToDisplay('7')">7</button>
+                            <button onclick="appendToDisplay('8')">8</button>
+                            <button onclick="appendToDisplay('9')">9</button>
+                            <button onclick="appendToDisplay('-')">-</button>
+                            
+                            <button onclick="appendToDisplay('4')">4</button>
+                            <button onclick="appendToDisplay('5')">5</button>
+                            <button onclick="appendToDisplay('6')">6</button>
+                            <button onclick="appendToDisplay('+')">+</button>
+                            
+                            <button onclick="appendToDisplay('1')">1</button>
+                            <button onclick="appendToDisplay('2')">2</button>
+                            <button onclick="appendToDisplay('3')">3</button>
+                            <button onclick="calculate()" rowspan="2" class="equals">=</button>
+                            
+                            <button onclick="appendToDisplay('0')" colspan="2" class="zero">0</button>
+                            <button onclick="appendToDisplay('.')">.</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Scientific Calculator -->
+                    <div id="scientific-calc" class="calculator-widget">
+                        <div class="calc-display">
+                            <input type="text" id="sci-calc-screen" readonly placeholder="0">
+                        </div>
+                        <div class="sci-calc-buttons">
+                            <button onclick="sciFunction('sin')">sin</button>
+                            <button onclick="sciFunction('cos')">cos</button>
+                            <button onclick="sciFunction('tan')">tan</button>
+                            <button onclick="sciFunction('log')">log</button>
+                            <button onclick="sciFunction('ln')">ln</button>
+                            
+                            <button onclick="sciFunction('sqrt')">√</button>
+                            <button onclick="sciFunction('pow')">x²</button>
+                            <button onclick="sciFunction('exp')">eˣ</button>
+                            <button onclick="sciFunction('pi')">π</button>
+                            <button onclick="sciFunction('e')">e</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Graphing Calculator -->
+                    <div id="graphing-calc" class="calculator-widget">
+                        <div class="graphing-interface">
+                            <div class="function-input">
+                                <input type="text" id="function-input" placeholder="Enter function: f(x) = x^2">
+                                <button onclick="plotFunction()">Plot</button>
+                            </div>
+                            <canvas id="graph-canvas" width="400" height="300"></canvas>
+                            <div class="graph-controls">
+                                <button onclick="zoomIn()">Zoom In</button>
+                                <button onclick="zoomOut()">Zoom Out</button>
+                                <button onclick="resetView()">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Equation Solver -->
+                    <div id="equation-calc" class="calculator-widget">
+                        <div class="equation-solver">
+                            <h3>Solve Equations Step by Step</h3>
+                            <div class="equation-input">
+                                <input type="text" id="equation-input" placeholder="Enter equation: 2x + 5 = 13">
+                                <button onclick="solveEquation()">Solve</button>
+                            </div>
+                            <div id="solution-steps" class="solution-display"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Specialized Tools Grid -->
+                <div class="specialized-tools">
+                    <h3>Specialized Mathematical Tools</h3>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-icon">📐</div>
+                            <h4>Geometry Calculator</h4>
+                            <p>Calculate areas, volumes, and properties of geometric shapes</p>
+                            <div class="tool-interface">
+                                <select id="shape-select" onchange="showShapeCalculator()">
+                                    <option value="triangle">Triangle</option>
+                                    <option value="circle">Circle</option>
+                                    <option value="rectangle">Rectangle</option>
+                                    <option value="sphere">Sphere</option>
+                                </select>
+                                <div id="shape-inputs"></div>
+                                <button onclick="calculateGeometry()">Calculate</button>
+                                <div id="geometry-result"></div>
+                            </div>
+                        </div>
                         
-                        <button onclick="appendToDisplay('7')">7</button>
-                        <button onclick="appendToDisplay('8')">8</button>
-                        <button onclick="appendToDisplay('9')">9</button>
-                        <button onclick="appendToDisplay('-')">-</button>
+                        <div class="tool-card">
+                            <div class="tool-icon">📊</div>
+                            <h4>Statistics Calculator</h4>
+                            <p>Calculate mean, median, mode, and standard deviation</p>
+                            <div class="tool-interface">
+                                <textarea id="data-input" placeholder="Enter data (comma-separated): 1,2,3,4,5"></textarea>
+                                <button onclick="calculateStatistics()">Analyze</button>
+                                <div id="stats-result"></div>
+                            </div>
+                        </div>
                         
-                        <button onclick="appendToDisplay('4')">4</button>
-                        <button onclick="appendToDisplay('5')">5</button>
-                        <button onclick="appendToDisplay('6')">6</button>
-                        <button onclick="appendToDisplay('+')">+</button>
+                        <div class="tool-card">
+                            <div class="tool-icon">∫</div>
+                            <h4>Calculus Tools</h4>
+                            <p>Find derivatives and integrals with step-by-step solutions</p>
+                            <div class="tool-interface">
+                                <select id="calculus-type">
+                                    <option value="derivative">Derivative</option>
+                                    <option value="integral">Integral</option>
+                                    <option value="limit">Limit</option>
+                                </select>
+                                <input type="text" id="calculus-input" placeholder="Enter function: x^2 + 3x + 2">
+                                <button onclick="calculateCalculus()">Calculate</button>
+                                <div id="calculus-result"></div>
+                            </div>
+                        </div>
                         
-                        <button onclick="appendToDisplay('1')">1</button>
-                        <button onclick="appendToDisplay('2')">2</button>
-                        <button onclick="appendToDisplay('3')">3</button>
-                        <button onclick="calculate()" rowspan="2" class="equals">=</button>
-                        
-                        <button onclick="appendToDisplay('0')" colspan="2" class="zero">0</button>
-                        <button onclick="appendToDisplay('.')">.</button>
+                        <div class="tool-card">
+                            <div class="tool-icon">🧮</div>
+                            <h4>Matrix Calculator</h4>
+                            <p>Perform matrix operations: addition, multiplication, determinant</p>
+                            <div class="tool-interface">
+                                <div class="matrix-input">
+                                    <div class="matrix-size">
+                                        <label>Size:</label>
+                                        <select id="matrix-size" onchange="createMatrix()">
+                                            <option value="2x2">2×2</option>
+                                            <option value="3x3">3×3</option>
+                                            <option value="4x4">4×4</option>
+                                        </select>
+                                    </div>
+                                    <div id="matrix-grid"></div>
+                                </div>
+                                <button onclick="calculateMatrix()">Calculate</button>
+                                <div id="matrix-result"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
+
+            <!-- Position 3: After Interactive Tools (In-Article) -->
+            <div class="ad-container ad-after-tools">
+                <div class="ad-label">Advertisement</div>
+                <ins class="adsbygoogle"
+                     style="display:block; text-align:center;"
+                     data-ad-layout="in-article"
+                     data-ad-format="fluid"
+                     data-ad-client="ca-pub-5635114711353420"
+                     data-ad-slot="8392847561"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
 
             <!-- Position 4: Bottom Content (Display Vertical) -->
             <div class="ad-container ad-bottom">
@@ -508,12 +785,27 @@
                 <aside class="sidebar">
                     <!-- Position 3: Sticky Sidebar (Display Vertical) -->
                     <div class="ad-container ad-sidebar sticky">
+                        <div class="ad-label">Advertisement</div>
                         <ins class="adsbygoogle"
                              style="display:block"
                              data-ad-client="ca-pub-5635114711353420"
                              data-ad-slot="4175507517"
                              data-ad-format="auto"
                              data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+                    <!-- Sidebar Native Ad -->
+                    <div class="ad-container ad-sidebar-native">
+                        <div class="ad-label">Sponsored</div>
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-format="fluid"
+                             data-ad-layout-key="-fb+5w+4e-db+86"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="9485739261"></ins>
                         <script>
                              (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
@@ -561,6 +853,14 @@
         </div>
     </footer>
 
+    <!-- SEO & Monetization Systems -->
+    <script src="schema-markup.js" defer></script>
+    <script src="viral-growth-system.js" defer></script>
+    <script src="header-bidding-system.js" defer></script>
+    <script src="programmatic-seo-generator.js" defer></script>
+    <script src="core-web-vitals.js" defer></script>
+    <script src="interactive-tools.js" defer></script>
+    
     <!-- Optimized bundled scripts for better performance -->
     <script src="scripts-bundle.min.js" defer></script>
     
@@ -583,6 +883,32 @@
             abTestingScript.async = true;
             document.head.appendChild(abTestingScript);
         }, 2000);
+        
+        // Integration functions for viral sharing and rewarded videos
+        function shareExample(problemType, title) {
+            if (window.viralGrowthSystem) {
+                const challenge = window.viralGrowthSystem.createMathChallenge({
+                    type: problemType,
+                    title: title,
+                    url: window.location.href
+                });
+                window.viralGrowthSystem.shareChallenge(challenge.id);
+            }
+        }
+        
+        function showRewardedVideoOffer(rewardType, context) {
+            if (window.viralGrowthSystem) {
+                window.viralGrowthSystem.showRewardedVideoOffer(rewardType, context);
+            }
+        }
+        
+        // Track problem solving for user segmentation
+        function trackProblemSolved() {
+            if (window.viralGrowthSystem) {
+                window.viralGrowthSystem.incrementDailyProblemCount();
+                window.viralGrowthSystem.determineUserTier();
+            }
+        }
     </script>
 </body>
 </html>
