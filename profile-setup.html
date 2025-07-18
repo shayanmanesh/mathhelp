@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalize Your Learning - MathVerse | Math.help</title>
+    <meta name="description" content="Set up your personalized learning profile to get customized mathematical examples and explanations tailored to your interests.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ad-styles.css">
+    
+    <style>
+        .setup-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .setup-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .setup-step {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 30px 0;
+            display: none;
+        }
+        
+        .setup-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+        
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .interest-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+        
+        .interest-card:hover {
+            background: #e8f4f8;
+            transform: translateY(-2px);
+        }
+        
+        .interest-card.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .interest-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .learning-style-options {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .style-option {
+            flex: 1;
+            min-width: 200px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+        
+        .style-option:hover {
+            background: #e8f4f8;
+        }
+        
+        .style-option.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .level-selector {
+            margin: 20px 0;
+        }
+        
+        .level-slider {
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .level-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .goal-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+        
+        .goal-card:hover {
+            background: #e8f4f8;
+        }
+        
+        .goal-card.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .nav-button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-button.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .nav-button.secondary {
+            background: #e0e0e0;
+            color: #666;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .example-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .completion-celebration {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .celebration-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .profile-summary {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .summary-item {
+            text-align: center;
+        }
+        
+        .summary-label {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .time-commitment {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        
+        .time-option {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .time-option:hover {
+            background: #f0f0f0;
+        }
+        
+        .time-option.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Personalize Your Mathematical Journey</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/mathverse.html">MathVerse</a></li>
+                <li><a href="/concepts/">Concepts</a></li>
+                <li><a href="/profile-setup.html" class="active">Setup Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="setup-hero">
+            <div class="container">
+                <h1>Let's Personalize Your Learning Experience</h1>
+                <p>Help us understand how you learn best so we can provide the most relevant examples and explanations</p>
+            </div>
+        </section>
+
+        <div class="setup-container">
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+            </div>
+
+            <!-- Step 1: Interests -->
+            <div class="setup-step active" id="step1">
+                <h2>What Are You Interested In?</h2>
+                <p>Select all that apply. We'll use these to create personalized examples that connect math to what you love.</p>
+                
+                <div class="interest-grid">
+                    <div class="interest-card" data-interest="music">
+                        <div class="interest-icon">🎵</div>
+                        <h4>Music</h4>
+                        <p>Sound, rhythm, harmony</p>
+                    </div>
+                    <div class="interest-card" data-interest="sports">
+                        <div class="interest-icon">⚽</div>
+                        <h4>Sports</h4>
+                        <p>Games, athletics, competition</p>
+                    </div>
+                    <div class="interest-card" data-interest="gaming">
+                        <div class="interest-icon">🎮</div>
+                        <h4>Gaming</h4>
+                        <p>Video games, strategy, design</p>
+                    </div>
+                    <div class="interest-card" data-interest="art">
+                        <div class="interest-icon">🎨</div>
+                        <h4>Art & Design</h4>
+                        <p>Visual arts, creativity, aesthetics</p>
+                    </div>
+                    <div class="interest-card" data-interest="technology">
+                        <div class="interest-icon">💻</div>
+                        <h4>Technology</h4>
+                        <p>Computers, programming, innovation</p>
+                    </div>
+                    <div class="interest-card" data-interest="nature">
+                        <div class="interest-icon">🌿</div>
+                        <h4>Nature</h4>
+                        <p>Biology, environment, patterns</p>
+                    </div>
+                    <div class="interest-card" data-interest="economics">
+                        <div class="interest-icon">💰</div>
+                        <h4>Economics</h4>
+                        <p>Business, finance, markets</p>
+                    </div>
+                    <div class="interest-card" data-interest="science">
+                        <div class="interest-icon">🔬</div>
+                        <h4>Science</h4>
+                        <p>Physics, chemistry, research</p>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-button secondary" disabled>Previous</button>
+                    <button class="nav-button primary" onclick="nextStep()" id="next1">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Learning Style -->
+            <div class="setup-step" id="step2">
+                <h2>How Do You Learn Best?</h2>
+                <p>Choose the learning style that resonates most with you.</p>
+                
+                <div class="learning-style-options">
+                    <div class="style-option" data-style="visual">
+                        <h3>👁️ Visual Learner</h3>
+                        <p>I learn best through diagrams, charts, and visual representations. I like to see concepts illustrated.</p>
+                    </div>
+                    <div class="style-option" data-style="auditory">
+                        <h3>👂 Auditory Learner</h3>
+                        <p>I learn best through explanations, discussions, and step-by-step narration. I like to hear concepts explained.</p>
+                    </div>
+                    <div class="style-option" data-style="kinesthetic">
+                        <h3>✋ Hands-on Learner</h3>
+                        <p>I learn best through interaction, manipulation, and real-world activities. I like to do and experience concepts.</p>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-button secondary" onclick="previousStep()">Previous</button>
+                    <button class="nav-button primary" onclick="nextStep()" id="next2" disabled>Next</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Current Level -->
+            <div class="setup-step" id="step3">
+                <h2>What's Your Current Math Level?</h2>
+                <p>This helps us provide explanations at the right difficulty for you.</p>
+                
+                <div class="level-selector">
+                    <input type="range" class="level-slider" id="levelSlider" min="1" max="10" value="5">
+                    <div class="level-labels">
+                        <span>Elementary</span>
+                        <span>Middle School</span>
+                        <span>High School</span>
+                        <span>College</span>
+                        <span>Advanced</span>
+                    </div>
+                    <div id="levelDescription" style="text-align: center; margin-top: 15px; font-weight: bold; color: var(--primary-color);">
+                        Level 5: High School
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-button secondary" onclick="previousStep()">Previous</button>
+                    <button class="nav-button primary" onclick="nextStep()" id="next3">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Goals -->
+            <div class="setup-step" id="step4">
+                <h2>What Are Your Learning Goals?</h2>
+                <p>Select all that apply. This helps us prioritize the most relevant content for you.</p>
+                
+                <div class="goals-grid">
+                    <div class="goal-card" data-goal="homework">
+                        <h4>📚 Homework Help</h4>
+                        <p>Get help with assignments and problem solving</p>
+                    </div>
+                    <div class="goal-card" data-goal="exam_prep">
+                        <h4>📝 Exam Preparation</h4>
+                        <p>Study for tests and standardized exams</p>
+                    </div>
+                    <div class="goal-card" data-goal="understanding">
+                        <h4>🤔 Deep Understanding</h4>
+                        <p>Truly understand mathematical concepts</p>
+                    </div>
+                    <div class="goal-card" data-goal="applications">
+                        <h4>🌍 Real-world Applications</h4>
+                        <p>See how math applies to everyday life</p>
+                    </div>
+                    <div class="goal-card" data-goal="career">
+                        <h4>💼 Career Preparation</h4>
+                        <p>Build skills for future career goals</p>
+                    </div>
+                    <div class="goal-card" data-goal="curiosity">
+                        <h4>✨ Pure Curiosity</h4>
+                        <p>Explore math for the joy of learning</p>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-button secondary" onclick="previousStep()">Previous</button>
+                    <button class="nav-button primary" onclick="nextStep()" id="next4">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Time Commitment -->
+            <div class="setup-step" id="step5">
+                <h2>How Much Time Can You Dedicate Daily?</h2>
+                <p>This helps us suggest appropriate learning chunks and pacing.</p>
+                
+                <div class="time-commitment">
+                    <div class="time-option" data-time="15">
+                        <h3>15 min</h3>
+                        <p>Quick concepts</p>
+                    </div>
+                    <div class="time-option" data-time="30">
+                        <h3>30 min</h3>
+                        <p>Balanced learning</p>
+                    </div>
+                    <div class="time-option" data-time="60">
+                        <h3>1 hour</h3>
+                        <p>Deep exploration</p>
+                    </div>
+                    <div class="time-option" data-time="120">
+                        <h3>2+ hours</h3>
+                        <p>Intensive study</p>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-button secondary" onclick="previousStep()">Previous</button>
+                    <button class="nav-button primary" onclick="nextStep()" id="next5" disabled>Next</button>
+                </div>
+            </div>
+
+            <!-- Step 6: Completion -->
+            <div class="setup-step" id="step6">
+                <div class="completion-celebration">
+                    <div class="celebration-icon">🎉</div>
+                    <h2>Your Profile is Ready!</h2>
+                    <p>We've created a personalized learning experience just for you.</p>
+                </div>
+
+                <div class="profile-summary">
+                    <h3>Your Learning Profile:</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <div class="summary-label">Interests</div>
+                            <div id="summaryInterests">Music, Gaming, Technology</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Learning Style</div>
+                            <div id="summaryStyle">Visual</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Current Level</div>
+                            <div id="summaryLevel">High School</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Daily Time</div>
+                            <div id="summaryTime">30 minutes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-preview">
+                    <h4>🎯 Here's how we'll personalize your experience:</h4>
+                    <div id="personalizationPreview">
+                        <p><strong>For Pythagorean Theorem:</strong> We'll show you how it's used in video game character movement and 3D graphics!</p>
+                        <p><strong>For Quadratic Functions:</strong> Discover how they describe projectile motion in sports and optimize audio equalizers in music production.</p>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-button secondary" onclick="previousStep()">Previous</button>
+                    <button class="nav-button primary" onclick="completeSetup()">Start Learning!</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="data/personal-relevance-engine.js"></script>
+    <script>
+        // Profile Setup Logic
+        let currentStep = 1;
+        const totalSteps = 6;
+        let userSelections = {
+            interests: [],
+            learningStyle: '',
+            currentLevel: 5,
+            goals: [],
+            timeAvailable: 30
+        };
+
+        // Initialize Personal Relevance Engine
+        const relevanceEngine = new PersonalRelevanceEngine();
+
+        // Step Navigation
+        function nextStep() {
+            if (currentStep < totalSteps && validateCurrentStep()) {
+                hideStep(currentStep);
+                currentStep++;
+                showStep(currentStep);
+                updateProgress();
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                hideStep(currentStep);
+                currentStep--;
+                showStep(currentStep);
+                updateProgress();
+            }
+        }
+
+        function hideStep(step) {
+            document.getElementById(`step${step}`).classList.remove('active');
+        }
+
+        function showStep(step) {
+            document.getElementById(`step${step}`).classList.add('active');
+        }
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+
+        // Validation
+        function validateCurrentStep() {
+            switch (currentStep) {
+                case 1:
+                    return userSelections.interests.length > 0;
+                case 2:
+                    return userSelections.learningStyle !== '';
+                case 3:
+                    return true; // Level always has a value
+                case 4:
+                    return userSelections.goals.length > 0;
+                case 5:
+                    return userSelections.timeAvailable > 0;
+                default:
+                    return true;
+            }
+        }
+
+        // Interest Selection
+        document.querySelectorAll('.interest-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const interest = this.dataset.interest;
+                this.classList.toggle('selected');
+                
+                if (this.classList.contains('selected')) {
+                    if (!userSelections.interests.includes(interest)) {
+                        userSelections.interests.push(interest);
+                    }
+                } else {
+                    userSelections.interests = userSelections.interests.filter(i => i !== interest);
+                }
+                
+                updateNextButton(1);
+            });
+        });
+
+        // Learning Style Selection
+        document.querySelectorAll('.style-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.style-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                userSelections.learningStyle = this.dataset.style;
+                updateNextButton(2);
+            });
+        });
+
+        // Level Selection
+        const levelSlider = document.getElementById('levelSlider');
+        const levelDescription = document.getElementById('levelDescription');
+        
+        const levelDescriptions = {
+            1: "Level 1: Elementary (Ages 6-8)",
+            2: "Level 2: Elementary (Ages 9-11)",
+            3: "Level 3: Middle School",
+            4: "Level 4: Early High School",
+            5: "Level 5: High School",
+            6: "Level 6: AP/Early College",
+            7: "Level 7: Undergraduate",
+            8: "Level 8: Advanced Undergraduate",
+            9: "Level 9: Graduate",
+            10: "Level 10: Research Level"
+        };
+
+        levelSlider.addEventListener('input', function() {
+            userSelections.currentLevel = parseInt(this.value);
+            levelDescription.textContent = levelDescriptions[this.value];
+        });
+
+        // Goals Selection
+        document.querySelectorAll('.goal-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const goal = this.dataset.goal;
+                this.classList.toggle('selected');
+                
+                if (this.classList.contains('selected')) {
+                    if (!userSelections.goals.includes(goal)) {
+                        userSelections.goals.push(goal);
+                    }
+                } else {
+                    userSelections.goals = userSelections.goals.filter(g => g !== goal);
+                }
+                
+                updateNextButton(4);
+            });
+        });
+
+        // Time Selection
+        document.querySelectorAll('.time-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.time-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                userSelections.timeAvailable = parseInt(this.dataset.time);
+                updateNextButton(5);
+            });
+        });
+
+        // Update Next Button State
+        function updateNextButton(step) {
+            const nextButton = document.getElementById(`next${step}`);
+            if (nextButton) {
+                nextButton.disabled = !validateCurrentStep();
+            }
+        }
+
+        // Complete Setup
+        function completeSetup() {
+            // Save profile using Personal Relevance Engine
+            relevanceEngine.setupUserProfile(
+                userSelections.interests,
+                userSelections.learningStyle,
+                userSelections.currentLevel,
+                userSelections.goals
+            );
+
+            // Update profile summary display
+            updateProfileSummary();
+            
+            // Redirect to personalized experience
+            setTimeout(() => {
+                window.location.href = '/concepts/';
+            }, 2000);
+        }
+
+        // Update Profile Summary
+        function updateProfileSummary() {
+            document.getElementById('summaryInterests').textContent = 
+                userSelections.interests.map(i => i.charAt(0).toUpperCase() + i.slice(1)).join(', ');
+            
+            document.getElementById('summaryStyle').textContent = 
+                userSelections.learningStyle.charAt(0).toUpperCase() + userSelections.learningStyle.slice(1);
+            
+            document.getElementById('summaryLevel').textContent = 
+                levelDescriptions[userSelections.currentLevel].split(': ')[1];
+            
+            document.getElementById('summaryTime').textContent = 
+                `${userSelections.timeAvailable} minutes`;
+            
+            // Generate personalized preview
+            generatePersonalizationPreview();
+        }
+
+        // Generate Personalization Preview
+        function generatePersonalizationPreview() {
+            const preview = document.getElementById('personalizationPreview');
+            const examples = [];
+
+            // Generate examples based on interests
+            if (userSelections.interests.includes('gaming')) {
+                examples.push("For <strong>Pythagorean Theorem:</strong> We'll show you how it's used in video game character movement and collision detection!");
+            }
+            
+            if (userSelections.interests.includes('music')) {
+                examples.push("For <strong>Trigonometry:</strong> Discover how sine waves create the sounds you hear in your favorite songs!");
+            }
+            
+            if (userSelections.interests.includes('sports')) {
+                examples.push("For <strong>Quadratic Functions:</strong> Learn how they describe the perfect arc of a basketball shot!");
+            }
+
+            if (examples.length === 0) {
+                examples.push("We'll customize every mathematical concept with examples relevant to your interests!");
+            }
+
+            preview.innerHTML = examples.map(example => `<p>${example}</p>`).join('');
+        }
+
+        // Initialize
+        updateProgress();
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

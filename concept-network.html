@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept Network - Mathematical Knowledge Graph | Math.help</title>
+    <meta name="description" content="Explore mathematical concepts through an interactive knowledge graph. Discover connections, prerequisites, and learning paths through visualization.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <!-- Visualization Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <style>
+        .network-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .network-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .network-controls {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+        
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .control-group {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .control-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        
+        .control-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .control-button {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .control-button.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .control-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .search-concept {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        
+        .search-concept:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .network-visualization {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+            height: 700px;
+        }
+        
+        .network-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .node {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .node circle {
+            stroke: #fff;
+            stroke-width: 2px;
+        }
+        
+        .node text {
+            font-size: 12px;
+            text-anchor: middle;
+            dominant-baseline: central;
+            pointer-events: none;
+            fill: white;
+            font-weight: 500;
+        }
+        
+        .node.highlighted circle {
+            stroke: #fbbf24;
+            stroke-width: 4px;
+            filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
+        }
+        
+        .node.selected circle {
+            stroke: #ef4444;
+            stroke-width: 4px;
+            filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.8));
+        }
+        
+        .link {
+            stroke: #94a3b8;
+            stroke-width: 2px;
+            opacity: 0.6;
+            transition: all 0.3s;
+        }
+        
+        .link.prerequisite {
+            stroke: #10b981;
+            stroke-dasharray: 5,5;
+        }
+        
+        .link.related {
+            stroke: #3b82f6;
+        }
+        
+        .link.application {
+            stroke: #8b5cf6;
+        }
+        
+        .link.highlighted {
+            opacity: 1;
+            stroke-width: 3px;
+            filter: drop-shadow(0 0 4px currentColor);
+        }
+        
+        .network-legend {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 300px;
+        }
+        
+        .legend-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        .legend-line {
+            width: 30px;
+            height: 3px;
+            border-radius: 2px;
+        }
+        
+        .network-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 300px;
+            display: none;
+        }
+        
+        .info-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .info-category {
+            background: #667eea;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .info-description {
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .info-connections {
+            font-size: 0.9em;
+            color: #475569;
+        }
+        
+        .info-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .info-button {
+            padding: 6px 12px;
+            border: 1px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.3s;
+        }
+        
+        .info-button:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .network-tools {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .tool-button {
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .tool-button:hover {
+            background: #5b5bf6;
+            transform: scale(1.1);
+        }
+        
+        .path-finder {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+        
+        .path-inputs {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: end;
+            margin-bottom: 20px;
+        }
+        
+        .path-input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .path-input-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #374151;
+        }
+        
+        .path-input {
+            padding: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+        }
+        
+        .find-path-button {
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .find-path-button:hover {
+            background: #5b5bf6;
+            transform: translateY(-1px);
+        }
+        
+        .path-result {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .path-steps {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .path-step {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #0ea5e9;
+            color: #0369a1;
+            font-weight: 500;
+        }
+        
+        .path-arrow {
+            color: #0ea5e9;
+            font-weight: bold;
+        }
+        
+        .statistics-panel {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 0.9em;
+        }
+        
+        .clustering-analysis {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .cluster-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .cluster-item {
+            background: #667eea;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+        
+        .concept-details-panel {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+            transition: right 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 30px;
+        }
+        
+        .concept-details-panel.open {
+            right: 0;
+        }
+        
+        .close-details {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #64748b;
+        }
+        
+        .mini-network {
+            width: 100%;
+            height: 200px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Concept Network - Mathematical Knowledge Graph</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/mathverse.html">MathVerse</a></li>
+                <li><a href="/concepts/">Concepts</a></li>
+                <li><a href="/concept-network.html" class="active">Network</a></li>
+                <li><a href="/learning-paths.html">Learning Paths</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="network-hero">
+            <div class="container">
+                <h1>Mathematical Concept Network</h1>
+                <p>Explore the interconnected web of mathematical knowledge through interactive visualization</p>
+            </div>
+        </section>
+
+        <div class="network-container">
+            <!-- Network Controls -->
+            <div class="network-controls">
+                <h3>Network Controls</h3>
+                <div class="controls-grid">
+                    <div class="control-group">
+                        <div class="control-title">Visualization Mode</div>
+                        <div class="control-options">
+                            <button class="control-button active" data-mode="force" onclick="setVisualizationMode('force')">Force Layout</button>
+                            <button class="control-button" data-mode="hierarchy" onclick="setVisualizationMode('hierarchy')">Hierarchical</button>
+                            <button class="control-button" data-mode="circular" onclick="setVisualizationMode('circular')">Circular</button>
+                            <button class="control-button" data-mode="cluster" onclick="setVisualizationMode('cluster')">Clustered</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-title">Filter by Category</div>
+                        <div class="control-options">
+                            <button class="control-button active" data-category="all" onclick="filterByCategory('all')">All Categories</button>
+                            <button class="control-button" data-category="algebra" onclick="filterByCategory('algebra')">Algebra</button>
+                            <button class="control-button" data-category="geometry" onclick="filterByCategory('geometry')">Geometry</button>
+                            <button class="control-button" data-category="calculus" onclick="filterByCategory('calculus')">Calculus</button>
+                            <button class="control-button" data-category="statistics" onclick="filterByCategory('statistics')">Statistics</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-title">Search Concept</div>
+                        <input type="text" class="search-concept" placeholder="Search for a concept..." id="concept-search" oninput="searchConcepts(this.value)">
+                        <div id="search-results" style="margin-top: 10px;"></div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-title">Connection Types</div>
+                        <div class="control-options">
+                            <label style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" checked onchange="toggleConnectionType('prerequisite')"> Prerequisites
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" checked onchange="toggleConnectionType('related')"> Related Concepts
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" checked onchange="toggleConnectionType('application')"> Applications
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Network Visualization -->
+            <div class="network-visualization">
+                <svg class="network-svg" id="network-svg"></svg>
+                
+                <!-- Legend -->
+                <div class="network-legend">
+                    <div class="legend-title">Legend</div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #3b82f6;"></div>
+                        <span>Algebra</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #10b981;"></div>
+                        <span>Geometry</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #f59e0b;"></div>
+                        <span>Calculus</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #8b5cf6;"></div>
+                        <span>Statistics</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ef4444;"></div>
+                        <span>Fundamentals</span>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <div class="legend-item">
+                            <div class="legend-line" style="background: #10b981;"></div>
+                            <span>Prerequisite</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-line" style="background: #3b82f6;"></div>
+                            <span>Related</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-line" style="background: #8b5cf6;"></div>
+                            <span>Application</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Concept Info Panel -->
+                <div class="network-info" id="concept-info">
+                    <div class="info-title" id="info-title">Select a concept</div>
+                    <div class="info-category" id="info-category"></div>
+                    <div class="info-description" id="info-description"></div>
+                    <div class="info-connections" id="info-connections"></div>
+                    <div class="info-actions">
+                        <button class="info-button" onclick="exploreConceptDetail()">Explore</button>
+                        <button class="info-button" onclick="findLearningPath()">Learning Path</button>
+                    </div>
+                </div>
+
+                <!-- Network Tools -->
+                <div class="network-tools">
+                    <button class="tool-button" onclick="zoomIn()" title="Zoom In">+</button>
+                    <button class="tool-button" onclick="zoomOut()" title="Zoom Out">−</button>
+                    <button class="tool-button" onclick="resetZoom()" title="Reset View">⌂</button>
+                    <button class="tool-button" onclick="togglePhysics()" title="Toggle Physics">⚡</button>
+                </div>
+            </div>
+
+            <!-- Path Finder -->
+            <div class="path-finder">
+                <h3>Find Learning Path Between Concepts</h3>
+                <div class="path-inputs">
+                    <div class="path-input-group">
+                        <label>From Concept:</label>
+                        <input type="text" class="path-input" id="path-from" placeholder="e.g., Natural Numbers">
+                    </div>
+                    <button class="find-path-button" onclick="findConceptPath()">Find Path</button>
+                    <div class="path-input-group">
+                        <label>To Concept:</label>
+                        <input type="text" class="path-input" id="path-to" placeholder="e.g., Calculus">
+                    </div>
+                </div>
+                <div class="path-result" id="path-result">
+                    <h4>Learning Path:</h4>
+                    <div class="path-steps" id="path-steps"></div>
+                </div>
+            </div>
+
+            <!-- Statistics Panel -->
+            <div class="statistics-panel">
+                <h3>Network Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-concepts">0</div>
+                        <div class="stat-label">Total Concepts</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-connections">0</div>
+                        <div class="stat-label">Connections</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="network-density">0%</div>
+                        <div class="stat-label">Network Density</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="avg-connections">0</div>
+                        <div class="stat-label">Avg Connections</div>
+                    </div>
+                </div>
+
+                <div class="clustering-analysis">
+                    <h4>Concept Clusters</h4>
+                    <p>Related concepts naturally group together:</p>
+                    <div class="cluster-list" id="cluster-list">
+                        <span class="cluster-item">Number Theory</span>
+                        <span class="cluster-item">Linear Algebra</span>
+                        <span class="cluster-item">Differential Equations</span>
+                        <span class="cluster-item">Probability Theory</span>
+                        <span class="cluster-item">Geometric Analysis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concept Details Panel -->
+        <div class="concept-details-panel" id="concept-details-panel">
+            <button class="close-details" onclick="closeConceptDetails()">×</button>
+            <div id="concept-details-content">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <script src="data/core-concepts-database.js"></script>
+    <script src="data/concept-network-engine.js"></script>
+    <script>
+        // Network visualization variables
+        let networkEngine;
+        let svg, simulation;
+        let nodes = [], links = [];
+        let selectedConcept = null;
+        let currentMode = 'force';
+        let currentCategory = 'all';
+        let enabledConnectionTypes = ['prerequisite', 'related', 'application'];
+        let zoomBehavior, transform = d3.zoomIdentity;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            networkEngine = new ConceptNetworkEngine();
+            initializeVisualization();
+            loadNetworkData();
+            updateStatistics();
+        });
+
+        function initializeVisualization() {
+            const container = document.getElementById('network-svg');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            svg = d3.select('#network-svg')
+                .attr('width', width)
+                .attr('height', height);
+
+            // Add zoom behavior
+            zoomBehavior = d3.zoom()
+                .scaleExtent([0.1, 10])
+                .on('zoom', function(event) {
+                    transform = event.transform;
+                    svg.selectAll('g').attr('transform', transform);
+                });
+
+            svg.call(zoomBehavior);
+
+            // Create groups for links and nodes
+            svg.append('g').attr('class', 'links');
+            svg.append('g').attr('class', 'nodes');
+
+            // Initialize force simulation
+            simulation = d3.forceSimulation()
+                .force('link', d3.forceLink().id(d => d.id).distance(100))
+                .force('charge', d3.forceManyBody().strength(-300))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collision', d3.forceCollide().radius(30));
+        }
+
+        function loadNetworkData() {
+            const networkData = networkEngine.buildConceptNetwork(currentCategory, enabledConnectionTypes);
+            nodes = networkData.nodes;
+            links = networkData.links;
+            
+            updateVisualization();
+        }
+
+        function updateVisualization() {
+            // Update links
+            const link = svg.select('.links')
+                .selectAll('line')
+                .data(links, d => `${d.source.id || d.source}-${d.target.id || d.target}`);
+
+            link.exit().remove();
+
+            const linkEnter = link.enter()
+                .append('line')
+                .attr('class', d => `link ${d.type}`)
+                .attr('stroke', d => getConnectionColor(d.type));
+
+            // Update nodes
+            const node = svg.select('.nodes')
+                .selectAll('g')
+                .data(nodes, d => d.id);
+
+            node.exit().remove();
+
+            const nodeEnter = node.enter()
+                .append('g')
+                .attr('class', 'node')
+                .call(d3.drag()
+                    .on('start', dragstarted)
+                    .on('drag', dragged)
+                    .on('end', dragended));
+
+            nodeEnter.append('circle')
+                .attr('r', d => getNodeSize(d))
+                .attr('fill', d => getCategoryColor(d.category));
+
+            nodeEnter.append('text')
+                .text(d => d.shortName || d.title.split(' ')[0])
+                .attr('dy', '0.35em');
+
+            // Add click handler
+            nodeEnter.on('click', function(event, d) {
+                selectConcept(d);
+            });
+
+            // Update simulation
+            simulation.nodes(nodes);
+            simulation.force('link').links(links);
+            simulation.alpha(1).restart();
+
+            // Simulation tick
+            simulation.on('tick', () => {
+                svg.selectAll('line')
+                    .attr('x1', d => d.source.x)
+                    .attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x)
+                    .attr('y2', d => d.target.y);
+
+                svg.selectAll('.node')
+                    .attr('transform', d => `translate(${d.x},${d.y})`);
+            });
+        }
+
+        function getCategoryColor(category) {
+            const colors = {
+                'algebra': '#3b82f6',
+                'geometry': '#10b981',
+                'calculus': '#f59e0b',
+                'statistics': '#8b5cf6',
+                'probability': '#8b5cf6',
+                'fundamentals': '#ef4444'
+            };
+            return colors[category] || '#64748b';
+        }
+
+        function getConnectionColor(type) {
+            const colors = {
+                'prerequisite': '#10b981',
+                'related': '#3b82f6',
+                'application': '#8b5cf6'
+            };
+            return colors[type] || '#94a3b8';
+        }
+
+        function getNodeSize(node) {
+            // Size based on number of connections
+            const connectionCount = links.filter(link => 
+                link.source === node.id || link.target === node.id ||
+                link.source.id === node.id || link.target.id === node.id
+            ).length;
+            return Math.max(15, Math.min(30, 15 + connectionCount * 2));
+        }
+
+        function selectConcept(concept) {
+            selectedConcept = concept;
+            
+            // Update visual selection
+            svg.selectAll('.node').classed('selected', false);
+            svg.selectAll('.node').filter(d => d.id === concept.id).classed('selected', true);
+            
+            // Highlight connected nodes and links
+            highlightConnections(concept);
+            
+            // Show concept info
+            showConceptInfo(concept);
+        }
+
+        function highlightConnections(concept) {
+            // Reset highlights
+            svg.selectAll('.node').classed('highlighted', false);
+            svg.selectAll('.link').classed('highlighted', false);
+            
+            // Find connected concepts
+            const connectedNodeIds = new Set();
+            const connectedLinks = links.filter(link => {
+                const sourceId = link.source.id || link.source;
+                const targetId = link.target.id || link.target;
+                
+                if (sourceId === concept.id) {
+                    connectedNodeIds.add(targetId);
+                    return true;
+                }
+                if (targetId === concept.id) {
+                    connectedNodeIds.add(sourceId);
+                    return true;
+                }
+                return false;
+            });
+            
+            // Highlight connected nodes
+            svg.selectAll('.node')
+                .filter(d => connectedNodeIds.has(d.id))
+                .classed('highlighted', true);
+            
+            // Highlight connected links
+            svg.selectAll('.link')
+                .filter(d => {
+                    const sourceId = d.source.id || d.source;
+                    const targetId = d.target.id || d.target;
+                    return sourceId === concept.id || targetId === concept.id;
+                })
+                .classed('highlighted', true);
+        }
+
+        function showConceptInfo(concept) {
+            const infoPanel = document.getElementById('concept-info');
+            const conceptData = networkEngine.getConceptDetails(concept.id);
+            
+            document.getElementById('info-title').textContent = concept.title;
+            document.getElementById('info-category').textContent = concept.category;
+            document.getElementById('info-description').textContent = conceptData.description || 'Explore this fundamental mathematical concept.';
+            
+            // Show connections count
+            const connectionCount = links.filter(link => {
+                const sourceId = link.source.id || link.source;
+                const targetId = link.target.id || link.target;
+                return sourceId === concept.id || targetId === concept.id;
+            }).length;
+            
+            document.getElementById('info-connections').textContent = `${connectionCount} connections`;
+            
+            infoPanel.style.display = 'block';
+        }
+
+        function setVisualizationMode(mode) {
+            currentMode = mode;
+            
+            // Update active button
+            document.querySelectorAll('[data-mode]').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
+            
+            // Apply layout
+            switch(mode) {
+                case 'force':
+                    applyForceLayout();
+                    break;
+                case 'hierarchy':
+                    applyHierarchicalLayout();
+                    break;
+                case 'circular':
+                    applyCircularLayout();
+                    break;
+                case 'cluster':
+                    applyClusterLayout();
+                    break;
+            }
+        }
+
+        function applyForceLayout() {
+            simulation
+                .force('link', d3.forceLink().id(d => d.id).distance(100))
+                .force('charge', d3.forceManyBody().strength(-300))
+                .force('center', d3.forceCenter(svg.attr('width') / 2, svg.attr('height') / 2))
+                .alpha(1).restart();
+        }
+
+        function applyHierarchicalLayout() {
+            const hierarchy = networkEngine.getConceptHierarchy(nodes, links);
+            // Apply hierarchical positioning
+            simulation.stop();
+            
+            // Simple hierarchical layout by difficulty level
+            nodes.forEach(node => {
+                const level = node.difficulty_range ? node.difficulty_range[0] : 5;
+                node.fx = (level - 1) * (svg.attr('width') / 10) + 100;
+                node.fy = Math.random() * (svg.attr('height') - 200) + 100;
+            });
+            
+            updateVisualization();
+        }
+
+        function applyCircularLayout() {
+            simulation.stop();
+            
+            const radius = Math.min(svg.attr('width'), svg.attr('height')) / 3;
+            const centerX = svg.attr('width') / 2;
+            const centerY = svg.attr('height') / 2;
+            
+            nodes.forEach((node, i) => {
+                const angle = (2 * Math.PI * i) / nodes.length;
+                node.fx = centerX + radius * Math.cos(angle);
+                node.fy = centerY + radius * Math.sin(angle);
+            });
+            
+            updateVisualization();
+        }
+
+        function applyClusterLayout() {
+            simulation.stop();
+            
+            const clusters = networkEngine.clusterConcepts(nodes, links);
+            
+            // Position clusters
+            Object.keys(clusters).forEach((category, i) => {
+                const clusterNodes = clusters[category];
+                const clusterCenterX = (i % 3) * (svg.attr('width') / 3) + svg.attr('width') / 6;
+                const clusterCenterY = Math.floor(i / 3) * (svg.attr('height') / 3) + svg.attr('height') / 6;
+                
+                clusterNodes.forEach((node, j) => {
+                    const angle = (2 * Math.PI * j) / clusterNodes.length;
+                    const radius = 80;
+                    node.fx = clusterCenterX + radius * Math.cos(angle);
+                    node.fy = clusterCenterY + radius * Math.sin(angle);
+                });
+            });
+            
+            updateVisualization();
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+            
+            // Update active button
+            document.querySelectorAll('[data-category]').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            
+            // Reload data with filter
+            loadNetworkData();
+        }
+
+        function toggleConnectionType(type) {
+            const index = enabledConnectionTypes.indexOf(type);
+            if (index > -1) {
+                enabledConnectionTypes.splice(index, 1);
+            } else {
+                enabledConnectionTypes.push(type);
+            }
+            
+            loadNetworkData();
+        }
+
+        function searchConcepts(query) {
+            const results = networkEngine.searchConcepts(query);
+            const resultsContainer = document.getElementById('search-results');
+            
+            if (query.length < 2) {
+                resultsContainer.innerHTML = '';
+                return;
+            }
+            
+            resultsContainer.innerHTML = results.slice(0, 5).map(result => 
+                `<div style="padding: 5px; cursor: pointer; background: #f8fafc; margin: 2px 0; border-radius: 4px;" 
+                      onclick="highlightConcept('${result.id}')">
+                    ${result.title}
+                </div>`
+            ).join('');
+        }
+
+        function highlightConcept(conceptId) {
+            const concept = nodes.find(n => n.id === conceptId);
+            if (concept) {
+                selectConcept(concept);
+                
+                // Center on concept
+                const x = -concept.x * transform.k + svg.attr('width') / 2;
+                const y = -concept.y * transform.k + svg.attr('height') / 2;
+                
+                svg.transition().duration(750).call(
+                    zoomBehavior.transform,
+                    d3.zoomIdentity.translate(x, y).scale(transform.k)
+                );
+            }
+        }
+
+        function findConceptPath() {
+            const fromConcept = document.getElementById('path-from').value;
+            const toConcept = document.getElementById('path-to').value;
+            
+            if (!fromConcept || !toConcept) return;
+            
+            const path = networkEngine.findLearningPath(fromConcept, toConcept);
+            
+            if (path && path.length > 0) {
+                document.getElementById('path-result').style.display = 'block';
+                document.getElementById('path-steps').innerHTML = path.map((step, i) => 
+                    `<span class="path-step">${step}</span>${i < path.length - 1 ? '<span class="path-arrow">→</span>' : ''}`
+                ).join('');
+            } else {
+                document.getElementById('path-result').style.display = 'block';
+                document.getElementById('path-steps').innerHTML = '<span style="color: #ef4444;">No path found between these concepts.</span>';
+            }
+        }
+
+        function updateStatistics() {
+            const stats = networkEngine.calculateNetworkStatistics(nodes, links);
+            
+            document.getElementById('total-concepts').textContent = stats.totalConcepts;
+            document.getElementById('total-connections').textContent = stats.totalConnections;
+            document.getElementById('network-density').textContent = `${stats.density}%`;
+            document.getElementById('avg-connections').textContent = stats.avgConnections;
+        }
+
+        function exploreConceptDetail() {
+            if (selectedConcept) {
+                window.location.href = `/concepts/${selectedConcept.id}.html`;
+            }
+        }
+
+        function findLearningPath() {
+            if (selectedConcept) {
+                window.location.href = `/learning-paths.html?concept=${selectedConcept.id}`;
+            }
+        }
+
+        // Tool functions
+        function zoomIn() {
+            svg.transition().duration(300).call(
+                zoomBehavior.scaleBy, 1.5
+            );
+        }
+
+        function zoomOut() {
+            svg.transition().duration(300).call(
+                zoomBehavior.scaleBy, 1 / 1.5
+            );
+        }
+
+        function resetZoom() {
+            svg.transition().duration(750).call(
+                zoomBehavior.transform,
+                d3.zoomIdentity
+            );
+        }
+
+        function togglePhysics() {
+            if (simulation.alpha() > 0) {
+                simulation.stop();
+            } else {
+                simulation.alpha(0.3).restart();
+            }
+        }
+
+        // Drag functions
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+
+        function closeConceptDetails() {
+            document.getElementById('concept-details-panel').classList.remove('open');
+        }
+    </script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
