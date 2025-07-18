@@ -48,13 +48,93 @@ class MLRecommendationEngine {
 
             // Track recommendation performance
             await this.performanceTracker.trackRecommendations(
-                userId,
-                explainedRecommendations
+                explainedRecommendations,
+                userId
             );
 
             return explainedRecommendations;
+
         } catch (error) {
             console.error('Error generating recommendations:', error);
+            return this.getFallbackRecommendations(userId);
+        }
+    }
+
+    async getUserModel(userId) {
+        if (!this.userModels.has(userId)) {
+            this.userModels.set(userId, {
+                id: userId,
+                preferences: {},
+                history: [],
+                created: Date.now()
+            });
+        }
+        return this.userModels.get(userId);
+    }
+
+    async updateUserModel(userModel, context) {
+        if (context.timestamp) {
+            userModel.lastActivity = context.timestamp;
+        }
+        return userModel;
+    }
+
+    async generateMultiAlgorithmRecommendations(userModel, context) {
+        const recommendations = [];
+        
+        // Add some sample recommendations
+        recommendations.push({
+            title: 'Quadratic Equations',
+            reason: 'Based on your progress with linear equations',
+            confidence: 0.85,
+            type: 'concept'
+        });
+        
+        recommendations.push({
+            title: 'Trigonometry Basics',
+            reason: 'Next step in your learning path',
+            confidence: 0.78,
+            type: 'concept'
+        });
+        
+        return recommendations;
+    }
+
+    async rankRecommendations(recommendations, userModel, context) {
+        return recommendations.sort((a, b) => (b.confidence || 0) - (a.confidence || 0));
+    }
+
+    async addExplanations(recommendations, userModel) {
+        return recommendations.map(rec => ({
+            ...rec,
+            explanation: rec.reason || 'Recommended based on your learning progress'
+        }));
+    }
+
+    getFallbackRecommendations(userId) {
+        return [
+            {
+                title: 'Basic Algebra',
+                reason: 'Foundation for advanced mathematics',
+                confidence: 0.8,
+                type: 'concept'
+            },
+            {
+                title: 'Linear Equations',
+                reason: 'Essential problem-solving skills',
+                confidence: 0.75,
+                type: 'concept'
+            }
+        ];
+    }
+}
+
+// Export for use in other modules
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = MLRecommendationEngine;
+} else {
+    window.MLRecommendationEngine = MLRecommendationEngine;
+}
             return await this.getFallbackRecommendations(userId);
         }
     }

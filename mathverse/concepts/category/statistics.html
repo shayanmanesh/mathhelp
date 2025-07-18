@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics & Probability - Mathematical Concepts | MathVerse</title>
+    <meta name="description" content="Explore 700+ statistics and probability concepts including data analysis, distributions, and inference.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <style>
+        .category-hero {
+            background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .concept-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-3px);
+            border-color: #f39c12;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        }
+        
+        .concept-title {
+            font-size: 1.3em;
+            color: #f39c12;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #f39c12;
+            margin-bottom: 5px;
+        }
+        
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .breadcrumb a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        
+        .category-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .concept-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .concept-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+        }
+        
+        .difficulty-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        
+        .difficulty-intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .difficulty-advanced {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">MathVerse</h1>
+            <p class="tagline">Statistics & Probability</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/mathverse.html">MathVerse</a></li>
+                <li><a href="/concepts/" class="active">Concepts</a></li>
+                <li><a href="/learning-paths.html">Learning Paths</a></li>
+                <li><a href="/ai-assistant.html">AI Assistant</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="category-hero">
+            <div class="container">
+                <h1>📊 Statistics & Probability</h1>
+                <p>Master data analysis, distributions, and inference</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="/">Home</a> > 
+                <a href="/mathverse.html">MathVerse</a> > 
+                <a href="/concepts/">Concepts</a> > 
+                <span>Statistics & Probability</span>
+            </div>
+
+            <!-- Category Stats -->
+            <div class="category-stats">
+                <div class="stat-card">
+                    <div class="stat-number">700+</div>
+                    <div class="stat-label">Concepts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">16</div>
+                    <div class="stat-label">Topics</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,600+</div>
+                    <div class="stat-label">Examples</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">74%</div>
+                    <div class="stat-label">Completion Rate</div>
+                </div>
+            </div>
+
+            <!-- Concepts Grid -->
+            <div class="concepts-grid">
+                <div class="concept-card" onclick="navigateToConcept('descriptive-statistics')">
+                    <div class="concept-title">Descriptive Statistics</div>
+                    <div class="concept-description">Measures of central tendency, variability, and data visualization.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-intermediate">intermediate</span>
+                        <span>145 examples</span>
+                    </div>
+                </div>
+                
+                <div class="concept-card" onclick="navigateToConcept('probability-basics')">
+                    <div class="concept-title">Probability Basics</div>
+                    <div class="concept-description">Fundamental concepts of probability, sample spaces, and events.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-intermediate">intermediate</span>
+                        <span>167 examples</span>
+                    </div>
+                </div>
+                
+                <div class="concept-card" onclick="navigateToConcept('distributions')">
+                    <div class="concept-title">Probability Distributions</div>
+                    <div class="concept-description">Normal, binomial, and other important probability distributions.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-intermediate">intermediate</span>
+                        <span>189 examples</span>
+                    </div>
+                </div>
+                
+                <div class="concept-card" onclick="navigateToConcept('hypothesis-testing')">
+                    <div class="concept-title">Hypothesis Testing</div>
+                    <div class="concept-description">Statistical inference and testing hypotheses about populations.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-advanced">advanced</span>
+                        <span>134 examples</span>
+                    </div>
+                </div>
+                
+                <div class="concept-card" onclick="navigateToConcept('regression-analysis')">
+                    <div class="concept-title">Regression Analysis</div>
+                    <div class="concept-description">Modeling relationships between variables using linear and nonlinear methods.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-advanced">advanced</span>
+                        <span>156 examples</span>
+                    </div>
+                </div>
+                
+                <div class="concept-card" onclick="navigateToConcept('experimental-design')">
+                    <div class="concept-title">Experimental Design</div>
+                    <div class="concept-description">Planning and conducting experiments to collect reliable data.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-advanced">advanced</span>
+                        <span>98 examples</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function navigateToConcept(conceptId) {
+            alert(`Navigating to concept: ${conceptId}\n\nThis would open the detailed concept page with explanations, examples, and interactive elements.`);
+        }
+    </script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

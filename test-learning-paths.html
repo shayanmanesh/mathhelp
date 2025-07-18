@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Paths Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>Learning Paths Functionality Test</h1>
+    <div id="test-results"></div>
+
+    <script src="data/learning-paths-data.js"></script>
+    <script src="data/personal-relevance-engine.js"></script>
+    <script>
+        function addTestResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.textContent = message;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function runTests() {
+            try {
+                // Test 1: Check if learning paths data is loaded
+                if (typeof getLearningPathCategories === 'function') {
+                    const categories = getLearningPathCategories();
+                    addTestResult(`✓ Learning path categories loaded: ${categories.length} categories`, 'success');
+                } else {
+                    addTestResult('✗ getLearningPathCategories function not found', 'error');
+                }
+
+                // Test 2: Check if all learning paths are loaded
+                if (typeof getAllLearningPaths === 'function') {
+                    const paths = getAllLearningPaths();
+                    addTestResult(`✓ All learning paths loaded: ${paths.length} paths`, 'success');
+                } else {
+                    addTestResult('✗ getAllLearningPaths function not found', 'error');
+                }
+
+                // Test 3: Check if PersonalRelevanceEngine is available
+                if (typeof PersonalRelevanceEngine === 'function') {
+                    const engine = new PersonalRelevanceEngine();
+                    addTestResult('✓ PersonalRelevanceEngine initialized successfully', 'success');
+                } else {
+                    addTestResult('✗ PersonalRelevanceEngine not found', 'error');
+                }
+
+                // Test 4: Check specific learning path structure
+                if (typeof getAllLearningPaths === 'function') {
+                    const paths = getAllLearningPaths();
+                    const firstPath = paths[0];
+                    if (firstPath && firstPath.concepts && firstPath.concepts.length > 0) {
+                        addTestResult(`✓ First learning path has ${firstPath.concepts.length} concepts`, 'success');
+                    } else {
+                        addTestResult('✗ Learning path structure appears invalid', 'error');
+                    }
+                }
+
+                // Test 5: Test localStorage functionality
+                try {
+                    localStorage.setItem('test-key', 'test-value');
+                    const value = localStorage.getItem('test-key');
+                    localStorage.removeItem('test-key');
+                    if (value === 'test-value') {
+                        addTestResult('✓ localStorage working correctly', 'success');
+                    } else {
+                        addTestResult('✗ localStorage not working', 'error');
+                    }
+                } catch (e) {
+                    addTestResult('✗ localStorage error: ' + e.message, 'error');
+                }
+
+            } catch (error) {
+                addTestResult('✗ Test execution error: ' + error.message, 'error');
+            }
+        }
+
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

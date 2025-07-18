@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discrete Mathematics - Mathematical Concepts | MathVerse</title>
+    <meta name="description" content="Explore 600+ discrete mathematics concepts including logic, graphs, combinatorics, and algorithms.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <style>
+        .category-hero {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .concept-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-3px);
+            border-color: #9b59b6;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        }
+        
+        .concept-title {
+            font-size: 1.3em;
+            color: #9b59b6;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #9b59b6;
+            margin-bottom: 5px;
+        }
+        
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .breadcrumb a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        
+        .category-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .concept-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .concept-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+        }
+        
+        .difficulty-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        
+        .difficulty-intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .difficulty-advanced {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">MathVerse</h1>
+            <p class="tagline">Discrete Mathematics</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/mathverse.html">MathVerse</a></li>
+                <li><a href="/concepts/" class="active">Concepts</a></li>
+                <li><a href="/learning-paths.html">Learning Paths</a></li>
+                <li><a href="/ai-assistant.html">AI Assistant</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="category-hero">
+            <div class="container">
+                <h1>🔗 Discrete Mathematics</h1>
+                <p>Master logic, graphs, combinatorics, and algorithms</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="/">Home</a> > 
+                <a href="/mathverse.html">MathVerse</a> > 
+                <a href="/concepts/">Concepts</a> > 
+                <span>Discrete Mathematics</span>
+            </div>
+
+            <!-- Category Stats -->
+            <div class="category-stats">
+                <div class="stat-card">
+                    <div class="stat-number">600+</div>
+                    <div class="stat-label">Concepts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Topics</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,400+</div>
+                    <div class="stat-label">Examples</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">68%</div>
+                    <div class="stat-label">Completion Rate</div>
+                </div>
+            </div>
+
+            <!-- Concepts Grid -->
+            <div class="concepts-grid">
+                <div class="concept-card" onclick="navigateToConcept('logic')">
+                    <div class="concept-title">Logic</div>
+                    <div class="concept-description">Propositional and predicate logic, truth tables, and logical reasoning.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-intermediate">intermediate</span>
+                        <span>89 examples</span>
+                    </div>
+                </div>
+                
+                <div class="concept-card" onclick="navigateToConcept('graph-theory')">
+                    <div class="concept-title">Graph Theory</div>
+                    <div class="concept-description">Networks, vertices, edges, and graph algorithms.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-intermediate">intermediate</span>
+                        <span>134 examples</span>
+                    </div>
+                </div>
+                
+                <div class="concept-card" onclick="navigateToConcept('combinatorics')">
+                    <div class="concept-title">Combinatorics</div>
+                    <div class="concept-description">Counting techniques, permutations, combinations, and arrangements.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-intermediate">intermediate</span>
+                        <span>156 examples</span>
+                    </div>
+                </div>
+                
+                <div class="concept-card" onclick="navigateToConcept('algorithms')">
+                    <div class="concept-title">Algorithms</div>
+                    <div class="concept-description">Step-by-step procedures for solving computational problems.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-advanced">advanced</span>
+                        <span>98 examples</span>
+                    </div>
+                </div>
+                
+                <div class="concept-card" onclick="navigateToConcept('set-theory')">
+                    <div class="concept-title">Set Theory</div>
+                    <div class="concept-description">Collections of objects and operations on sets.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-intermediate">intermediate</span>
+                        <span>76 examples</span>
+                    </div>
+                </div>
+                
+                <div class="concept-card" onclick="navigateToConcept('number-theory')">
+                    <div class="concept-title">Number Theory</div>
+                    <div class="concept-description">Properties of integers, prime numbers, and modular arithmetic.</div>
+                    <div class="concept-meta">
+                        <span class="difficulty-badge difficulty-advanced">advanced</span>
+                        <span>112 examples</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function navigateToConcept(conceptId) {
+            alert(`Navigating to concept: ${conceptId}\n\nThis would open the detailed concept page with explanations, examples, and interactive elements.`);
+        }
+    </script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Features Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+        .test-section { margin: 20px 0; border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+        button { margin: 5px; padding: 10px 15px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        #problem-input { width: 100%; height: 100px; margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 3px; }
+        #solution-output { margin: 10px 0; padding: 10px; background: #f8f9fa; border-left: 4px solid #007bff; min-height: 100px; }
+    </style>
+</head>
+<body>
+    <h1>AI Features Functionality Test</h1>
+    <div id="test-results"></div>
+
+    <div class="test-section">
+        <h2>Problem Solving Test</h2>
+        <textarea id="problem-input" placeholder="Enter a math problem to test the AI solver...">x^2 + 5x + 6 = 0</textarea>
+        <button onclick="testProblemSolving()">Test Problem Solving</button>
+        <div id="solution-output"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Recommendation Engine Test</h2>
+        <button onclick="testRecommendations()">Test Recommendations</button>
+        <div id="recommendations-output"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Learning Path Integration Test</h2>
+        <button onclick="testLearningPathIntegration()">Test Learning Path Integration</button>
+        <div id="learning-path-output"></div>
+    </div>
+
+    <!-- Load the fixed dependencies -->
+    <script src="data/missing-classes-fix.js"></script>
+    <script src="data/core-concepts-database.js"></script>
+    <script src="data/ai-explanation-engine.js"></script>
+    <script src="data/ml-recommendation-engine.js"></script>
+    <script src="data/problem-solving-assistant.js"></script>
+    <script src="data/collaborative-system.js"></script>
+    <script src="data/learning-paths-data.js"></script>
+    <script src="data/personal-relevance-engine.js"></script>
+
+    <script>
+        let aiSystems = {};
+
+        function addTestResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.textContent = message;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function initializeAISystems() {
+            try {
+                // Test AI system initialization
+                if (typeof AIExplanationEngine === 'function') {
+                    aiSystems.explanationEngine = new AIExplanationEngine();
+                    addTestResult('✓ AI Explanation Engine initialized', 'success');
+                } else {
+                    addTestResult('✗ AI Explanation Engine not found', 'error');
+                }
+
+                if (typeof MLRecommendationEngine === 'function') {
+                    aiSystems.recommendationEngine = new MLRecommendationEngine();
+                    addTestResult('✓ ML Recommendation Engine initialized', 'success');
+                } else {
+                    addTestResult('✗ ML Recommendation Engine not found', 'error');
+                }
+
+                if (typeof ProblemSolvingAssistant === 'function') {
+                    aiSystems.problemSolver = new ProblemSolvingAssistant();
+                    addTestResult('✓ Problem Solving Assistant initialized', 'success');
+                } else {
+                    addTestResult('✗ Problem Solving Assistant not found', 'error');
+                }
+
+                if (typeof CollaborativeSystem === 'function') {
+                    aiSystems.collaborative = new CollaborativeSystem();
+                    addTestResult('✓ Collaborative System initialized', 'success');
+                } else {
+                    addTestResult('✗ Collaborative System not found', 'error');
+                }
+
+                if (typeof PersonalRelevanceEngine === 'function') {
+                    aiSystems.personalRelevance = new PersonalRelevanceEngine();
+                    addTestResult('✓ Personal Relevance Engine initialized', 'success');
+                } else {
+                    addTestResult('✗ Personal Relevance Engine not found', 'error');
+                }
+
+                // Test learning paths data
+                if (typeof getLearningPathCategories === 'function') {
+                    const categories = getLearningPathCategories();
+                    addTestResult(`✓ Learning path categories loaded: ${categories.length} categories`, 'success');
+                } else {
+                    addTestResult('✗ Learning path data not loaded', 'error');
+                }
+
+            } catch (error) {
+                addTestResult('✗ Error initializing AI systems: ' + error.message, 'error');
+            }
+        }
+
+        async function testProblemSolving() {
+            const problemInput = document.getElementById('problem-input').value;
+            const outputDiv = document.getElementById('solution-output');
+            
+            try {
+                if (!aiSystems.problemSolver) {
+                    outputDiv.innerHTML = '<p style="color: red;">Problem solver not initialized</p>';
+                    return;
+                }
+
+                outputDiv.innerHTML = '<p>Solving problem...</p>';
+                
+                const solution = await aiSystems.problemSolver.solveProblem({
+                    text: problemInput
+                });
+
+                if (solution && solution.steps) {
+                    let html = '<h3>Solution Steps:</h3>';
+                    solution.steps.forEach((step, index) => {
+                        html += `<div style="margin: 10px 0; padding: 10px; background: white; border-left: 3px solid #007bff;">
+                            <strong>${step.title}</strong><br>
+                            ${step.content}
+                        </div>`;
+                    });
+                    
+                    if (solution.hints && solution.hints.length > 0) {
+                        html += '<h4>Hints:</h4><ul>';
+                        solution.hints.forEach(hint => {
+                            html += `<li>${hint}</li>`;
+                        });
+                        html += '</ul>';
+                    }
+                    
+                    outputDiv.innerHTML = html;
+                    addTestResult('✓ Problem solving test completed successfully', 'success');
+                } else {
+                    outputDiv.innerHTML = '<p style="color: red;">No solution generated</p>';
+                    addTestResult('✗ Problem solving failed to generate solution', 'error');
+                }
+            } catch (error) {
+                outputDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                addTestResult('✗ Problem solving test failed: ' + error.message, 'error');
+            }
+        }
+
+        async function testRecommendations() {
+            const outputDiv = document.getElementById('recommendations-output');
+            
+            try {
+                if (!aiSystems.recommendationEngine) {
+                    outputDiv.innerHTML = '<p style="color: red;">Recommendation engine not initialized</p>';
+                    return;
+                }
+
+                outputDiv.innerHTML = '<p>Generating recommendations...</p>';
+                
+                const recommendations = await aiSystems.recommendationEngine.generateRecommendations(
+                    'test_user_' + Date.now()
+                );
+
+                if (recommendations && recommendations.length > 0) {
+                    let html = '<h3>Personalized Recommendations:</h3>';
+                    recommendations.forEach(rec => {
+                        html += `<div style="margin: 10px 0; padding: 10px; background: white; border: 1px solid #ddd; border-radius: 5px;">
+                            <strong>${rec.title}</strong><br>
+                            <small style="color: #666;">${rec.reason}</small><br>
+                            <div style="background: #eee; height: 4px; margin: 5px 0;">
+                                <div style="background: #007bff; height: 100%; width: ${(rec.confidence || 0.5) * 100}%"></div>
+                            </div>
+                        </div>`;
+                    });
+                    outputDiv.innerHTML = html;
+                    addTestResult('✓ Recommendations test completed successfully', 'success');
+                } else {
+                    outputDiv.innerHTML = '<p style="color: orange;">No recommendations generated</p>';
+                    addTestResult('⚠ Recommendations test completed but no recommendations generated', 'info');
+                }
+            } catch (error) {
+                outputDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                addTestResult('✗ Recommendations test failed: ' + error.message, 'error');
+            }
+        }
+
+        async function testLearningPathIntegration() {
+            const outputDiv = document.getElementById('learning-path-output');
+            
+            try {
+                if (!aiSystems.personalRelevance) {
+                    outputDiv.innerHTML = '<p style="color: red;">Personal relevance engine not initialized</p>';
+                    return;
+                }
+
+                outputDiv.innerHTML = '<p>Testing learning path integration...</p>';
+                
+                // Test personalized content generation
+                const personalizedContent = aiSystems.personalRelevance.getPersonalizedContent(
+                    'pythagorean_theorem',
+                    {
+                        interests: ['gaming', 'sports'],
+                        learningStyle: 'visual',
+                        currentLevel: 5
+                    }
+                );
+
+                if (personalizedContent) {
+                    let html = '<h3>Personalized Learning Content:</h3>';
+                    
+                    if (personalizedContent.personalizedExample) {
+                        html += `<div style="margin: 10px 0; padding: 10px; background: #e8f5e8; border-radius: 5px;">
+                            <strong>Personalized Example:</strong><br>
+                            <strong>${personalizedContent.personalizedExample.title}</strong><br>
+                            ${personalizedContent.personalizedExample.description}
+                        </div>`;
+                    }
+
+                    if (personalizedContent.contextualAnalogy) {
+                        html += `<div style="margin: 10px 0; padding: 10px; background: #f0f8ff; border-radius: 5px;">
+                            <strong>Contextual Analogy:</strong><br>
+                            ${personalizedContent.contextualAnalogy}
+                        </div>`;
+                    }
+
+                    if (personalizedContent.relevantApplications && personalizedContent.relevantApplications.length > 0) {
+                        html += '<h4>Relevant Applications:</h4><ul>';
+                        personalizedContent.relevantApplications.forEach(app => {
+                            html += `<li><strong>${app.interest}:</strong> ${app.description}</li>`;
+                        });
+                        html += '</ul>';
+                    }
+
+                    outputDiv.innerHTML = html;
+                    addTestResult('✓ Learning path integration test completed successfully', 'success');
+                } else {
+                    outputDiv.innerHTML = '<p style="color: orange;">No personalized content generated</p>';
+                    addTestResult('⚠ Learning path integration test completed but no content generated', 'info');
+                }
+            } catch (error) {
+                outputDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                addTestResult('✗ Learning path integration test failed: ' + error.message, 'error');
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            addTestResult('Starting AI features test...', 'info');
+            initializeAISystems();
+        });
+    </script>
+</body>
+</html>
