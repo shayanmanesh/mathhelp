@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivic Homotopy Theory - Advanced Mathematics | Math.help</title>
+    <meta name="description" content="Explore Motivic Homotopy Theory: Voevodsky's revolutionary approach applying homotopy theory to algebraic varieties, A¹-homotopy, and motivic cohomology.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <!-- Visualization Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <style>
+        .a1-homotopy-viz {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 400px;
+        }
+        
+        .motivic-sphere {
+            width: 100%;
+            height: 500px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .stable-homotopy {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .motivic-grid {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .fields-medal {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #333;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .milnor-conjecture {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .motivic-cohomology {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+        }
+        
+        .slice-filtration {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .algebraic-k-theory {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .spectrum-diagram {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+        }
+        
+        .voevodsky-quote {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        
+        .six-functors {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .functor-box {
+            background: #fff;
+            border: 2px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .functor-box:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .example-computation {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Advanced Mathematics Research</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/advanced/">Advanced Topics</a></li>
+                <li><a href="/advanced/motivic-homotopy.html" class="active">Motivic Homotopy Theory</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="main-content">
+                    <h1>Motivic Homotopy Theory</h1>
+                    
+                    <div class="intro-section">
+                        <p class="lead">Motivic homotopy theory, developed by Vladimir Voevodsky, revolutionizes our understanding of algebraic varieties by applying the powerful machinery of homotopy theory. This Fields Medal-winning work created a new foundation for algebraic geometry and resolved long-standing conjectures.</p>
+                    </div>
+                    
+                    <!-- Fields Medal Recognition -->
+                    <div class="fields-medal">
+                        <h3>🏅 Fields Medal 2002</h3>
+                        <p><strong>Vladimir Voevodsky (1966-2017)</strong></p>
+                        <p>Awarded for developing motivic homotopy theory and proving the Milnor conjecture, fundamentally transforming algebraic topology and K-theory.</p>
+                    </div>
+                    
+                    <!-- Core Concepts -->
+                    <section class="concept-section">
+                        <h2>The $\mathbb{A}^1$-Homotopy Category</h2>
+                        
+                        <div class="definition">
+                            <h3>Fundamental Principle</h3>
+                            <p>In motivic homotopy theory, the affine line $\mathbb{A}^1$ plays the role of the interval $[0,1]$ in classical topology:</p>
+                            <ul>
+                                <li>$X \times \mathbb{A}^1$ is "contractible" to $X$</li>
+                                <li>Nisnevich topology replaces the usual topology</li>
+                                <li>Pointed schemes $(X, x_0)$ form the basic objects</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="milnor-conjecture">
+                            <h3>The Milnor Conjecture (Proved by Voevodsky)</h3>
+                            <p>For any field $F$ of characteristic not 2:</p>
+                            $$K_*^M(F)/2 \cong H^*_{ét}(F, \mathbb{Z}/2)$$
+                            <p>where $K_*^M(F)$ is Milnor K-theory and $H^*_{ét}$ is étale cohomology.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- A¹-Homotopy Visualization -->
+                    <section class="visualization-section">
+                        <h2>$\mathbb{A}^1$-Homotopy Equivalence</h2>
+                        <div class="a1-homotopy-viz">
+                            <div id="a1-homotopy" class="motivic-sphere"></div>
+                            <div class="control-panel">
+                                <label>Deformation parameter t: 
+                                    <input type="range" id="deformation-slider" min="0" max="100" value="0">
+                                </label>
+                                <button onclick="animateHomotopy()">Animate Homotopy</button>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Motivic Spheres -->
+                    <section class="spheres-section">
+                        <h2>Motivic Spheres and Stable Homotopy</h2>
+                        <div class="stable-homotopy">
+                            <div class="motivic-grid">
+                                <h3>Classical Spheres</h3>
+                                <div id="classical-spheres"></div>
+                                <p>$S^n = \mathbb{A}^n \setminus \{0\} / \mathbb{A}^{n-1} \setminus \{0\}$</p>
+                            </div>
+                            <div class="motivic-grid">
+                                <h3>Motivic Spheres</h3>
+                                <div id="motivic-spheres"></div>
+                                <p>$S^{p,q} = S^p \wedge \mathbb{G}_m^{\wedge q}$</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Motivic Cohomology -->
+                    <section class="cohomology-section">
+                        <h2>Motivic Cohomology</h2>
+                        <div class="definition">
+                            <p>Motivic cohomology groups $H^{p,q}(X, \mathbb{Z})$ satisfy:</p>
+                            <ul>
+                                <li>$H^{p,0}(X, \mathbb{Z}) = CH^p(X)$ (Chow groups)</li>
+                                <li>$H^{p,p}(X, \mathbb{Z}) \cong H^p_{Zar}(X, \mathbb{Z})$ for smooth $X$</li>
+                                <li>Connects to K-theory via spectral sequences</li>
+                            </ul>
+                        </div>
+                        <div class="motivic-cohomology" id="motivic-cohomology-viz"></div>
+                    </section>
+                    
+                    <!-- Stable Motivic Homotopy Category -->
+                    <section class="stable-section">
+                        <h2>The Stable Motivic Homotopy Category</h2>
+                        <div class="slice-filtration">
+                            <h3>Slice Filtration</h3>
+                            <p>The slice filtration provides a motivic analog of the Postnikov tower:</p>
+                            <div id="slice-tower"></div>
+                        </div>
+                        
+                        <div class="algebraic-k-theory">
+                            <h3>Connection to Algebraic K-Theory</h3>
+                            <p>The motivic spectrum representing algebraic K-theory:</p>
+                            $$KGL \simeq \bigvee_{n \in \mathbb{Z}} \Sigma^{2n,n} MGL$$
+                            <div class="spectrum-diagram" id="kgl-spectrum"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- Six Functors Formalism -->
+                    <section class="functors-section">
+                        <h2>Six Functors Formalism</h2>
+                        <div class="six-functors">
+                            <div class="functor-box">f*</div>
+                            <div class="functor-box">f<sub>*</sub></div>
+                            <div class="functor-box">f!</div>
+                            <div class="functor-box">f<sup>!</sup></div>
+                            <div class="functor-box">⊗</div>
+                            <div class="functor-box">Hom</div>
+                        </div>
+                        <p>These functors satisfy analogous properties to their topological counterparts, enabling powerful computational techniques.</p>
+                    </section>
+                    
+                    <!-- Example Computations -->
+                    <section class="examples-section">
+                        <h2>Key Computations</h2>
+                        
+                        <div class="example-computation">
+                            <h4>Motivic Cohomology of $\mathbb{P}^1$</h4>
+                            <p>$$H^{p,q}(\mathbb{P}^1, \mathbb{Z}) = \begin{cases}
+                                \mathbb{Z} & \text{if } (p,q) \in \{(0,0), (2,1)\} \\
+                                0 & \text{otherwise}
+                            \end{cases}$$</p>
+                        </div>
+                        
+                        <div class="example-computation">
+                            <h4>Motivic Homotopy Groups of Spheres</h4>
+                            <p>$$\pi_{p,q}(S^{0,0}) = \begin{cases}
+                                K_q^M(k) & \text{if } p = q \\
+                                0 & \text{if } p < q
+                            \end{cases}$$</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Voevodsky Quote -->
+                    <div class="voevodsky-quote">
+                        <p>"The idea of motivic homotopy theory is to apply the machinery of homotopy theory to algebraic varieties, where the affine line plays the role of the interval."</p>
+                        <cite>— Vladimir Voevodsky</cite>
+                    </div>
+                    
+                    <!-- Key Research -->
+                    <section class="research-section">
+                        <h2>Foundational Papers</h2>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">$\mathbb{A}^1$-Homotopy Theory of Schemes</div>
+                            <div class="paper-authors">Fabien Morel, Vladimir Voevodsky (1999)</div>
+                            <a href="https://www.math.ias.edu/vladimir/sites/math.ias.edu.vladimir/files/A1-homotopy.pdf" class="paper-link">Publications IHES</a>
+                            <p>The foundational paper establishing motivic homotopy theory.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">The Milnor Conjecture</div>
+                            <div class="paper-authors">Vladimir Voevodsky (2003)</div>
+                            <a href="https://annals.math.princeton.edu/2003/157-2/p04" class="paper-link">Annals of Mathematics</a>
+                            <p>Complete proof of the Milnor conjecture using motivic cohomology.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Motivic Cohomology with Z/2 Coefficients</div>
+                            <div class="paper-authors">Vladimir Voevodsky (2003)</div>
+                            <a href="https://www.math.ias.edu/vladimir/sites/math.ias.edu.vladimir/files/2003_11.pdf" class="paper-link">Publications IHES</a>
+                            <p>Detailed development of mod 2 motivic cohomology.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Algebraic Cobordism</div>
+                            <div class="paper-authors">Marc Levine, Fabien Morel (2007)</div>
+                            <a href="https://link.springer.com/book/10.1007/3-540-36822-9" class="paper-link">Springer</a>
+                            <p>Comprehensive treatment of the motivic analog of complex cobordism.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Applications -->
+                    <section class="applications-section">
+                        <h2>Revolutionary Applications</h2>
+                        
+                        <div class="topic-card">
+                            <h3>Resolution of Classical Conjectures</h3>
+                            <ul>
+                                <li>Milnor conjecture (Voevodsky, 2002)</li>
+                                <li>Bloch-Kato conjecture (Voevodsky, Rost, et al., 2011)</li>
+                                <li>Friedlander-Milnor conjecture</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3>Motivic Galois Groups</h3>
+                            <p>Deep connections to Grothendieck's theory of motives and the conjectural motivic Galois group.</p>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3>Univalent Foundations</h3>
+                            <p>Voevodsky's later work on homotopy type theory, providing new foundations for mathematics.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Research Centers -->
+                    <section class="institutions-section">
+                        <h2>Leading Research Centers</h2>
+                        <ul class="institution-list">
+                            <li><strong>Institute for Advanced Study</strong> - Voevodsky's home institution</li>
+                            <li><strong>University of Munich</strong> - Marc Levine's group</li>
+                            <li><strong>MIT</strong> - Motivic homotopy and K-theory</li>
+                            <li><strong>University of Oslo</strong> - Paul Arne Østvær's group</li>
+                            <li><strong>IHES Paris</strong> - French school of motives</li>
+                        </ul>
+                    </section>
+                </div>
+                
+                <aside class="sidebar">
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                    </div>
+                    
+                    <section class="related-topics">
+                        <h3>Related Advanced Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="higher-category-theory.html">Higher Category Theory</a></li>
+                            <li><a href="derived-algebraic-geometry.html">Derived Algebraic Geometry</a></li>
+                            <li><a href="arithmetic-geometry.html">Arithmetic Geometry</a></li>
+                            <li><a href="theorem-proving.html">Machine-Assisted Proofs</a></li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // A¹-homotopy visualization
+        function createA1HomotopyVisualization() {
+            const container = document.getElementById('a1-homotopy');
+            const width = container.clientWidth;
+            const height = 500;
+            
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf8f9fa);
+            
+            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(width, height);
+            container.appendChild(renderer.domElement);
+            
+            // Create affine line visualization
+            const points = [];
+            for (let i = -50; i <= 50; i++) {
+                points.push(new THREE.Vector3(i / 10, 0, 0));
+            }
+            
+            const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+            const lineMaterial = new THREE.LineBasicMaterial({ color: 0x3498db, linewidth: 3 });
+            const affineLine = new THREE.Line(lineGeometry, lineMaterial);
+            scene.add(affineLine);
+            
+            // Create deformable surface
+            const surfaceGeometry = new THREE.PlaneGeometry(10, 5, 50, 25);
+            const surfaceMaterial = new THREE.MeshPhongMaterial({
+                color: 0xe74c3c,
+                side: THREE.DoubleSide,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.7
+            });
+            const surface = new THREE.Mesh(surfaceGeometry, surfaceMaterial);
+            surface.rotation.x = -Math.PI / 4;
+            scene.add(surface);
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            directionalLight.position.set(10, 10, 10);
+            scene.add(directionalLight);
+            
+            camera.position.set(0, 5, 10);
+            camera.lookAt(0, 0, 0);
+            
+            // Store for animation
+            window.a1Scene = { scene, camera, renderer, surface, surfaceGeometry };
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+        
+        // Animate homotopy deformation
+        function animateHomotopy() {
+            if (!window.a1Scene) return;
+            
+            let t = 0;
+            const interval = setInterval(() => {
+                t += 0.01;
+                if (t > 1) {
+                    clearInterval(interval);
+                    return;
+                }
+                
+                // Deform the surface
+                const positions = window.a1Scene.surfaceGeometry.attributes.position;
+                for (let i = 0; i < positions.count; i++) {
+                    const x = positions.getX(i);
+                    const y = positions.getY(i);
+                    const z = Math.sin(x * 2 + t * Math.PI) * Math.cos(y * 2) * (1 - t);
+                    positions.setZ(i, z);
+                }
+                positions.needsUpdate = true;
+                
+                // Update slider
+                document.getElementById('deformation-slider').value = t * 100;
+            }, 30);
+        }
+        
+        // Update deformation based on slider
+        document.getElementById('deformation-slider')?.addEventListener('input', (e) => {
+            const t = e.target.value / 100;
+            if (!window.a1Scene) return;
+            
+            const positions = window.a1Scene.surfaceGeometry.attributes.position;
+            for (let i = 0; i < positions.count; i++) {
+                const x = positions.getX(i);
+                const y = positions.getY(i);
+                const z = Math.sin(x * 2 + t * Math.PI) * Math.cos(y * 2) * (1 - t);
+                positions.setZ(i, z);
+            }
+            positions.needsUpdate = true;
+        });
+        
+        // Classical vs Motivic Spheres
+        function createSphereVisualizations() {
+            // Classical spheres
+            const classicalData = [];
+            for (let n = 0; n <= 3; n++) {
+                const u = Array.from({length: 50}, (_, i) => i / 49 * 2 * Math.PI);
+                const v = Array.from({length: 25}, (_, i) => i / 24 * Math.PI);
+                
+                const x = [], y = [], z = [];
+                for (let i = 0; i < u.length; i++) {
+                    x[i] = []; y[i] = []; z[i] = [];
+                    for (let j = 0; j < v.length; j++) {
+                        const r = 0.5 + n * 0.3;
+                        x[i][j] = r * Math.sin(v[j]) * Math.cos(u[i]);
+                        y[i][j] = r * Math.sin(v[j]) * Math.sin(u[i]);
+                        z[i][j] = r * Math.cos(v[j]) + n * 1.5;
+                    }
+                }
+                
+                classicalData.push({
+                    type: 'surface',
+                    x: x, y: y, z: z,
+                    colorscale: [[0, '#3498db'], [1, '#2980b9']],
+                    showscale: false,
+                    name: `S^${n}`
+                });
+            }
+            
+            const classicalLayout = {
+                title: 'Classical Spheres S^n',
+                scene: {
+                    aspectmode: 'cube',
+                    xaxis: { showgrid: false },
+                    yaxis: { showgrid: false },
+                    zaxis: { showgrid: false }
+                },
+                margin: { t: 30, b: 0, l: 0, r: 0 }
+            };
+            
+            Plotly.newPlot('classical-spheres', classicalData, classicalLayout, {responsive: true});
+            
+            // Motivic spheres visualization
+            const motivicContainer = document.getElementById('motivic-spheres');
+            const svg = d3.select(motivicContainer)
+                .append('svg')
+                .attr('width', '100%')
+                .attr('height', 200);
+            
+            const width = motivicContainer.clientWidth;
+            
+            // Create grid for S^{p,q}
+            const gridSize = 40;
+            for (let p = 0; p <= 4; p++) {
+                for (let q = 0; q <= 3; q++) {
+                    svg.append('circle')
+                        .attr('cx', 30 + p * gridSize)
+                        .attr('cy', 30 + q * gridSize)
+                        .attr('r', 15)
+                        .attr('fill', p === q ? '#e74c3c' : '#3498db')
+                        .attr('stroke', '#2c3e50')
+                        .attr('stroke-width', 2);
+                    
+                    svg.append('text')
+                        .attr('x', 30 + p * gridSize)
+                        .attr('y', 35 + q * gridSize)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', 'white')
+                        .style('font-size', '10px')
+                        .style('font-weight', 'bold')
+                        .text(`${p},${q}`);
+                }
+            }
+            
+            // Labels
+            svg.append('text')
+                .attr('x', 10)
+                .attr('y', 180)
+                .style('font-weight', 'bold')
+                .text('p →');
+            
+            svg.append('text')
+                .attr('x', 200)
+                .attr('y', 15)
+                .style('font-weight', 'bold')
+                .text('q ↑');
+        }
+        
+        // Motivic Cohomology Visualization
+        function createMotivicCohomologyVisualization() {
+            const data = [];
+            
+            // Create motivic cohomology bidegrees
+            for (let p = 0; p <= 6; p++) {
+                for (let q = 0; q <= 6; q++) {
+                    if (p >= q) {  // Only non-zero when p ≥ q
+                        data.push({
+                            x: p,
+                            y: q,
+                            value: p === q ? 2 : 1,  // Diagonal is special
+                            label: `H^{${p},${q}}`
+                        });
+                    }
+                }
+            }
+            
+            const trace = {
+                x: data.map(d => d.x),
+                y: data.map(d => d.y),
+                z: data.map(d => d.value),
+                mode: 'markers',
+                marker: {
+                    size: data.map(d => d.value * 15),
+                    color: data.map(d => d.x === d.y ? '#e74c3c' : '#3498db'),
+                    line: {
+                        color: '#2c3e50',
+                        width: 2
+                    }
+                },
+                type: 'scatter3d',
+                text: data.map(d => d.label),
+                hoverinfo: 'text'
+            };
+            
+            const layout = {
+                title: 'Motivic Cohomology Bidegrees',
+                scene: {
+                    xaxis: { title: 'p (cohomological degree)' },
+                    yaxis: { title: 'q (weight)' },
+                    zaxis: { title: 'rank' },
+                    camera: { eye: { x: 1.5, y: 1.5, z: 1.5 } }
+                },
+                margin: { t: 40, b: 0, l: 0, r: 0 }
+            };
+            
+            Plotly.newPlot('motivic-cohomology-viz', [trace], layout, {responsive: true});
+        }
+        
+        // Slice Tower Visualization
+        function createSliceTower() {
+            const container = document.getElementById('slice-tower');
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', '100%')
+                .attr('height', 300);
+            
+            const width = container.clientWidth;
+            const height = 300;
+            
+            // Create tower levels
+            const levels = [
+                { name: 'f₀X', y: 250, color: '#e74c3c' },
+                { name: 'f₁X', y: 200, color: '#3498db' },
+                { name: 'f₂X', y: 150, color: '#2ecc71' },
+                { name: 'f₃X', y: 100, color: '#f39c12' },
+                { name: '...', y: 50, color: '#9b59b6' }
+            ];
+            
+            const boxWidth = 100;
+            const boxHeight = 30;
+            const centerX = width / 2;
+            
+            // Draw boxes
+            levels.forEach((level, i) => {
+                svg.append('rect')
+                    .attr('x', centerX - boxWidth / 2)
+                    .attr('y', level.y - boxHeight / 2)
+                    .attr('width', boxWidth)
+                    .attr('height', boxHeight)
+                    .attr('fill', level.color)
+                    .attr('stroke', '#2c3e50')
+                    .attr('stroke-width', 2)
+                    .attr('rx', 5);
+                
+                svg.append('text')
+                    .attr('x', centerX)
+                    .attr('y', level.y + 5)
+                    .attr('text-anchor', 'middle')
+                    .attr('fill', 'white')
+                    .style('font-weight', 'bold')
+                    .text(level.name);
+                
+                // Draw arrows
+                if (i < levels.length - 1) {
+                    svg.append('line')
+                        .attr('x1', centerX)
+                        .attr('y1', level.y - boxHeight / 2)
+                        .attr('x2', centerX)
+                        .attr('y2', levels[i + 1].y + boxHeight / 2)
+                        .attr('stroke', '#666')
+                        .attr('stroke-width', 2)
+                        .attr('marker-end', 'url(#arrow)');
+                }
+            });
+            
+            // Add cofibers
+            const cofiberX = centerX + 150;
+            levels.slice(0, -1).forEach((level, i) => {
+                svg.append('rect')
+                    .attr('x', cofiberX - 40)
+                    .attr('y', level.y - 15)
+                    .attr('width', 80)
+                    .attr('height', 30)
+                    .attr('fill', 'none')
+                    .attr('stroke', level.color)
+                    .attr('stroke-width', 2)
+                    .attr('stroke-dasharray', '5,5')
+                    .attr('rx', 5);
+                
+                svg.append('text')
+                    .attr('x', cofiberX)
+                    .attr('y', level.y + 5)
+                    .attr('text-anchor', 'middle')
+                    .style('font-size', '12px')
+                    .text(`s₍${i}₎X`);
+                
+                // Connect to tower
+                svg.append('line')
+                    .attr('x1', centerX + boxWidth / 2)
+                    .attr('y1', level.y)
+                    .attr('x2', cofiberX - 40)
+                    .attr('y2', level.y)
+                    .attr('stroke', '#666')
+                    .attr('stroke-width', 1)
+                    .attr('stroke-dasharray', '3,3');
+            });
+            
+            // Define arrow marker
+            svg.append('defs')
+                .append('marker')
+                .attr('id', 'arrow')
+                .attr('viewBox', '0 -5 10 10')
+                .attr('refX', 10)
+                .attr('refY', 0)
+                .attr('markerWidth', 6)
+                .attr('markerHeight', 6)
+                .attr('orient', 'auto')
+                .append('path')
+                .attr('d', 'M0,-5L10,0L0,5')
+                .attr('fill', '#666');
+            
+            // Title
+            svg.append('text')
+                .attr('x', width / 2)
+                .attr('y', 25)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '16px')
+                .style('font-weight', 'bold')
+                .text('Slice Filtration Tower');
+        }
+        
+        // KGL Spectrum Visualization
+        function createKGLSpectrum() {
+            const container = document.getElementById('kgl-spectrum');
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', '100%')
+                .attr('height', 300);
+            
+            const width = container.clientWidth;
+            const height = 300;
+            
+            // Create spectrum levels
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const radius = 80;
+            
+            // Draw MGL wedge summands
+            for (let n = -2; n <= 2; n++) {
+                const angle = (n + 2) * (Math.PI / 3) - Math.PI / 2;
+                const x = centerX + radius * Math.cos(angle);
+                const y = centerY + radius * Math.sin(angle);
+                
+                svg.append('circle')
+                    .attr('cx', x)
+                    .attr('cy', y)
+                    .attr('r', 30)
+                    .attr('fill', n === 0 ? '#e74c3c' : '#3498db')
+                    .attr('stroke', '#2c3e50')
+                    .attr('stroke-width', 2);
+                
+                svg.append('text')
+                    .attr('x', x)
+                    .attr('y', y + 5)
+                    .attr('text-anchor', 'middle')
+                    .attr('fill', 'white')
+                    .style('font-size', '12px')
+                    .style('font-weight', 'bold')
+                    .text(`Σ^{${2*n},${n}}`);
+                
+                // Connect to center
+                svg.append('line')
+                    .attr('x1', centerX)
+                    .attr('y1', centerY)
+                    .attr('x2', x)
+                    .attr('y2', y)
+                    .attr('stroke', '#666')
+                    .attr('stroke-width', 1)
+                    .attr('stroke-dasharray', '3,3');
+            }
+            
+            // Central KGL
+            svg.append('circle')
+                .attr('cx', centerX)
+                .attr('cy', centerY)
+                .attr('r', 40)
+                .attr('fill', '#2c3e50')
+                .attr('stroke', '#1a252f')
+                .attr('stroke-width', 3);
+            
+            svg.append('text')
+                .attr('x', centerX)
+                .attr('y', centerY + 5)
+                .attr('text-anchor', 'middle')
+                .attr('fill', 'white')
+                .style('font-size', '18px')
+                .style('font-weight', 'bold')
+                .text('KGL');
+            
+            // Title
+            svg.append('text')
+                .attr('x', width / 2)
+                .attr('y', 30)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '16px')
+                .style('font-weight', 'bold')
+                .text('KGL as Wedge of MGL');
+        }
+        
+        // Initialize all visualizations
+        document.addEventListener('DOMContentLoaded', () => {
+            createA1HomotopyVisualization();
+            createSphereVisualizations();
+            createMotivicCohomologyVisualization();
+            createSliceTower();
+            createKGLSpectrum();
+        });
+    </script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

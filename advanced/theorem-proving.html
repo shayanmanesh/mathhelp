@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine-Assisted Theorem Proving - Advanced Mathematics | Math.help</title>
+    <meta name="description" content="Explore machine-assisted theorem proving using Lean, Coq, and Isabelle/HOL. Interactive proof assistants and formalization of mathematics.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <!-- Code Editor -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    
+    <!-- Visualization Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    
+    <style>
+        .proof-interface {
+            background: #282c34;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #abb2bf;
+        }
+        
+        .lean-editor {
+            background: #1e1e1e;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            min-height: 300px;
+            overflow-x: auto;
+        }
+        
+        .proof-output {
+            background: #21252b;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 13px;
+            min-height: 150px;
+            white-space: pre-wrap;
+        }
+        
+        .proof-controls {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .proof-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .proof-button:hover {
+            background: #2980b9;
+        }
+        
+        .proof-tree {
+            width: 100%;
+            height: 400px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .formalization-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .proof-assistant-comparison {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .example-proof {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .tactic-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .tactic-item {
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-family: monospace;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tactic-item:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .goal-state {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+            margin: 15px 0;
+        }
+        
+        .liquid-tensor {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .liquid-tensor h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .interactive-example {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Advanced Mathematics Research</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/advanced/">Advanced Topics</a></li>
+                <li><a href="/advanced/theorem-proving.html" class="active">Theorem Proving</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="main-content">
+                    <h1>Machine-Assisted Theorem Proving</h1>
+                    
+                    <div class="intro-section">
+                        <p class="lead">Machine-assisted theorem proving represents a revolution in mathematical rigor, using proof assistants like Lean, Coq, and Isabelle/HOL to verify complex mathematical proofs and formalize entire theories with absolute certainty.</p>
+                    </div>
+                    
+                    <!-- Interactive Lean Interface -->
+                    <section class="lean-section">
+                        <h2>Interactive Lean 4 Proof Assistant</h2>
+                        <div class="proof-interface">
+                            <h3>Try Proving: √2 is Irrational</h3>
+                            <div class="lean-editor" id="lean-code" contenteditable="true">import Mathlib.Data.Real.Irrational
+
+theorem sqrt_two_irrational : Irrational (Real.sqrt 2) := by
+  -- Your proof here
+  sorry</div>
+                            
+                            <div class="proof-controls">
+                                <button class="proof-button" onclick="checkProof()">Check Proof</button>
+                                <button class="proof-button" onclick="showHint()">Hint</button>
+                                <button class="proof-button" onclick="showSolution()">Show Solution</button>
+                                <button class="proof-button" onclick="resetProof()">Reset</button>
+                            </div>
+                            
+                            <div class="goal-state">
+                                <strong>Current Goal:</strong>
+                                <div id="current-goal">⊢ Irrational (Real.sqrt 2)</div>
+                            </div>
+                            
+                            <div class="proof-output" id="proof-output">
+                                Ready to check your proof...
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Proof Tree Visualization -->
+                    <section class="proof-tree-section">
+                        <h2>Proof Tree Visualization</h2>
+                        <div id="proof-tree" class="proof-tree"></div>
+                        <div class="proof-controls">
+                            <button class="proof-button" onclick="expandProofTree()">Expand All</button>
+                            <button class="proof-button" onclick="collapseProofTree()">Collapse All</button>
+                            <button class="proof-button" onclick="animateProof()">Animate Proof</button>
+                        </div>
+                    </section>
+                    
+                    <!-- Proof Assistant Comparison -->
+                    <section class="comparison-section">
+                        <h2>Major Proof Assistants</h2>
+                        <div class="proof-assistant-comparison">
+                            <table class="comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th>System</th>
+                                        <th>Foundation</th>
+                                        <th>Language</th>
+                                        <th>Key Features</th>
+                                        <th>Major Projects</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Lean 4</strong></td>
+                                        <td>Dependent Type Theory</td>
+                                        <td>Lean</td>
+                                        <td>Modern, fast, great automation</td>
+                                        <td>Liquid Tensor Experiment, Mathlib</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Coq</strong></td>
+                                        <td>Calculus of Constructions</td>
+                                        <td>Gallina</td>
+                                        <td>Mature, extraction to code</td>
+                                        <td>Four Color Theorem, CompCert</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Isabelle/HOL</strong></td>
+                                        <td>Higher-Order Logic</td>
+                                        <td>Isar</td>
+                                        <td>Readable proofs, sledgehammer</td>
+                                        <td>seL4, Archive of Formal Proofs</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Agda</strong></td>
+                                        <td>Dependent Types</td>
+                                        <td>Agda</td>
+                                        <td>Programming focus, Unicode</td>
+                                        <td>HoTT Book, Cubical Agda</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    
+                    <!-- Formalization Statistics -->
+                    <section class="stats-section">
+                        <h2>The State of Formalized Mathematics</h2>
+                        <div class="formalization-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">100k+</div>
+                                <div class="stat-label">Theorems in Mathlib</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">3,000+</div>
+                                <div class="stat-label">Contributors</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Formalized Papers</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">Active Systems</div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Liquid Tensor Experiment -->
+                    <section class="liquid-section">
+                        <div class="liquid-tensor">
+                            <h3>🏆 The Liquid Tensor Experiment</h3>
+                            <p>Peter Scholze challenged the formalization community to verify his proof of a key theorem about liquid vector spaces. The Lean community completed this monumental task in 2022, marking a watershed moment for formalized mathematics.</p>
+                            <a href="https://leanprover-community.github.io/liquid/" class="cta-button" style="background: white; color: var(--primary-color);">Explore the Project</a>
+                        </div>
+                    </section>
+                    
+                    <!-- Interactive Examples -->
+                    <section class="examples-section">
+                        <h2>Common Proof Tactics</h2>
+                        <div class="tactic-list">
+                            <div class="tactic-item" onclick="insertTactic('intro')">intro</div>
+                            <div class="tactic-item" onclick="insertTactic('apply')">apply</div>
+                            <div class="tactic-item" onclick="insertTactic('exact')">exact</div>
+                            <div class="tactic-item" onclick="insertTactic('rw')">rw</div>
+                            <div class="tactic-item" onclick="insertTactic('simp')">simp</div>
+                            <div class="tactic-item" onclick="insertTactic('ring')">ring</div>
+                            <div class="tactic-item" onclick="insertTactic('linarith')">linarith</div>
+                            <div class="tactic-item" onclick="insertTactic('norm_num')">norm_num</div>
+                        </div>
+                        
+                        <div class="interactive-example">
+                            <h3>Example: Proving Commutativity</h3>
+                            <div class="code-block">
+theorem add_comm (a b : ℕ) : a + b = b + a := by
+  induction a with
+  | zero => 
+    rw [Nat.zero_add, Nat.add_zero]
+  | succ n ih =>
+    rw [Nat.succ_add, Nat.add_succ, ih]</div>
+                        </div>
+                        
+                        <div class="interactive-example">
+                            <h3>Example: Using Classical Logic</h3>
+                            <div class="code-block">
+open Classical
+
+theorem not_not (p : Prop) : ¬¬p → p := by
+  intro h
+  by_cases hp : p
+  · exact hp
+  · contradiction</div>
+                        </div>
+                    </section>
+                    
+                    <!-- Type Theory Visualization -->
+                    <section class="type-theory-section">
+                        <h2>Type Theory Foundations</h2>
+                        <div id="type-hierarchy"></div>
+                    </section>
+                    
+                    <!-- Key Research -->
+                    <section class="research-section">
+                        <h2>Landmark Formalizations</h2>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">A Machine-Checked Proof of the Four Color Theorem</div>
+                            <div class="paper-authors">Georges Gonthier (2008)</div>
+                            <a href="https://www.ams.org/notices/200811/tx081101382p.pdf" class="paper-link">AMS Notices</a>
+                            <p>First major theorem formalized in Coq, revolutionizing computer-assisted proofs.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">The Lean Mathematical Library</div>
+                            <div class="paper-authors">The mathlib Community (2020)</div>
+                            <a href="https://arxiv.org/abs/1910.09336" class="paper-link">arXiv:1910.09336</a>
+                            <p>Describes the largest coherent library of formalized mathematics.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Homotopy Type Theory: Univalent Foundations</div>
+                            <div class="paper-authors">Univalent Foundations Program (2013)</div>
+                            <a href="https://homotopytypetheory.org/book/" class="paper-link">HoTT Book</a>
+                            <p>Revolutionary connection between type theory, homotopy theory, and foundations.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Formalising Perfectoid Spaces</div>
+                            <div class="paper-authors">Kevin Buzzard, et al. (2022)</div>
+                            <a href="https://arxiv.org/abs/2102.06572" class="paper-link">arXiv:2102.06572</a>
+                            <p>Formalization of Scholze's perfectoid spaces in Lean.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Getting Started -->
+                    <section class="getting-started">
+                        <h2>Getting Started with Proof Assistants</h2>
+                        
+                        <div class="example-proof">
+                            <h3>Your First Lean Proof</h3>
+                            <ol>
+                                <li>Install Lean 4: <code>curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh</code></li>
+                                <li>Install VS Code with Lean 4 extension</li>
+                                <li>Create a new file with <code>.lean</code> extension</li>
+                                <li>Try this simple proof:</li>
+                            </ol>
+                            <div class="code-block">
+example (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
+  constructor
+  · exact hp
+  · exact hq</div>
+                        </div>
+                    </section>
+                    
+                    <!-- Research Centers -->
+                    <section class="institutions-section">
+                        <h2>Leading Groups & Initiatives</h2>
+                        <ul class="institution-list">
+                            <li><strong>Microsoft Research</strong> - Lean development team</li>
+                            <li><strong>Carnegie Mellon University</strong> - HoTT and formal verification</li>
+                            <li><strong>Imperial College London</strong> - Kevin Buzzard's formalization group</li>
+                            <li><strong>INRIA</strong> - Coq development</li>
+                            <li><strong>TU Munich</strong> - Isabelle development</li>
+                            <li><strong>Formal Abstracts Project</strong> - Thomas Hales</li>
+                        </ul>
+                    </section>
+                </div>
+                
+                <aside class="sidebar">
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                    </div>
+                    
+                    <section class="related-topics">
+                        <h3>Related Advanced Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="higher-category-theory.html">Higher Category Theory</a></li>
+                            <li><a href="motivic-homotopy.html">Motivic Homotopy Theory</a></li>
+                            <li><a href="derived-algebraic-geometry.html">Derived Algebraic Geometry</a></li>
+                        </ul>
+                    </section>
+                    
+                    <section class="resources">
+                        <h3>Learning Resources</h3>
+                        <ul class="topic-list">
+                            <li><a href="https://leanprover.github.io/theorem_proving_in_lean4/">Theorem Proving in Lean 4</a></li>
+                            <li><a href="https://leanprover-community.github.io/">Lean Community</a></li>
+                            <li><a href="https://coq.inria.fr/">The Coq Proof Assistant</a></li>
+                            <li><a href="https://isabelle.in.tum.de/">Isabelle</a></li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Proof Tree Visualization
+        function createProofTree() {
+            const container = document.getElementById('proof-tree');
+            
+            // Define proof tree structure
+            const nodes = new vis.DataSet([
+                { id: 1, label: '√2 ∈ ℚ → ⊥', level: 0, color: '#e74c3c' },
+                { id: 2, label: '∃ p q : ℕ, √2 = p/q', level: 1, color: '#3498db' },
+                { id: 3, label: 'gcd(p,q) = 1', level: 1, color: '#3498db' },
+                { id: 4, label: '2q² = p²', level: 2, color: '#2ecc71' },
+                { id: 5, label: '2 | p²', level: 3, color: '#f39c12' },
+                { id: 6, label: '2 | p', level: 3, color: '#f39c12' },
+                { id: 7, label: 'p = 2k', level: 4, color: '#9b59b6' },
+                { id: 8, label: '2q² = 4k²', level: 4, color: '#9b59b6' },
+                { id: 9, label: 'q² = 2k²', level: 5, color: '#1abc9c' },
+                { id: 10, label: '2 | q', level: 5, color: '#1abc9c' },
+                { id: 11, label: 'gcd(p,q) ≥ 2', level: 6, color: '#e74c3c' },
+                { id: 12, label: '⊥', level: 7, color: '#e74c3c', shape: 'box' }
+            ]);
+            
+            const edges = new vis.DataSet([
+                { from: 1, to: 2, label: 'assume' },
+                { from: 1, to: 3, label: 'wlog' },
+                { from: 2, to: 4, label: 'algebra' },
+                { from: 4, to: 5, label: 'divisibility' },
+                { from: 5, to: 6, label: 'prime_dvd_square' },
+                { from: 6, to: 7, label: 'definition' },
+                { from: 4, to: 8, label: 'substitute' },
+                { from: 7, to: 8 },
+                { from: 8, to: 9, label: 'simplify' },
+                { from: 9, to: 10, label: 'same_argument' },
+                { from: 6, to: 11 },
+                { from: 10, to: 11 },
+                { from: 3, to: 12, label: 'contradiction' },
+                { from: 11, to: 12 }
+            ]);
+            
+            const data = { nodes: nodes, edges: edges };
+            const options = {
+                layout: {
+                    hierarchical: {
+                        direction: 'UD',
+                        sortMethod: 'directed',
+                        levelSeparation: 80
+                    }
+                },
+                physics: false,
+                nodes: {
+                    shape: 'ellipse',
+                    font: { size: 14 }
+                },
+                edges: {
+                    arrows: 'to',
+                    font: { size: 12, align: 'horizontal' }
+                }
+            };
+            
+            const network = new vis.Network(container, data, options);
+            
+            // Store network for manipulation
+            window.proofNetwork = network;
+        }
+        
+        // Type Hierarchy Visualization
+        function createTypeHierarchy() {
+            const container = document.getElementById('type-hierarchy');
+            const width = container ? container.clientWidth : 800;
+            const height = 400;
+            
+            const svg = d3.select('#type-hierarchy')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Type universe hierarchy
+            const types = [
+                { name: 'Prop', level: 0, x: width * 0.2, y: height * 0.8 },
+                { name: 'Type 0', level: 0, x: width * 0.5, y: height * 0.8 },
+                { name: 'Type 1', level: 1, x: width * 0.5, y: height * 0.6 },
+                { name: 'Type 2', level: 2, x: width * 0.5, y: height * 0.4 },
+                { name: 'Type u', level: 3, x: width * 0.5, y: height * 0.2 },
+                { name: 'ℕ : Type 0', level: -1, x: width * 0.3, y: height * 0.9 },
+                { name: 'ℝ : Type 0', level: -1, x: width * 0.4, y: height * 0.9 },
+                { name: 'Set ℕ : Type 1', level: -1, x: width * 0.6, y: height * 0.7 }
+            ];
+            
+            // Draw connections
+            const connections = [
+                { from: types[5], to: types[1] },
+                { from: types[6], to: types[1] },
+                { from: types[1], to: types[2] },
+                { from: types[2], to: types[3] },
+                { from: types[3], to: types[4] },
+                { from: types[7], to: types[2] }
+            ];
+            
+            svg.selectAll('.connection')
+                .data(connections)
+                .enter()
+                .append('line')
+                .attr('x1', d => d.from.x)
+                .attr('y1', d => d.from.y)
+                .attr('x2', d => d.to.x)
+                .attr('y2', d => d.to.y)
+                .attr('stroke', '#666')
+                .attr('stroke-width', 2)
+                .attr('stroke-dasharray', '5,5');
+            
+            // Draw type nodes
+            const typeGroups = svg.selectAll('.type-node')
+                .data(types)
+                .enter()
+                .append('g')
+                .attr('transform', d => `translate(${d.x}, ${d.y})`);
+            
+            typeGroups.append('rect')
+                .attr('x', -40)
+                .attr('y', -20)
+                .attr('width', 80)
+                .attr('height', 40)
+                .attr('fill', d => d.level === -1 ? '#e74c3c' : '#3498db')
+                .attr('stroke', '#2c3e50')
+                .attr('stroke-width', 2)
+                .attr('rx', 5);
+            
+            typeGroups.append('text')
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.35em')
+                .attr('fill', 'white')
+                .style('font-weight', 'bold')
+                .text(d => d.name);
+            
+            // Add description
+            svg.append('text')
+                .attr('x', width / 2)
+                .attr('y', 30)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '18px')
+                .style('font-weight', 'bold')
+                .text('Type Universe Hierarchy in Lean');
+        }
+        
+        // Interactive proof checking (simulated)
+        function checkProof() {
+            const code = document.getElementById('lean-code').innerText;
+            const output = document.getElementById('proof-output');
+            
+            if (code.includes('sorry')) {
+                output.textContent = '❌ Proof incomplete: contains sorry\n\nTry using:\n  exact irrational_sqrt_two';
+                output.style.color = '#e74c3c';
+            } else if (code.includes('irrational_sqrt_two') || code.includes('Nat.Prime.irrational_sqrt')) {
+                output.textContent = '✅ Proof complete!\n\nThe proof correctly uses the library theorem about √2 being irrational.';
+                output.style.color = '#2ecc71';
+            } else {
+                output.textContent = '⚠️ Proof may have errors. Make sure to:\n1. Import the right modules\n2. Use the correct theorem name\n3. Apply the theorem correctly';
+                output.style.color = '#f39c12';
+            }
+        }
+        
+        function showHint() {
+            const output = document.getElementById('proof-output');
+            output.textContent = '💡 Hint: Mathlib already has a theorem proving √2 is irrational.\nTry: exact irrational_sqrt_two';
+            output.style.color = '#3498db';
+        }
+        
+        function showSolution() {
+            const editor = document.getElementById('lean-code');
+            editor.innerText = `import Mathlib.Data.Real.Irrational
+
+theorem sqrt_two_irrational : Irrational (Real.sqrt 2) := by
+  exact irrational_sqrt_two`;
+            
+            const output = document.getElementById('proof-output');
+            output.textContent = 'Solution shown. This uses the existing Mathlib theorem.';
+            output.style.color = '#9b59b6';
+        }
+        
+        function resetProof() {
+            const editor = document.getElementById('lean-code');
+            editor.innerText = `import Mathlib.Data.Real.Irrational
+
+theorem sqrt_two_irrational : Irrational (Real.sqrt 2) := by
+  -- Your proof here
+  sorry`;
+            
+            const output = document.getElementById('proof-output');
+            output.textContent = 'Ready to check your proof...';
+            output.style.color = '#abb2bf';
+        }
+        
+        function insertTactic(tactic) {
+            const editor = document.getElementById('lean-code');
+            const selection = window.getSelection();
+            const range = selection.getRangeAt(0);
+            
+            // Insert tactic at cursor position
+            const textNode = document.createTextNode(tactic + ' ');
+            range.insertNode(textNode);
+            range.collapse(false);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            
+            // Focus back on editor
+            editor.focus();
+        }
+        
+        function expandProofTree() {
+            if (window.proofNetwork) {
+                window.proofNetwork.fit();
+            }
+        }
+        
+        function collapseProofTree() {
+            if (window.proofNetwork) {
+                // Collapse to show only top-level nodes
+                window.proofNetwork.selectNodes([1, 2, 3, 12]);
+            }
+        }
+        
+        function animateProof() {
+            if (window.proofNetwork) {
+                const nodeIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+                let index = 0;
+                
+                const interval = setInterval(() => {
+                    if (index < nodeIds.length) {
+                        window.proofNetwork.selectNodes([nodeIds[index]]);
+                        window.proofNetwork.focus(nodeIds[index], {
+                            scale: 1.5,
+                            animation: { duration: 500 }
+                        });
+                        index++;
+                    } else {
+                        clearInterval(interval);
+                        window.proofNetwork.fit();
+                    }
+                }, 1000);
+            }
+        }
+        
+        // Initialize visualizations
+        document.addEventListener('DOMContentLoaded', () => {
+            createProofTree();
+            createTypeHierarchy();
+        });
+    </script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

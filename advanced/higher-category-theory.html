@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Category Theory & ∞-Categories - Advanced Mathematics | Math.help</title>
+    <meta name="description" content="Explore Higher Category Theory and ∞-Categories: morphisms between morphisms, homotopy theory, and applications in topology and physics.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <!-- Visualization Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <style>
+        .category-diagram {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 400px;
+            position: relative;
+        }
+        
+        .morphism-viewer {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .infinity-category-viz {
+            width: 100%;
+            height: 600px;
+            position: relative;
+        }
+        
+        .control-panel {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        
+        .control-panel label {
+            margin-right: 15px;
+            font-weight: 500;
+        }
+        
+        .n-category-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .category-level {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .homotopy-demo {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .code-example {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .research-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .infinity-symbol {
+            font-size: 1.5em;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Advanced Mathematics Research</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/advanced/">Advanced Topics</a></li>
+                <li><a href="/advanced/higher-category-theory.html" class="active">Higher Category Theory</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="main-content">
+                    <h1>Higher Category Theory & <span class="infinity-symbol">∞</span>-Categories</h1>
+                    
+                    <div class="intro-section">
+                        <p class="lead">Higher category theory extends classical category theory by allowing morphisms between morphisms at all levels, providing a powerful framework for homotopy theory, derived algebraic geometry, and topological quantum field theory.</p>
+                    </div>
+                    
+                    <!-- Core Concepts -->
+                    <section class="concept-section">
+                        <h2>Fundamental Concepts</h2>
+                        
+                        <div class="definition">
+                            <h3>n-Categories</h3>
+                            <p>An n-category consists of:</p>
+                            <ul>
+                                <li>Objects (0-morphisms)</li>
+                                <li>1-morphisms between objects</li>
+                                <li>2-morphisms between 1-morphisms</li>
+                                <li>... continuing up to n-morphisms</li>
+                            </ul>
+                            <p>With composition laws at each level satisfying coherence conditions.</p>
+                        </div>
+                        
+                        <div class="theorem-box">
+                            <h3>The Homotopy Hypothesis (Grothendieck-Baez)</h3>
+                            <p>There is an equivalence of categories:</p>
+                            $$\text{n-Groupoids} \simeq \text{Homotopy n-Types}$$
+                            <p>where n-groupoids are n-categories with all morphisms invertible.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Interactive n-Category Visualization -->
+                    <section class="visualization-section">
+                        <h2>Interactive n-Category Explorer</h2>
+                        <div class="control-panel">
+                            <label>Category Level (n): 
+                                <select id="n-level-select">
+                                    <option value="1">1-Category</option>
+                                    <option value="2" selected>2-Category</option>
+                                    <option value="3">3-Category</option>
+                                    <option value="infinity">∞-Category</option>
+                                </select>
+                            </label>
+                            <label>View Mode: 
+                                <select id="view-mode">
+                                    <option value="globular">Globular</option>
+                                    <option value="simplicial">Simplicial</option>
+                                    <option value="cubical">Cubical</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="category-diagram">
+                            <div id="n-category-viz" class="morphism-viewer"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- ∞-Category Visualization -->
+                    <section class="infinity-section">
+                        <h2>∞-Category Structure</h2>
+                        <div class="infinity-category-viz" id="infinity-viz"></div>
+                        <div class="control-panel">
+                            <button onclick="addHigherMorphism()">Add Higher Morphism</button>
+                            <button onclick="showHomotopy()">Show Homotopy</button>
+                            <button onclick="resetVisualization()">Reset</button>
+                        </div>
+                    </section>
+                    
+                    <!-- Homotopy Theory Connection -->
+                    <section class="homotopy-section">
+                        <h2>Homotopy Theory Applications</h2>
+                        <div class="homotopy-demo">
+                            <h3>Homotopy Coherent Diagram</h3>
+                            <div id="homotopy-diagram" style="height: 400px;"></div>
+                        </div>
+                        
+                        <div class="code-example">
+// Quasi-category definition in Lean
+def QuasiCategory (C : Type*) [Category C] : Type* :=
+  { X : SimplicalSet // 
+    ∀ (n : ℕ) (σ : Λ[n,k] → X), 
+    ∃! (τ : Δ[n] → X), τ ∘ ι = σ }
+                        </div>
+                    </section>
+                    
+                    <!-- Key Research -->
+                    <section class="research-section">
+                        <h2>Groundbreaking Research</h2>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Higher Topos Theory</div>
+                            <div class="paper-authors">Jacob Lurie (2009)</div>
+                            <a href="https://arxiv.org/abs/math/0608040" class="paper-link">arXiv:math/0608040</a>
+                            <p>The foundational text establishing the theory of ∞-topoi and higher categorical logic.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">On the Classification of Topological Field Theories</div>
+                            <div class="paper-authors">Jacob Lurie (2009)</div>
+                            <a href="https://arxiv.org/abs/0905.0465" class="paper-link">arXiv:0905.0465</a>
+                            <p>Establishes the cobordism hypothesis using higher category theory.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">A Survey of (∞,1)-Categories</div>
+                            <div class="paper-authors">Julia Bergner (2010)</div>
+                            <a href="https://arxiv.org/abs/math/0610239" class="paper-link">arXiv:math/0610239</a>
+                            <p>Comprehensive survey of different models for (∞,1)-categories.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Homotopy Type Theory: Univalent Foundations</div>
+                            <div class="paper-authors">Univalent Foundations Program (2013)</div>
+                            <a href="https://homotopytypetheory.org/book/" class="paper-link">HoTT Book</a>
+                            <p>Revolutionary connection between type theory and homotopy theory.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Models of ∞-Categories -->
+                    <section class="models-section">
+                        <h2>Models of ∞-Categories</h2>
+                        <div class="n-category-display">
+                            <div class="category-level">
+                                <h3>Quasi-Categories</h3>
+                                <p>Simplicial sets satisfying inner horn filling conditions.</p>
+                                <div class="mini-viz" id="quasi-cat-viz"></div>
+                            </div>
+                            
+                            <div class="category-level">
+                                <h3>Complete Segal Spaces</h3>
+                                <p>Simplicial spaces satisfying Segal and completeness conditions.</p>
+                                <div class="mini-viz" id="segal-space-viz"></div>
+                            </div>
+                            
+                            <div class="category-level">
+                                <h3>Simplicial Categories</h3>
+                                <p>Categories enriched over simplicial sets.</p>
+                                <div class="mini-viz" id="simp-cat-viz"></div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Applications -->
+                    <section class="applications-section">
+                        <h2>Applications Across Mathematics</h2>
+                        
+                        <div class="research-highlight">
+                            <h3>Derived Algebraic Geometry</h3>
+                            <p>Higher categories provide the natural framework for derived schemes and stacks, allowing systematic treatment of "spaces with singularities".</p>
+                        </div>
+                        
+                        <div class="research-highlight">
+                            <h3>Topological Quantum Field Theory</h3>
+                            <p>The cobordism hypothesis states that framed extended TQFTs are classified by fully dualizable objects in symmetric monoidal (∞,n)-categories.</p>
+                        </div>
+                        
+                        <div class="research-highlight">
+                            <h3>Homotopy Type Theory</h3>
+                            <p>Provides computational foundations for mathematics where types are interpreted as spaces and identities as paths.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Research Centers -->
+                    <section class="institutions-section">
+                        <h2>Leading Research Centers</h2>
+                        <ul class="institution-list">
+                            <li><strong>Institute for Advanced Study</strong> - Jacob Lurie's group</li>
+                            <li><strong>MIT</strong> - Higher algebra and topology</li>
+                            <li><strong>University of Chicago</strong> - Homotopy theory group</li>
+                            <li><strong>Max Planck Institute</strong> - Mathematical logic and foundations</li>
+                            <li><strong>Carnegie Mellon</strong> - Homotopy type theory</li>
+                        </ul>
+                    </section>
+                </div>
+                
+                <aside class="sidebar">
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                    </div>
+                    
+                    <section class="related-topics">
+                        <h3>Related Advanced Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="geometric-langlands.html">Geometric Langlands</a></li>
+                            <li><a href="derived-algebraic-geometry.html">Derived Algebraic Geometry</a></li>
+                            <li><a href="tqft-quantum-algebra.html">TQFT & Quantum Algebra</a></li>
+                            <li><a href="motivic-homotopy.html">Motivic Homotopy Theory</a></li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // n-Category Visualization
+        function createNCategoryVisualization() {
+            const container = document.getElementById('n-category-viz');
+            const level = document.getElementById('n-level-select').value;
+            const mode = document.getElementById('view-mode').value;
+            
+            // Clear previous visualization
+            container.innerHTML = '';
+            
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Create visualization based on level and mode
+            if (mode === 'globular') {
+                createGlobularView(svg, width, height, level);
+            } else if (mode === 'simplicial') {
+                createSimplicialView(svg, width, height, level);
+            } else {
+                createCubicalView(svg, width, height, level);
+            }
+        }
+        
+        function createGlobularView(svg, width, height, level) {
+            const g = svg.append('g')
+                .attr('transform', `translate(${width/2}, ${height/2})`);
+            
+            // Objects (0-cells)
+            const objects = [
+                { id: 'A', x: -150, y: 0 },
+                { id: 'B', x: 150, y: 0 },
+                { id: 'C', x: 0, y: -150 },
+                { id: 'D', x: 0, y: 150 }
+            ];
+            
+            // Draw objects
+            g.selectAll('.object')
+                .data(objects)
+                .enter()
+                .append('circle')
+                .attr('class', 'object')
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y)
+                .attr('r', 20)
+                .attr('fill', '#3498db')
+                .attr('stroke', '#2c3e50')
+                .attr('stroke-width', 2);
+            
+            g.selectAll('.object-label')
+                .data(objects)
+                .enter()
+                .append('text')
+                .attr('x', d => d.x)
+                .attr('y', d => d.y + 5)
+                .attr('text-anchor', 'middle')
+                .attr('fill', 'white')
+                .style('font-weight', 'bold')
+                .text(d => d.id);
+            
+            // 1-morphisms
+            if (level >= 1) {
+                const morphisms1 = [
+                    { from: objects[0], to: objects[1], label: 'f' },
+                    { from: objects[0], to: objects[2], label: 'g' },
+                    { from: objects[2], to: objects[1], label: 'h' },
+                    { from: objects[0], to: objects[3], label: 'k' }
+                ];
+                
+                g.selectAll('.morphism-1')
+                    .data(morphisms1)
+                    .enter()
+                    .append('path')
+                    .attr('d', d => {
+                        const dx = d.to.x - d.from.x;
+                        const dy = d.to.y - d.from.y;
+                        const dr = Math.sqrt(dx * dx + dy * dy);
+                        return `M${d.from.x},${d.from.y}A${dr},${dr} 0 0,1 ${d.to.x},${d.to.y}`;
+                    })
+                    .attr('fill', 'none')
+                    .attr('stroke', '#e74c3c')
+                    .attr('stroke-width', 3)
+                    .attr('marker-end', 'url(#arrow)');
+            }
+            
+            // 2-morphisms
+            if (level >= 2) {
+                const morphisms2 = [
+                    { x: 0, y: -75, label: 'α' },
+                    { x: -75, y: 75, label: 'β' }
+                ];
+                
+                g.selectAll('.morphism-2')
+                    .data(morphisms2)
+                    .enter()
+                    .append('ellipse')
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y)
+                    .attr('rx', 30)
+                    .attr('ry', 20)
+                    .attr('fill', '#2ecc71')
+                    .attr('fill-opacity', 0.3)
+                    .attr('stroke', '#27ae60')
+                    .attr('stroke-width', 2);
+            }
+            
+            // Define arrow marker
+            svg.append('defs')
+                .append('marker')
+                .attr('id', 'arrow')
+                .attr('viewBox', '0 -5 10 10')
+                .attr('refX', 30)
+                .attr('refY', 0)
+                .attr('markerWidth', 6)
+                .attr('markerHeight', 6)
+                .attr('orient', 'auto')
+                .append('path')
+                .attr('d', 'M0,-5L10,0L0,5')
+                .attr('fill', '#e74c3c');
+        }
+        
+        // ∞-Category Visualization using Three.js
+        function createInfinityCategoryVisualization() {
+            const container = document.getElementById('infinity-viz');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf8f9fa);
+            
+            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(width, height);
+            container.appendChild(renderer.domElement);
+            
+            // Create infinity structure
+            const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+            const material = new THREE.MeshPhongMaterial({
+                color: 0x3498db,
+                emissive: 0x2c3e50,
+                shininess: 100
+            });
+            const infinityKnot = new THREE.Mesh(geometry, material);
+            scene.add(infinityKnot);
+            
+            // Add morphism representations
+            const morphismGroup = new THREE.Group();
+            
+            for (let i = 0; i < 20; i++) {
+                const sphereGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+                const sphereMaterial = new THREE.MeshPhongMaterial({
+                    color: new THREE.Color().setHSL(i / 20, 0.7, 0.5)
+                });
+                const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+                
+                const theta = (i / 20) * Math.PI * 2;
+                sphere.position.set(
+                    Math.cos(theta) * 15,
+                    Math.sin(theta * 2) * 5,
+                    Math.sin(theta) * 15
+                );
+                
+                morphismGroup.add(sphere);
+            }
+            
+            scene.add(morphismGroup);
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            directionalLight.position.set(10, 10, 10);
+            scene.add(directionalLight);
+            
+            camera.position.set(30, 30, 30);
+            camera.lookAt(0, 0, 0);
+            
+            // Animation
+            function animate() {
+                requestAnimationFrame(animate);
+                infinityKnot.rotation.x += 0.005;
+                infinityKnot.rotation.y += 0.005;
+                morphismGroup.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+            animate();
+            
+            // Store references for interaction
+            window.infinityScene = scene;
+            window.infinityMorphisms = morphismGroup;
+        }
+        
+        // Homotopy Diagram
+        function createHomotopyDiagram() {
+            const t = Array.from({length: 50}, (_, i) => i / 49);
+            
+            const traces = [];
+            
+            // Create multiple homotopy paths
+            for (let k = 0; k < 5; k++) {
+                const x = t.map(ti => ti);
+                const y = t.map(ti => Math.sin(2 * Math.PI * ti + k * Math.PI / 5));
+                const z = t.map(ti => k / 5);
+                
+                traces.push({
+                    type: 'scatter3d',
+                    mode: 'lines',
+                    x: x,
+                    y: y,
+                    z: z,
+                    line: {
+                        color: `hsl(${k * 72}, 70%, 50%)`,
+                        width: 4
+                    },
+                    name: `Path ${k}`
+                });
+            }
+            
+            // Add homotopy surface
+            const surface_t = Array.from({length: 20}, (_, i) => i / 19);
+            const surface_s = Array.from({length: 20}, (_, i) => i / 19);
+            
+            const X = [], Y = [], Z = [];
+            for (let i = 0; i < surface_t.length; i++) {
+                X[i] = [];
+                Y[i] = [];
+                Z[i] = [];
+                for (let j = 0; j < surface_s.length; j++) {
+                    X[i][j] = surface_t[i];
+                    Y[i][j] = Math.sin(2 * Math.PI * surface_t[i]) * (1 - surface_s[j]);
+                    Z[i][j] = surface_s[j];
+                }
+            }
+            
+            traces.push({
+                type: 'surface',
+                x: X,
+                y: Y,
+                z: Z,
+                colorscale: 'Viridis',
+                opacity: 0.6,
+                showscale: false
+            });
+            
+            const layout = {
+                title: 'Homotopy Between Paths',
+                scene: {
+                    xaxis: { title: 'Parameter t' },
+                    yaxis: { title: 'Space Y' },
+                    zaxis: { title: 'Homotopy s' }
+                },
+                margin: { t: 40, b: 0, l: 0, r: 0 }
+            };
+            
+            Plotly.newPlot('homotopy-diagram', traces, layout, {responsive: true});
+        }
+        
+        // Interactive functions
+        function addHigherMorphism() {
+            if (window.infinityMorphisms) {
+                const sphereGeometry = new THREE.SphereGeometry(0.7, 32, 32);
+                const sphereMaterial = new THREE.MeshPhongMaterial({
+                    color: new THREE.Color().setHSL(Math.random(), 0.7, 0.5),
+                    emissive: 0x444444
+                });
+                const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+                
+                sphere.position.set(
+                    (Math.random() - 0.5) * 30,
+                    (Math.random() - 0.5) * 20,
+                    (Math.random() - 0.5) * 30
+                );
+                
+                window.infinityMorphisms.add(sphere);
+            }
+        }
+        
+        function showHomotopy() {
+            // Animate homotopy transformation
+            console.log('Showing homotopy transformation...');
+        }
+        
+        function resetVisualization() {
+            const container = document.getElementById('infinity-viz');
+            container.innerHTML = '';
+            createInfinityCategoryVisualization();
+        }
+        
+        // Mini visualizations for models
+        function createMiniVisualizations() {
+            // Quasi-category viz
+            const quasiSvg = d3.select('#quasi-cat-viz')
+                .append('svg')
+                .attr('width', 250)
+                .attr('height', 150);
+                
+            // Draw simplicial structure
+            const vertices = [[50, 30], [150, 30], [100, 120]];
+            quasiSvg.append('polygon')
+                .attr('points', vertices.map(p => p.join(',')).join(' '))
+                .attr('fill', '#3498db')
+                .attr('fill-opacity', 0.3)
+                .attr('stroke', '#2c3e50')
+                .attr('stroke-width', 2);
+                
+            // Similar for other mini visualizations...
+        }
+        
+        // Initialize all visualizations
+        document.addEventListener('DOMContentLoaded', () => {
+            createNCategoryVisualization();
+            createInfinityCategoryVisualization();
+            createHomotopyDiagram();
+            createMiniVisualizations();
+            
+            // Event listeners
+            document.getElementById('n-level-select').addEventListener('change', createNCategoryVisualization);
+            document.getElementById('view-mode').addEventListener('change', createNCategoryVisualization);
+        });
+    </script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

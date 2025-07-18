@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symplectic Geometry & Floer Homology - Advanced Mathematics | Math.help</title>
+    <meta name="description" content="Explore Symplectic Geometry and Floer Homology: phase spaces, Hamiltonian dynamics, mirror symmetry, Fukaya categories, and pseudo-holomorphic curves.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <!-- Visualization Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <style>
+        .phase-space-viz {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 500px;
+        }
+        
+        .hamiltonian-flow {
+            width: 100%;
+            height: 500px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .floer-complex {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .floer-diagram {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .mirror-symmetry {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .fukaya-category {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+        }
+        
+        .pseudo-holomorphic {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .lagrangian-submanifold {
+            width: 100%;
+            height: 400px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .control-panel {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .arnold-conjecture {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .gromov-witten {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .moment-map {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border: 2px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Advanced Mathematics Research</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/advanced/">Advanced Topics</a></li>
+                <li><a href="/advanced/symplectic-geometry.html" class="active">Symplectic Geometry</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="main-content">
+                    <h1>Symplectic Geometry & Floer Homology</h1>
+                    
+                    <div class="intro-section">
+                        <p class="lead">Symplectic geometry studies the geometry of phase spaces, providing the mathematical framework for classical mechanics, while Floer homology revolutionizes our understanding through infinite-dimensional Morse theory, connecting to mirror symmetry and quantum field theory.</p>
+                    </div>
+                    
+                    <!-- Core Concepts -->
+                    <section class="concept-section">
+                        <h2>Fundamental Structures</h2>
+                        
+                        <div class="definition">
+                            <h3>Symplectic Manifold</h3>
+                            <p>A symplectic manifold is a pair $(M, \omega)$ where:</p>
+                            <ul>
+                                <li>$M$ is a smooth manifold of even dimension $2n$</li>
+                                <li>$\omega$ is a closed non-degenerate 2-form (symplectic form)</li>
+                                <li>$d\omega = 0$ (closed) and $\omega^n \neq 0$ (non-degenerate)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="theorem-box">
+                            <h3>Darboux's Theorem</h3>
+                            <p>Every symplectic manifold is locally symplectomorphic to $(\mathbb{R}^{2n}, \omega_0)$ where:</p>
+                            $$\omega_0 = \sum_{i=1}^n dq_i \wedge dp_i$$
+                            <p>This means symplectic geometry has no local invariants!</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Phase Space Visualization -->
+                    <section class="visualization-section">
+                        <h2>Phase Space Dynamics</h2>
+                        <div class="control-panel">
+                            <label>Hamiltonian: 
+                                <select id="hamiltonian-select">
+                                    <option value="harmonic">Harmonic Oscillator</option>
+                                    <option value="pendulum">Pendulum</option>
+                                    <option value="kepler">Kepler Problem</option>
+                                    <option value="henon-heiles">Hénon-Heiles</option>
+                                </select>
+                            </label>
+                            <button onclick="startFlow()">Start Flow</button>
+                            <button onclick="resetFlow()">Reset</button>
+                        </div>
+                        <div class="phase-space-viz">
+                            <div id="phase-space" class="hamiltonian-flow"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- Lagrangian Submanifolds -->
+                    <section class="lagrangian-section">
+                        <h2>Lagrangian Submanifolds</h2>
+                        <div class="definition">
+                            <p>A submanifold $L \subset (M, \omega)$ is Lagrangian if:</p>
+                            <ul>
+                                <li>$\dim L = \frac{1}{2}\dim M = n$</li>
+                                <li>$\omega|_L = 0$ (isotropic condition)</li>
+                            </ul>
+                        </div>
+                        <div class="lagrangian-submanifold" id="lagrangian-viz"></div>
+                    </section>
+                    
+                    <!-- Floer Homology -->
+                    <section class="floer-section">
+                        <h2>Floer Homology</h2>
+                        <div class="floer-complex">
+                            <div class="floer-diagram">
+                                <h3>Floer Chain Complex</h3>
+                                <div id="floer-chain-complex"></div>
+                                <p>Critical points of action functional = periodic orbits</p>
+                            </div>
+                            <div class="floer-diagram">
+                                <h3>Floer Differential</h3>
+                                <div id="floer-differential"></div>
+                                <p>Count pseudo-holomorphic strips between orbits</p>
+                            </div>
+                        </div>
+                        
+                        <div class="arnold-conjecture">
+                            <h3>Arnold Conjecture (Proved via Floer Theory)</h3>
+                            <p>The number of fixed points of a Hamiltonian diffeomorphism on a compact symplectic manifold is at least the sum of the Betti numbers:</p>
+                            $$\#\text{Fix}(\phi_H^1) \geq \sum_i b_i(M)$$
+                        </div>
+                    </section>
+                    
+                    <!-- Pseudo-holomorphic Curves -->
+                    <section class="curves-section">
+                        <h2>Pseudo-holomorphic Curves</h2>
+                        <div class="pseudo-holomorphic">
+                            <h3>J-holomorphic Maps</h3>
+                            <p>A map $u: (S, j) \to (M, J)$ is pseudo-holomorphic if:</p>
+                            $$du \circ j = J \circ du$$
+                            <div id="j-holomorphic-viz"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- Mirror Symmetry -->
+                    <section class="mirror-section">
+                        <div class="mirror-symmetry">
+                            <h2>Mirror Symmetry</h2>
+                            <p>A duality between symplectic geometry of one space and complex geometry of another:</p>
+                            <h3>Fukaya category of $(X, \omega)$ ≅ Derived category of coherent sheaves on $\check{X}$</h3>
+                            <p>This deep connection has revolutionized both mathematics and string theory.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Fukaya Categories -->
+                    <section class="fukaya-section">
+                        <h2>Fukaya Categories</h2>
+                        <div class="definition">
+                            <p>The Fukaya category $\mathcal{F}uk(M, \omega)$ has:</p>
+                            <ul>
+                                <li><strong>Objects:</strong> Lagrangian submanifolds with extra data</li>
+                                <li><strong>Morphisms:</strong> Floer cochain complexes</li>
+                                <li><strong>Composition:</strong> Counts of pseudo-holomorphic triangles</li>
+                            </ul>
+                        </div>
+                        <div class="fukaya-category" id="fukaya-viz"></div>
+                    </section>
+                    
+                    <!-- Moment Maps -->
+                    <section class="moment-section">
+                        <h2>Moment Maps and Reduction</h2>
+                        <div class="definition">
+                            <p>For a Hamiltonian $G$-action on $(M, \omega)$, the moment map $\mu: M \to \mathfrak{g}^*$ satisfies:</p>
+                            $$d\langle \mu, \xi \rangle = \iota_{\xi_M} \omega$$
+                        </div>
+                        <div class="moment-map" id="moment-map-viz"></div>
+                    </section>
+                    
+                    <!-- Gromov-Witten Invariants -->
+                    <section class="gromov-witten-section">
+                        <h2>Gromov-Witten Invariants</h2>
+                        <div class="gromov-witten">
+                            <h3>Counting Curves</h3>
+                            <p>Gromov-Witten invariants count pseudo-holomorphic curves in symplectic manifolds:</p>
+                            $$\langle \alpha_1, ..., \alpha_n \rangle_{g,n,A} = \int_{[\overline{\mathcal{M}}_{g,n}(X,A)]^{vir}} \prod_{i=1}^n ev_i^*(\alpha_i)$$
+                            <div id="gw-invariants"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- Examples -->
+                    <section class="examples-section">
+                        <h2>Classical Examples</h2>
+                        
+                        <div class="example-box">
+                            <h3>Example: Cotangent Bundle</h3>
+                            <p>$T^*Q$ with canonical symplectic form $\omega = \sum dp_i \wedge dq_i$</p>
+                            <p>Zero section is Lagrangian, generating function gives Lagrangians</p>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3>Example: Complex Projective Space</h3>
+                            <p>$\mathbb{CP}^n$ with Fubini-Study form is symplectic</p>
+                            <p>Real projective space $\mathbb{RP}^n \subset \mathbb{CP}^n$ is Lagrangian</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Key Research -->
+                    <section class="research-section">
+                        <h2>Foundational Papers</h2>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Morse Theory for Lagrangian Intersections</div>
+                            <div class="paper-authors">Andreas Floer (1988)</div>
+                            <a href="https://projecteuclid.org/euclid.jdg/1214442477" class="paper-link">J. Differential Geom.</a>
+                            <p>The paper that started Floer homology revolution.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Pseudo-holomorphic Curves in Symplectic Manifolds</div>
+                            <div class="paper-authors">Mikhail Gromov (1985)</div>
+                            <a href="https://doi.org/10.1007/BF01388806" class="paper-link">Invent. Math.</a>
+                            <p>Introduction of J-holomorphic curves, revolutionizing symplectic topology.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Homological Mirror Symmetry</div>
+                            <div class="paper-authors">Maxim Kontsevich (1994)</div>
+                            <a href="https://arxiv.org/abs/alg-geom/9411018" class="paper-link">ICM Zürich</a>
+                            <p>The foundational conjecture connecting symplectic and algebraic geometry.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">A Mathematical Theory of Quantum Cohomology</div>
+                            <div class="paper-authors">Yongbin Ruan, Gang Tian (1995)</div>
+                            <a href="https://arxiv.org/abs/alg-geom/9506013" class="paper-link">J. Differential Geom.</a>
+                            <p>Rigorous foundation for quantum cohomology and Gromov-Witten theory.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Applications -->
+                    <section class="applications-section">
+                        <h2>Revolutionary Applications</h2>
+                        
+                        <div class="topic-card">
+                            <h3>Classical Mechanics</h3>
+                            <p>Symplectic geometry is the natural language for Hamiltonian mechanics and geometric quantization.</p>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3>String Theory</h3>
+                            <p>Mirror symmetry originated in physics, connecting different Calabi-Yau compactifications.</p>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3>Low-dimensional Topology</h3>
+                            <p>Heegaard Floer homology revolutionized 3 and 4-manifold topology.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Research Centers -->
+                    <section class="institutions-section">
+                        <h2>Leading Research Centers</h2>
+                        <ul class="institution-list">
+                            <li><strong>Stanford</strong> - Yakov Eliashberg's group</li>
+                            <li><strong>MIT</strong> - Denis Auroux, Paul Seidel</li>
+                            <li><strong>Columbia</strong> - Mohammed Abouzaid</li>
+                            <li><strong>IAS Princeton</strong> - Helmut Hofer</li>
+                            <li><strong>ETH Zürich</strong> - Symplectic geometry group</li>
+                        </ul>
+                    </section>
+                </div>
+                
+                <aside class="sidebar">
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                    </div>
+                    
+                    <section class="related-topics">
+                        <h3>Related Advanced Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="tqft-quantum-algebra.html">TQFT & Quantum Algebra</a></li>
+                            <li><a href="noncommutative-geometry.html">Non-commutative Geometry</a></li>
+                            <li><a href="geometric-langlands.html">Geometric Langlands</a></li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Phase Space Dynamics Visualization
+        function createPhaseSpaceVisualization() {
+            const container = document.getElementById('phase-space');
+            const width = container.clientWidth;
+            const height = 500;
+            
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf8f9fa);
+            
+            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(width, height);
+            container.appendChild(renderer.domElement);
+            
+            // Create coordinate axes
+            const axesHelper = new THREE.AxesHelper(5);
+            scene.add(axesHelper);
+            
+            // Create flow lines
+            const flowGroup = new THREE.Group();
+            scene.add(flowGroup);
+            
+            // Store for animation
+            window.phaseSpace = { scene, camera, renderer, flowGroup };
+            
+            camera.position.set(10, 10, 10);
+            camera.lookAt(0, 0, 0);
+            
+            // Initial render
+            renderer.render(scene, camera);
+        }
+        
+        // Hamiltonian Flow Animation
+        function startFlow() {
+            const hamiltonian = document.getElementById('hamiltonian-select').value;
+            const flowGroup = window.phaseSpace.flowGroup;
+            
+            // Clear existing flow
+            flowGroup.clear();
+            
+            // Create flow lines based on Hamiltonian
+            const numTrajectories = 20;
+            const trajectories = [];
+            
+            for (let i = 0; i < numTrajectories; i++) {
+                const points = [];
+                const theta0 = (i / numTrajectories) * 2 * Math.PI;
+                const r0 = 2 + i * 0.2;
+                
+                // Integrate Hamilton's equations
+                let q = r0 * Math.cos(theta0);
+                let p = r0 * Math.sin(theta0);
+                const dt = 0.01;
+                
+                for (let t = 0; t < 500; t++) {
+                    points.push(new THREE.Vector3(q, p, t * 0.01));
+                    
+                    // Update based on Hamiltonian
+                    let dqdt, dpdt;
+                    switch (hamiltonian) {
+                        case 'harmonic':
+                            dqdt = p;
+                            dpdt = -q;
+                            break;
+                        case 'pendulum':
+                            dqdt = p;
+                            dpdt = -Math.sin(q);
+                            break;
+                        case 'kepler':
+                            const r = Math.sqrt(q*q + p*p);
+                            dqdt = p;
+                            dpdt = -q / (r*r*r);
+                            break;
+                        case 'henon-heiles':
+                            dqdt = p;
+                            dpdt = -q - 2*q*p;
+                            break;
+                    }
+                    
+                    q += dqdt * dt;
+                    p += dpdt * dt;
+                }
+                
+                const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                const material = new THREE.LineBasicMaterial({
+                    color: new THREE.Color().setHSL(i / numTrajectories, 0.7, 0.5)
+                });
+                const trajectory = new THREE.Line(geometry, material);
+                trajectories.push(trajectory);
+                flowGroup.add(trajectory);
+            }
+            
+            // Animate
+            function animate() {
+                requestAnimationFrame(animate);
+                flowGroup.rotation.z += 0.002;
+                window.phaseSpace.renderer.render(window.phaseSpace.scene, window.phaseSpace.camera);
+            }
+            animate();
+        }
+        
+        function resetFlow() {
+            if (window.phaseSpace) {
+                window.phaseSpace.flowGroup.clear();
+                window.phaseSpace.renderer.render(window.phaseSpace.scene, window.phaseSpace.camera);
+            }
+        }
+        
+        // Lagrangian Submanifold Visualization
+        function createLagrangianVisualization() {
+            const data = [];
+            
+            // Create torus as Lagrangian in T*S¹
+            const u = Array.from({length: 50}, (_, i) => i / 49 * 2 * Math.PI);
+            const v = Array.from({length: 50}, (_, i) => i / 49 * 2 * Math.PI);
+            
+            const x = [], y = [], z = [];
+            for (let i = 0; i < u.length; i++) {
+                x[i] = []; y[i] = []; z[i] = [];
+                for (let j = 0; j < v.length; j++) {
+                    const R = 3, r = 1;
+                    x[i][j] = (R + r * Math.cos(v[j])) * Math.cos(u[i]);
+                    y[i][j] = (R + r * Math.cos(v[j])) * Math.sin(u[i]);
+                    z[i][j] = r * Math.sin(v[j]);
+                }
+            }
+            
+            const trace1 = {
+                type: 'surface',
+                x: x, y: y, z: z,
+                colorscale: 'Viridis',
+                opacity: 0.8,
+                name: 'Lagrangian Torus'
+            };
+            
+            // Add projection to base
+            const projection = {
+                type: 'scatter3d',
+                x: x.flat(),
+                y: y.flat(),
+                z: Array(x.length * y.length).fill(-2),
+                mode: 'markers',
+                marker: {
+                    size: 2,
+                    color: '#3498db',
+                    opacity: 0.3
+                },
+                name: 'Projection'
+            };
+            
+            const layout = {
+                title: 'Lagrangian Torus in T*S¹',
+                scene: {
+                    aspectmode: 'cube',
+                    camera: { eye: { x: 1.5, y: 1.5, z: 1.5 } }
+                }
+            };
+            
+            Plotly.newPlot('lagrangian-viz', [trace1, projection], layout, {responsive: true});
+        }
+        
+        // Floer Chain Complex Visualization
+        function createFloerChainComplex() {
+            const container = document.getElementById('floer-chain-complex');
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', '100%')
+                .attr('height', 300);
+            
+            const width = container.clientWidth;
+            const height = 300;
+            
+            // Critical points (periodic orbits)
+            const criticalPoints = [
+                { id: 'x₁', index: 0, x: width * 0.2, y: height * 0.8 },
+                { id: 'x₂', index: 1, x: width * 0.5, y: height * 0.6 },
+                { id: 'x₃', index: 1, x: width * 0.3, y: height * 0.4 },
+                { id: 'x₄', index: 2, x: width * 0.6, y: height * 0.3 },
+                { id: 'x₅', index: 3, x: width * 0.8, y: height * 0.2 }
+            ];
+            
+            // Draw critical points
+            const pointGroups = svg.selectAll('.critical-point')
+                .data(criticalPoints)
+                .enter()
+                .append('g')
+                .attr('transform', d => `translate(${d.x}, ${d.y})`);
+            
+            pointGroups.append('circle')
+                .attr('r', 20)
+                .attr('fill', d => d3.schemeCategory10[d.index])
+                .attr('stroke', '#2c3e50')
+                .attr('stroke-width', 2);
+            
+            pointGroups.append('text')
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.35em')
+                .attr('fill', 'white')
+                .style('font-weight', 'bold')
+                .text(d => d.id);
+            
+            // Draw connections (Floer trajectories)
+            const connections = [
+                { from: criticalPoints[0], to: criticalPoints[1] },
+                { from: criticalPoints[0], to: criticalPoints[2] },
+                { from: criticalPoints[1], to: criticalPoints[3] },
+                { from: criticalPoints[2], to: criticalPoints[3] },
+                { from: criticalPoints[3], to: criticalPoints[4] }
+            ];
+            
+            svg.selectAll('.floer-trajectory')
+                .data(connections)
+                .enter()
+                .append('path')
+                .attr('d', d => {
+                    const dx = d.to.x - d.from.x;
+                    const dy = d.to.y - d.from.y;
+                    const dr = Math.sqrt(dx * dx + dy * dy);
+                    return `M${d.from.x},${d.from.y}A${dr},${dr} 0 0,1 ${d.to.x},${d.to.y}`;
+                })
+                .attr('fill', 'none')
+                .attr('stroke', '#666')
+                .attr('stroke-width', 2)
+                .attr('marker-end', 'url(#arrow)');
+            
+            // Add grading labels
+            for (let i = 0; i <= 3; i++) {
+                svg.append('text')
+                    .attr('x', 20)
+                    .attr('y', height - i * 60 - 20)
+                    .style('font-weight', 'bold')
+                    .text(`CF${i}`);
+            }
+            
+            // Define arrow marker
+            svg.append('defs')
+                .append('marker')
+                .attr('id', 'arrow')
+                .attr('viewBox', '0 -5 10 10')
+                .attr('refX', 30)
+                .attr('refY', 0)
+                .attr('markerWidth', 6)
+                .attr('markerHeight', 6)
+                .attr('orient', 'auto')
+                .append('path')
+                .attr('d', 'M0,-5L10,0L0,5')
+                .attr('fill', '#666');
+        }
+        
+        // Floer Differential Visualization
+        function createFloerDifferential() {
+            const container = document.getElementById('floer-differential');
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', '100%')
+                .attr('height', 300);
+            
+            const width = container.clientWidth;
+            const height = 300;
+            
+            // Draw pseudo-holomorphic strip
+            const stripPath = d3.path();
+            stripPath.moveTo(width * 0.2, height * 0.8);
+            stripPath.quadraticCurveTo(width * 0.5, height * 0.5, width * 0.8, height * 0.2);
+            
+            svg.append('path')
+                .attr('d', stripPath.toString())
+                .attr('fill', 'none')
+                .attr('stroke', '#3498db')
+                .attr('stroke-width', 40)
+                .attr('opacity', 0.3);
+            
+            // Add flow lines
+            for (let t = 0; t <= 1; t += 0.1) {
+                const x = width * (0.2 + 0.6 * t);
+                const y = height * (0.8 - 0.6 * t);
+                
+                svg.append('path')
+                    .attr('d', `M${x - 15},${y} L${x + 15},${y}`)
+                    .attr('stroke', '#e74c3c')
+                    .attr('stroke-width', 2);
+            }
+            
+            // Add boundary conditions
+            svg.append('circle')
+                .attr('cx', width * 0.2)
+                .attr('cy', height * 0.8)
+                .attr('r', 15)
+                .attr('fill', '#2ecc71');
+            
+            svg.append('circle')
+                .attr('cx', width * 0.8)
+                .attr('cy', height * 0.2)
+                .attr('r', 15)
+                .attr('fill', '#f39c12');
+            
+            // Labels
+            svg.append('text')
+                .attr('x', width * 0.2)
+                .attr('y', height * 0.9)
+                .attr('text-anchor', 'middle')
+                .text('x');
+            
+            svg.append('text')
+                .attr('x', width * 0.8)
+                .attr('y', height * 0.1)
+                .attr('text-anchor', 'middle')
+                .text('y');
+            
+            svg.append('text')
+                .attr('x', width * 0.5)
+                .attr('y', height * 0.6)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '14px')
+                .text('∂u/∂s + J(∂u/∂t) = 0');
+        }
+        
+        // J-holomorphic Curves
+        function createJHolomorphicVisualization() {
+            const container = document.getElementById('j-holomorphic-viz');
+            const width = 400;
+            const height = 300;
+            
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Source Riemann surface
+            svg.append('ellipse')
+                .attr('cx', width * 0.25)
+                .attr('cy', height * 0.5)
+                .attr('rx', 60)
+                .attr('ry', 80)
+                .attr('fill', '#3498db')
+                .attr('opacity', 0.3)
+                .attr('stroke', '#2c3e50')
+                .attr('stroke-width', 2);
+            
+            svg.append('text')
+                .attr('x', width * 0.25)
+                .attr('y', height * 0.2)
+                .attr('text-anchor', 'middle')
+                .style('font-weight', 'bold')
+                .text('(Σ, j)');
+            
+            // Target symplectic manifold
+            svg.append('rect')
+                .attr('x', width * 0.6)
+                .attr('y', height * 0.3)
+                .attr('width', 100)
+                .attr('height', 100)
+                .attr('fill', '#e74c3c')
+                .attr('opacity', 0.3)
+                .attr('stroke', '#c0392b')
+                .attr('stroke-width', 2)
+                .attr('rx', 10);
+            
+            svg.append('text')
+                .attr('x', width * 0.75)
+                .attr('y', height * 0.2)
+                .attr('text-anchor', 'middle')
+                .style('font-weight', 'bold')
+                .text('(M, J)');
+            
+            // Arrow
+            svg.append('path')
+                .attr('d', `M${width * 0.35},${height * 0.5} L${width * 0.55},${height * 0.5}`)
+                .attr('stroke', '#2c3e50')
+                .attr('stroke-width', 2)
+                .attr('marker-end', 'url(#j-arrow)');
+            
+            svg.append('text')
+                .attr('x', width * 0.45)
+                .attr('y', height * 0.45)
+                .attr('text-anchor', 'middle')
+                .text('u');
+            
+            // Define arrow
+            svg.append('defs')
+                .append('marker')
+                .attr('id', 'j-arrow')
+                .attr('viewBox', '0 -5 10 10')
+                .attr('refX', 10)
+                .attr('refY', 0)
+                .attr('markerWidth', 6)
+                .attr('markerHeight', 6)
+                .attr('orient', 'auto')
+                .append('path')
+                .attr('d', 'M0,-5L10,0L0,5')
+                .attr('fill', '#2c3e50');
+        }
+        
+        // Fukaya Category Visualization
+        function createFukayaVisualization() {
+            const data = [];
+            
+            // Create Lagrangian submanifolds
+            const lagrangians = [];
+            for (let i = 0; i < 4; i++) {
+                const angle = (i / 4) * 2 * Math.PI;
+                const trace = {
+                    type: 'scatter3d',
+                    mode: 'lines',
+                    x: [],
+                    y: [],
+                    z: [],
+                    line: {
+                        color: d3.schemeCategory10[i],
+                        width: 6
+                    },
+                    name: `L${i}`
+                };
+                
+                // Parametrize Lagrangian
+                for (let t = 0; t <= 1; t += 0.01) {
+                    const theta = t * 2 * Math.PI;
+                    trace.x.push(Math.cos(theta + angle) * (2 + 0.5 * Math.sin(3 * theta)));
+                    trace.y.push(Math.sin(theta + angle) * (2 + 0.5 * Math.sin(3 * theta)));
+                    trace.z.push(Math.sin(2 * theta) * 0.5);
+                }
+                
+                data.push(trace);
+            }
+            
+            // Add intersection points
+            const intersections = {
+                type: 'scatter3d',
+                mode: 'markers',
+                x: [2, -2, 0, 0],
+                y: [0, 0, 2, -2],
+                z: [0, 0, 0, 0],
+                marker: {
+                    size: 8,
+                    color: '#e74c3c'
+                },
+                name: 'Intersections'
+            };
+            data.push(intersections);
+            
+            const layout = {
+                title: 'Fukaya Category Objects',
+                scene: {
+                    aspectmode: 'cube',
+                    xaxis: { title: 'X' },
+                    yaxis: { title: 'Y' },
+                    zaxis: { title: 'Z' }
+                }
+            };
+            
+            Plotly.newPlot('fukaya-viz', data, layout, {responsive: true});
+        }
+        
+        // Moment Map Visualization
+        function createMomentMapVisualization() {
+            // S¹ action on S²
+            const u = Array.from({length: 30}, (_, i) => i / 29 * Math.PI);
+            const v = Array.from({length: 30}, (_, i) => i / 29 * 2 * Math.PI);
+            
+            const x = [], y = [], z = [], values = [];
+            for (let i = 0; i < u.length; i++) {
+                x[i] = []; y[i] = []; z[i] = []; values[i] = [];
+                for (let j = 0; j < v.length; j++) {
+                    x[i][j] = Math.sin(u[i]) * Math.cos(v[j]);
+                    y[i][j] = Math.sin(u[i]) * Math.sin(v[j]);
+                    z[i][j] = Math.cos(u[i]);
+                    values[i][j] = z[i][j]; // Height function is moment map
+                }
+            }
+            
+            const trace1 = {
+                type: 'surface',
+                x: x, y: y, z: z,
+                surfacecolor: values,
+                colorscale: 'Viridis',
+                opacity: 0.8,
+                name: 'S²'
+            };
+            
+            // Add level sets
+            const levels = [];
+            for (let h = -0.8; h <= 0.8; h += 0.4) {
+                const level = {
+                    type: 'scatter3d',
+                    mode: 'lines',
+                    x: [], y: [], z: [],
+                    line: {
+                        color: '#e74c3c',
+                        width: 4
+                    },
+                    name: `μ = ${h.toFixed(1)}`
+                };
+                
+                for (let theta = 0; theta <= 2 * Math.PI; theta += 0.1) {
+                    const r = Math.sqrt(1 - h * h);
+                    level.x.push(r * Math.cos(theta));
+                    level.y.push(r * Math.sin(theta));
+                    level.z.push(h);
+                }
+                levels.push(level);
+            }
+            
+            const layout = {
+                title: 'Moment Map: S¹ Action on S²',
+                scene: {
+                    aspectmode: 'cube',
+                    camera: { eye: { x: 1.5, y: 1.5, z: 1.5 } }
+                }
+            };
+            
+            Plotly.newPlot('moment-map-viz', [trace1, ...levels], layout, {responsive: true});
+        }
+        
+        // Gromov-Witten Invariants
+        function createGWInvariants() {
+            const container = document.getElementById('gw-invariants');
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', '100%')
+                .attr('height', 300);
+            
+            const width = container.clientWidth;
+            const height = 300;
+            
+            // Draw moduli space
+            svg.append('ellipse')
+                .attr('cx', width / 2)
+                .attr('cy', height / 2)
+                .attr('rx', width * 0.4)
+                .attr('ry', height * 0.3)
+                .attr('fill', '#3498db')
+                .attr('opacity', 0.2)
+                .attr('stroke', '#2c3e50')
+                .attr('stroke-width', 2);
+            
+            // Add marked points
+            const points = [
+                { x: width * 0.3, y: height * 0.4 },
+                { x: width * 0.7, y: height * 0.4 },
+                { x: width * 0.5, y: height * 0.6 }
+            ];
+            
+            points.forEach((p, i) => {
+                svg.append('circle')
+                    .attr('cx', p.x)
+                    .attr('cy', p.y)
+                    .attr('r', 8)
+                    .attr('fill', '#e74c3c');
+                
+                svg.append('text')
+                    .attr('x', p.x)
+                    .attr('y', p.y - 15)
+                    .attr('text-anchor', 'middle')
+                    .text(`p${i+1}`);
+            });
+            
+            // Label
+            svg.append('text')
+                .attr('x', width / 2)
+                .attr('y', height * 0.15)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '16px')
+                .style('font-weight', 'bold')
+                .text('M̅₀,₃(ℙ², d)');
+        }
+        
+        // Initialize all visualizations
+        document.addEventListener('DOMContentLoaded', () => {
+            createPhaseSpaceVisualization();
+            createLagrangianVisualization();
+            createFloerChainComplex();
+            createFloerDifferential();
+            createJHolomorphicVisualization();
+            createFukayaVisualization();
+            createMomentMapVisualization();
+            createGWInvariants();
+        });
+    </script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-commutative Geometry - Advanced Mathematics | Math.help</title>
+    <meta name="description" content="Explore Non-commutative Geometry: spectral triples, C*-algebras, quantum groups, Connes' distance formula, and the non-commutative Standard Model.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <!-- Visualization Libraries -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <style>
+        .spectral-triple-viz {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 400px;
+        }
+        
+        .quantum-torus {
+            width: 100%;
+            height: 500px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .operator-algebra {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .algebra-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .dirac-operator {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .moyal-product {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        
+        .quantum-group-viz {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+        }
+        
+        .hopf-algebra {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .spectral-action {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .connes-distance {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .quantum-space {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            background: #282c34;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .fuzzy-sphere {
+            width: 100%;
+            height: 400px;
+            background: white;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .matrix-geometry {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .matrix-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .matrix-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .dixmier-trace {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .standard-model {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .cyclic-cohomology {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+        }
+        
+        .control-panel {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .control-panel label {
+            margin-right: 15px;
+            font-weight: 500;
+        }
+        
+        .theta-deformation {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .k-theory-viz {
+            width: 100%;
+            height: 400px;
+            background: white;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Advanced Mathematics Research</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/advanced/">Advanced Topics</a></li>
+                <li><a href="/advanced/noncommutative-geometry.html" class="active">Non-commutative Geometry</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="main-content">
+                    <h1>Non-commutative Geometry</h1>
+                    
+                    <div class="intro-section">
+                        <p class="lead">Non-commutative Geometry, pioneered by Alain Connes, extends geometric concepts to spaces where coordinates don't commute, unifying operator algebras, differential geometry, and quantum physics in a revolutionary framework that encompasses the Standard Model of particle physics.</p>
+                    </div>
+                    
+                    <!-- Spectral Triple Visualization -->
+                    <section class="spectral-section">
+                        <h2>Spectral Triples: The Heart of NCG</h2>
+                        <div class="definition">
+                            <h3>Definition: Spectral Triple</h3>
+                            <p>A spectral triple $({\mathcal A}, {\mathcal H}, D)$ consists of:</p>
+                            <ul>
+                                <li>${\mathcal A}$ - a *-algebra represented on</li>
+                                <li>${\mathcal H}$ - a Hilbert space with</li>
+                                <li>$D$ - a self-adjoint operator (Dirac operator)</li>
+                            </ul>
+                            <p>Such that $[D, a]$ is bounded for all $a \in {\mathcal A}$</p>
+                        </div>
+                        
+                        <div class="spectral-triple-viz">
+                            <div id="spectral-triple-diagram"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- Quantum Torus -->
+                    <section class="quantum-torus-section">
+                        <h2>The Non-commutative Torus</h2>
+                        <div class="control-panel">
+                            <label>Deformation Parameter θ: 
+                                <input type="range" id="theta-param" min="0" max="1" step="0.01" value="0.3">
+                                <span id="theta-display">0.3</span>
+                            </label>
+                            <button onclick="animateQuantumTorus()">Animate Deformation</button>
+                        </div>
+                        <div class="quantum-torus" id="quantum-torus-viz"></div>
+                        
+                        <div class="moyal-product">
+                            <h3>Moyal Product</h3>
+                            <p>The non-commutative multiplication on $C^∞(T^2_θ)$:</p>
+                            $$f \star_θ g = \sum_{n \in \mathbb{Z}^2} e^{-πi n^T θ m} \hat{f}(n)\hat{g}(m) e^{2πi(n+m) \cdot x}$$
+                            <p>where $UV = e^{2πiθ}VU$ generates the algebra</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Dirac Operator and Distance -->
+                    <section class="dirac-section">
+                        <div class="dirac-operator">
+                            <h2>Connes' Distance Formula</h2>
+                            <p>The geodesic distance between pure states:</p>
+                            $$d(φ, ψ) = \sup\{|φ(a) - ψ(a)| : a \in {\mathcal A}, \|[D, a]\| \leq 1\}$$
+                            <p>This recovers the Riemannian distance for commutative manifolds!</p>
+                        </div>
+                        
+                        <div class="connes-distance">
+                            <h3>Distance on Quantum Spaces</h3>
+                            <div id="quantum-distance-viz"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- Fuzzy Sphere -->
+                    <section class="fuzzy-sphere-section">
+                        <h2>The Fuzzy Sphere</h2>
+                        <p>A finite-dimensional approximation to $S^2$ using matrix algebras:</p>
+                        
+                        <div class="control-panel">
+                            <label>Matrix Size N: 
+                                <input type="range" id="fuzzy-n" min="2" max="20" value="5">
+                                <span id="fuzzy-n-display">5</span>
+                            </label>
+                        </div>
+                        <div class="fuzzy-sphere" id="fuzzy-sphere-viz"></div>
+                        
+                        <div class="algebra-card">
+                            <h3>Algebra Structure</h3>
+                            <p>The fuzzy sphere $S^2_N$ is described by:</p>
+                            <ul>
+                                <li>Algebra: $M_N(\mathbb{C})$ (N×N matrices)</li>
+                                <li>Coordinates: $x_i = \frac{2}{N}J_i$ where $J_i$ are spin-j generators</li>
+                                <li>Constraint: $\sum x_i^2 = 1 + O(1/N)$</li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <!-- Quantum Groups -->
+                    <section class="quantum-groups-section">
+                        <h2>Quantum Groups & Hopf Algebras</h2>
+                        <div class="hopf-algebra">
+                            <h3>SUq(2) - Quantum SU(2)</h3>
+                            <p>Generators $a, b, c, d$ with relations:</p>
+                            $$ab = qba, \quad ac = qca, \quad bd = qdb, \quad cd = qdc$$
+                            $$bc = cb, \quad ad - da = (q - q^{-1})bc$$
+                            $$ad - q^{-1}bc = 1, \quad det_q = 1$$
+                        </div>
+                        
+                        <div class="quantum-group-viz" id="quantum-group-diagram"></div>
+                    </section>
+                    
+                    <!-- Spectral Action -->
+                    <section class="spectral-action-section">
+                        <h2>The Spectral Action Principle</h2>
+                        <div class="spectral-action">
+                            <h3>Action Functional</h3>
+                            <p>The spectral action for a spectral triple:</p>
+                            $$S = \text{Tr}(f(D/Λ)) + \langle ψ, Dψ \rangle$$
+                            <p>where $f$ is a cutoff function and $Λ$ is the energy scale</p>
+                        </div>
+                        
+                        <div class="standard-model">
+                            <h3>🌟 The Non-commutative Standard Model</h3>
+                            <p>Connes and Chamseddine showed that the Standard Model of particle physics emerges naturally from the spectral action on:</p>
+                            <p>$M × F$ where $M$ is spacetime and $F$ is a finite non-commutative space</p>
+                            <a href="https://arxiv.org/abs/hep-th/0610241" class="cta-button" style="background: white; color: #e91e63;">Explore the Paper</a>
+                        </div>
+                    </section>
+                    
+                    <!-- Matrix Geometries -->
+                    <section class="matrix-section">
+                        <h2>Matrix Geometries</h2>
+                        <div class="matrix-geometry">
+                            <div class="matrix-card">
+                                <h3>Fuzzy Spaces</h3>
+                                <p>Finite matrix approximations to continuous geometries</p>
+                            </div>
+                            <div class="matrix-card">
+                                <h3>Matrix Models</h3>
+                                <p>IKKT, BFSS models describing M-theory</p>
+                            </div>
+                            <div class="matrix-card">
+                                <h3>Emergent Geometry</h3>
+                                <p>Spacetime emerging from matrix eigenvalues</p>
+                            </div>
+                        </div>
+                        
+                        <div id="matrix-model-viz"></div>
+                    </section>
+                    
+                    <!-- Cyclic Cohomology -->
+                    <section class="cyclic-section">
+                        <h2>Cyclic Cohomology</h2>
+                        <div class="dixmier-trace">
+                            <h3>The Dixmier Trace</h3>
+                            <p>For compact operators with eigenvalues $μ_n$:</p>
+                            $$\text{Tr}_ω(T) = \lim_{n→ω} \frac{1}{\log n} \sum_{k=1}^n μ_k$$
+                            <p>Essential for defining integration in NCG</p>
+                        </div>
+                        
+                        <div class="cyclic-cohomology" id="cyclic-diagram"></div>
+                    </section>
+                    
+                    <!-- K-Theory Connection -->
+                    <section class="k-theory-section">
+                        <h2>K-Theory & Index Theory</h2>
+                        <div class="theorem-box">
+                            <h3>Connes-Kasparov Isomorphism</h3>
+                            <p>The analytic and topological K-theory are related by:</p>
+                            $$K_*(C^*_r(Γ)) \cong K^*(BΓ)$$
+                            <p>for discrete groups $Γ$ satisfying the Baum-Connes conjecture</p>
+                        </div>
+                        
+                        <div class="k-theory-viz" id="k-theory-diagram"></div>
+                    </section>
+                    
+                    <!-- Applications -->
+                    <section class="applications-section">
+                        <h2>Revolutionary Applications</h2>
+                        
+                        <div class="topic-card">
+                            <h3>Quantum Field Theory</h3>
+                            <p>Renormalization via Hopf algebras and motivic Galois theory</p>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3>Number Theory</h3>
+                            <p>Approach to the Riemann Hypothesis via spectral interpretation</p>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3>Quantum Gravity</h3>
+                            <p>Spectral triple approach to quantum spacetime</p>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3>Condensed Matter</h3>
+                            <p>Quantum Hall effect and topological insulators</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Key Research -->
+                    <section class="research-section">
+                        <h2>Foundational Papers</h2>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Noncommutative Geometry</div>
+                            <div class="paper-authors">Alain Connes (1994)</div>
+                            <a href="https://www.alainconnes.org/docs/book94bigpdf.pdf" class="paper-link">Academic Press</a>
+                            <p>The foundational textbook establishing the field.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">The Spectral Action Principle</div>
+                            <div class="paper-authors">Ali Chamseddine, Alain Connes (1997)</div>
+                            <a href="https://arxiv.org/abs/hep-th/9606001" class="paper-link">Comm. Math. Phys.</a>
+                            <p>Deriving physics from spectral data.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Gravity and the Standard Model with Neutrino Mixing</div>
+                            <div class="paper-authors">Chamseddine, Connes, Marcolli (2007)</div>
+                            <a href="https://arxiv.org/abs/hep-th/0610241" class="paper-link">Adv. Theor. Math. Phys.</a>
+                            <p>The non-commutative geometric Standard Model.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">From Physics to Number Theory via NCG</div>
+                            <div class="paper-authors">Alain Connes, Matilde Marcolli (2008)</div>
+                            <a href="https://arxiv.org/abs/0709.3905" class="paper-link">AMS</a>
+                            <p>Connections to the Riemann zeta function.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Research Centers -->
+                    <section class="institutions-section">
+                        <h2>Leading Research Centers</h2>
+                        <ul class="institution-list">
+                            <li><strong>IHES</strong> - Alain Connes' group</li>
+                            <li><strong>Penn State</strong> - NCG and mathematical physics</li>
+                            <li><strong>Copenhagen</strong> - Operator algebras and K-theory</li>
+                            <li><strong>Vanderbilt</strong> - NCG and number theory</li>
+                            <li><strong>ANU Canberra</strong> - Spectral triples and index theory</li>
+                        </ul>
+                    </section>
+                </div>
+                
+                <aside class="sidebar">
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                    </div>
+                    
+                    <section class="related-topics">
+                        <h3>Related Advanced Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="random-matrix-theory.html">Random Matrix Theory</a></li>
+                            <li><a href="symplectic-geometry.html">Symplectic Geometry</a></li>
+                            <li><a href="tqft-quantum-algebra.html">TQFT & Quantum Algebra</a></li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Three.js setup for 3D visualizations
+        let scene, camera, renderer;
+        let quantumTorusScene, quantumTorusCamera, quantumTorusRenderer;
+        
+        // Spectral Triple Diagram
+        function createSpectralTripleDiagram() {
+            const container = document.getElementById('spectral-triple-diagram');
+            const width = container.clientWidth;
+            const height = 400;
+            
+            const svg = d3.select('#spectral-triple-diagram')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Create gradient
+            const defs = svg.append('defs');
+            const gradient = defs.append('radialGradient')
+                .attr('id', 'spectral-gradient');
+            gradient.append('stop')
+                .attr('offset', '0%')
+                .attr('stop-color', '#3498db')
+                .attr('stop-opacity', 0.8);
+            gradient.append('stop')
+                .attr('offset', '100%')
+                .attr('stop-color', '#2c3e50')
+                .attr('stop-opacity', 0.3);
+            
+            // Central Hilbert space
+            const centerX = width / 2;
+            const centerY = height / 2;
+            
+            svg.append('circle')
+                .attr('cx', centerX)
+                .attr('cy', centerY)
+                .attr('r', 100)
+                .attr('fill', 'url(#spectral-gradient)')
+                .attr('stroke', '#2c3e50')
+                .attr('stroke-width', 2);
+            
+            svg.append('text')
+                .attr('x', centerX)
+                .attr('y', centerY)
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.35em')
+                .style('font-size', '20px')
+                .style('font-weight', 'bold')
+                .text('ℋ');
+            
+            // Algebra representation
+            const algebraX = centerX - 150;
+            const algebraY = centerY - 100;
+            
+            svg.append('rect')
+                .attr('x', algebraX - 60)
+                .attr('y', algebraY - 30)
+                .attr('width', 120)
+                .attr('height', 60)
+                .attr('fill', '#e74c3c')
+                .attr('stroke', '#c0392b')
+                .attr('stroke-width', 2)
+                .attr('rx', 5);
+            
+            svg.append('text')
+                .attr('x', algebraX)
+                .attr('y', algebraY)
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.35em')
+                .style('font-size', '18px')
+                .style('fill', 'white')
+                .style('font-weight', 'bold')
+                .text('𝒜');
+            
+            // Dirac operator
+            const diracX = centerX + 150;
+            const diracY = centerY - 100;
+            
+            svg.append('rect')
+                .attr('x', diracX - 60)
+                .attr('y', diracY - 30)
+                .attr('width', 120)
+                .attr('height', 60)
+                .attr('fill', '#2ecc71')
+                .attr('stroke', '#27ae60')
+                .attr('stroke-width', 2)
+                .attr('rx', 5);
+            
+            svg.append('text')
+                .attr('x', diracX)
+                .attr('y', diracY)
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.35em')
+                .style('font-size', '18px')
+                .style('fill', 'white')
+                .style('font-weight', 'bold')
+                .text('D');
+            
+            // Connections
+            svg.append('path')
+                .attr('d', `M ${algebraX + 60} ${algebraY} L ${centerX - 80} ${centerY - 50}`)
+                .attr('stroke', '#34495e')
+                .attr('stroke-width', 3)
+                .attr('fill', 'none')
+                .attr('marker-end', 'url(#arrowhead)');
+            
+            svg.append('path')
+                .attr('d', `M ${diracX - 60} ${diracY} L ${centerX + 80} ${centerY - 50}`)
+                .attr('stroke', '#34495e')
+                .attr('stroke-width', 3)
+                .attr('fill', 'none')
+                .attr('marker-end', 'url(#arrowhead)');
+            
+            // Commutator relation
+            const commutatorY = centerY + 120;
+            svg.append('rect')
+                .attr('x', centerX - 100)
+                .attr('y', commutatorY - 25)
+                .attr('width', 200)
+                .attr('height', 50)
+                .attr('fill', '#9b59b6')
+                .attr('stroke', '#8e44ad')
+                .attr('stroke-width', 2)
+                .attr('rx', 5);
+            
+            svg.append('text')
+                .attr('x', centerX)
+                .attr('y', commutatorY)
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.35em')
+                .style('font-size', '16px')
+                .style('fill', 'white')
+                .text('[D, a] bounded');
+            
+            // Arrow marker
+            defs.append('marker')
+                .attr('id', 'arrowhead')
+                .attr('markerWidth', 10)
+                .attr('markerHeight', 10)
+                .attr('refX', 9)
+                .attr('refY', 3)
+                .attr('orient', 'auto')
+                .append('polygon')
+                .attr('points', '0 0, 10 3, 0 6')
+                .attr('fill', '#34495e');
+        }
+        
+        // Quantum Torus Visualization
+        function initQuantumTorus() {
+            const container = document.getElementById('quantum-torus-viz');
+            quantumTorusScene = new THREE.Scene();
+            quantumTorusCamera = new THREE.PerspectiveCamera(75, container.clientWidth / 500, 0.1, 1000);
+            
+            quantumTorusRenderer = new THREE.WebGLRenderer({ antialias: true });
+            quantumTorusRenderer.setSize(container.clientWidth, 500);
+            container.appendChild(quantumTorusRenderer.domElement);
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            quantumTorusScene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            directionalLight.position.set(5, 5, 5);
+            quantumTorusScene.add(directionalLight);
+            
+            // Create torus with custom shader for quantum deformation
+            const geometry = new THREE.TorusGeometry(2, 0.8, 32, 100);
+            
+            const material = new THREE.ShaderMaterial({
+                uniforms: {
+                    theta: { value: 0.3 },
+                    time: { value: 0 }
+                },
+                vertexShader: `
+                    uniform float theta;
+                    uniform float time;
+                    varying vec3 vNormal;
+                    varying vec2 vUv;
+                    
+                    void main() {
+                        vNormal = normalize(normalMatrix * normal);
+                        vUv = uv;
+                        
+                        vec3 pos = position;
+                        float phase = uv.x * 2.0 * 3.14159 + uv.y * 2.0 * 3.14159;
+                        pos += normal * sin(phase * theta * 10.0 + time) * 0.1;
+                        
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    uniform float theta;
+                    varying vec3 vNormal;
+                    varying vec2 vUv;
+                    
+                    void main() {
+                        vec3 light = normalize(vec3(0.5, 0.5, 1.0));
+                        float intensity = dot(vNormal, light) * 0.5 + 0.5;
+                        
+                        vec3 color = mix(
+                            vec3(0.2, 0.4, 0.8),
+                            vec3(0.8, 0.3, 0.4),
+                            sin(vUv.x * 10.0 - vUv.y * 10.0 * theta) * 0.5 + 0.5
+                        );
+                        
+                        gl_FragColor = vec4(color * intensity, 1.0);
+                    }
+                `
+            });
+            
+            const torus = new THREE.Mesh(geometry, material);
+            quantumTorusScene.add(torus);
+            
+            quantumTorusCamera.position.z = 5;
+            
+            // Animation
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                const theta = parseFloat(document.getElementById('theta-param').value);
+                material.uniforms.theta.value = theta;
+                material.uniforms.time.value += 0.01;
+                
+                torus.rotation.x += 0.005;
+                torus.rotation.y += 0.007;
+                
+                quantumTorusRenderer.render(quantumTorusScene, quantumTorusCamera);
+            }
+            animate();
+        }
+        
+        // Animate quantum torus deformation
+        function animateQuantumTorus() {
+            let theta = 0;
+            const interval = setInterval(() => {
+                theta += 0.01;
+                if (theta > 1) {
+                    theta = 0;
+                }
+                document.getElementById('theta-param').value = theta;
+                document.getElementById('theta-display').textContent = theta.toFixed(2);
+            }, 50);
+            
+            setTimeout(() => clearInterval(interval), 5000);
+        }
+        
+        // Quantum Distance Visualization
+        function createQuantumDistanceViz() {
+            const data = [];
+            const n = 20;
+            
+            // Generate distance matrix for quantum states
+            for (let i = 0; i < n; i++) {
+                const row = [];
+                for (let j = 0; j < n; j++) {
+                    if (i === j) {
+                        row.push(0);
+                    } else {
+                        // Simulate quantum distance
+                        const angle = Math.abs(i - j) * Math.PI / n;
+                        row.push(2 * Math.sin(angle / 2));
+                    }
+                }
+                data.push(row);
+            }
+            
+            const trace = {
+                z: data,
+                type: 'heatmap',
+                colorscale: 'Viridis',
+                showscale: true,
+                hovertemplate: 'State %{x} to State %{y}<br>Distance: %{z:.3f}<extra></extra>'
+            };
+            
+            const layout = {
+                title: 'Quantum State Distances',
+                xaxis: { title: 'State φ' },
+                yaxis: { title: 'State ψ' },
+                width: document.getElementById('quantum-distance-viz').clientWidth,
+                height: 400
+            };
+            
+            Plotly.newPlot('quantum-distance-viz', [trace], layout, {responsive: true});
+        }
+        
+        // Fuzzy Sphere Visualization
+        function createFuzzySphere() {
+            const container = document.getElementById('fuzzy-sphere-viz');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / 400, 0.1, 1000);
+            
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(container.clientWidth, 400);
+            container.appendChild(renderer.domElement);
+            
+            // Lighting
+            const light = new THREE.PointLight(0xffffff, 1);
+            light.position.set(5, 5, 5);
+            scene.add(light);
+            scene.add(new THREE.AmbientLight(0x404040));
+            
+            camera.position.z = 3;
+            
+            let sphereGroup = new THREE.Group();
+            scene.add(sphereGroup);
+            
+            function updateFuzzySphere() {
+                // Clear previous sphere
+                while(sphereGroup.children.length > 0) {
+                    sphereGroup.remove(sphereGroup.children[0]);
+                }
+                
+                const n = parseInt(document.getElementById('fuzzy-n').value);
+                document.getElementById('fuzzy-n-display').textContent = n;
+                
+                // Create points on fuzzy sphere
+                const sphereGeometry = new THREE.SphereGeometry(0.05, 16, 16);
+                const material = new THREE.MeshPhongMaterial({ color: 0x3498db });
+                
+                // Generate fuzzy sphere points
+                for (let i = 0; i < n; i++) {
+                    for (let j = 0; j < n; j++) {
+                        const theta = (i + 0.5) * Math.PI / n;
+                        const phi = (j + 0.5) * 2 * Math.PI / n;
+                        
+                        const x = Math.sin(theta) * Math.cos(phi);
+                        const y = Math.sin(theta) * Math.sin(phi);
+                        const z = Math.cos(theta);
+                        
+                        const sphere = new THREE.Mesh(sphereGeometry, material);
+                        sphere.position.set(x, y, z);
+                        sphereGroup.add(sphere);
+                    }
+                }
+                
+                // Add coordinate axes
+                const axesHelper = new THREE.AxesHelper(1.5);
+                sphereGroup.add(axesHelper);
+            }
+            
+            updateFuzzySphere();
+            document.getElementById('fuzzy-n').addEventListener('input', updateFuzzySphere);
+            
+            // Animation
+            function animate() {
+                requestAnimationFrame(animate);
+                sphereGroup.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+        
+        // Quantum Group Diagram
+        function createQuantumGroupDiagram() {
+            const width = document.getElementById('quantum-group-diagram').clientWidth;
+            const height = 400;
+            
+            const svg = d3.select('#quantum-group-diagram')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Hopf algebra structure
+            const nodes = [
+                { id: 'algebra', x: width * 0.5, y: 50, label: 'SUq(2)' },
+                { id: 'mult', x: width * 0.25, y: 150, label: 'μ (mult)' },
+                { id: 'comult', x: width * 0.75, y: 150, label: 'Δ (comult)' },
+                { id: 'unit', x: width * 0.25, y: 250, label: 'η (unit)' },
+                { id: 'counit', x: width * 0.75, y: 250, label: 'ε (counit)' },
+                { id: 'antipode', x: width * 0.5, y: 350, label: 'S (antipode)' }
+            ];
+            
+            const links = [
+                { source: 'algebra', target: 'mult' },
+                { source: 'algebra', target: 'comult' },
+                { source: 'mult', target: 'unit' },
+                { source: 'comult', target: 'counit' },
+                { source: 'mult', target: 'antipode' },
+                { source: 'comult', target: 'antipode' }
+            ];
+            
+            // Draw links
+            svg.selectAll('.link')
+                .data(links)
+                .enter()
+                .append('line')
+                .attr('class', 'link')
+                .attr('x1', d => nodes.find(n => n.id === d.source).x)
+                .attr('y1', d => nodes.find(n => n.id === d.source).y)
+                .attr('x2', d => nodes.find(n => n.id === d.target).x)
+                .attr('y2', d => nodes.find(n => n.id === d.target).y)
+                .attr('stroke', '#666')
+                .attr('stroke-width', 2);
+            
+            // Draw nodes
+            const nodeGroups = svg.selectAll('.node')
+                .data(nodes)
+                .enter()
+                .append('g')
+                .attr('transform', d => `translate(${d.x}, ${d.y})`);
+            
+            nodeGroups.append('circle')
+                .attr('r', 40)
+                .attr('fill', d => {
+                    if (d.id === 'algebra') return '#e74c3c';
+                    if (d.id === 'antipode') return '#9b59b6';
+                    return '#3498db';
+                })
+                .attr('stroke', '#2c3e50')
+                .attr('stroke-width', 2);
+            
+            nodeGroups.append('text')
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.35em')
+                .style('fill', 'white')
+                .style('font-weight', 'bold')
+                .text(d => d.label);
+        }
+        
+        // Matrix Model Visualization
+        function createMatrixModelViz() {
+            const container = document.getElementById('matrix-model-viz');
+            const width = container ? container.clientWidth : 800;
+            const height = 400;
+            
+            const trace = {
+                x: [],
+                y: [],
+                z: [],
+                mode: 'markers',
+                marker: {
+                    size: 3,
+                    color: [],
+                    colorscale: 'Viridis',
+                    showscale: true
+                },
+                type: 'scatter3d'
+            };
+            
+            // Generate random matrix eigenvalue distribution
+            const n = 1000;
+            for (let i = 0; i < n; i++) {
+                const r = Math.sqrt(-2 * Math.log(Math.random()));
+                const theta = 2 * Math.PI * Math.random();
+                const phi = Math.acos(2 * Math.random() - 1);
+                
+                trace.x.push(r * Math.sin(phi) * Math.cos(theta));
+                trace.y.push(r * Math.sin(phi) * Math.sin(theta));
+                trace.z.push(r * Math.cos(phi));
+                trace.marker.color.push(r);
+            }
+            
+            const layout = {
+                title: 'Emergent Geometry from Matrix Eigenvalues',
+                scene: {
+                    xaxis: { title: 'X' },
+                    yaxis: { title: 'Y' },
+                    zaxis: { title: 'Z' }
+                },
+                width: width,
+                height: height
+            };
+            
+            Plotly.newPlot('matrix-model-viz', [trace], layout, {responsive: true});
+        }
+        
+        // Cyclic Cohomology Diagram
+        function createCyclicDiagram() {
+            const width = document.getElementById('cyclic-diagram').clientWidth;
+            const height = 400;
+            
+            const svg = d3.select('#cyclic-diagram')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Create cyclic complex
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const radius = 120;
+            
+            const n = 6;
+            const nodes = [];
+            for (let i = 0; i < n; i++) {
+                const angle = (i / n) * 2 * Math.PI - Math.PI / 2;
+                nodes.push({
+                    x: centerX + radius * Math.cos(angle),
+                    y: centerY + radius * Math.sin(angle),
+                    label: `C^${i}`
+                });
+            }
+            
+            // Draw cyclic arrows
+            for (let i = 0; i < n; i++) {
+                const next = (i + 1) % n;
+                const dx = nodes[next].x - nodes[i].x;
+                const dy = nodes[next].y - nodes[i].y;
+                const angle = Math.atan2(dy, dx);
+                
+                svg.append('path')
+                    .attr('d', `M ${nodes[i].x + 30 * Math.cos(angle)} ${nodes[i].y + 30 * Math.sin(angle)} 
+                               L ${nodes[next].x - 30 * Math.cos(angle)} ${nodes[next].y - 30 * Math.sin(angle)}`)
+                    .attr('stroke', '#3498db')
+                    .attr('stroke-width', 2)
+                    .attr('marker-end', 'url(#cyclic-arrow)');
+            }
+            
+            // Draw nodes
+            const nodeGroups = svg.selectAll('.cyclic-node')
+                .data(nodes)
+                .enter()
+                .append('g')
+                .attr('transform', d => `translate(${d.x}, ${d.y})`);
+            
+            nodeGroups.append('circle')
+                .attr('r', 30)
+                .attr('fill', '#e74c3c')
+                .attr('stroke', '#c0392b')
+                .attr('stroke-width', 2);
+            
+            nodeGroups.append('text')
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.35em')
+                .style('fill', 'white')
+                .style('font-weight', 'bold')
+                .text(d => d.label);
+            
+            // Central label
+            svg.append('text')
+                .attr('x', centerX)
+                .attr('y', centerY)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '18px')
+                .style('font-weight', 'bold')
+                .text('Cyclic Complex');
+            
+            // Arrow marker
+            svg.append('defs').append('marker')
+                .attr('id', 'cyclic-arrow')
+                .attr('markerWidth', 10)
+                .attr('markerHeight', 10)
+                .attr('refX', 9)
+                .attr('refY', 3)
+                .attr('orient', 'auto')
+                .append('polygon')
+                .attr('points', '0 0, 10 3, 0 6')
+                .attr('fill', '#3498db');
+        }
+        
+        // K-Theory Diagram
+        function createKTheoryDiagram() {
+            const data = {
+                x: ['K₀(C(X))', 'K₁(C(X))', 'K₀(C*(Γ))', 'K₁(C*(Γ))'],
+                y: [4, 3, 2, 1],
+                mode: 'markers+text',
+                text: ['Bundles', 'Unitaries', 'Projections', 'Unitaries'],
+                textposition: 'top',
+                marker: {
+                    size: 20,
+                    color: ['#3498db', '#e74c3c', '#2ecc71', '#f39c12']
+                }
+            };
+            
+            const layout = {
+                title: 'K-Theory Groups',
+                xaxis: {
+                    title: 'K-Theory',
+                    showgrid: false
+                },
+                yaxis: {
+                    title: 'Level',
+                    showgrid: false,
+                    showticklabels: false
+                },
+                height: 400,
+                showlegend: false
+            };
+            
+            Plotly.newPlot('k-theory-diagram', [data], layout, {responsive: true});
+        }
+        
+        // Initialize all visualizations
+        document.addEventListener('DOMContentLoaded', () => {
+            createSpectralTripleDiagram();
+            initQuantumTorus();
+            createQuantumDistanceViz();
+            createFuzzySphere();
+            createQuantumGroupDiagram();
+            createMatrixModelViz();
+            createCyclicDiagram();
+            createKTheoryDiagram();
+            
+            // Event listeners
+            document.getElementById('theta-param').addEventListener('input', (e) => {
+                document.getElementById('theta-display').textContent = e.target.value;
+            });
+        });
+    </script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

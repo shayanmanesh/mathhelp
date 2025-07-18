@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derived Algebraic Geometry - Advanced Mathematics | Math.help</title>
+    <meta name="description" content="Explore Derived Algebraic Geometry: incorporating homotopy theory into algebraic geometry through derived schemes, stacks, and applications to moduli problems.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <!-- Visualization Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    
+    <style>
+        .derived-viz {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 400px;
+            position: relative;
+        }
+        
+        .stack-visualization {
+            width: 100%;
+            height: 500px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .moduli-problem {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .derived-scheme {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .cotangent-complex {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+        }
+        
+        .derived-category {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .homotopy-limit {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+        
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .theorem-toen {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .spectral-sequence {
+            width: 100%;
+            height: 400px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .example-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Advanced Mathematics Research</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/advanced/">Advanced Topics</a></li>
+                <li><a href="/advanced/derived-algebraic-geometry.html" class="active">Derived Algebraic Geometry</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="main-content">
+                    <h1>Derived Algebraic Geometry (DAG)</h1>
+                    
+                    <div class="intro-section">
+                        <p class="lead">Derived Algebraic Geometry revolutionizes classical algebraic geometry by incorporating homotopical methods, allowing us to work with "spaces" that remember higher-order information through derived schemes and stacks.</p>
+                    </div>
+                    
+                    <!-- Core Concepts -->
+                    <section class="concept-section">
+                        <h2>Fundamental Framework</h2>
+                        
+                        <div class="definition">
+                            <h3>Derived Schemes</h3>
+                            <p>A derived scheme is a pair $(X, \mathcal{O}_X)$ where:</p>
+                            <ul>
+                                <li>$X$ is a topological space</li>
+                                <li>$\mathcal{O}_X$ is a sheaf of simplicial commutative rings</li>
+                                <li>Locally modeled on $\text{Spec}(A)$ for simplicial commutative rings $A$</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="theorem-toen">
+                            <h3>Toën-Vezzosi Theorem</h3>
+                            <p>The ∞-category of derived Artin stacks is the localization:</p>
+                            $$\text{dSt} = \text{sPr}[\text{smooth surjections}^{-1}]$$
+                            <p>This provides a universal solution to moduli problems in the derived setting.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Derived Stack Visualization -->
+                    <section class="visualization-section">
+                        <h2>Derived Stack Structure</h2>
+                        <div class="derived-viz">
+                            <div id="derived-stack-viz" class="stack-visualization"></div>
+                        </div>
+                        <div class="control-panel">
+                            <label>Complexity: <input type="range" id="complexity-slider" min="1" max="5" value="3"></label>
+                            <label>View: 
+                                <select id="view-select">
+                                    <option value="stack">Stack Structure</option>
+                                    <option value="cotangent">Cotangent Complex</option>
+                                    <option value="deformation">Deformation Theory</option>
+                                </select>
+                            </label>
+                        </div>
+                    </section>
+                    
+                    <!-- Moduli Problems -->
+                    <section class="moduli-section">
+                        <h2>Moduli Problems in DAG</h2>
+                        <div class="moduli-problem">
+                            <div class="derived-scheme">
+                                <h3>Classical Moduli Space</h3>
+                                <div id="classical-moduli"></div>
+                                <p>Singular points where classical theory breaks down</p>
+                            </div>
+                            <div class="derived-scheme">
+                                <h3>Derived Enhancement</h3>
+                                <div id="derived-moduli"></div>
+                                <p>Smooth derived structure resolving singularities</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Cotangent Complex -->
+                    <section class="cotangent-section">
+                        <h2>The Cotangent Complex</h2>
+                        <div class="definition">
+                            <p>For a morphism $f: X \to Y$ of derived schemes, the cotangent complex $\mathbb{L}_{X/Y}$ is the fundamental deformation-theoretic invariant, generalizing Kähler differentials.</p>
+                        </div>
+                        <div class="cotangent-complex" id="cotangent-viz"></div>
+                        
+                        <div class="example-box">
+                            <h4>Example: Intersection Theory</h4>
+                            <p>For schemes $X, Y \hookrightarrow Z$, the derived intersection $X \times^h_Z Y$ has cotangent complex:</p>
+                            $$\mathbb{L}_{X \times^h_Z Y} \simeq \mathbb{L}_X \oplus \mathbb{L}_Y \to \mathbb{L}_Z$$
+                            <p>The failure of this to be an isomorphism measures the "excess intersection".</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Derived Categories -->
+                    <section class="derived-category-section">
+                        <h2>Derived Categories and Triangulated Structure</h2>
+                        <div class="derived-category">
+                            <div id="triangulated-category"></div>
+                        </div>
+                        
+                        <div class="code-block">
+// Derived category construction in pseudocode
+DerivedCategory(A) {
+    Objects: Chain complexes of A-modules
+    Morphisms: Chain maps up to homotopy
+    
+    Triangulated structure:
+    - Distinguished triangles: X → Y → Z → X[1]
+    - Rotation axiom
+    - Octahedral axiom
+    
+    return LocalizeAt(ChainComplexes(A), QuasiIsomorphisms)
+}
+                        </div>
+                    </section>
+                    
+                    <!-- Spectral Sequences -->
+                    <section class="spectral-section">
+                        <h2>Spectral Sequences in DAG</h2>
+                        <div class="spectral-sequence" id="spectral-seq-viz"></div>
+                        <p>The spectral sequence of a filtered complex provides computational tools for derived invariants.</p>
+                    </section>
+                    
+                    <!-- Applications -->
+                    <section class="applications-section">
+                        <h2>Revolutionary Applications</h2>
+                        
+                        <div class="topic-card">
+                            <h3>Virtual Fundamental Classes</h3>
+                            <p>In Gromov-Witten theory, derived structures provide well-defined integration over moduli spaces that are singular in the classical sense.</p>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3>Derived Deformation Theory</h3>
+                            <p>The cotangent complex controls deformations, obstructions live in $\text{Ext}^2$, and higher $\text{Ext}$ groups control higher-order phenomena.</p>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3>Shifted Symplectic Structures</h3>
+                            <p>Pantev-Toën-Vaquié-Vezzosi: Many moduli spaces carry n-shifted symplectic structures, explaining mysterious dualities.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Homotopy Limits -->
+                    <section class="homotopy-section">
+                        <h2>Homotopy Limits and Colimits</h2>
+                        <div class="homotopy-limit" id="homotopy-diagram"></div>
+                        <p>Derived fiber products and pushouts encode higher-order intersection data.</p>
+                    </section>
+                    
+                    <!-- Key Research -->
+                    <section class="research-section">
+                        <h2>Foundational Papers</h2>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">HAG I & II: Homotopical Algebraic Geometry</div>
+                            <div class="paper-authors">Bertrand Toën, Gabriele Vezzosi (2008)</div>
+                            <a href="https://arxiv.org/abs/math/0404373" class="paper-link">arXiv:math/0404373</a>
+                            <p>The foundational papers establishing derived algebraic geometry.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Derived Algebraic Geometry</div>
+                            <div class="paper-authors">Jacob Lurie (2009-2018)</div>
+                            <a href="https://www.math.ias.edu/~lurie/papers/DAG.pdf" class="paper-link">DAG Series</a>
+                            <p>Comprehensive development using ∞-categorical methods.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Shifted Symplectic Structures</div>
+                            <div class="paper-authors">Pantev, Toën, Vaquié, Vezzosi (2013)</div>
+                            <a href="https://arxiv.org/abs/1111.3209" class="paper-link">arXiv:1111.3209</a>
+                            <p>Revolutionary discovery of shifted symplectic geometry on moduli spaces.</p>
+                        </div>
+                        
+                        <div class="research-paper">
+                            <div class="paper-title">Derived Categories and Their Applications</div>
+                            <div class="paper-authors">Maxim Kontsevich (Various)</div>
+                            <p>Homological mirror symmetry and derived categories of coherent sheaves.</p>
+                        </div>
+                    </section>
+                    
+                    <!-- Research Centers -->
+                    <section class="institutions-section">
+                        <h2>Leading Research Centers</h2>
+                        <ul class="institution-list">
+                            <li><strong>MIT</strong> - Jacob Lurie's systematic development</li>
+                            <li><strong>Princeton/IAS</strong> - Higher algebra and topology</li>
+                            <li><strong>Stanford</strong> - Applications to algebraic topology</li>
+                            <li><strong>Toulouse (IMT)</strong> - Bertrand Toën's group</li>
+                            <li><strong>Paris (IHES)</strong> - Maxim Kontsevich</li>
+                            <li><strong>Imperial College London</strong> - Derived categories group</li>
+                        </ul>
+                    </section>
+                </div>
+                
+                <aside class="sidebar">
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                    </div>
+                    
+                    <section class="related-topics">
+                        <h3>Related Advanced Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="higher-category-theory.html">Higher Category Theory</a></li>
+                            <li><a href="motivic-homotopy.html">Motivic Homotopy Theory</a></li>
+                            <li><a href="geometric-langlands.html">Geometric Langlands</a></li>
+                            <li><a href="tqft-quantum-algebra.html">TQFT & Quantum Algebra</a></li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Derived Stack Visualization
+        function createDerivedStackVisualization() {
+            const container = document.getElementById('derived-stack-viz');
+            const width = container.clientWidth;
+            const height = 500;
+            
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf8f9fa);
+            
+            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(width, height);
+            container.appendChild(renderer.domElement);
+            
+            // Create layered structure representing derived stack
+            const layers = 5;
+            const layerGroup = new THREE.Group();
+            
+            for (let i = 0; i < layers; i++) {
+                // Create mesh for each layer
+                const geometry = new THREE.PlaneGeometry(10 - i * 1.5, 10 - i * 1.5, 20, 20);
+                
+                // Deform to show structure
+                const positions = geometry.attributes.position;
+                for (let j = 0; j < positions.count; j++) {
+                    const x = positions.getX(j);
+                    const y = positions.getY(j);
+                    const z = Math.sin(x * 0.5) * Math.cos(y * 0.5) * 0.5;
+                    positions.setZ(j, z);
+                }
+                
+                const material = new THREE.MeshPhongMaterial({
+                    color: new THREE.Color().setHSL(i / layers, 0.7, 0.5),
+                    transparent: true,
+                    opacity: 0.7,
+                    side: THREE.DoubleSide,
+                    wireframe: i % 2 === 0
+                });
+                
+                const mesh = new THREE.Mesh(geometry, material);
+                mesh.position.z = i * 2;
+                layerGroup.add(mesh);
+                
+                // Add connections between layers
+                if (i > 0) {
+                    const lineGeometry = new THREE.BufferGeometry();
+                    const points = [];
+                    for (let k = 0; k < 10; k++) {
+                        const angle = (k / 10) * Math.PI * 2;
+                        const r = 4 - i * 0.7;
+                        points.push(new THREE.Vector3(
+                            Math.cos(angle) * r,
+                            Math.sin(angle) * r,
+                            (i - 1) * 2
+                        ));
+                        points.push(new THREE.Vector3(
+                            Math.cos(angle) * r,
+                            Math.sin(angle) * r,
+                            i * 2
+                        ));
+                    }
+                    lineGeometry.setFromPoints(points);
+                    const lineMaterial = new THREE.LineBasicMaterial({ color: 0x666666 });
+                    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+                    layerGroup.add(lines);
+                }
+            }
+            
+            scene.add(layerGroup);
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            directionalLight.position.set(10, 10, 10);
+            scene.add(directionalLight);
+            
+            camera.position.set(15, 15, 15);
+            camera.lookAt(0, 0, 5);
+            
+            // Animation
+            function animate() {
+                requestAnimationFrame(animate);
+                layerGroup.rotation.z += 0.003;
+                renderer.render(scene, camera);
+            }
+            animate();
+            
+            // Store for updates
+            window.derivedScene = { scene, layerGroup, camera, renderer };
+        }
+        
+        // Moduli Space Comparison
+        function createModuliComparison() {
+            // Classical moduli space (with singularity)
+            const classicalData = [];
+            for (let i = 0; i < 50; i++) {
+                for (let j = 0; j < 50; j++) {
+                    const x = (i - 25) / 10;
+                    const y = (j - 25) / 10;
+                    // Create singular point at origin
+                    const z = Math.sqrt(Math.abs(x * x + y * y)) * Math.sign(x * y);
+                    classicalData.push([x, y, z]);
+                }
+            }
+            
+            const classicalTrace = {
+                type: 'mesh3d',
+                x: classicalData.map(p => p[0]),
+                y: classicalData.map(p => p[1]),
+                z: classicalData.map(p => p[2]),
+                opacity: 0.8,
+                color: 'red',
+                name: 'Classical (singular)'
+            };
+            
+            const classicalLayout = {
+                title: 'Classical Moduli Space',
+                scene: {
+                    camera: { eye: { x: 1.5, y: 1.5, z: 1.5 } }
+                },
+                margin: { t: 30, b: 0, l: 0, r: 0 }
+            };
+            
+            Plotly.newPlot('classical-moduli', [classicalTrace], classicalLayout, {responsive: true});
+            
+            // Derived moduli space (smooth)
+            const derivedData = [];
+            for (let i = 0; i < 50; i++) {
+                for (let j = 0; j < 50; j++) {
+                    const x = (i - 25) / 10;
+                    const y = (j - 25) / 10;
+                    // Smooth resolution
+                    const z = Math.sin(x) * Math.cos(y) + 0.2 * Math.exp(-x*x - y*y);
+                    derivedData.push([x, y, z]);
+                }
+            }
+            
+            const derivedTrace = {
+                type: 'mesh3d',
+                x: derivedData.map(p => p[0]),
+                y: derivedData.map(p => p[1]),
+                z: derivedData.map(p => p[2]),
+                opacity: 0.8,
+                color: 'blue',
+                name: 'Derived (smooth)'
+            };
+            
+            const derivedLayout = {
+                title: 'Derived Enhancement',
+                scene: {
+                    camera: { eye: { x: 1.5, y: 1.5, z: 1.5 } }
+                },
+                margin: { t: 30, b: 0, l: 0, r: 0 }
+            };
+            
+            Plotly.newPlot('derived-moduli', [derivedTrace], derivedLayout, {responsive: true});
+        }
+        
+        // Cotangent Complex Visualization
+        function createCotangentVisualization() {
+            const svg = d3.select('#cotangent-viz')
+                .append('svg')
+                .attr('width', '100%')
+                .attr('height', 400);
+            
+            const width = document.getElementById('cotangent-viz').clientWidth;
+            const height = 400;
+            
+            // Create chain complex diagram
+            const nodes = [
+                { id: 'L₋₂', x: width * 0.2, y: height * 0.5, level: -2 },
+                { id: 'L₋₁', x: width * 0.4, y: height * 0.5, level: -1 },
+                { id: 'L₀', x: width * 0.6, y: height * 0.5, level: 0 },
+                { id: 'L₁', x: width * 0.8, y: height * 0.5, level: 1 }
+            ];
+            
+            // Draw nodes
+            const nodeGroups = svg.selectAll('.node')
+                .data(nodes)
+                .enter()
+                .append('g')
+                .attr('transform', d => `translate(${d.x}, ${d.y})`);
+            
+            nodeGroups.append('rect')
+                .attr('x', -40)
+                .attr('y', -25)
+                .attr('width', 80)
+                .attr('height', 50)
+                .attr('fill', d => d.level === 0 ? '#e74c3c' : '#3498db')
+                .attr('stroke', '#2c3e50')
+                .attr('stroke-width', 2)
+                .attr('rx', 5);
+            
+            nodeGroups.append('text')
+                .attr('text-anchor', 'middle')
+                .attr('dy', '0.35em')
+                .attr('fill', 'white')
+                .style('font-weight', 'bold')
+                .style('font-size', '16px')
+                .text(d => d.id);
+            
+            // Draw arrows
+            const arrows = [];
+            for (let i = 0; i < nodes.length - 1; i++) {
+                arrows.push({
+                    source: nodes[i],
+                    target: nodes[i + 1],
+                    label: 'd'
+                });
+            }
+            
+            svg.selectAll('.arrow')
+                .data(arrows)
+                .enter()
+                .append('line')
+                .attr('x1', d => d.source.x + 40)
+                .attr('y1', d => d.source.y)
+                .attr('x2', d => d.target.x - 40)
+                .attr('y2', d => d.target.y)
+                .attr('stroke', '#666')
+                .attr('stroke-width', 2)
+                .attr('marker-end', 'url(#arrow)');
+            
+            // Add differential labels
+            svg.selectAll('.diff-label')
+                .data(arrows)
+                .enter()
+                .append('text')
+                .attr('x', d => (d.source.x + d.target.x) / 2)
+                .attr('y', d => d.source.y - 20)
+                .attr('text-anchor', 'middle')
+                .style('font-style', 'italic')
+                .text(d => d.label);
+            
+            // Define arrow marker
+            svg.append('defs')
+                .append('marker')
+                .attr('id', 'arrow')
+                .attr('viewBox', '0 -5 10 10')
+                .attr('refX', 10)
+                .attr('refY', 0)
+                .attr('markerWidth', 6)
+                .attr('markerHeight', 6)
+                .attr('orient', 'auto')
+                .append('path')
+                .attr('d', 'M0,-5L10,0L0,5')
+                .attr('fill', '#666');
+            
+            // Add description
+            svg.append('text')
+                .attr('x', width / 2)
+                .attr('y', height - 30)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '14px')
+                .text('Cotangent Complex: capturing infinitesimal deformations');
+        }
+        
+        // Triangulated Category Visualization
+        function createTriangulatedCategory() {
+            const container = document.getElementById('triangulated-category');
+            
+            const nodes = new vis.DataSet([
+                { id: 1, label: 'X', color: '#3498db' },
+                { id: 2, label: 'Y', color: '#e74c3c' },
+                { id: 3, label: 'Z', color: '#2ecc71' },
+                { id: 4, label: 'X[1]', color: '#3498db' },
+                { id: 5, label: 'A', color: '#f39c12' },
+                { id: 6, label: 'B', color: '#9b59b6' },
+                { id: 7, label: 'C', color: '#1abc9c' }
+            ]);
+            
+            const edges = new vis.DataSet([
+                { from: 1, to: 2, label: 'f', arrows: 'to' },
+                { from: 2, to: 3, label: 'g', arrows: 'to' },
+                { from: 3, to: 4, label: 'h', arrows: 'to', dashes: true },
+                { from: 5, to: 6, arrows: 'to' },
+                { from: 6, to: 7, arrows: 'to' },
+                { from: 1, to: 5, arrows: 'to', color: { color: '#95a5a6' } },
+                { from: 2, to: 6, arrows: 'to', color: { color: '#95a5a6' } }
+            ]);
+            
+            const data = { nodes: nodes, edges: edges };
+            const options = {
+                layout: {
+                    hierarchical: false
+                },
+                physics: {
+                    stabilization: true
+                },
+                edges: {
+                    smooth: {
+                        type: 'continuous'
+                    }
+                }
+            };
+            
+            new vis.Network(container, data, options);
+        }
+        
+        // Spectral Sequence Visualization
+        function createSpectralSequence() {
+            const container = document.getElementById('spectral-seq-viz');
+            const width = container.clientWidth - 40;
+            const height = 360;
+            
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Create E₂ page of spectral sequence
+            const scale = 40;
+            const offsetX = 50;
+            const offsetY = height - 50;
+            
+            // Grid
+            for (let p = 0; p <= 6; p++) {
+                svg.append('line')
+                    .attr('x1', offsetX + p * scale)
+                    .attr('y1', offsetY)
+                    .attr('x2', offsetX + p * scale)
+                    .attr('y2', offsetY - 6 * scale)
+                    .attr('stroke', '#ddd')
+                    .attr('stroke-width', 1);
+            }
+            
+            for (let q = 0; q <= 6; q++) {
+                svg.append('line')
+                    .attr('x1', offsetX)
+                    .attr('y1', offsetY - q * scale)
+                    .attr('x2', offsetX + 6 * scale)
+                    .attr('y2', offsetY - q * scale)
+                    .attr('stroke', '#ddd')
+                    .attr('stroke-width', 1);
+            }
+            
+            // Add groups
+            const groups = [
+                { p: 0, q: 0, value: 'ℤ' },
+                { p: 1, q: 0, value: '0' },
+                { p: 2, q: 0, value: 'ℤ' },
+                { p: 0, q: 1, value: '0' },
+                { p: 1, q: 1, value: 'ℤ²' },
+                { p: 2, q: 1, value: 'ℤ' },
+                { p: 0, q: 2, value: 'ℤ' },
+                { p: 1, q: 2, value: 'ℤ' },
+                { p: 2, q: 2, value: 'ℤ³' }
+            ];
+            
+            groups.forEach(g => {
+                const x = offsetX + g.p * scale;
+                const y = offsetY - g.q * scale;
+                
+                if (g.value !== '0') {
+                    svg.append('circle')
+                        .attr('cx', x)
+                        .attr('cy', y)
+                        .attr('r', 15)
+                        .attr('fill', '#3498db')
+                        .attr('stroke', '#2c3e50')
+                        .attr('stroke-width', 2);
+                    
+                    svg.append('text')
+                        .attr('x', x)
+                        .attr('y', y + 5)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', 'white')
+                        .style('font-weight', 'bold')
+                        .text(g.value);
+                }
+            });
+            
+            // Add differentials
+            const differentials = [
+                { from: { p: 2, q: 0 }, to: { p: 0, q: 1 } },
+                { from: { p: 2, q: 1 }, to: { p: 0, q: 2 } }
+            ];
+            
+            differentials.forEach(d => {
+                const x1 = offsetX + d.from.p * scale;
+                const y1 = offsetY - d.from.q * scale;
+                const x2 = offsetX + d.to.p * scale;
+                const y2 = offsetY - d.to.q * scale;
+                
+                svg.append('line')
+                    .attr('x1', x1 - 10)
+                    .attr('y1', y1 - 10)
+                    .attr('x2', x2 + 10)
+                    .attr('y2', y2 + 10)
+                    .attr('stroke', '#e74c3c')
+                    .attr('stroke-width', 2)
+                    .attr('marker-end', 'url(#diff-arrow)');
+            });
+            
+            // Labels
+            svg.append('text')
+                .attr('x', offsetX - 30)
+                .attr('y', offsetY + 30)
+                .text('p →')
+                .style('font-weight', 'bold');
+            
+            svg.append('text')
+                .attr('x', 10)
+                .attr('y', offsetY - 3 * scale)
+                .text('q ↑')
+                .style('font-weight', 'bold');
+            
+            svg.append('text')
+                .attr('x', width / 2)
+                .attr('y', 25)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '18px')
+                .style('font-weight', 'bold')
+                .text('E₂ Page of Spectral Sequence');
+        }
+        
+        // Homotopy Limit Diagram
+        function createHomotopyDiagram() {
+            const container = document.getElementById('homotopy-diagram');
+            const width = container.clientWidth;
+            const height = 300;
+            
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Create pullback square
+            const square = [
+                { id: 'X ×ʰ Y', x: width * 0.3, y: height * 0.3 },
+                { id: 'X', x: width * 0.3, y: height * 0.7 },
+                { id: 'Y', x: width * 0.7, y: height * 0.3 },
+                { id: 'Z', x: width * 0.7, y: height * 0.7 }
+            ];
+            
+            // Draw square
+            const squareGroup = svg.append('g');
+            
+            square.forEach(node => {
+                squareGroup.append('rect')
+                    .attr('x', node.x - 40)
+                    .attr('y', node.y - 20)
+                    .attr('width', 80)
+                    .attr('height', 40)
+                    .attr('fill', node.id.includes('×ʰ') ? '#e74c3c' : '#3498db')
+                    .attr('stroke', '#2c3e50')
+                    .attr('stroke-width', 2)
+                    .attr('rx', 5);
+                
+                squareGroup.append('text')
+                    .attr('x', node.x)
+                    .attr('y', node.y + 5)
+                    .attr('text-anchor', 'middle')
+                    .attr('fill', 'white')
+                    .style('font-weight', 'bold')
+                    .text(node.id);
+            });
+            
+            // Draw arrows
+            const arrows = [
+                { from: square[0], to: square[1] },
+                { from: square[0], to: square[2] },
+                { from: square[1], to: square[3] },
+                { from: square[2], to: square[3] }
+            ];
+            
+            arrows.forEach(arrow => {
+                svg.append('line')
+                    .attr('x1', arrow.from.x)
+                    .attr('y1', arrow.from.y + 20)
+                    .attr('x2', arrow.to.x)
+                    .attr('y2', arrow.to.y - 20)
+                    .attr('stroke', '#666')
+                    .attr('stroke-width', 2)
+                    .attr('marker-end', 'url(#pullback-arrow)');
+            });
+            
+            // Add homotopy indicator
+            svg.append('text')
+                .attr('x', width / 2)
+                .attr('y', 30)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '16px')
+                .style('font-weight', 'bold')
+                .text('Homotopy Pullback Square');
+        }
+        
+        // Update visualization based on controls
+        function updateVisualization() {
+            const complexity = document.getElementById('complexity-slider').value;
+            const view = document.getElementById('view-select').value;
+            
+            // Update derived stack visualization based on settings
+            if (window.derivedScene) {
+                // Adjust complexity by adding/removing layers
+                console.log(`Updating with complexity ${complexity} and view ${view}`);
+            }
+        }
+        
+        // Initialize all visualizations
+        document.addEventListener('DOMContentLoaded', () => {
+            createDerivedStackVisualization();
+            createModuliComparison();
+            createCotangentVisualization();
+            createTriangulatedCategory();
+            createSpectralSequence();
+            createHomotopyDiagram();
+            
+            // Event listeners
+            document.getElementById('complexity-slider').addEventListener('input', updateVisualization);
+            document.getElementById('view-select').addEventListener('change', updateVisualization);
+        });
+    </script>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

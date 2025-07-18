@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Mathematics Research Topics - Math.help</title>
+    <meta name="description" content="Explore cutting-edge mathematics: Geometric Langlands, Higher Category Theory, Arithmetic Geometry, and more advanced research areas.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <style>
+        .advanced-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .advanced-hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .advanced-hero p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .topic-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+        }
+        
+        .topic-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .topic-card .field-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .field-tag {
+            background: #e8f4f8;
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .topic-card .description {
+            color: #666;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        
+        .topic-card .key-figures {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .topic-card .key-figures h4 {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .topic-card .key-figures ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .topic-card .key-figures li {
+            padding: 3px 0;
+            font-size: 0.9em;
+        }
+        
+        .topic-card .explore-btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .topic-card .explore-btn:hover {
+            background: #2980b9;
+        }
+        
+        .topic-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-coming {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .institution-section {
+            background: #f8f9fa;
+            padding: 40px 0;
+            margin: 40px 0;
+            border-radius: 12px;
+        }
+        
+        .institution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .institution-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .institution-card h3 {
+            color: var(--primary-color);
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .institution-card p {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Advanced Mathematics Research</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/">Algebra</a></li>
+                <li><a href="/calculus/">Calculus</a></li>
+                <li><a href="/advanced/" class="active">Advanced Topics</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="advanced-hero">
+            <div class="container">
+                <h1>Cutting-Edge Mathematics Research</h1>
+                <p>Explore the most advanced mathematical concepts being pursued at the world's leading research institutions</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="main-content">
+                    <section class="intro-section">
+                        <h2>Advanced Research Topics</h2>
+                        <p>Dive into the forefront of mathematical research, where abstract theory meets profound applications in physics, computer science, and beyond.</p>
+                    </section>
+                    
+                    <div class="topics-grid">
+                        <!-- Geometric Langlands -->
+                        <div class="topic-card">
+                            <h2>Geometric Langlands Program <span class="topic-status status-active">Active</span></h2>
+                            <div class="field-tags">
+                                <span class="field-tag">Algebraic Geometry</span>
+                                <span class="field-tag">Number Theory</span>
+                                <span class="field-tag">Representation Theory</span>
+                            </div>
+                            <p class="description">
+                                An extension of the Langlands program connecting number theory and geometry through sheaf theory, moduli spaces, and category theory.
+                            </p>
+                            <div class="key-figures">
+                                <h4>Key Researchers & Institutions:</h4>
+                                <ul>
+                                    <li>• Dennis Gaitsgory (Harvard)</li>
+                                    <li>• Edward Frenkel (Berkeley)</li>
+                                    <li>• Institute for Advanced Study</li>
+                                    <li>• Perimeter Institute</li>
+                                </ul>
+                            </div>
+                            <a href="geometric-langlands.html" class="explore-btn">Explore Topic →</a>
+                        </div>
+                        
+                        <!-- Higher Category Theory -->
+                        <div class="topic-card">
+                            <h2>Higher Category Theory & ∞-Categories <span class="topic-status status-active">Active</span></h2>
+                            <div class="field-tags">
+                                <span class="field-tag">Abstract Algebra</span>
+                                <span class="field-tag">Topology</span>
+                                <span class="field-tag">Homotopy Theory</span>
+                            </div>
+                            <p class="description">
+                                A powerful generalization allowing morphisms between morphisms, crucial in derived algebraic geometry, TQFT, and homotopy type theory.
+                            </p>
+                            <div class="key-figures">
+                                <h4>Key Researchers & Institutions:</h4>
+                                <ul>
+                                    <li>• Jacob Lurie (IAS)</li>
+                                    <li>• MIT</li>
+                                    <li>• University of Chicago</li>
+                                    <li>• Max Planck Institute</li>
+                                </ul>
+                            </div>
+                            <a href="higher-category-theory.html" class="explore-btn">Explore Topic →</a>
+                        </div>
+                        
+                        <!-- Arithmetic Geometry -->
+                        <div class="topic-card">
+                            <h2>Arithmetic Geometry & p-adic Hodge Theory <span class="topic-status status-active">Active</span></h2>
+                            <div class="field-tags">
+                                <span class="field-tag">Number Theory</span>
+                                <span class="field-tag">Algebraic Geometry</span>
+                                <span class="field-tag">p-adic Analysis</span>
+                            </div>
+                            <p class="description">
+                                Studies Diophantine equations using algebraic geometry; focuses on p-adic Galois representations, perfectoid spaces, and prismatic cohomology.
+                            </p>
+                            <div class="key-figures">
+                                <h4>Key Researchers & Institutions:</h4>
+                                <ul>
+                                    <li>• Peter Scholze (Bonn)</li>
+                                    <li>• Bhargav Bhatt (IAS)</li>
+                                    <li>• Harvard University</li>
+                                    <li>• UC Berkeley</li>
+                                </ul>
+                            </div>
+                            <a href="arithmetic-geometry.html" class="explore-btn">Explore Topic →</a>
+                        </div>
+                        
+                        <!-- Derived Algebraic Geometry -->
+                        <div class="topic-card">
+                            <h2>Derived Algebraic Geometry <span class="topic-status status-coming">Coming Soon</span></h2>
+                            <div class="field-tags">
+                                <span class="field-tag">Algebraic Geometry</span>
+                                <span class="field-tag">Homological Algebra</span>
+                                <span class="field-tag">Homotopy Theory</span>
+                            </div>
+                            <p class="description">
+                                Incorporates homotopy theory and higher categories to generalize classical algebraic geometry, with applications in moduli problems and string theory.
+                            </p>
+                            <div class="key-figures">
+                                <h4>Key Researchers & Institutions:</h4>
+                                <ul>
+                                    <li>• MIT</li>
+                                    <li>• Princeton</li>
+                                    <li>• Stanford</li>
+                                    <li>• Paris-Saclay</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="explore-btn">Coming Soon</a>
+                        </div>
+                        
+                        <!-- Machine-Assisted Theorem Proving -->
+                        <div class="topic-card">
+                            <h2>Machine-Assisted Theorem Proving <span class="topic-status status-coming">Coming Soon</span></h2>
+                            <div class="field-tags">
+                                <span class="field-tag">Logic</span>
+                                <span class="field-tag">Proof Theory</span>
+                                <span class="field-tag">Computer Science</span>
+                            </div>
+                            <p class="description">
+                                Using proof assistants like Lean, Coq, and Isabelle/HOL to formalize major theorems, including the Liquid Tensor Experiment and Sphere Packing.
+                            </p>
+                            <div class="key-figures">
+                                <h4>Key Initiatives:</h4>
+                                <ul>
+                                    <li>• Lean Community</li>
+                                    <li>• Microsoft Research</li>
+                                    <li>• CMU</li>
+                                    <li>• Formal Abstracts Project</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="explore-btn">Coming Soon</a>
+                        </div>
+                        
+                        <!-- Motivic Homotopy Theory -->
+                        <div class="topic-card">
+                            <h2>Motivic Homotopy Theory <span class="topic-status status-coming">Coming Soon</span></h2>
+                            <div class="field-tags">
+                                <span class="field-tag">Algebraic Topology</span>
+                                <span class="field-tag">Algebraic Geometry</span>
+                                <span class="field-tag">K-Theory</span>
+                            </div>
+                            <p class="description">
+                                Voevodsky's revolutionary approach applying homotopy theory to algebraic varieties, connecting topology and arithmetic geometry.
+                            </p>
+                            <div class="key-figures">
+                                <h4>Legacy of Vladimir Voevodsky:</h4>
+                                <ul>
+                                    <li>• Fields Medal 2002</li>
+                                    <li>• Milnor Conjecture</li>
+                                    <li>• Univalent Foundations</li>
+                                    <li>• IAS Princeton</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="explore-btn">Coming Soon</a>
+                        </div>
+                        
+                        <!-- Random Matrix Theory -->
+                        <div class="topic-card">
+                            <h2>Random Matrix Theory <span class="topic-status status-coming">Coming Soon</span></h2>
+                            <div class="field-tags">
+                                <span class="field-tag">Probability</span>
+                                <span class="field-tag">Number Theory</span>
+                                <span class="field-tag">Mathematical Physics</span>
+                            </div>
+                            <p class="description">
+                                Studies eigenvalue distributions with deep connections to number theory (Riemann zeta zeros), quantum chaos, and statistical mechanics.
+                            </p>
+                            <div class="key-figures">
+                                <h4>Key Areas:</h4>
+                                <ul>
+                                    <li>• Universality phenomena</li>
+                                    <li>• Tracy-Widom distribution</li>
+                                    <li>• Quantum chaos</li>
+                                    <li>• Integrable systems</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="explore-btn">Coming Soon</a>
+                        </div>
+                        
+                        <!-- Symplectic Geometry -->
+                        <div class="topic-card">
+                            <h2>Symplectic Geometry & Floer Homology <span class="topic-status status-coming">Coming Soon</span></h2>
+                            <div class="field-tags">
+                                <span class="field-tag">Differential Geometry</span>
+                                <span class="field-tag">Topology</span>
+                                <span class="field-tag">Mathematical Physics</span>
+                            </div>
+                            <p class="description">
+                                Studies symplectic manifolds with applications to mirror symmetry, Fukaya categories, and the geometry underlying classical mechanics.
+                            </p>
+                            <div class="key-figures">
+                                <h4>Key Concepts:</h4>
+                                <ul>
+                                    <li>• Mirror symmetry</li>
+                                    <li>• Fukaya categories</li>
+                                    <li>• Pseudo-holomorphic curves</li>
+                                    <li>• Hamiltonian dynamics</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="explore-btn">Coming Soon</a>
+                        </div>
+                        
+                        <!-- TQFT -->
+                        <div class="topic-card">
+                            <h2>TQFT & Quantum Algebra <span class="topic-status status-coming">Coming Soon</span></h2>
+                            <div class="field-tags">
+                                <span class="field-tag">Topology</span>
+                                <span class="field-tag">Mathematical Physics</span>
+                                <span class="field-tag">Category Theory</span>
+                            </div>
+                            <p class="description">
+                                Topological Quantum Field Theory bridges pure mathematics and theoretical physics, providing invariants of manifolds and quantum groups.
+                            </p>
+                            <div class="key-figures">
+                                <h4>Key Topics:</h4>
+                                <ul>
+                                    <li>• Cobordism hypothesis</li>
+                                    <li>• Quantum groups</li>
+                                    <li>• Knot invariants</li>
+                                    <li>• Chern-Simons theory</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="explore-btn">Coming Soon</a>
+                        </div>
+                        
+                        <!-- Non-commutative Geometry -->
+                        <div class="topic-card">
+                            <h2>Non-commutative Geometry <span class="topic-status status-coming">Coming Soon</span></h2>
+                            <div class="field-tags">
+                                <span class="field-tag">Operator Algebras</span>
+                                <span class="field-tag">Differential Geometry</span>
+                                <span class="field-tag">Mathematical Physics</span>
+                            </div>
+                            <p class="description">
+                                Alain Connes' framework extending geometry to non-commutative algebras, with applications to quantum physics and the Standard Model.
+                            </p>
+                            <div class="key-figures">
+                                <h4>Key Developments:</h4>
+                                <ul>
+                                    <li>• Spectral triples</li>
+                                    <li>• Cyclic cohomology</li>
+                                    <li>• Quantum spaces</li>
+                                    <li>• Connes' distance formula</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="explore-btn">Coming Soon</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Leading Institutions -->
+                    <section class="institution-section">
+                        <div class="container">
+                            <h2>Leading Research Institutions</h2>
+                            <div class="institution-grid">
+                                <div class="institution-card">
+                                    <h3>Institute for Advanced Study</h3>
+                                    <p>Princeton, NJ - Home to Lurie, Bhatt, and historical giants</p>
+                                </div>
+                                <div class="institution-card">
+                                    <h3>University of Bonn</h3>
+                                    <p>Germany - Peter Scholze's perfectoid revolution</p>
+                                </div>
+                                <div class="institution-card">
+                                    <h3>Harvard University</h3>
+                                    <p>Cambridge, MA - Gaitsgory, Kisin, and algebraic geometry</p>
+                                </div>
+                                <div class="institution-card">
+                                    <h3>Paris-Saclay</h3>
+                                    <p>France - European center for algebraic geometry</p>
+                                </div>
+                                <div class="institution-card">
+                                    <h3>MIT</h3>
+                                    <p>Cambridge, MA - Higher algebra and topology</p>
+                                </div>
+                                <div class="institution-card">
+                                    <h3>Max Planck Institute</h3>
+                                    <p>Germany - Mathematical logic and foundations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <aside class="sidebar">
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                    </div>
+                    
+                    <section class="quick-links">
+                        <h3>Quick Navigation</h3>
+                        <ul class="topic-list">
+                            <li><a href="#geometric-langlands">Geometric Langlands</a></li>
+                            <li><a href="#higher-category">Higher Categories</a></li>
+                            <li><a href="#arithmetic-geometry">Arithmetic Geometry</a></li>
+                            <li><a href="#derived-algebraic">Derived Geometry</a></li>
+                            <li><a href="#theorem-proving">Theorem Proving</a></li>
+                            <li><a href="#motivic">Motivic Homotopy</a></li>
+                            <li><a href="#random-matrix">Random Matrices</a></li>
+                            <li><a href="#symplectic">Symplectic Geometry</a></li>
+                            <li><a href="#tqft">TQFT</a></li>
+                            <li><a href="#noncommutative">Non-commutative</a></li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Math.help. Advanced Mathematics Research Portal.</p>
+        </div>
+    </footer>
+    
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
