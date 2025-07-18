@@ -18,12 +18,17 @@ class InteractiveTools {
 
     init() {
         this.setupCalculators();
+        this.setupScientificCalculator();
         this.setupGraphing();
+        this.setupEquationSolver();
         this.setupGeometryCalculator();
         this.setupStatisticsCalculator();
         this.setupCalculusTools();
         this.setupMatrixCalculator();
         this.bindEvents();
+        
+        // Expose showCalculator to global scope
+        window.showCalculator = (type) => this.showCalculator(type);
     }
 
     // Calculator Tab Management
@@ -39,8 +44,15 @@ class InteractiveTools {
         });
         
         // Show selected calculator
-        document.getElementById(`${type}-calc`).classList.add('active');
-        event.target.classList.add('active');
+        const calc = document.getElementById(`${type}-calc`);
+        if (calc) {
+            calc.classList.add('active');
+        }
+        
+        // Find and activate the clicked button
+        if (event && event.target) {
+            event.target.classList.add('active');
+        }
         
         this.currentCalculator = type;
     }

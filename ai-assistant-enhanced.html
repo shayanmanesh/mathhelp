@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Math Assistant - Intelligent Problem Solving | Math Help</title>
+    <meta name="description" content="Get personalized AI-powered help with mathematics. Step-by-step problem solving, adaptive explanations, and collaborative learning features.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ad-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <style>
+        .ai-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .ai-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .ai-workspace {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin: 40px 0;
+            overflow: hidden;
+        }
+        
+        .workspace-header {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .workspace-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .workspace-tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1em;
+            color: #666;
+            transition: all 0.3s;
+        }
+        
+        .workspace-tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .workspace-content {
+            padding: 30px;
+        }
+        
+        /* Chat Interface */
+        .chat-container {
+            display: flex;
+            height: 600px;
+            gap: 20px;
+        }
+        
+        .chat-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            max-width: 70%;
+            padding: 15px 20px;
+            border-radius: 18px;
+            position: relative;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .user-message {
+            align-self: flex-end;
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .ai-message {
+            align-self: flex-start;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .message-sender {
+            font-size: 0.8em;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        
+        .typing .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #666;
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+        
+        .typing .dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing .dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typing {
+            0%, 60%, 100% { opacity: 0.3; }
+            30% { opacity: 1; }
+        }
+        
+        .chat-input-container {
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            background: white;
+        }
+        
+        .chat-input-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .chat-input:focus {
+            border-color: var(--primary-color);
+        }
+        
+        .send-button {
+            padding: 12px 25px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        
+        .send-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Side Panel */
+        .side-panel {
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hint-card {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .hint-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        /* Collaborative Features */
+        .study-group-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        
+        .study-group-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .group-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .member-count {
+            background: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        /* Recommendations */
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .recommendation-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .recommendation-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .recommendation-meta {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .difficulty {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .difficulty.easy { background: #d4edda; color: #155724; }
+        .difficulty.medium { background: #fff3cd; color: #856404; }
+        .difficulty.advanced { background: #f8d7da; color: #721c24; }
+        
+        /* Modals */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            background: none;
+            border: none;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        /* Loading States */
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Solution Display */
+        .solution-step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .step-number {
+            min-width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        /* Progress Visualization */
+        .progress-chart {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .progress-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .progress-stat:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            font-weight: 500;
+            color: #666;
+        }
+        
+        .stat-value {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .chat-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .side-panel {
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .recommendations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="/" class="logo">Math.help</a>
+            </div>
+            <div class="nav-menu">
+                <a href="/">Home</a>
+                <a href="/ai-assistant.html" class="active">AI Assistant</a>
+                <a href="/calculator.html">Calculator</a>
+                <a href="/topics/">Topics</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="ai-hero">
+            <h1>AI-Powered Math Assistant</h1>
+            <p>Experience personalized learning with advanced AI that adapts to your needs</p>
+        </section>
+
+        <div class="ai-container">
+            <!-- AI Workspace -->
+            <div class="ai-workspace">
+                <div class="workspace-header">
+                    <h2>Intelligent Math Workspace</h2>
+                    <div class="workspace-controls">
+                        <button class="tool-button" onclick="saveWorkspace()">💾 Save</button>
+                        <button class="tool-button" onclick="shareWorkspace()">🔗 Share</button>
+                    </div>
+                </div>
+                
+                <div class="workspace-tabs">
+                    <button class="workspace-tab active" onclick="switchTab(event, 'chat')">💬 AI Chat</button>
+                    <button class="workspace-tab" onclick="switchTab(event, 'solver')">🧮 Problem Solver</button>
+                    <button class="workspace-tab" onclick="switchTab(event, 'collaborative')">👥 Collaboration</button>
+                    <button class="workspace-tab" onclick="switchTab(event, 'recommendations')">🎯 Recommendations</button>
+                    <button class="workspace-tab" onclick="switchTab(event, 'progress')">📊 Progress</button>
+                </div>
+
+                <!-- AI Chat Tab -->
+                <div class="workspace-content" id="chat-content">
+                    <div class="chat-container">
+                        <div class="chat-main">
+                            <div class="chat-messages" id="chat-messages">
+                                <div class="message ai-message">
+                                    <div class="message-sender">AI Assistant</div>
+                                    <div class="message-content">
+                                        Hello! I'm your personalized AI math tutor. I can help you solve problems, explain concepts, and guide your learning journey. What would you like to work on today?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-input-container">
+                                <div class="chat-input-wrapper">
+                                    <input type="text" class="chat-input" id="chat-input" 
+                                           placeholder="Ask me anything about math..." 
+                                           onkeypress="handleChatEnter(event)">
+                                    <button class="send-button" onclick="sendMessage()">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-panel">
+                            <h3>💡 Smart Hints</h3>
+                            <div id="hints-container">
+                                <div class="hint-card">
+                                    <div class="hint-title">Tip</div>
+                                    <div class="hint-content">Try breaking complex problems into smaller steps.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem Solver Tab -->
+                <div class="workspace-content" id="solver-content" style="display: none;">
+                    <h3>Advanced Problem Solver</h3>
+                    <div class="problem-input-area">
+                        <textarea class="problem-input" id="problem-input" rows="4" 
+                                  placeholder="Enter your math problem here..."></textarea>
+                        <div class="input-tools">
+                            <button class="tool-button" onclick="insertMathSymbol('√')">√</button>
+                            <button class="tool-button" onclick="insertMathSymbol('π')">π</button>
+                            <button class="tool-button" onclick="insertMathSymbol('∫')">∫</button>
+                            <button class="tool-button" onclick="insertMathSymbol('∑')">∑</button>
+                            <button class="tool-button" onclick="insertMathSymbol('∞')">∞</button>
+                            <button class="tool-button primary" onclick="solveProblem()">🧠 Solve</button>
+                        </div>
+                    </div>
+                    <div id="solution-display" style="display: none;">
+                        <h4>Solution</h4>
+                        <div id="solution-steps"></div>
+                    </div>
+                </div>
+
+                <!-- Collaborative Tab -->
+                <div class="workspace-content" id="collaborative-content" style="display: none;">
+                    <h3>Collaborative Learning</h3>
+                    <div class="collaboration-tools">
+                        <button class="tool-button primary" onclick="createStudyGroup()">+ Create Study Group</button>
+                        <button class="tool-button" onclick="joinStudyGroup()">Join Group</button>
+                        <button class="tool-button" onclick="startCollabSession()">Start Session</button>
+                    </div>
+                    <div id="study-groups-container">
+                        <!-- Study groups will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Recommendations Tab -->
+                <div class="workspace-content" id="recommendations-content" style="display: none;">
+                    <h3>Personalized Learning Recommendations</h3>
+                    <div class="recommendations-grid" id="recommendations-grid">
+                        <!-- Recommendations will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Progress Tab -->
+                <div class="workspace-content" id="progress-content" style="display: none;">
+                    <h3>Your Learning Progress</h3>
+                    <div class="progress-chart">
+                        <div class="progress-stat">
+                            <span class="stat-label">Concepts Mastered</span>
+                            <span class="stat-value" id="concepts-mastered">0</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="stat-label">Current Level</span>
+                            <span class="stat-value" id="current-level">Beginner</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="stat-label">Weekly Progress</span>
+                            <span class="stat-value" id="weekly-progress">0%</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="stat-label">Study Streak</span>
+                            <span class="stat-value" id="study-streak">0 days</span>
+                        </div>
+                    </div>
+                    <button class="tool-button primary" onclick="viewDetailedProgress()">View Detailed Report</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal" id="loading-modal">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <p id="loading-message">Processing...</p>
+        </div>
+    </div>
+
+    <div class="modal" id="general-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('general-modal')">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Load AI System Libraries -->
+    <script src="data/ai-explanation-engine.js"></script>
+    <script src="data/problem-solving-assistant.js"></script>
+    <script src="data/collaborative-system.js"></script>
+    <script src="data/ml-recommendation-engine.js"></script>
+    
+    <script>
+        // Initialize AI Systems
+        let aiExplanationEngine = null;
+        let problemSolvingAssistant = null;
+        let collaborativeSystem = null;
+        let recommendationEngine = null;
+        let currentUserId = 'user_' + Date.now();
+        let chatHistory = [];
+        let currentTab = 'chat';
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeAISystems();
+            loadUserData();
+            setupEventListeners();
+        });
+
+        async function initializeAISystems() {
+            try {
+                aiExplanationEngine = new AIExplanationEngine();
+                problemSolvingAssistant = new ProblemSolvingAssistant();
+                collaborativeSystem = new CollaborativeSystem();
+                recommendationEngine = new MLRecommendationEngine();
+                
+                console.log('AI systems initialized successfully');
+                
+                // Load initial content
+                loadRecommendations();
+                updateProgress();
+            } catch (error) {
+                console.error('Error initializing AI systems:', error);
+                showNotification('Some features may be limited. Please refresh the page.', 'warning');
+            }
+        }
+
+        function setupEventListeners() {
+            // Add any additional event listeners here
+        }
+
+        // Tab Management
+        function switchTab(event, tabName) {
+            // Update active tab
+            document.querySelectorAll('.workspace-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Hide all content
+            document.querySelectorAll('.workspace-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Show selected content
+            document.getElementById(tabName + '-content').style.display = 'block';
+            currentTab = tabName;
+            
+            // Load tab-specific content
+            switch(tabName) {
+                case 'recommendations':
+                    loadRecommendations();
+                    break;
+                case 'collaborative':
+                    loadCollaborativeContent();
+                    break;
+                case 'progress':
+                    updateProgress();
+                    break;
+            }
+        }
+
+        // Chat Functions
+        async function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            appendMessage('user', message);
+            input.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            try {
+                // Analyze message intent
+                const intent = analyzeMessageIntent(message);
+                let response;
+                
+                if (intent.type === 'problem_solving') {
+                    // Use Problem Solving Assistant
+                    const solution = await problemSolvingAssistant.solveProblem({
+                        text: message,
+                        type: intent.problemType
+                    }, {
+                        userId: currentUserId,
+                        skillLevel: 'intermediate'
+                    });
+                    
+                    hideTypingIndicator();
+                    displaySolutionInChat(solution);
+                } else if (intent.type === 'explanation') {
+                    // Use AI Explanation Engine
+                    const explanation = await aiExplanationEngine.generatePersonalizedExplanation(
+                        intent.conceptId || 'general',
+                        currentUserId,
+                        { query: message }
+                    );
+                    
+                    hideTypingIndicator();
+                    displayExplanationInChat(explanation);
+                } else {
+                    // General response
+                    response = await generateAIResponse(message);
+                    hideTypingIndicator();
+                    appendMessage('ai', response);
+                }
+                
+                // Update hints based on conversation
+                updateHints(message);
+                
+            } catch (error) {
+                console.error('Error processing message:', error);
+                hideTypingIndicator();
+                appendMessage('ai', 'I apologize, but I encountered an error. Please try rephrasing your question.');
+            }
+        }
+
+        function handleChatEnter(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+
+        function appendMessage(sender, content) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            messageDiv.innerHTML = `
+                <div class="message-sender">${sender === 'user' ? 'You' : 'AI Assistant'}</div>
+                <div class="message-content">${content}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Store in chat history
+            chatHistory.push({ sender, content, timestamp: Date.now() });
+        }
+
+        function showTypingIndicator() {
+            const messagesContainer = document.getElementById('chat-messages');
+            const indicator = document.createElement('div');
+            indicator.id = 'typing-indicator';
+            indicator.className = 'message ai-message typing';
+            indicator.innerHTML = `
+                <div class="message-sender">AI Assistant</div>
+                <div class="message-content">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            `;
+            messagesContainer.appendChild(indicator);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+        }
+
+        function analyzeMessageIntent(message) {
+            const lower = message.toLowerCase();
+            
+            if (lower.includes('solve') || lower.includes('calculate') || 
+                lower.includes('find') || lower.includes('what is') && lower.includes('=')) {
+                return { type: 'problem_solving', problemType: detectProblemType(message) };
+            } else if (lower.includes('explain') || lower.includes('how') || 
+                       lower.includes('why') || lower.includes('what is')) {
+                return { type: 'explanation', conceptId: detectConcept(message) };
+            }
+            
+            return { type: 'general' };
+        }
+
+        function detectProblemType(message) {
+            if (message.includes('derivative')) return 'calculus.derivatives';
+            if (message.includes('integral')) return 'calculus.integrals';
+            if (message.includes('equation')) return 'algebraic.equations';
+            return 'general';
+        }
+
+        function detectConcept(message) {
+            if (message.includes('derivative')) return 'calculus_derivative';
+            if (message.includes('integral')) return 'calculus_integral';
+            if (message.includes('quadratic')) return 'algebra_quadratic';
+            return 'general_math';
+        }
+
+        async function generateAIResponse(message) {
+            // Use the AI explanation engine for general responses
+            try {
+                const explanation = await aiExplanationEngine.generatePersonalizedExplanation(
+                    'general_response',
+                    currentUserId,
+                    { query: message }
+                );
+                return explanation.mainContent || "I understand your question. Let me help you explore this mathematical concept.";
+            } catch (error) {
+                return "I'm here to help you with mathematics. Could you please provide more details about what you'd like to learn?";
+            }
+        }
+
+        function displaySolutionInChat(solution) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const solutionDiv = document.createElement('div');
+            solutionDiv.className = 'message ai-message';
+            
+            let stepsHtml = '<h4>Step-by-Step Solution:</h4>';
+            solution.steps.forEach((step, index) => {
+                stepsHtml += `
+                    <div class="solution-step">
+                        <div class="step-number">${index + 1}</div>
+                        <div class="step-content">
+                            <div class="step-title">${step.title}</div>
+                            <div class="step-explanation">${step.content}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            solutionDiv.innerHTML = `
+                <div class="message-sender">AI Assistant</div>
+                <div class="message-content">${stepsHtml}</div>
+            `;
+            
+            messagesContainer.appendChild(solutionDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function displayExplanationInChat(explanation) {
+            const content = `
+                <h4>${explanation.title}</h4>
+                <p>${explanation.introduction}</p>
+                <div>${explanation.mainContent}</div>
+                ${explanation.examples ? '<h5>Examples:</h5><ul>' + 
+                    explanation.examples.map(ex => `<li>${ex}</li>`).join('') + '</ul>' : ''}
+            `;
+            
+            appendMessage('ai', content);
+        }
+
+        function updateHints(message) {
+            const hintsContainer = document.getElementById('hints-container');
+            const hints = [
+                { title: 'Strategy', content: 'Consider breaking this problem into smaller parts.' },
+                { title: 'Concept', content: 'This relates to fundamental mathematical principles.' },
+                { title: 'Practice', content: 'Try similar problems to reinforce your understanding.' }
+            ];
+            
+            hintsContainer.innerHTML = hints.map(hint => `
+                <div class="hint-card">
+                    <div class="hint-title">${hint.title}</div>
+                    <div class="hint-content">${hint.content}</div>
+                </div>
+            `).join('');
+        }
+
+        // Problem Solver Functions
+        async function solveProblem() {
+            const problemText = document.getElementById('problem-input').value.trim();
+            if (!problemText) {
+                showNotification('Please enter a problem to solve', 'warning');
+                return;
+            }
+            
+            showLoadingModal('Analyzing your problem...');
+            
+            try {
+                const solution = await problemSolvingAssistant.solveProblem({
+                    text: problemText,
+                    statement: problemText
+                }, {
+                    userId: currentUserId,
+                    showHints: true
+                });
+                
+                hideLoadingModal();
+                displaySolution(solution);
+            } catch (error) {
+                hideLoadingModal();
+                showNotification('Error solving problem. Please try again.', 'error');
+            }
+        }
+
+        function displaySolution(solution) {
+            const solutionDisplay = document.getElementById('solution-display');
+            const solutionSteps = document.getElementById('solution-steps');
+            
+            solutionDisplay.style.display = 'block';
+            
+            let stepsHTML = '';
+            solution.steps.forEach((step, index) => {
+                stepsHTML += `
+                    <div class="solution-step">
+                        <div class="step-number">${index + 1}</div>
+                        <div class="step-content">
+                            <div class="step-title">${step.title || 'Step ' + (index + 1)}</div>
+                            <div class="step-explanation">${step.content || step.explanation}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            solutionSteps.innerHTML = stepsHTML;
+        }
+
+        function insertMathSymbol(symbol) {
+            const input = document.getElementById('problem-input');
+            const start = input.selectionStart;
+            const end = input.selectionEnd;
+            const text = input.value;
+            
+            input.value = text.substring(0, start) + symbol + text.substring(end);
+            input.focus();
+            input.setSelectionRange(start + 1, start + 1);
+        }
+
+        // Collaborative Functions
+        async function createStudyGroup() {
+            const groupName = prompt('Enter study group name:');
+            if (!groupName) return;
+            
+            const description = prompt('Enter group description:');
+            
+            showLoadingModal('Creating study group...');
+            
+            try {
+                const group = await collaborativeSystem.createStudyGroup(currentUserId, {
+                    name: groupName,
+                    description: description || 'A collaborative math study group',
+                    maxMembers: 8,
+                    privacy: 'invite_only'
+                });
+                
+                hideLoadingModal();
+                showNotification(`Study group "${group.name}" created successfully! Group ID: ${group.id}`, 'success');
+                loadCollaborativeContent();
+            } catch (error) {
+                hideLoadingModal();
+                showNotification('Error creating study group', 'error');
+            }
+        }
+
+        async function joinStudyGroup() {
+            const groupCode = prompt('Enter study group code:');
+            if (!groupCode) return;
+            
+            showLoadingModal('Joining study group...');
+            
+            try {
+                const result = await collaborativeSystem.joinStudyGroup(currentUserId, groupCode);
+                hideLoadingModal();
+                showNotification(`Successfully joined: ${result.group.name}`, 'success');
+                loadCollaborativeContent();
+            } catch (error) {
+                hideLoadingModal();
+                showNotification(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function startCollabSession() {
+            const groupId = prompt('Enter your study group ID:');
+            if (!groupId) return;
+            
+            showLoadingModal('Starting collaborative session...');
+            
+            try {
+                const session = await collaborativeSystem.startCollaborationSession(currentUserId, groupId, {
+                    type: 'study',
+                    maxParticipants: 6,
+                    duration: 60
+                });
+                
+                hideLoadingModal();
+                showModal('Session Started', `
+                    <p>Collaborative session is now active!</p>
+                    <p><strong>Session ID:</strong> ${session.id}</p>
+                    <p><strong>Share this link:</strong> https://math.help/session/${session.id}</p>
+                `);
+            } catch (error) {
+                hideLoadingModal();
+                showNotification('Error starting session', 'error');
+            }
+        }
+
+        function loadCollaborativeContent() {
+            const container = document.getElementById('study-groups-container');
+            
+            // Load study groups (demo data for now)
+            const demoGroups = [
+                { id: 'calc-101', name: 'Calculus Study Group', members: 5, description: 'Working on derivatives and integrals' },
+                { id: 'alg-202', name: 'Algebra Masters', members: 3, description: 'Solving complex equations together' }
+            ];
+            
+            container.innerHTML = demoGroups.map(group => `
+                <div class="study-group-card">
+                    <div class="group-header">
+                        <div class="group-name">${group.name}</div>
+                        <div class="member-count">${group.members} members</div>
+                    </div>
+                    <div class="group-description">${group.description}</div>
+                    <button class="tool-button" onclick="joinSession('${group.id}')">Join Session</button>
+                </div>
+            `).join('');
+        }
+
+        function joinSession(groupId) {
+            showNotification(`Joining session for group ${groupId}...`, 'info');
+        }
+
+        // Recommendations Functions
+        async function loadRecommendations() {
+            const container = document.getElementById('recommendations-grid');
+            container.innerHTML = '<div class="loading-spinner"></div>';
+            
+            try {
+                const context = {
+                    timestamp: Date.now(),
+                    sessionType: 'learning',
+                    availableTime: 30
+                };
+                
+                const recommendations = await recommendationEngine.generateRecommendations(
+                    currentUserId,
+                    context
+                );
+                
+                displayRecommendations(recommendations);
+            } catch (error) {
+                console.error('Error loading recommendations:', error);
+                displayDefaultRecommendations();
+            }
+        }
+
+        function displayRecommendations(recommendations) {
+            const container = document.getElementById('recommendations-grid');
+            
+            if (!recommendations || recommendations.length === 0) {
+                displayDefaultRecommendations();
+                return;
+            }
+            
+            container.innerHTML = recommendations.slice(0, 6).map(rec => `
+                <div class="recommendation-card" onclick="startLesson('${rec.id}')">
+                    <h4>${rec.title || 'Mathematical Concept'}</h4>
+                    <div class="recommendation-meta">
+                        <span class="difficulty ${(rec.difficulty || 'medium').toLowerCase()}">${rec.difficulty || 'Medium'}</span>
+                        <span class="time">⏱️ ${rec.estimatedTime || '20'} min</span>
+                    </div>
+                    ${rec.explanation ? `<p>${rec.explanation.why || 'Recommended for you'}</p>` : ''}
+                    <button class="tool-button primary">Start Learning</button>
+                </div>
+            `).join('');
+        }
+
+        function displayDefaultRecommendations() {
+            const defaultRecs = [
+                { id: 'quad-eq', title: 'Quadratic Equations', difficulty: 'Medium', estimatedTime: '20' },
+                { id: 'calc-intro', title: 'Introduction to Calculus', difficulty: 'Advanced', estimatedTime: '30' },
+                { id: 'geom-basics', title: 'Geometry Fundamentals', difficulty: 'Easy', estimatedTime: '15' },
+                { id: 'trig-intro', title: 'Trigonometry Basics', difficulty: 'Medium', estimatedTime: '25' }
+            ];
+            
+            displayRecommendations(defaultRecs);
+        }
+
+        async function startLesson(lessonId) {
+            showNotification(`Loading lesson: ${lessonId}`, 'info');
+            
+            // Track interaction
+            if (recommendationEngine) {
+                await recommendationEngine.trackRecommendationFeedback(
+                    currentUserId,
+                    lessonId,
+                    { action: 'clicked', timestamp: Date.now() }
+                );
+            }
+        }
+
+        // Progress Functions
+        async function updateProgress() {
+            try {
+                // Get progress data (using demo data for now)
+                const progress = {
+                    conceptsMastered: 15,
+                    currentLevel: 'Intermediate',
+                    weeklyProgress: 75,
+                    studyStreak: 5
+                };
+                
+                document.getElementById('concepts-mastered').textContent = progress.conceptsMastered;
+                document.getElementById('current-level').textContent = progress.currentLevel;
+                document.getElementById('weekly-progress').textContent = progress.weeklyProgress + '%';
+                document.getElementById('study-streak').textContent = progress.studyStreak + ' days';
+            } catch (error) {
+                console.error('Error updating progress:', error);
+            }
+        }
+
+        function viewDetailedProgress() {
+            showModal('Detailed Progress Report', `
+                <div class="progress-details">
+                    <h4>Your Learning Journey</h4>
+                    <p><strong>Total Time:</strong> 23.5 hours</p>
+                    <p><strong>Problems Solved:</strong> 127</p>
+                    <p><strong>Accuracy Rate:</strong> 85%</p>
+                    <h4>Recent Achievements</h4>
+                    <ul>
+                        <li>✅ Mastered Quadratic Equations</li>
+                        <li>✅ Completed Linear Algebra Basics</li>
+                        <li>🔄 Working on Calculus Fundamentals</li>
+                    </ul>
+                </div>
+            `);
+        }
+
+        // Utility Functions
+        function showLoadingModal(message = 'Loading...') {
+            const modal = document.getElementById('loading-modal');
+            document.getElementById('loading-message').textContent = message;
+            modal.classList.add('active');
+        }
+
+        function hideLoadingModal() {
+            document.getElementById('loading-modal').classList.remove('active');
+        }
+
+        function showModal(title, content) {
+            const modal = document.getElementById('general-modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            modalBody.innerHTML = `<h2>${title}</h2>${content}`;
+            modal.classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function showNotification(message, type = 'info') {
+            // Create a simple notification (you can enhance this with a proper notification system)
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                background: ${type === 'error' ? '#f8d7da' : type === 'success' ? '#d4edda' : '#cce5ff'};
+                color: ${type === 'error' ? '#721c24' : type === 'success' ? '#155724' : '#004085'};
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                z-index: 1001;
+                animation: slideIn 0.3s ease-in;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        function saveWorkspace() {
+            // Save current workspace state
+            const workspaceData = {
+                chatHistory,
+                currentTab,
+                userId: currentUserId,
+                timestamp: Date.now()
+            };
+            
+            localStorage.setItem('mathHelp_workspace', JSON.stringify(workspaceData));
+            showNotification('Workspace saved successfully!', 'success');
+        }
+
+        function shareWorkspace() {
+            const shareId = 'ws_' + Date.now();
+            showModal('Share Workspace', `
+                <p>Share this workspace with others:</p>
+                <p><strong>Share ID:</strong> ${shareId}</p>
+                <p><strong>Link:</strong> https://math.help/workspace/${shareId}</p>
+                <button class="tool-button" onclick="navigator.clipboard.writeText('https://math.help/workspace/${shareId}')">
+                    Copy Link
+                </button>
+            `);
+        }
+
+        function loadUserData() {
+            // Load saved workspace if exists
+            const savedWorkspace = localStorage.getItem('mathHelp_workspace');
+            if (savedWorkspace) {
+                try {
+                    const data = JSON.parse(savedWorkspace);
+                    chatHistory = data.chatHistory || [];
+                    
+                    // Restore chat history
+                    if (chatHistory.length > 0) {
+                        chatHistory.forEach(msg => {
+                            appendMessage(msg.sender, msg.content);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading saved workspace:', error);
+                }
+            }
+        }
+
+        // Add slide animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            .tool-button {
+                padding: 10px 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background: white;
+                cursor: pointer;
+                transition: all 0.3s;
+                margin: 5px;
+            }
+            .tool-button:hover {
+                background: #f8f9fa;
+                transform: translateY(-2px);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            .tool-button.primary {
+                background: var(--primary-color);
+                color: white;
+                border-color: var(--primary-color);
+            }
+            .tool-button.primary:hover {
+                background: var(--secondary-color);
+            }
+            .problem-input {
+                width: 100%;
+                padding: 15px;
+                border: 2px solid #e0e0e0;
+                border-radius: 10px;
+                font-size: 1em;
+                resize: vertical;
+                font-family: inherit;
+            }
+            .input-tools {
+                margin-top: 15px;
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

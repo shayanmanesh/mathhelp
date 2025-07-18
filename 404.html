@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Math Help</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Let's help you find what you need.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/ad-styles.css">
+    
+    <style>
+        .error-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .error-code {
+            font-size: 8em;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0;
+            line-height: 1;
+        }
+        
+        .error-message {
+            font-size: 2em;
+            color: #666;
+            margin: 20px 0;
+        }
+        
+        .error-description {
+            font-size: 1.2em;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        
+        .error-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .error-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .error-btn.secondary {
+            background: #f8f9fa;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .error-btn.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .suggestions {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 60px;
+        }
+        
+        .suggestions h2 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+        
+        .suggestion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+        
+        .suggestion-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+        }
+        
+        .suggestion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .suggestion-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .suggestion-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .suggestion-desc {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .math-animation {
+            font-size: 2em;
+            color: #ddd;
+            margin: 40px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="/" class="logo">Math.help</a>
+            </div>
+            <div class="nav-menu">
+                <a href="/">Home</a>
+                <a href="/ai-assistant.html">AI Assistant</a>
+                <a href="/calculator.html">Calculator</a>
+                <a href="/topics/">Topics</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="error-container">
+            <h1 class="error-code">404</h1>
+            <div class="math-animation">∫ ? dx</div>
+            <h2 class="error-message">Page Not Found</h2>
+            <p class="error-description">
+                Looks like this equation doesn't have a solution... yet! The page you're looking for might have been moved or doesn't exist.
+            </p>
+            
+            <div class="error-actions">
+                <a href="/" class="error-btn">Go to Homepage</a>
+                <a href="/ai-assistant.html" class="error-btn secondary">Ask AI Assistant</a>
+            </div>
+            
+            <div class="suggestions">
+                <h2>Popular Pages You Might Be Looking For</h2>
+                <div class="suggestion-grid">
+                    <a href="/calculus/derivatives/" class="suggestion-card">
+                        <div class="suggestion-icon">📈</div>
+                        <div class="suggestion-title">Derivatives</div>
+                        <div class="suggestion-desc">Learn differentiation rules and applications</div>
+                    </a>
+                    
+                    <a href="/algebra/quadratic-equations/" class="suggestion-card">
+                        <div class="suggestion-icon">📐</div>
+                        <div class="suggestion-title">Quadratic Equations</div>
+                        <div class="suggestion-desc">Master solving quadratic equations</div>
+                    </a>
+                    
+                    <a href="/geometry/triangles/" class="suggestion-card">
+                        <div class="suggestion-icon">🔺</div>
+                        <div class="suggestion-title">Triangles</div>
+                        <div class="suggestion-desc">Explore triangle properties and theorems</div>
+                    </a>
+                    
+                    <a href="/learning-paths.html" class="suggestion-card">
+                        <div class="suggestion-icon">🎯</div>
+                        <div class="suggestion-title">Learning Paths</div>
+                        <div class="suggestion-desc">Find your personalized learning journey</div>
+                    </a>
+                    
+                    <a href="/topics/" class="suggestion-card">
+                        <div class="suggestion-icon">📚</div>
+                        <div class="suggestion-title">All Topics</div>
+                        <div class="suggestion-desc">Browse all mathematical subjects</div>
+                    </a>
+                    
+                    <a href="/tools/" class="suggestion-card">
+                        <div class="suggestion-icon">🧮</div>
+                        <div class="suggestion-title">Math Tools</div>
+                        <div class="suggestion-desc">Access calculators and solvers</div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Search Box -->
+            <div style="margin-top: 40px;">
+                <h3>Search for what you need:</h3>
+                <form action="/search" method="get" style="margin-top: 20px;">
+                    <input type="text" name="q" placeholder="Search for topics, formulas, or concepts..." 
+                           style="padding: 15px; width: 100%; max-width: 500px; border: 2px solid #ddd; 
+                                  border-radius: 8px; font-size: 1.1em;">
+                    <button type="submit" style="padding: 15px 30px; background: var(--primary-color); 
+                                                 color: white; border: none; border-radius: 8px; 
+                                                 margin-left: 10px; cursor: pointer; font-size: 1.1em;">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Math.help. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Track 404 errors for analytics
+        if (window.gtag) {
+            gtag('event', 'page_view', {
+                page_title: '404 Error',
+                page_location: window.location.href,
+                page_path: window.location.pathname
+            });
+        }
+        
+        // Suggest pages based on the attempted URL
+        const attemptedPath = window.location.pathname;
+        console.log('404 Error - Attempted to access:', attemptedPath);
+    </script>
+</body>
+</html>

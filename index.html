@@ -11,6 +11,17 @@
     <!-- Critical CSS - Inline for fastest loading -->
     <style>
         :root{--primary-color:#2c3e50;--secondary-color:#3498db;--accent-color:#e74c3c;--success-color:#27ae60;--background-color:#ffffff;--text-color:#333333;--light-gray:#f8f9fa;--border-color:#e0e0e0;--max-width:1200px;--content-width:740px;--sidebar-width:340px;--mobile-breakpoint:768px;--tablet-breakpoint:1024px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.7;color:var(--text-color);background-color:var(--background-color);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}.content-wrapper{display:flex;gap:30px;margin-top:30px}.main-content{flex:1;max-width:var(--content-width)}.sidebar{width:var(--sidebar-width);position:sticky;top:20px;height:fit-content}.site-header{background:linear-gradient(135deg,var(--primary-color) 0%,var(--secondary-color) 100%);color:white;padding:40px 0;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.1)}.site-title{font-size:3em;font-weight:700;margin-bottom:10px;letter-spacing:-1px}.tagline{font-size:1.2em;opacity:0.9;font-weight:300}.main-nav{background-color:var(--primary-color);position:sticky;top:0;z-index:100;box-shadow:0 2px 5px rgba(0,0,0,0.1)}.nav-list{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;padding:0}.nav-item{margin:0}.nav-link{display:block;padding:15px 20px;color:white;text-decoration:none;font-weight:500;transition:background-color 0.3s ease}.nav-link:hover,.nav-link.active{background-color:var(--secondary-color)}.calculator-section{background:var(--light-gray);padding:40px 0;text-align:center}.calculator-widget{max-width:400px;margin:0 auto;background:white;padding:30px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}.mobile-menu-toggle{display:none;background:none;border:none;color:white;font-size:1.5rem;padding:10px;cursor:pointer;position:absolute;right:20px;top:50%;transform:translateY(-50%)}.mobile-tools{display:none;background:var(--light-gray);padding:15px 0;border-top:1px solid var(--border-color)}.mobile-tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;padding:0 20px}.mobile-tool-btn{background:var(--secondary-color);color:white;border:none;padding:12px 8px;border-radius:6px;font-size:0.9rem;text-decoration:none;display:block;text-align:center;transition:background-color 0.3s}@media (max-width:768px){.content-wrapper{flex-direction:column}.sidebar{display:none}.site-title{font-size:2.2em}.main-nav{position:relative}.mobile-menu-toggle{display:block}.nav-list{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--primary-color);box-shadow:0 2px 10px rgba(0,0,0,0.1)}.nav-list.active{display:flex}.nav-link{text-align:center;border-bottom:1px solid rgba(255,255,255,0.1)}.mobile-tools{display:block}}
+        
+        /* Learning Path Styles */
+        .learning-paths { margin: 60px 0; }
+        .path-card { background: #f8f9fa; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer; position: relative; border: 2px solid transparent; }
+        .path-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); border-color: var(--primary-color); }
+        .path-card.path-started::before { content: '✓ Started'; position: absolute; top: 10px; right: 10px; background: #27ae60; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.8em; }
+        .paths-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .path-steps { margin: 20px 0; }
+        .path-steps .step { display: block; margin: 10px 0; color: #666; }
+        .path-link { display: inline-block; margin-top: 15px; color: var(--primary-color); text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        .path-link:hover { color: var(--secondary-color); }
     </style>
     
     <!-- Load full CSS after critical content -->
@@ -311,6 +322,60 @@
                             <h3>Probability Theory</h3>
                             <p>Pascal and Fermat's correspondence about gambling problems led to the birth of probability theory, which now underpins statistics, economics, and data science.</p>
                             <span class="timeline-tag">Statistics</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">1994</div>
+                        <div class="timeline-content">
+                            <h3>Fermat's Last Theorem Proved</h3>
+                            <p>Andrew Wiles finally proved Fermat's Last Theorem after 358 years, using sophisticated techniques from algebraic geometry and number theory. This achievement marked a milestone in mathematics.</p>
+                            <span class="timeline-tag">Number Theory</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2003</div>
+                        <div class="timeline-content">
+                            <h3>Poincaré Conjecture Solved</h3>
+                            <p>Grigori Perelman proved the Poincaré conjecture, one of the seven Millennium Prize Problems, revolutionizing our understanding of three-dimensional shapes and topology.</p>
+                            <span class="timeline-tag">Topology</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012</div>
+                        <div class="timeline-content">
+                            <h3>abc Conjecture Progress</h3>
+                            <p>Shinichi Mochizuki claimed a proof of the abc conjecture using his revolutionary Inter-universal Teichmüller theory, though the mathematical community continues to verify this complex work.</p>
+                            <span class="timeline-tag">Number Theory</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <div class="timeline-content">
+                            <h3>Collatz Conjecture Breakthrough</h3>
+                            <p>Terence Tao made significant progress on the Collatz conjecture, showing that almost all positive integers eventually reach 1 under the 3n+1 process.</p>
+                            <span class="timeline-tag">Number Theory</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023</div>
+                        <div class="timeline-content">
+                            <h3>Aperiodic Monotile Discovery</h3>
+                            <p>The discovery of the "einstein" tile - a single shape that tiles the plane only aperiodically - solved a 50-year-old problem in tiling theory, with applications in materials science.</p>
+                            <span class="timeline-tag">Geometry</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-content">
+                            <h3>AI-Assisted Mathematical Discovery</h3>
+                            <p>Machine learning models begin assisting mathematicians in discovering new patterns and proofs, marking the beginning of a new era in mathematical research and collaboration between humans and AI.</p>
+                            <span class="timeline-tag">Applied Mathematics</span>
                         </div>
                     </div>
                 </div>
@@ -765,7 +830,7 @@
             <section class="learning-paths">
                 <h2>Recommended Learning Paths</h2>
                 <div class="paths-grid">
-                    <div class="path-card">
+                    <div class="path-card" onclick="trackPathClick('high-school')">
                         <h3>🎓 High School Track</h3>
                         <div class="path-steps">
                             <span class="step">1. <a href="/algebra/">Algebra Fundamentals</a></span>
@@ -773,10 +838,10 @@
                             <span class="step">3. <a href="/trigonometry/">Trigonometry</a></span>
                             <span class="step">4. <a href="/statistics/">Statistics</a></span>
                         </div>
-                        <a href="/study-guides/" class="path-link">Start Learning →</a>
+                        <a href="/learning-paths.html?path=high-school" class="path-link">Start Learning →</a>
                     </div>
                     
-                    <div class="path-card">
+                    <div class="path-card" onclick="trackPathClick('college-prep')">
                         <h3>🏫 College Prep Track</h3>
                         <div class="path-steps">
                             <span class="step">1. <a href="/algebra/">Advanced Algebra</a></span>
@@ -784,7 +849,15 @@
                             <span class="step">3. <a href="/calculus/">Calculus I</a></span>
                             <span class="step">4. <a href="/statistics/">Applied Statistics</a></span>
                         </div>
-                        <a href="/calculus/" class="path-link">Begin Calculus →</a>
+                        <a href="/learning-paths.html?path=college-prep" class="path-link">Begin Learning →</a>
+                    </div>
+                    
+                    <div class="path-card" onclick="trackPathClick('self-paced')">
+                        <h3>📚 Self-Paced Learning</h3>
+                        <div class="path-steps">
+                            <span class="step">Choose your own adventure through mathematics</span>
+                        </div>
+                        <a href="/learning-paths.html" class="path-link">Explore All Paths →</a>
                     </div>
                 </div>
             </section>
@@ -861,6 +934,46 @@
             </div>
         </div>
     </footer>
+
+    <!-- Page-specific JavaScript -->
+    <script>
+        // Track learning path clicks
+        function trackPathClick(pathType) {
+            // Store selected path for analytics
+            if (window.localStorage) {
+                localStorage.setItem('selectedLearningPath', pathType);
+            }
+            
+            // Track event if analytics available
+            if (window.viralGrowthSystem) {
+                window.viralGrowthSystem.trackEvent('learning_path_clicked', {
+                    path: pathType,
+                    source: 'homepage'
+                });
+            }
+        }
+        
+        // Initialize learning path progress display
+        document.addEventListener('DOMContentLoaded', function() {
+            const pathCards = document.querySelectorAll('.path-card');
+            const savedProgress = localStorage.getItem('mathverse-learning-progress');
+            
+            if (savedProgress) {
+                try {
+                    const progress = JSON.parse(savedProgress);
+                    // Add visual indicators for started paths
+                    pathCards.forEach(card => {
+                        const pathType = card.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+                        if (pathType && progress.startedPaths?.includes(pathType)) {
+                            card.classList.add('path-started');
+                        }
+                    });
+                } catch (e) {
+                    console.error('Error loading progress:', e);
+                }
+            }
+        });
+    </script>
 
     <!-- SEO & Monetization Systems -->
     <script src="schema-markup.js" defer></script>
