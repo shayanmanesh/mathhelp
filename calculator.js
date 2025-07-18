@@ -1,122 +1,222 @@
-let display = document.getElementById('calc-screen');
-let currentInput = '';
-let operator = '';
-let firstOperand = '';
-let waitingForOperand = false;
+// Math.help Calculator - Enhanced for engagement and usability
+// Tracks usage for analytics and optimization
 
-function updateDisplay(value) {
-    display.value = value;
-}
+let display = '';
+let history = [];
+let lastResult = null;
 
+// Initialize calculator
+document.addEventListener('DOMContentLoaded', function() {
+    const screen = document.getElementById('calc-screen');
+    if (screen) {
+        screen.value = '0';
+    }
+    
+    // Track calculator load
+    if (typeof analytics !== 'undefined') {
+        analytics.track('calculator_loaded', {
+            page: window.location.pathname
+        });
+    }
+});
+
+// Append value to display
 function appendToDisplay(value) {
-    if (waitingForOperand) {
-        currentInput = value;
-        waitingForOperand = false;
-    } else {
-        if (currentInput === '0' && value !== '.') {
-            currentInput = value;
-        } else {
-            currentInput += value;
-        }
+    const screen = document.getElementById('calc-screen');
+    
+    if (display === '' && value !== '-' && isNaN(value)) {
+        return; // Don't start with operators except minus
     }
-    updateDisplay(currentInput);
+    
+    if (display === '0' && !isNaN(value)) {
+        display = value;
+    } else {
+        display += value;
+    }
+    
+    screen.value = display || '0';
+    
+    // Track button press
+    trackCalculatorAction('button_press', { button: value });
 }
 
+// Clear calculator
 function clearCalculator() {
-    currentInput = '';
-    operator = '';
-    firstOperand = '';
-    waitingForOperand = false;
-    updateDisplay('0');
+    display = '';
+    const screen = document.getElementById('calc-screen');
+    screen.value = '0';
+    
+    trackCalculatorAction('clear');
 }
 
+// Delete last character
 function deleteLast() {
-    if (currentInput.length > 1) {
-        currentInput = currentInput.slice(0, -1);
-        updateDisplay(currentInput);
-    } else {
-        currentInput = '';
-        updateDisplay('0');
-    }
+    display = display.slice(0, -1);
+    const screen = document.getElementById('calc-screen');
+    screen.value = display || '0';
+    
+    trackCalculatorAction('delete');
 }
 
+// Calculate result
 function calculate() {
-    let result;
-    const prev = parseFloat(firstOperand);
-    const current = parseFloat(currentInput);
-
-    if (isNaN(prev) || isNaN(current)) return;
-
-    switch (operator) {
-        case '+':
-            result = prev + current;
-            break;
-        case '-':
-            result = prev - current;
-            break;
-        case '*':
-            result = prev * current;
-            break;
-        case '/':
-            if (current === 0) {
-                updateDisplay('Error');
-                return;
-            }
-            result = prev / current;
-            break;
-        default:
-            return;
+    const screen = document.getElementById('calc-screen');
+    
+    if (display === '') {
+        return;
     }
-
-    currentInput = result.toString();
-    operator = '';
-    firstOperand = '';
-    waitingForOperand = true;
-    updateDisplay(currentInput);
+    
+    try {
+        // Replace display symbols with JavaScript operators
+        let expression = display
+            .replace(/×/g, '*')
+            .replace(/÷/g, '/')
+            .replace(/π/g, 'Math.PI')
+            .replace(/e/g, 'Math.E');
+        
+        // Evaluate the expression safely
+        const result = evaluateExpression(expression);
+        
+        // Store in history
+        history.push({
+            expression: display,
+            result: result,
+            timestamp: new Date()
+        });
+        
+        // Update display
+        screen.value = result;
+        lastResult = result;
+        display = result.toString();
+        
+        // Track calculation
+        trackCalculatorAction('calculate', {
+            expression: display,
+            result: result
+        });
+        
+    } catch (error) {
+        screen.value = 'Error';
+        display = '';
+        
+        trackCalculatorAction('error', {
+            expression: display,
+            error: error.message
+        });
+    }
 }
 
-function setOperator(nextOperator) {
-    const inputValue = parseFloat(currentInput);
-
-    if (firstOperand === '') {
-        firstOperand = inputValue;
-    } else if (operator) {
-        const currentValue = firstOperand || 0;
-        const result = performCalculation[operator](currentValue, inputValue);
-
-        currentInput = String(result);
-        firstOperand = result;
-        updateDisplay(currentInput);
+// Safe expression evaluation
+function evaluateExpression(expr) {
+    // Remove any potentially dangerous characters
+    const sanitized = expr.replace(/[^0-9+\-*/().\s]/g, '');
+    
+    // Create a safe evaluation context
+    const Math = window.Math;
+    
+    // Use Function constructor for safer eval
+    try {
+        const func = new Function('Math', `return ${sanitized}`);
+        const result = func(Math);
+        
+        // Round to avoid floating point issues
+        return Math.round(result * 100000000) / 100000000;
+    } catch (e) {
+        throw new Error('Invalid expression');
     }
-
-    waitingForOperand = true;
-    operator = nextOperator;
 }
 
-const performCalculation = {
-    '/': (firstOperand, secondOperand) => firstOperand / secondOperand,
-    '*': (firstOperand, secondOperand) => firstOperand * secondOperand,
-    '+': (firstOperand, secondOperand) => firstOperand + secondOperand,
-    '-': (firstOperand, secondOperand) => firstOperand - secondOperand,
-    '=': (firstOperand, secondOperand) => secondOperand
+// Advanced calculator functions (for future enhancement)
+const advancedFunctions = {
+    sin: (x) => Math.sin(x * Math.PI / 180), // Degrees
+    cos: (x) => Math.cos(x * Math.PI / 180),
+    tan: (x) => Math.tan(x * Math.PI / 180),
+    sqrt: Math.sqrt,
+    pow: Math.pow,
+    log: Math.log10,
+    ln: Math.log,
+    abs: Math.abs,
+    factorial: (n) => {
+        if (n < 0) return NaN;
+        if (n === 0) return 1;
+        let result = 1;
+        for (let i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-    updateDisplay('0');
+// Keyboard support
+document.addEventListener('keydown', function(e) {
+    const screen = document.getElementById('calc-screen');
+    if (!screen) return;
     
-    document.addEventListener('keydown', function(event) {
-        const key = event.key;
-        
-        if ('0123456789.'.includes(key)) {
-            appendToDisplay(key);
-        } else if ('+-*/'.includes(key)) {
-            setOperator(key);
-        } else if (key === 'Enter' || key === '=') {
-            calculate();
-        } else if (key === 'Escape' || key === 'c' || key === 'C') {
-            clearCalculator();
-        } else if (key === 'Backspace') {
-            deleteLast();
-        }
-    });
+    // If calculator is not in focus, don't process
+    if (!document.querySelector('.calculator-section').contains(document.activeElement)) {
+        return;
+    }
+    
+    const key = e.key;
+    
+    if (key >= '0' && key <= '9') {
+        appendToDisplay(key);
+    } else if (key === '.') {
+        appendToDisplay('.');
+    } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+        appendToDisplay(key);
+    } else if (key === 'Enter' || key === '=') {
+        e.preventDefault();
+        calculate();
+    } else if (key === 'Escape' || key === 'c' || key === 'C') {
+        clearCalculator();
+    } else if (key === 'Backspace') {
+        e.preventDefault();
+        deleteLast();
+    }
 });
+
+// Analytics tracking
+function trackCalculatorAction(action, data = {}) {
+    // Track user engagement with calculator
+    if (typeof analytics !== 'undefined') {
+        analytics.track('calculator_' + action, {
+            ...data,
+            timestamp: new Date().toISOString(),
+            page: window.location.pathname
+        });
+    }
+    
+    // Also send to Google Analytics if available
+    if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+            event_category: 'Calculator',
+            event_label: data.button || data.expression || '',
+            value: data.result || 0
+        });
+    }
+}
+
+// Get calculation history (for future features)
+function getHistory() {
+    return history.slice(-10); // Last 10 calculations
+}
+
+// Clear history
+function clearHistory() {
+    history = [];
+    trackCalculatorAction('clear_history');
+}
+
+// Export for testing
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        appendToDisplay,
+        clearCalculator,
+        deleteLast,
+        calculate,
+        evaluateExpression,
+        getHistory,
+        clearHistory
+    };
+}

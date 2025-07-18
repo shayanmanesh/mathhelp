@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Equations Solver - Step by Step Solutions | Math.help</title>
+    <meta name="description" content="Solve linear equations instantly with step-by-step solutions. Learn how to solve equations like ax + b = c with examples and practice problems.">
+    <meta name="keywords" content="linear equation solver, solve for x, algebra calculator, one-step equations, two-step equations, equation solver">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    
+    <!-- Ezoic Integration Scripts -->
+    <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
+    <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    
+    <!-- KaTeX JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="../../katex-lazy.js"></script>
+    
+    <!-- Enhanced Structured Data with HowTo Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://math.help/algebra/linear-equations/",
+                "name": "Linear Equations Solver - How to Solve Linear Equations Step by Step",
+                "description": "Learn how to solve linear equations step-by-step with our interactive calculator. Master one-step, two-step, and multi-step linear equations.",
+                "url": "https://math.help/algebra/linear-equations/",
+                "inLanguage": "en-US",
+                "isPartOf": {
+                    "@id": "https://math.help/#website"
+                },
+                "about": {
+                    "@type": "Thing",
+                    "name": "Linear Equations",
+                    "description": "Mathematical equations of the form ax + b = c"
+                },
+                "educationalLevel": ["Middle School", "High School"],
+                "learningResourceType": ["Interactive Tool", "Tutorial", "How-to Guide"],
+                "mainEntity": [
+                    {
+                        "@id": "https://math.help/algebra/linear-equations/#calculator"
+                    },
+                    {
+                        "@id": "https://math.help/algebra/linear-equations/#howto"
+                    }
+                ]
+            },
+            {
+                "@type": "HowTo",
+                "@id": "https://math.help/algebra/linear-equations/#howto",
+                "name": "How to Solve Linear Equations",
+                "description": "Step-by-step guide to solving linear equations of the form ax + b = c",
+                "image": "https://math.help/images/linear-equations-steps.png",
+                "totalTime": "PT10M",
+                "estimatedCost": {
+                    "@type": "MonetaryAmount",
+                    "currency": "USD",
+                    "value": "0"
+                },
+                "supply": [
+                    {
+                        "@type": "HowToSupply",
+                        "name": "Linear equation to solve"
+                    },
+                    {
+                        "@type": "HowToSupply", 
+                        "name": "Paper and pencil or calculator"
+                    }
+                ],
+                "tool": [
+                    {
+                        "@type": "HowToTool",
+                        "name": "Linear Equation Solver Calculator",
+                        "url": "https://math.help/algebra/linear-equations/"
+                    }
+                ],
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "position": 1,
+                        "name": "Identify the equation form",
+                        "text": "Recognize that you have a linear equation in the form ax + b = c, where a, b, and c are constants and x is the variable.",
+                        "image": "https://math.help/images/step1-identify-form.png"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "position": 2,
+                        "name": "Isolate the variable term",
+                        "text": "Add or subtract the constant term from both sides to get the variable term alone on one side. If the equation is 3x + 5 = 14, subtract 5 from both sides to get 3x = 9.",
+                        "image": "https://math.help/images/step2-isolate-term.png"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "position": 3,
+                        "name": "Solve for the variable",
+                        "text": "Divide both sides by the coefficient of the variable. In our example, divide both sides by 3 to get x = 3.",
+                        "image": "https://math.help/images/step3-solve-variable.png"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "position": 4,
+                        "name": "Check your solution",
+                        "text": "Substitute your answer back into the original equation to verify it's correct. Replace x with 3 in 3x + 5 = 14 to get 3(3) + 5 = 9 + 5 = 14 ✓",
+                        "image": "https://math.help/images/step4-check-solution.png"
+                    }
+                ]
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://math.help/algebra/linear-equations/#calculator",
+                "name": "Linear Equation Calculator",
+                "description": "Free online calculator for solving linear equations with step-by-step solutions",
+                "applicationCategory": "EducationalApplication",
+                "operatingSystem": "Web Browser",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "featureList": [
+                    "One-step equation solving",
+                    "Two-step equation solving",
+                    "Multi-step equation solving",
+                    "Step-by-step explanations",
+                    "Solution verification"
+                ]
+            },
+            {
+                "@type": "MathSolver",
+                "name": "Linear Equation Solver",
+                "description": "Solves linear equations of the form ax + b = c",
+                "mathExpression": "ax + b = c",
+                "potentialAction": {
+                    "@type": "SolveAction",
+                    "target": "https://math.help/algebra/linear-equations/",
+                    "object": {
+                        "@type": "MathExpression",
+                        "mathExpression": "ax + b = c"
+                    }
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <meta name="google-adsense-account" content="ca-pub-5635114711353420">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ERGV6WWC21');
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sgk1r5gd6a");
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Master Mathematics Step by Step</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/" class="active">Algebra</a></li>
+                <li><a href="/calculus/">Calculus</a></li>
+                <li><a href="/geometry/">Geometry</a></li>
+                <li><a href="/trigonometry/">Trigonometry</a></li>
+                <li><a href="/statistics/">Statistics</a></li>
+                <li><a href="/tools/">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/">Algebra</a></li>
+                <li class="active">Linear Equations</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Position 1: Top Ad -->
+            <div class="ad-container ad-top">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5635114711353420"
+                     data-ad-slot="3137758017"
+                     data-ad-format="horizontal"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <article class="main-content">
+                <h1>Linear Equation Solver</h1>
+                
+                <!-- Interactive Solver -->
+                <section class="solver-section">
+                    <div class="solver-box">
+                        <h2>Enter Your Linear Equation</h2>
+                        <p>Enter your equation in the form: ax + b = c</p>
+                        <div class="equation-input">
+                            <input type="text" id="equation-input" placeholder="e.g., 3x + 5 = 14" value="3x + 5 = 14">
+                            <button onclick="solveLinearEquation()" class="solve-button">Solve Equation</button>
+                        </div>
+                        
+                        <div id="solution-display" class="solution-display"></div>
+                    </div>
+                </section>
+
+                <!-- Quick Theory -->
+                <section class="theory-section">
+                    <h2>How to Solve Linear Equations</h2>
+                    <div class="method-box">
+                        <h3>Basic Steps</h3>
+                        <ol>
+                            <li><strong>Simplify both sides</strong> - Combine like terms</li>
+                            <li><strong>Isolate the variable</strong> - Get all x terms on one side</li>
+                            <li><strong>Solve for x</strong> - Divide by the coefficient</li>
+                            <li><strong>Check your answer</strong> - Substitute back into original equation</li>
+                        </ol>
+                    </div>
+                    
+                    <h3>Types of Linear Equations</h3>
+                    <div class="equation-types">
+                        <div class="type-box">
+                            <h4>One-Step Equations</h4>
+                            <p>Example: $x + 5 = 12$</p>
+                            <p>Solution: $x = 7$</p>
+                        </div>
+                        <div class="type-box">
+                            <h4>Two-Step Equations</h4>
+                            <p>Example: $3x - 2 = 10$</p>
+                            <p>Solution: $x = 4$</p>
+                        </div>
+                        <div class="type-box">
+                            <h4>Multi-Step Equations</h4>
+                            <p>Example: $2(x + 3) = 4x - 8$</p>
+                            <p>Solution: $x = 7$</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Position 2: Mid-content Ad -->
+                <div class="ad-container in-content">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5635114711353420"
+                         data-ad-slot="4431777949"
+                         data-ad-format="rectangle"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+                <!-- Examples -->
+                <section class="examples-section">
+                    <h2>Solved Examples</h2>
+                    
+                    <div class="example-box">
+                        <h3>Example 1: Basic Two-Step</h3>
+                        <p>Solve: $2x + 7 = 15$</p>
+                        <div class="solution-steps">
+                            <p>Step 1: Subtract 7 from both sides</p>
+                            <p>$2x + 7 - 7 = 15 - 7$</p>
+                            <p>$2x = 8$</p>
+                            <p>Step 2: Divide both sides by 2</p>
+                            <p>$x = 4$</p>
+                            <p>Check: $2(4) + 7 = 8 + 7 = 15$ ✓</p>
+                        </div>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 2: With Fractions</h3>
+                        <p>Solve: $\frac{x}{3} - 2 = 5$</p>
+                        <div class="solution-steps">
+                            <p>Step 1: Add 2 to both sides</p>
+                            <p>$\frac{x}{3} = 7$</p>
+                            <p>Step 2: Multiply both sides by 3</p>
+                            <p>$x = 21$</p>
+                            <p>Check: $\frac{21}{3} - 2 = 7 - 2 = 5$ ✓</p>
+                        </div>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 3: With Parentheses</h3>
+                        <p>Solve: $3(x - 4) = 2x + 1$</p>
+                        <div class="solution-steps">
+                            <p>Step 1: Distribute</p>
+                            <p>$3x - 12 = 2x + 1$</p>
+                            <p>Step 2: Subtract 2x from both sides</p>
+                            <p>$x - 12 = 1$</p>
+                            <p>Step 3: Add 12 to both sides</p>
+                            <p>$x = 13$</p>
+                            <p>Check: $3(13 - 4) = 3(9) = 27$ and $2(13) + 1 = 27$ ✓</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Practice Problems -->
+                <section class="practice-section">
+                    <h2>Practice Problems</h2>
+                    <ol class="practice-list">
+                        <li>$x + 8 = 15$</li>
+                        <li>$4x = 28$</li>
+                        <li>$3x - 5 = 16$</li>
+                        <li>$\frac{x}{2} + 3 = 8$</li>
+                        <li>$2(x + 4) = 18$</li>
+                        <li>$5x - 3 = 3x + 7$</li>
+                    </ol>
+                    <details>
+                        <summary>Show Answers</summary>
+                        <ol>
+                            <li>$x = 7$</li>
+                            <li>$x = 7$</li>
+                            <li>$x = 7$</li>
+                            <li>$x = 10$</li>
+                            <li>$x = 5$</li>
+                            <li>$x = 5$</li>
+                        </ol>
+                    </details>
+                </section>
+
+                <!-- Related Topics -->
+                <section class="related-section">
+                    <h2>Related Topics</h2>
+                    <div class="related-links">
+                        <a href="/algebra/quadratic-equations/">Quadratic Equations</a>
+                        <a href="/algebra/systems-of-equations/">Systems of Equations</a>
+                        <a href="/algebra/inequalities/">Linear Inequalities</a>
+                        <a href="/algebra/absolute-value/">Absolute Value Equations</a>
+                    </div>
+                </section>
+
+                <!-- Position 3: Bottom Ad -->
+                <div class="ad-container ad-bottom">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-format="autorelaxed"
+                         data-ad-client="ca-pub-5635114711353420"
+                         data-ad-slot="2324489353"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Math.help. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Solver specific styles */
+        .solver-box {
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .equation-input {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            align-items: center;
+        }
+        
+        #equation-input {
+            flex: 1;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+        }
+        
+        .solve-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+        
+        .solve-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .solution-display {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .solution-display.show {
+            display: block;
+        }
+        
+        .equation-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .type-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .type-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .example-box {
+            background-color: white;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .solution-steps {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        
+        .solution-steps p {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+        
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .related-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .related-links a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .practice-list {
+            background-color: var(--light-gray);
+            padding: 20px 40px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .practice-list li {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        
+        details {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .equation-input {
+                flex-direction: column;
+            }
+            
+            #equation-input {
+                width: 100%;
+            }
+            
+            .solve-button {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <script>
+        function parseLinearEquation(equation) {
+            // Remove spaces and convert to lowercase for easier parsing
+            equation = equation.replace(/\s/g, '').toLowerCase();
+            
+            // Split by equals sign
+            const parts = equation.split('=');
+            if (parts.length !== 2) {
+                throw new Error('Invalid equation format. Must contain exactly one equals sign.');
+            }
+            
+            let leftSide = parts[0];
+            let rightSide = parts[1];
+            
+            // Parse coefficient and constant from each side
+            // Handle patterns like: ax+b, ax-b, x+b, x-b, ax, x, b
+            function parseSide(side) {
+                let coefficient = 0;
+                let constant = 0;
+                
+                // Replace - with +- for easier splitting
+                side = side.replace(/-/g, '+-');
+                
+                // Split by + and filter empty strings
+                const terms = side.split('+').filter(term => term !== '');
+                
+                for (let term of terms) {
+                    if (term.includes('x')) {
+                        // This is a coefficient term
+                        let coef = term.replace('x', '');
+                        if (coef === '' || coef === '+') {
+                            coefficient += 1;
+                        } else if (coef === '-') {
+                            coefficient -= 1;
+                        } else {
+                            coefficient += parseFloat(coef);
+                        }
+                    } else {
+                        // This is a constant term
+                        constant += parseFloat(term);
+                    }
+                }
+                
+                return { coefficient, constant };
+            }
+            
+            const left = parseSide(leftSide);
+            const right = parseSide(rightSide);
+            
+            // Move all terms to left side: ax + b - c = 0
+            const finalCoefficient = left.coefficient - right.coefficient;
+            const finalConstant = left.constant - right.constant;
+            
+            return { a: finalCoefficient, b: finalConstant };
+        }
+        
+        function solveLinearEquation() {
+            const input = document.getElementById('equation-input').value;
+            const display = document.getElementById('solution-display');
+            
+            try {
+                // Parse the equation
+                const { a, b } = parseLinearEquation(input);
+                
+                if (a === 0) {
+                    if (b === 0) {
+                        display.innerHTML = '<p style="color: green;"><strong>Solution:</strong> All real numbers (infinitely many solutions)</p>';
+                    } else {
+                        display.innerHTML = '<p style="color: red;"><strong>No solution:</strong> This equation has no solution (contradiction)</p>';
+                    }
+                    display.classList.add('show');
+                    return;
+                }
+                
+                // Solve for x: ax + b = 0, so x = -b/a
+                const x = -b / a;
+                
+                // Build solution HTML
+                let html = '<h3>Solution:</h3>';
+                html += `<p><strong>Original equation:</strong> ${input}</p>`;
+                html += '<p><strong>Steps:</strong></p>';
+                html += '<ol>';
+                
+                // Show steps based on the equation structure
+                const leftParts = input.split('=')[0].trim();
+                const rightParts = input.split('=')[1].trim();
+                
+                if (rightParts !== '0') {
+                    html += `<li>Move all terms to one side: ${leftParts} - (${rightParts}) = 0</li>`;
+                }
+                
+                if (a !== 1) {
+                    html += `<li>Simplify: ${a}x ${b >= 0 ? '+' : ''} ${b} = 0</li>`;
+                    html += `<li>Subtract ${b >= 0 ? b : '(' + b + ')'} from both sides: ${a}x = ${-b}</li>`;
+                    html += `<li>Divide both sides by ${a}: x = ${-b}/${a}</li>`;
+                }
+                
+                html += '</ol>';
+                html += `<p><strong>Answer:</strong> x = ${x.toFixed(4).replace(/\.?0+$/, '')}</p>`;
+                
+                // Verify the solution
+                html += '<p><strong>Check:</strong> ';
+                const checkLeft = input.split('=')[0].replace(/x/gi, `(${x.toFixed(4).replace(/\.?0+$/, '')})`);
+                html += `Substituting x = ${x.toFixed(4).replace(/\.?0+$/, '')} into the original equation...</p>`;
+                
+                display.innerHTML = html;
+                display.classList.add('show');
+                
+                // Track calculation
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'linear_solve', {
+                        event_category: 'Calculator',
+                        event_label: 'Linear Equation Solver'
+                    });
+                }
+                
+            } catch (error) {
+                display.innerHTML = `<p style="color: red;"><strong>Error:</strong> ${error.message}</p>`;
+                display.classList.add('show');
+            }
+        }
+        
+        // Solve on Enter key
+        document.getElementById('equation-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                solveLinearEquation();
+            }
+        });
+        
+        // Solve default equation on load
+        window.addEventListener('DOMContentLoaded', function() {
+            solveLinearEquation();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math FAQ - Common Math Questions Answered | Math.help</title>
+    <meta name="description" content="Get answers to frequently asked math questions. Step-by-step solutions for algebra, calculus, geometry, and statistics problems.">
+    <meta name="keywords" content="math FAQ, math help questions, algebra help, calculus help, math answers, common math problems, math solutions">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    
+    <!-- Ezoic Integration Scripts -->
+    <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
+    <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    
+    <!-- KaTeX JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="../katex-lazy.js"></script>
+    
+    <!-- FAQ Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I solve quadratic equations?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "To solve quadratic equations in the form ax² + bx + c = 0, you can use the quadratic formula: x = (-b ± √(b² - 4ac)) / 2a. First identify coefficients a, b, and c, then substitute into the formula. You can also factor the equation or complete the square.",
+                    "url": "https://math.help/algebra/quadratic-equations/"
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "What is a derivative in calculus?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A derivative represents the rate of change of a function with respect to its variable. Geometrically, it's the slope of the tangent line to the curve at any point. The derivative of f(x) is written as f'(x) or df/dx. Basic rules include the power rule: d/dx[x^n] = nx^(n-1).",
+                    "url": "https://math.help/calculus/derivative-calculator/"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I find the area of a triangle?",
+                "acceptedAnswer": {
+                    "@type": "Answer", 
+                    "text": "The area of a triangle can be calculated using A = ½ × base × height. If you know all three sides (a, b, c), use Heron's formula: A = √[s(s-a)(s-b)(s-c)] where s = (a+b+c)/2. For triangles with angle information, use A = ½ab sin(C).",
+                    "url": "https://math.help/geometry/"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the Pythagorean theorem?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Pythagorean theorem states that in a right triangle, the square of the hypotenuse (longest side) equals the sum of squares of the other two sides: a² + b² = c². This fundamental theorem is used to find missing side lengths in right triangles and has applications in distance calculations.",
+                    "url": "https://math.help/geometry/"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I solve systems of linear equations?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Systems of linear equations can be solved using three main methods: 1) Substitution - solve one equation for a variable and substitute into the other, 2) Elimination - add or subtract equations to eliminate a variable, 3) Graphing - find the intersection point of the lines.",
+                    "url": "https://math.help/algebra/"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are trigonometric identities?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Trigonometric identities are equations involving trigonometric functions that are true for all valid values. Key identities include: sin²θ + cos²θ = 1 (Pythagorean identity), sin(A ± B) = sinA cosB ± cosA sinB (angle addition), and sin(2θ) = 2sinθ cosθ (double angle).",
+                    "url": "https://math.help/trigonometry/"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I calculate mean, median, and mode?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Mean is the average (sum of all values ÷ number of values). Median is the middle value when data is arranged in order (or average of two middle values if even number of data points). Mode is the value that appears most frequently in the dataset.",
+                    "url": "https://math.help/statistics/"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the order of operations in math?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The order of operations follows PEMDAS (or BODMAS): 1) Parentheses/Brackets, 2) Exponents/Orders, 3) Multiplication and Division (left to right), 4) Addition and Subtraction (left to right). This ensures mathematical expressions are evaluated consistently.",
+                    "url": "https://math.help/algebra/"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I factor polynomials?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Polynomial factoring involves several techniques: 1) Factor out common factors first, 2) For quadratics ax² + bx + c, find two numbers that multiply to ac and add to b, 3) Recognize special patterns like difference of squares (a² - b² = (a+b)(a-b)), 4) Use grouping for four-term polynomials.",
+                    "url": "https://math.help/algebra/factoring/"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between permutations and combinations?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Permutations consider order important (P(n,r) = n!/(n-r)!), while combinations don't (C(n,r) = n!/(r!(n-r)!)). For example, arranging 3 people in a line is a permutation (ABC ≠ BAC), but choosing 3 people for a team is a combination (ABC = BAC).",
+                    "url": "https://math.help/statistics/"
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <meta name="google-adsense-account" content="ca-pub-5635114711353420">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ERGV6WWC21');
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sgk1r5gd6a");
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Master Mathematics Step by Step</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/">Algebra</a></li>
+                <li><a href="/calculus/">Calculus</a></li>
+                <li><a href="/geometry/">Geometry</a></li>
+                <li><a href="/trigonometry/">Trigonometry</a></li>
+                <li><a href="/statistics/">Statistics</a></li>
+                <li><a href="/tools/">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb Navigation with Schema -->
+    <nav class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/" itemprop="item">
+                        <span itemprop="name">Home</span>
+                    </a>
+                    <meta itemprop="position" content="1">
+                </li>
+                <li class="active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">Math FAQ</span>
+                    <meta itemprop="position" content="2">
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Position 1: Top Ad -->
+            <div class="ad-container ad-top">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5635114711353420"
+                     data-ad-slot="3137758017"
+                     data-ad-format="horizontal"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <article class="main-content">
+                <header class="page-header">
+                    <h1>Frequently Asked Math Questions</h1>
+                    <p>Get instant answers to the most common math questions. From basic algebra to advanced calculus, find clear explanations and step-by-step solutions.</p>
+                    
+                    <!-- FAQ Search -->
+                    <div class="faq-search">
+                        <input type="text" id="search-faq" placeholder="Search FAQ questions..." />
+                        <button onclick="searchFAQ()">🔍 Search</button>
+                    </div>
+                </header>
+
+                <!-- Quick Navigation -->
+                <nav class="faq-nav">
+                    <h2>Jump to Category:</h2>
+                    <div class="nav-buttons">
+                        <a href="#algebra-faq" class="nav-btn">Algebra</a>
+                        <a href="#calculus-faq" class="nav-btn">Calculus</a>
+                        <a href="#geometry-faq" class="nav-btn">Geometry</a>
+                        <a href="#statistics-faq" class="nav-btn">Statistics</a>
+                        <a href="#general-faq" class="nav-btn">General</a>
+                    </div>
+                </nav>
+
+                <!-- Algebra FAQ -->
+                <section id="algebra-faq" class="faq-section">
+                    <h2>📐 Algebra Questions</h2>
+                    
+                    <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="faq-question">How do I solve quadratic equations?</h3>
+                        <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>Quadratic equations in the form $ax^2 + bx + c = 0$ can be solved using several methods:</p>
+                                <ol>
+                                    <li><strong>Quadratic Formula:</strong> $x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$</li>
+                                    <li><strong>Factoring:</strong> Find two numbers that multiply to $ac$ and add to $b$</li>
+                                    <li><strong>Completing the Square:</strong> Transform to $(x+p)^2 = q$ form</li>
+                                    <li><strong>Graphing:</strong> Find x-intercepts of the parabola</li>
+                                </ol>
+                                <p><strong>Example:</strong> For $x^2 - 5x + 6 = 0$:</p>
+                                <p>Using the quadratic formula: $x = \frac{5 \pm \sqrt{25-24}}{2} = \frac{5 \pm 1}{2}$</p>
+                                <p>So $x = 3$ or $x = 2$</p>
+                            </div>
+                        </div>
+                        <a href="/algebra/quadratic-equations/" class="faq-link">Try our Quadratic Calculator →</a>
+                    </div>
+                    
+                    <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="faq-question">How do I solve systems of linear equations?</h3>
+                        <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>Systems of linear equations can be solved using three main methods:</p>
+                                <ol>
+                                    <li><strong>Substitution Method:</strong> Solve one equation for a variable, substitute into the other</li>
+                                    <li><strong>Elimination Method:</strong> Add or subtract equations to eliminate a variable</li>
+                                    <li><strong>Graphing Method:</strong> Find the intersection point of the lines</li>
+                                </ol>
+                                <p><strong>Example using elimination:</strong></p>
+                                <p>$\begin{cases} 2x + y = 7 \\ x - y = 2 \end{cases}$</p>
+                                <p>Add equations: $3x = 9$, so $x = 3$</p>
+                                <p>Substitute: $2(3) + y = 7$, so $y = 1$</p>
+                                <p>Solution: $(3, 1)$</p>
+                            </div>
+                        </div>
+                        <a href="/algebra/" class="faq-link">Learn More About Systems →</a>
+                    </div>
+                    
+                    <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="faq-question">How do I factor polynomials?</h3>
+                        <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>Polynomial factoring follows a systematic approach:</p>
+                                <ol>
+                                    <li><strong>Factor out common factors first</strong></li>
+                                    <li><strong>Identify special patterns:</strong>
+                                        <ul>
+                                            <li>Difference of squares: $a^2 - b^2 = (a+b)(a-b)$</li>
+                                            <li>Perfect square trinomial: $a^2 ± 2ab + b^2 = (a±b)^2$</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>For quadratics $ax^2 + bx + c$:</strong> Find factors of $ac$ that add to $b$</li>
+                                    <li><strong>Use grouping for four terms</strong></li>
+                                </ol>
+                                <p><strong>Example:</strong> Factor $x^2 - 9x + 20$</p>
+                                <p>Find factors of 20 that add to -9: $-4 × -5 = 20$ and $-4 + (-5) = -9$</p>
+                                <p>Answer: $(x - 4)(x - 5)$</p>
+                            </div>
+                        </div>
+                        <a href="/algebra/factoring/" class="faq-link">Use Factoring Calculator →</a>
+                    </div>
+                </section>
+
+                <!-- Position 2: Mid-content Ad -->
+                <div class="ad-container in-content">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5635114711353420"
+                         data-ad-slot="4431777949"
+                         data-ad-format="rectangle"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+                <!-- Calculus FAQ -->
+                <section id="calculus-faq" class="faq-section">
+                    <h2>📈 Calculus Questions</h2>
+                    
+                    <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="faq-question">What is a derivative and how do I find it?</h3>
+                        <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>A derivative represents the <strong>rate of change</strong> of a function. Geometrically, it's the slope of the tangent line at any point.</p>
+                                <p><strong>Basic differentiation rules:</strong></p>
+                                <ul>
+                                    <li><strong>Power Rule:</strong> $\frac{d}{dx}[x^n] = nx^{n-1}$</li>
+                                    <li><strong>Constant Rule:</strong> $\frac{d}{dx}[c] = 0$</li>
+                                    <li><strong>Sum Rule:</strong> $\frac{d}{dx}[f + g] = f' + g'$</li>
+                                    <li><strong>Product Rule:</strong> $\frac{d}{dx}[fg] = f'g + fg'$</li>
+                                    <li><strong>Chain Rule:</strong> $\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$</li>
+                                </ul>
+                                <p><strong>Example:</strong> Find $\frac{d}{dx}[3x^2 + 2x - 5]$</p>
+                                <p>$= 3 \cdot 2x^{2-1} + 2 \cdot 1x^{1-1} - 0 = 6x + 2$</p>
+                            </div>
+                        </div>
+                        <a href="/calculus/derivative-calculator/" class="faq-link">Try Derivative Calculator →</a>
+                    </div>
+                    
+                    <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="faq-question">How do I evaluate limits?</h3>
+                        <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>Limits describe the behavior of a function as the input approaches a certain value:</p>
+                                <ol>
+                                    <li><strong>Direct substitution:</strong> Try plugging in the value first</li>
+                                    <li><strong>If you get 0/0 or ∞/∞:</strong> Use algebraic manipulation
+                                        <ul>
+                                            <li>Factor and cancel common terms</li>
+                                            <li>Rationalize (multiply by conjugate)</li>
+                                            <li>Use L'Hôpital's rule (advanced)</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Special limits:</strong> $\lim_{x \to 0} \frac{\sin x}{x} = 1$</li>
+                                </ol>
+                                <p><strong>Example:</strong> $\lim_{x \to 2} \frac{x^2-4}{x-2}$</p>
+                                <p>Factor: $\frac{(x-2)(x+2)}{x-2} = x+2$</p>
+                                <p>Evaluate: $\lim_{x \to 2} (x+2) = 4$</p>
+                            </div>
+                        </div>
+                        <a href="/calculus/" class="faq-link">Learn More About Limits →</a>
+                    </div>
+                </section>
+
+                <!-- Geometry FAQ -->
+                <section id="geometry-faq" class="faq-section">
+                    <h2>🔺 Geometry Questions</h2>
+                    
+                    <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="faq-question">How do I find the area of different shapes?</h3>
+                        <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p><strong>Common area formulas:</strong></p>
+                                <ul>
+                                    <li><strong>Rectangle:</strong> $A = length × width$</li>
+                                    <li><strong>Triangle:</strong> $A = \frac{1}{2} × base × height$</li>
+                                    <li><strong>Circle:</strong> $A = \pi r^2$</li>
+                                    <li><strong>Parallelogram:</strong> $A = base × height$</li>
+                                    <li><strong>Trapezoid:</strong> $A = \frac{1}{2}(b_1 + b_2) × height$</li>
+                                </ul>
+                                <p><strong>For triangles with all three sides known (Heron's formula):</strong></p>
+                                <p>$A = \sqrt{s(s-a)(s-b)(s-c)}$ where $s = \frac{a+b+c}{2}$</p>
+                                <p><strong>Example:</strong> Triangle with sides 3, 4, 5</p>
+                                <p>$s = \frac{3+4+5}{2} = 6$</p>
+                                <p>$A = \sqrt{6(6-3)(6-4)(6-5)} = \sqrt{6 × 3 × 2 × 1} = 6$</p>
+                            </div>
+                        </div>
+                        <a href="/geometry/" class="faq-link">Use Area Calculator →</a>
+                    </div>
+                    
+                    <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="faq-question">What is the Pythagorean theorem and when do I use it?</h3>
+                        <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>The Pythagorean theorem states: <strong>In a right triangle, $a^2 + b^2 = c^2$</strong></p>
+                                <p>Where $c$ is the hypotenuse (longest side) and $a$, $b$ are the legs.</p>
+                                <p><strong>Use it when:</strong></p>
+                                <ul>
+                                    <li>You have a right triangle (90° angle)</li>
+                                    <li>You know two sides and need to find the third</li>
+                                    <li>You need to find distances in coordinate geometry</li>
+                                    <li>You want to check if a triangle is a right triangle</li>
+                                </ul>
+                                <p><strong>Example:</strong> Triangle with legs 6 and 8</p>
+                                <p>$c^2 = 6^2 + 8^2 = 36 + 64 = 100$</p>
+                                <p>$c = \sqrt{100} = 10$</p>
+                            </div>
+                        </div>
+                        <a href="/geometry/" class="faq-link">Explore Geometry →</a>
+                    </div>
+                </section>
+
+                <!-- Statistics FAQ -->
+                <section id="statistics-faq" class="faq-section">
+                    <h2>📊 Statistics Questions</h2>
+                    
+                    <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="faq-question">What's the difference between mean, median, and mode?</h3>
+                        <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p><strong>Three measures of central tendency:</strong></p>
+                                <ul>
+                                    <li><strong>Mean (Average):</strong> Sum of all values ÷ number of values</li>
+                                    <li><strong>Median:</strong> Middle value when data is arranged in order</li>
+                                    <li><strong>Mode:</strong> Most frequently occurring value</li>
+                                </ul>
+                                <p><strong>Example:</strong> Data set {2, 3, 3, 4, 5, 5, 5, 7}</p>
+                                <ul>
+                                    <li><strong>Mean:</strong> $(2+3+3+4+5+5+5+7) ÷ 8 = 34 ÷ 8 = 4.25$</li>
+                                    <li><strong>Median:</strong> Middle values are 4 and 5, so median = $(4+5) ÷ 2 = 4.5$</li>
+                                    <li><strong>Mode:</strong> 5 (appears three times)</li>
+                                </ul>
+                                <p><strong>When to use each:</strong> Mean for normal distributions, median for skewed data, mode for categorical data.</p>
+                            </div>
+                        </div>
+                        <a href="/statistics/" class="faq-link">Try Statistics Calculator →</a>
+                    </div>
+                </section>
+
+                <!-- General FAQ -->
+                <section id="general-faq" class="faq-section">
+                    <h2>🔢 General Math Questions</h2>
+                    
+                    <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="faq-question">What is the order of operations (PEMDAS)?</h3>
+                        <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p><strong>PEMDAS (Please Excuse My Dear Aunt Sally):</strong></p>
+                                <ol>
+                                    <li><strong>P</strong>arentheses (or Brackets)</li>
+                                    <li><strong>E</strong>xponents (or Orders)</li>
+                                    <li><strong>M</strong>ultiplication and <strong>D</strong>ivision (left to right)</li>
+                                    <li><strong>A</strong>ddition and <strong>S</strong>ubtraction (left to right)</li>
+                                </ol>
+                                <p><strong>Example:</strong> $2 + 3 × 4^2 - (6 ÷ 2)$</p>
+                                <ol>
+                                    <li>Parentheses: $(6 ÷ 2) = 3$</li>
+                                    <li>Exponents: $4^2 = 16$</li>
+                                    <li>Multiplication: $3 × 16 = 48$</li>
+                                    <li>Addition/Subtraction: $2 + 48 - 3 = 47$</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <a href="/tools/" class="faq-link">Use Our Calculator →</a>
+                    </div>
+                </section>
+
+                <!-- Related Resources -->
+                <section class="related-resources">
+                    <h2>Need More Help?</h2>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <h3>📚 Study Guides</h3>
+                            <p>Comprehensive guides for every math topic</p>
+                            <a href="/study-guides/" class="resource-link">Browse Guides →</a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h3>🧮 Calculators</h3>
+                            <p>Interactive tools for instant solutions</p>
+                            <a href="/tools/" class="resource-link">Use Tools →</a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h3>💡 Examples</h3>
+                            <p>Step-by-step worked problems</p>
+                            <a href="/examples/" class="resource-link">See Examples →</a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h3>📋 Formulas</h3>
+                            <p>Quick reference for essential formulas</p>
+                            <a href="/formulas/" class="resource-link">View Formulas →</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Position 3: Bottom Ad -->
+                <div class="ad-container ad-bottom">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-format="autorelaxed"
+                         data-ad-client="ca-pub-5635114711353420"
+                         data-ad-slot="2324489353"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Math.help. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* FAQ page specific styles */
+        .faq-search {
+            display: flex;
+            max-width: 500px;
+            margin: 20px auto;
+            gap: 10px;
+        }
+        
+        .faq-search input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .faq-search button {
+            padding: 12px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .faq-nav {
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            background-color: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .faq-section {
+            margin: 50px 0;
+            padding: 30px 0;
+            border-top: 3px solid var(--secondary-color);
+        }
+        
+        .faq-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+        
+        .faq-item {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            margin: 25px 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--secondary-color);
+        }
+        
+        .faq-question {
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            padding: 20px;
+            margin: 0;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .faq-answer {
+            padding: 25px;
+            line-height: 1.7;
+        }
+        
+        .faq-answer p {
+            margin: 15px 0;
+        }
+        
+        .faq-answer ul, .faq-answer ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        .faq-answer li {
+            margin: 8px 0;
+        }
+        
+        .faq-link {
+            display: inline-block;
+            margin: 15px 25px 25px 25px;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-link:hover {
+            background-color: #2980b9;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .resource-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--secondary-color);
+        }
+        
+        .resource-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .resource-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .resource-link {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .resource-link:hover {
+            background-color: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-search {
+                flex-direction: column;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 200px;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        function searchFAQ() {
+            const query = document.getElementById('search-faq').value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query) || !query) {
+                    item.style.display = 'block';
+                    if (query) {
+                        item.style.border = '2px solid var(--secondary-color)';
+                    } else {
+                        item.style.border = '2px solid var(--border-color)';
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        // Search on Enter key
+        document.getElementById('search-faq').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchFAQ();
+            }
+        });
+        
+        // Track FAQ interactions
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const questionText = this.textContent;
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'faq_question_click', {
+                        event_category: 'FAQ',
+                        event_label: questionText
+                    });
+                }
+            });
+        });
+        
+        // Track FAQ link clicks
+        document.querySelectorAll('.faq-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const linkText = this.textContent;
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'faq_link_click', {
+                        event_category: 'FAQ',
+                        event_label: linkText
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

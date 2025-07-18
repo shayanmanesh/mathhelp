@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Performance Dashboard - Math.help Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .metric-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-change {
+            font-size: 0.9rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .metric-change.positive {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .metric-change.negative {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .metric-change.neutral {
+            background-color: #e2e3e5;
+            color: #383d41;
+        }
+        
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .chart-container h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .chart-placeholder {
+            height: 300px;
+            background: linear-gradient(45deg, #f8f9fa 25%, transparent 25%), 
+                        linear-gradient(-45deg, #f8f9fa 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #f8f9fa 75%), 
+                        linear-gradient(-45deg, transparent 75%, #f8f9fa 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .network-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .network-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .network-card.active {
+            border: 2px solid #28a745;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+        }
+        
+        .network-card.pending {
+            border: 2px solid #ffc107;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+        }
+        
+        .network-card.inactive {
+            border: 2px solid #dc3545;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+            opacity: 0.7;
+        }
+        
+        .network-logo {
+            width: 80px;
+            height: 80px;
+            background: #667eea;
+            border-radius: 50%;
+            margin: 0 auto 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .network-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .network-status {
+            font-size: 0.9rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .status-active {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-inactive {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .optimization-tips {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .optimization-tips h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .tips-list {
+            list-style: none;
+        }
+        
+        .tips-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .tips-list li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+        
+        .actions-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+        
+        .actions-panel h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        
+        .btn-warning {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        
+        .btn-warning:hover {
+            background-color: #e0a800;
+            transform: translateY(-2px);
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-weight: 600;
+        }
+        
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .metric-card {
+                padding: 1.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Ad Performance Dashboard</h1>
+        <p>Math.help Revenue Optimization - Phase 5</p>
+    </div>
+    
+    <div class="container">
+        <!-- Key Metrics -->
+        <div class="dashboard-grid">
+            <div class="metric-card">
+                <h3>Monthly Revenue</h3>
+                <div class="metric-value" id="monthly-revenue">$1,247</div>
+                <span class="metric-change positive">+23% vs last month</span>
+            </div>
+            
+            <div class="metric-card">
+                <h3>RPM (Revenue per 1000)</h3>
+                <div class="metric-value" id="rpm">$4.83</div>
+                <span class="metric-change positive">+12% vs last month</span>
+            </div>
+            
+            <div class="metric-card">
+                <h3>Monthly Pageviews</h3>
+                <div class="metric-value" id="pageviews">28,456</div>
+                <span class="metric-change positive">+31% vs last month</span>
+            </div>
+            
+            <div class="metric-card">
+                <h3>Ad CTR</h3>
+                <div class="metric-value" id="ctr">1.34%</div>
+                <span class="metric-change positive">+8% vs last month</span>
+            </div>
+            
+            <div class="metric-card">
+                <h3>Viewability Rate</h3>
+                <div class="metric-value" id="viewability">72%</div>
+                <span class="metric-change positive">+5% vs last month</span>
+            </div>
+            
+            <div class="metric-card">
+                <h3>Sessions</h3>
+                <div class="metric-value" id="sessions">21,348</div>
+                <span class="metric-change positive">+28% vs last month</span>
+            </div>
+        </div>
+        
+        <!-- Revenue Chart -->
+        <div class="chart-container">
+            <h3>📈 Revenue Trend (Last 30 Days)</h3>
+            <div class="chart-placeholder">
+                Revenue chart would be displayed here<br>
+                <small>Integration with Google Analytics and AdSense APIs recommended</small>
+            </div>
+        </div>
+        
+        <!-- Traffic Chart -->
+        <div class="chart-container">
+            <h3>👥 Traffic Growth</h3>
+            <div class="chart-placeholder">
+                Traffic growth chart would be displayed here<br>
+                <small>Shows pageviews, sessions, and unique visitors over time</small>
+            </div>
+        </div>
+        
+        <!-- Ad Network Status -->
+        <div class="chart-container">
+            <h3>🏢 Ad Network Status</h3>
+            <div class="network-comparison">
+                <div class="network-card active">
+                    <div class="network-logo">AS</div>
+                    <div class="network-name">Google AdSense</div>
+                    <span class="network-status status-active">Active</span>
+                    <div><strong>RPM:</strong> $4.83</div>
+                    <div><strong>Fill Rate:</strong> 94%</div>
+                </div>
+                
+                <div class="network-card pending">
+                    <div class="network-logo">EZ</div>
+                    <div class="network-name">Ezoic</div>
+                    <span class="network-status status-pending">Application Submitted</span>
+                    <div><strong>Expected RPM:</strong> $8-12</div>
+                    <div><strong>Status:</strong> Under Review</div>
+                </div>
+                
+                <div class="network-card inactive">
+                    <div class="network-logo">MV</div>
+                    <div class="network-name">Mediavine</div>
+                    <span class="network-status status-inactive">Traffic Requirement</span>
+                    <div><strong>Required:</strong> 50k sessions</div>
+                    <div><strong>Current:</strong> 21.3k sessions (43%)</div>
+                </div>
+                
+                <div class="network-card inactive">
+                    <div class="network-logo">AT</div>
+                    <div class="network-name">AdThrive</div>
+                    <span class="network-status status-inactive">Traffic Requirement</span>
+                    <div><strong>Required:</strong> 100k pageviews</div>
+                    <div><strong>Current:</strong> 28.5k pageviews (29%)</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Optimization Tips -->
+        <div class="optimization-tips">
+            <h3>🚀 Current Optimization Recommendations</h3>
+            <ul class="tips-list">
+                <li>Continue A/B testing ad positions - sidebar ads showing 15% higher CTR</li>
+                <li>Focus on increasing session duration to boost Mediavine qualification</li>
+                <li>Implement Ezoic once approved for automatic optimization</li>
+                <li>Consider adding video content to increase session time</li>
+                <li>Optimize Core Web Vitals - LCP can be improved by 200ms</li>
+            </ul>
+        </div>
+        
+        <!-- Alerts -->
+        <div class="alert alert-info">
+            <strong>📈 Traffic Growth:</strong> On track to reach Mediavine requirements in 1-2 months at current growth rate of 28% monthly.
+        </div>
+        
+        <div class="alert alert-warning">
+            <strong>⚠️ Ezoic Integration:</strong> Application submitted 3 days ago. Typical review time is 5-7 business days.
+        </div>
+        
+        <!-- Actions Panel -->
+        <div class="actions-panel">
+            <h3>🔧 Quick Actions</h3>
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="refreshMetrics()">Refresh Metrics</button>
+                <button class="btn btn-success" onclick="runABTest()">Start A/B Test</button>
+                <button class="btn btn-warning" onclick="checkEzoicStatus()">Check Ezoic Status</button>
+                <a href="../" class="btn btn-primary">View Live Site</a>
+                <button class="btn btn-success" onclick="exportReport()">Export Report</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Dashboard functionality
+        function refreshMetrics() {
+            alert('Metrics would be refreshed from live APIs\n\nThis would typically connect to:\n- Google Analytics API\n- Google AdSense API\n- Ezoic API\n- Mediavine API');
+        }
+        
+        function runABTest() {
+            alert('A/B Test Manager\n\nWould launch new A/B test for:\n- Ad placements\n- Ad sizes\n- Ad formats\n- Loading strategies');
+        }
+        
+        function checkEzoicStatus() {
+            alert('Ezoic Status Check\n\nWould check:\n- Application status\n- Review progress\n- Integration requirements\n- Next steps');
+        }
+        
+        function exportReport() {
+            alert('Report Export\n\nWould export:\n- Performance metrics\n- Revenue data\n- Traffic analytics\n- Optimization recommendations');
+        }
+        
+        // Simulate real-time updates
+        function updateMetrics() {
+            // This would connect to real APIs in production
+            const revenue = document.getElementById('monthly-revenue');
+            const rpm = document.getElementById('rpm');
+            const pageviews = document.getElementById('pageviews');
+            const ctr = document.getElementById('ctr');
+            const viewability = document.getElementById('viewability');
+            const sessions = document.getElementById('sessions');
+            
+            // Simulate small fluctuations
+            setInterval(() => {
+                const currentRevenue = parseFloat(revenue.textContent.replace('$', '').replace(',', ''));
+                const newRevenue = currentRevenue + (Math.random() - 0.5) * 10;
+                revenue.textContent = '$' + newRevenue.toFixed(0);
+            }, 30000); // Update every 30 seconds
+        }
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            updateMetrics();
+            
+            // Show last updated time
+            const now = new Date();
+            const lastUpdated = document.createElement('div');
+            lastUpdated.style.textAlign = 'center';
+            lastUpdated.style.color = '#6c757d';
+            lastUpdated.style.marginTop = '2rem';
+            lastUpdated.style.fontSize = '0.9rem';
+            lastUpdated.textContent = `Last updated: ${now.toLocaleString()}`;
+            document.querySelector('.container').appendChild(lastUpdated);
+        });
+        
+        // Track dashboard usage
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'admin_dashboard_view', {
+                event_category: 'Admin',
+                event_label: 'Ad Dashboard'
+            });
+        }
+    </script>
+</body>
+</html>

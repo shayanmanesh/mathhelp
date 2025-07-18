@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigonometry - Complete Guide with Unit Circle | Math.help</title>
+    <meta name="description" content="Master trigonometry with our comprehensive guide. Learn trig functions, unit circle, identities, and applications with interactive visualizations and practice problems.">
+    <meta name="keywords" content="trigonometry, unit circle, sine, cosine, tangent, trig identities, trigonometric functions, trig calculator">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    
+    <!-- KaTeX JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="../katex-lazy.js"></script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MathSolver",
+        "@id": "https://math.help/trigonometry/",
+        "name": "Trigonometry Complete Guide",
+        "description": "Comprehensive trigonometry guide with unit circle, functions, and identities",
+        "url": "https://math.help/trigonometry/",
+        "potentialAction": {
+            "@type": "SolveMathAction",
+            "target": "https://math.help/trigonometry/calculator/"
+        }
+    }
+    </script>
+    
+    <meta name="google-adsense-account" content="ca-pub-5635114711353420">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ERGV6WWC21', {
+            page_path: window.location.pathname,
+            page_title: document.title,
+            send_page_view: true
+        });
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sgk1r5gd6a");
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Master Mathematics Step by Step</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/">Algebra</a></li>
+                <li><a href="/calculus/">Calculus</a></li>
+                <li><a href="/geometry/">Geometry</a></li>
+                <li><a href="/trigonometry/" class="active">Trigonometry</a></li>
+                <li><a href="/statistics/">Statistics</a></li>
+                <li><a href="/tools/">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li class="active">Trigonometry</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Main Content Area -->
+                <article class="main-content">
+                    
+                    <!-- Position 1: Below Navigation -->
+                    <div class="ad-container ad-top">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="3137758017"
+                             data-ad-format="horizontal"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+                    <section class="pillar-content">
+                        <h1>Trigonometry - Complete Guide with Unit Circle</h1>
+                        
+                        <div class="table-of-contents">
+                            <h2>Table of Contents</h2>
+                            <ol>
+                                <li><a href="#introduction">Introduction and Real-World Applications</a></li>
+                                <li><a href="#core-concepts">Core Concepts and Right Triangle Trig</a></li>
+                                <li><a href="#unit-circle">The Unit Circle</a></li>
+                                <li><a href="#trig-functions">Trigonometric Functions</a></li>
+                                <li><a href="#identities">Trigonometric Identities</a></li>
+                                <li><a href="#equations">Solving Trig Equations</a></li>
+                                <li><a href="#applications">Applications and Word Problems</a></li>
+                                <li><a href="#practice">Practice Problems</a></li>
+                                <li><a href="#visualizations">Interactive Visualizations</a></li>
+                                <li><a href="#related">Related Topics</a></li>
+                            </ol>
+                        </div>
+
+                        <section id="introduction">
+                            <h2>Introduction and Real-World Applications</h2>
+                            <p>Trigonometry is the study of triangles and the relationships between their angles and sides. It extends to periodic phenomena, making it essential for understanding waves, oscillations, and circular motion.</p>
+                            
+                            <h3>Why Learn Trigonometry?</h3>
+                            <ul>
+                                <li><strong>Engineering</strong>: Design bridges, analyze forces, electrical circuits</li>
+                                <li><strong>Physics</strong>: Wave motion, optics, quantum mechanics</li>
+                                <li><strong>Navigation</strong>: GPS systems, aviation, maritime navigation</li>
+                                <li><strong>Music & Sound</strong>: Audio engineering, acoustics, synthesis</li>
+                                <li><strong>Computer Graphics</strong>: 3D rendering, game development, animation</li>
+                                <li><strong>Architecture</strong>: Structural analysis, sun angles, design</li>
+                            </ul>
+
+                            <div class="concept-box">
+                                <h4>The Word "Trigonometry"</h4>
+                                <p>From Greek: "trigonon" (triangle) + "metron" (measure)</p>
+                                <p>Literally means "triangle measuring"</p>
+                            </div>
+                        </section>
+
+                        <!-- Position 2: In-Article After First Concept -->
+                        <div class="ad-container in-article">
+                            <ins class="adsbygoogle"
+                                 style="display:block; text-align:center;"
+                                 data-ad-layout="in-article"
+                                 data-ad-format="fluid"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="4431777949"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+                        <section id="core-concepts">
+                            <h2>Core Concepts and Right Triangle Trig</h2>
+                            
+                            <h3>Basic Trigonometric Ratios</h3>
+                            <div class="concept-box">
+                                <p>In a right triangle with angle θ:</p>
+                                <div class="trig-ratios" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                                    <div>
+                                        <h4>Sine (sin)</h4>
+                                        <p>$$\sin \theta = \frac{\text{opposite}}{\text{hypotenuse}}$$</p>
+                                    </div>
+                                    <div>
+                                        <h4>Cosine (cos)</h4>
+                                        <p>$$\cos \theta = \frac{\text{adjacent}}{\text{hypotenuse}}$$</p>
+                                    </div>
+                                    <div>
+                                        <h4>Tangent (tan)</h4>
+                                        <p>$$\tan \theta = \frac{\text{opposite}}{\text{adjacent}}$$</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Reciprocal Functions</h3>
+                            <div class="concept-box">
+                                <div class="trig-ratios" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                                    <div>
+                                        <h4>Cosecant (csc)</h4>
+                                        <p>$$\csc \theta = \frac{1}{\sin \theta}$$</p>
+                                    </div>
+                                    <div>
+                                        <h4>Secant (sec)</h4>
+                                        <p>$$\sec \theta = \frac{1}{\cos \theta}$$</p>
+                                    </div>
+                                    <div>
+                                        <h4>Cotangent (cot)</h4>
+                                        <p>$$\cot \theta = \frac{1}{\tan \theta}$$</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Special Right Triangles</h3>
+                            <div class="method-box">
+                                <h4>30-60-90 Triangle</h4>
+                                <p>Sides in ratio: $1 : \sqrt{3} : 2$</p>
+                                <ul>
+                                    <li>$\sin 30° = \frac{1}{2}$, $\cos 30° = \frac{\sqrt{3}}{2}$, $\tan 30° = \frac{1}{\sqrt{3}}$</li>
+                                    <li>$\sin 60° = \frac{\sqrt{3}}{2}$, $\cos 60° = \frac{1}{2}$, $\tan 60° = \sqrt{3}$</li>
+                                </ul>
+                                
+                                <h4>45-45-90 Triangle</h4>
+                                <p>Sides in ratio: $1 : 1 : \sqrt{2}$</p>
+                                <ul>
+                                    <li>$\sin 45° = \cos 45° = \frac{\sqrt{2}}{2}$, $\tan 45° = 1$</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="unit-circle">
+                            <h2>The Unit Circle</h2>
+                            
+                            <h3>Definition and Properties</h3>
+                            <div class="concept-box">
+                                <p>The unit circle is a circle with radius 1 centered at the origin (0,0)</p>
+                                <p>Equation: $x^2 + y^2 = 1$</p>
+                                <p>For any angle θ measured from the positive x-axis:</p>
+                                <ul>
+                                    <li>$x = \cos \theta$</li>
+                                    <li>$y = \sin \theta$</li>
+                                    <li>Point on circle: $(\cos \theta, \sin \theta)$</li>
+                                </ul>
+                            </div>
+
+                            <h3>Key Angles and Values</h3>
+                            <div class="method-box">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border: 1px solid #ddd; padding: 8px;">Degrees</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px;">Radians</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px;">sin θ</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px;">cos θ</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px;">tan θ</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">0°</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">0</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">0</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">1</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">30°</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">π/6</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">1/2</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">√3/2</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">1/√3</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">45°</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">π/4</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">√2/2</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">√2/2</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">60°</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">π/3</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">√3/2</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">1/2</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">√3</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">90°</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">π/2</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">1</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">0</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">undefined</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <h3>Radian Measure</h3>
+                            <div class="concept-box">
+                                <p><strong>Definition</strong>: One radian is the angle subtended by an arc equal to the radius</p>
+                                <p><strong>Conversions</strong>:</p>
+                                <ul>
+                                    <li>$180° = \pi$ radians</li>
+                                    <li>Degrees to radians: multiply by $\frac{\pi}{180}$</li>
+                                    <li>Radians to degrees: multiply by $\frac{180}{\pi}$</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="trig-functions">
+                            <h2>Trigonometric Functions</h2>
+                            
+                            <h3>Graphs of Trig Functions</h3>
+                            <div class="method-box">
+                                <h4>Sine Function: $y = \sin x$</h4>
+                                <ul>
+                                    <li>Period: $2\pi$</li>
+                                    <li>Amplitude: 1</li>
+                                    <li>Domain: all real numbers</li>
+                                    <li>Range: $[-1, 1]$</li>
+                                    <li>Odd function: $\sin(-x) = -\sin(x)$</li>
+                                </ul>
+                                
+                                <h4>Cosine Function: $y = \cos x$</h4>
+                                <ul>
+                                    <li>Period: $2\pi$</li>
+                                    <li>Amplitude: 1</li>
+                                    <li>Domain: all real numbers</li>
+                                    <li>Range: $[-1, 1]$</li>
+                                    <li>Even function: $\cos(-x) = \cos(x)$</li>
+                                </ul>
+                                
+                                <h4>Tangent Function: $y = \tan x$</h4>
+                                <ul>
+                                    <li>Period: $\pi$</li>
+                                    <li>Domain: all real numbers except $x = \frac{\pi}{2} + n\pi$</li>
+                                    <li>Range: all real numbers</li>
+                                    <li>Odd function: $\tan(-x) = -\tan(x)$</li>
+                                    <li>Vertical asymptotes at $x = \frac{\pi}{2} + n\pi$</li>
+                                </ul>
+                            </div>
+
+                            <h3>Transformations of Trig Functions</h3>
+                            <div class="concept-box">
+                                <p>General form: $y = A \sin(B(x - C)) + D$</p>
+                                <ul>
+                                    <li><strong>A</strong>: Amplitude (vertical stretch)</li>
+                                    <li><strong>B</strong>: Affects period: Period = $\frac{2\pi}{|B|}$</li>
+                                    <li><strong>C</strong>: Phase shift (horizontal shift)</li>
+                                    <li><strong>D</strong>: Vertical shift</li>
+                                </ul>
+                            </div>
+
+                            <h3>Inverse Trig Functions</h3>
+                            <div class="method-box">
+                                <h4>Principal Values</h4>
+                                <ul>
+                                    <li>$\arcsin x$ or $\sin^{-1} x$: Range $[-\frac{\pi}{2}, \frac{\pi}{2}]$</li>
+                                    <li>$\arccos x$ or $\cos^{-1} x$: Range $[0, \pi]$</li>
+                                    <li>$\arctan x$ or $\tan^{-1} x$: Range $(-\frac{\pi}{2}, \frac{\pi}{2})$</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- Position 4: Between Problem Sets -->
+                        <div class="ad-container in-content">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="4431777949"
+                                 data-ad-format="rectangle"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+                        <section id="identities">
+                            <h2>Trigonometric Identities</h2>
+                            
+                            <h3>Fundamental Identities</h3>
+                            <div class="concept-box">
+                                <h4>Pythagorean Identities</h4>
+                                <p class="highlight-formula">$$\sin^2 \theta + \cos^2 \theta = 1$$</p>
+                                <p>$$\tan^2 \theta + 1 = \sec^2 \theta$$</p>
+                                <p>$$1 + \cot^2 \theta = \csc^2 \theta$$</p>
+                                
+                                <h4>Quotient Identities</h4>
+                                <p>$$\tan \theta = \frac{\sin \theta}{\cos \theta}$$</p>
+                                <p>$$\cot \theta = \frac{\cos \theta}{\sin \theta}$$</p>
+                            </div>
+
+                            <h3>Sum and Difference Formulas</h3>
+                            <div class="method-box">
+                                <h4>Sine</h4>
+                                <p>$$\sin(A \pm B) = \sin A \cos B \pm \cos A \sin B$$</p>
+                                
+                                <h4>Cosine</h4>
+                                <p>$$\cos(A \pm B) = \cos A \cos B \mp \sin A \sin B$$</p>
+                                
+                                <h4>Tangent</h4>
+                                <p>$$\tan(A \pm B) = \frac{\tan A \pm \tan B}{1 \mp \tan A \tan B}$$</p>
+                            </div>
+
+                            <h3>Double Angle Formulas</h3>
+                            <div class="concept-box">
+                                <p>$$\sin(2\theta) = 2\sin\theta\cos\theta$$</p>
+                                <p>$$\cos(2\theta) = \cos^2\theta - \sin^2\theta = 2\cos^2\theta - 1 = 1 - 2\sin^2\theta$$</p>
+                                <p>$$\tan(2\theta) = \frac{2\tan\theta}{1 - \tan^2\theta}$$</p>
+                            </div>
+
+                            <h3>Half Angle Formulas</h3>
+                            <div class="method-box">
+                                <p>$$\sin\left(\frac{\theta}{2}\right) = \pm\sqrt{\frac{1 - \cos\theta}{2}}$$</p>
+                                <p>$$\cos\left(\frac{\theta}{2}\right) = \pm\sqrt{\frac{1 + \cos\theta}{2}}$$</p>
+                                <p>$$\tan\left(\frac{\theta}{2}\right) = \frac{1 - \cos\theta}{\sin\theta} = \frac{\sin\theta}{1 + \cos\theta}$$</p>
+                            </div>
+                        </section>
+
+                        <section id="equations">
+                            <h2>Solving Trigonometric Equations</h2>
+                            
+                            <h3>Basic Strategies</h3>
+                            <div class="method-box">
+                                <h4>Example: Solve $2\sin x - 1 = 0$ for $0 \leq x < 2\pi$</h4>
+                                <div class="step-by-step">
+                                    <div class="step">
+                                        <span class="step-number">Step 1:</span>
+                                        <p>Isolate the trig function: $\sin x = \frac{1}{2}$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 2:</span>
+                                        <p>Find reference angle: $x = \arcsin\left(\frac{1}{2}\right) = \frac{\pi}{6}$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 3:</span>
+                                        <p>Find all solutions in the interval:</p>
+                                        <p>Since sine is positive in Q1 and Q2: $x = \frac{\pi}{6}, \frac{5\pi}{6}$</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Using Identities</h3>
+                            <div class="method-box">
+                                <h4>Example: Solve $\sin 2x = \sin x$ for $0 \leq x < 2\pi$</h4>
+                                <div class="step-by-step">
+                                    <div class="step">
+                                        <span class="step-number">Step 1:</span>
+                                        <p>Use double angle formula: $2\sin x \cos x = \sin x$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 2:</span>
+                                        <p>Factor: $\sin x(2\cos x - 1) = 0$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 3:</span>
+                                        <p>Solve each factor:</p>
+                                        <p>$\sin x = 0$ gives $x = 0, \pi$</p>
+                                        <p>$\cos x = \frac{1}{2}$ gives $x = \frac{\pi}{3}, \frac{5\pi}{3}$</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="applications">
+                            <h2>Applications and Word Problems</h2>
+                            
+                            <h3>Navigation and Bearings</h3>
+                            <div class="method-box">
+                                <h4>Example: Ship Navigation</h4>
+                                <p>A ship travels 50 km on a bearing of 030°, then 80 km on a bearing of 120°. Find the distance and bearing from the starting point.</p>
+                                <div class="step-by-step">
+                                    <div class="step">
+                                        <span class="step-number">Step 1:</span>
+                                        <p>Convert to standard angles: 030° → 60° from east, 120° → 30° from east</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 2:</span>
+                                        <p>Find components:</p>
+                                        <p>First leg: $x_1 = 50\cos(60°) = 25$, $y_1 = 50\sin(60°) = 43.3$</p>
+                                        <p>Second leg: $x_2 = 80\cos(30°) = 69.3$, $y_2 = 80\sin(30°) = 40$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 3:</span>
+                                        <p>Total displacement: $x = 94.3$, $y = 83.3$</p>
+                                        <p>Distance: $\sqrt{94.3^2 + 83.3^2} = 125.8$ km</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Simple Harmonic Motion</h3>
+                            <div class="concept-box">
+                                <p>Motion described by: $y = A\sin(\omega t + \phi)$ or $y = A\cos(\omega t + \phi)$</p>
+                                <ul>
+                                    <li>$A$ = amplitude</li>
+                                    <li>$\omega$ = angular frequency</li>
+                                    <li>$\phi$ = phase shift</li>
+                                    <li>Period = $\frac{2\pi}{\omega}$</li>
+                                    <li>Frequency = $\frac{\omega}{2\pi}$</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="practice">
+                            <h2>Practice Problems</h2>
+                            
+                            <div class="practice-section">
+                                <h3>Beginner Level</h3>
+                                <ol class="practice-list">
+                                    <li>Find $\sin 150°$ using reference angles</li>
+                                    <li>Convert $\frac{3\pi}{4}$ radians to degrees</li>
+                                    <li>If $\sin \theta = \frac{3}{5}$ and $\theta$ is in Q1, find $\cos \theta$</li>
+                                    <li>Evaluate $\tan 225°$</li>
+                                </ol>
+                            </div>
+
+                            <div class="practice-section">
+                                <h3>Intermediate Level</h3>
+                                <ol class="practice-list">
+                                    <li>Solve $2\cos x + \sqrt{3} = 0$ for $0 \leq x < 2\pi$</li>
+                                    <li>Prove: $\frac{\sin x}{1 + \cos x} = \tan \frac{x}{2}$</li>
+                                    <li>Find the period and amplitude of $y = 3\sin(2x - \frac{\pi}{4})$</li>
+                                    <li>Simplify: $\sin(x + y)\sin(x - y)$</li>
+                                </ol>
+                            </div>
+
+                            <div class="practice-section">
+                                <h3>Advanced Level</h3>
+                                <ol class="practice-list">
+                                    <li>Solve $\sin x + \sin 3x = 0$ for all real $x$</li>
+                                    <li>Prove: $\cos 3x = 4\cos^3 x - 3\cos x$</li>
+                                    <li>Find the maximum value of $f(x) = 3\sin x + 4\cos x$</li>
+                                    <li>Solve the system: $\sin x + \sin y = 1$, $\cos x + \cos y = 1$</li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="visualizations">
+                            <h2>Interactive Visualizations</h2>
+                            <div class="visualization-container">
+                                <h3>Interactive Unit Circle</h3>
+                                <p>Explore how sine and cosine relate to the unit circle</p>
+                                <div class="desmos-embed">
+                                    <iframe src="https://www.desmos.com/calculator/fboutvjqn0?embed" 
+                                            width="100%" 
+                                            height="400" 
+                                            style="border: 1px solid #ccc" 
+                                            frameborder="0"></iframe>
+                                </div>
+                            </div>
+
+                            <div class="visualization-container">
+                                <h3>Trig Function Transformations</h3>
+                                <p>See how parameters affect trig function graphs</p>
+                                <div class="geogebra-embed">
+                                    <iframe src="https://www.geogebra.org/material/iframe/id/wmxktbsr/width/800/height/450/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/false/ctl/false" 
+                                            width="100%" 
+                                            height="450" 
+                                            style="border:0;" 
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="related">
+                            <h2>Related Topics and Next Steps</h2>
+                            <div class="related-grid">
+                                <div class="related-item">
+                                    <h4>📊 Complex Numbers</h4>
+                                    <p>Euler's formula and complex exponentials</p>
+                                    <a href="/trigonometry/complex/">Explore Complex →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>🌊 Fourier Analysis</h4>
+                                    <p>Decompose functions into trig series</p>
+                                    <a href="/trigonometry/fourier/">Learn Fourier →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>🎯 Polar Coordinates</h4>
+                                    <p>Alternative coordinate system using angles</p>
+                                    <a href="/trigonometry/polar/">Discover Polar →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>🔧 Engineering Applications</h4>
+                                    <p>AC circuits, vibrations, waves</p>
+                                    <a href="/trigonometry/applications/">Apply Trig →</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Position 5: Before Comments/Footer (AutoRelaxed) -->
+                        <div class="ad-container ad-matched-content">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-format="autorelaxed"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="2324489353"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                    </section>
+                </article>
+                
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Sticky Sidebar Ad (Display Vertical) -->
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <section class="quick-links">
+                        <h3>Trigonometry Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="/trigonometry/unit-circle/">Unit Circle Mastery</a></li>
+                            <li><a href="/trigonometry/identities/">Trig Identities</a></li>
+                            <li><a href="/trigonometry/equations/">Solving Trig Equations</a></li>
+                            <li><a href="/trigonometry/graphs/">Graphing Trig Functions</a></li>
+                            <li><a href="/trigonometry/inverse/">Inverse Trig Functions</a></li>
+                            <li><a href="/trigonometry/applications/">Real-World Applications</a></li>
+                            <li><a href="/trigonometry/law-of-sines-cosines/">Law of Sines & Cosines</a></li>
+                        </ul>
+                    </section>
+                    
+                    <!-- Calculator Widget -->
+                    <section class="sidebar-calculator">
+                        <h3>Trig Calculator</h3>
+                        <div class="mini-calculator">
+                            <select id="trig-function">
+                                <option value="sin">sin</option>
+                                <option value="cos">cos</option>
+                                <option value="tan">tan</option>
+                            </select>
+                            <input type="number" id="angle-input" placeholder="Angle (degrees)">
+                            <button onclick="calculateTrig()">Calculate</button>
+                            <div id="trig-result"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- Study Tips -->
+                    <section class="study-tips">
+                        <h3>Trig Study Tips</h3>
+                        <ul class="tips-list">
+                            <li>Master the unit circle first</li>
+                            <li>Learn patterns, not just formulas</li>
+                            <li>Practice with radians and degrees</li>
+                            <li>Use reference angles effectively</li>
+                            <li>Connect to real-world applications</li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Math.help. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../calculator.js"></script>
+    <script>
+        // Trig calculator functionality
+        function calculateTrig() {
+            const func = document.getElementById('trig-function').value;
+            const angleDeg = parseFloat(document.getElementById('angle-input').value);
+            const resultDiv = document.getElementById('trig-result');
+            
+            if (isNaN(angleDeg)) {
+                resultDiv.textContent = 'Please enter a valid angle';
+                resultDiv.style.color = 'red';
+                return;
+            }
+            
+            // Convert to radians
+            const angleRad = angleDeg * Math.PI / 180;
+            let result;
+            
+            switch(func) {
+                case 'sin':
+                    result = Math.sin(angleRad);
+                    break;
+                case 'cos':
+                    result = Math.cos(angleRad);
+                    break;
+                case 'tan':
+                    result = Math.tan(angleRad);
+                    // Check for undefined (near 90°, 270°, etc.)
+                    if (Math.abs(Math.cos(angleRad)) < 0.0001) {
+                        resultDiv.textContent = 'undefined';
+                        resultDiv.style.color = 'orange';
+                        return;
+                    }
+                    break;
+            }
+            
+            // Round to 6 decimal places
+            result = Math.round(result * 1000000) / 1000000;
+            
+            resultDiv.textContent = `${func}(${angleDeg}°) = ${result}`;
+            resultDiv.style.color = 'green';
+            
+            // Track usage
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'trig_calculation', {
+                    event_category: 'Calculator',
+                    event_label: func,
+                    value: angleDeg
+                });
+            }
+        }
+        
+        // Track engagement
+        let timeOnPage = 0;
+        setInterval(() => {
+            timeOnPage += 5;
+            if (timeOnPage % 30 === 0 && typeof gtag !== 'undefined') {
+                gtag('event', 'time_on_page', {
+                    event_category: 'Engagement',
+                    event_label: 'Trigonometry Page',
+                    value: timeOnPage
+                });
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Examples - Step-by-Step Solutions | Math.help</title>
+    <meta name="description" content="Explore thousands of worked math examples with detailed step-by-step solutions. From basic algebra to advanced calculus, practice with real problems and solutions.">
+    <meta name="keywords" content="math examples, worked problems, step by step solutions, algebra examples, calculus examples, geometry examples, practice problems">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    
+    <!-- KaTeX JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="../katex-lazy.js"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://math.help/examples/",
+        "name": "Math Examples and Solutions",
+        "description": "Comprehensive collection of worked math examples with step-by-step solutions",
+        "url": "https://math.help/examples/",
+        "mainEntity": {
+            "@type": "DataCatalog",
+            "name": "Mathematical Examples Database",
+            "description": "Curated collection of math problems and their detailed solutions"
+        }
+    }
+    </script>
+    
+    <meta name="google-adsense-account" content="ca-pub-5635114711353420">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ERGV6WWC21');
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sgk1r5gd6a");
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Master Mathematics Step by Step</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/">Algebra</a></li>
+                <li><a href="/calculus/">Calculus</a></li>
+                <li><a href="/geometry/">Geometry</a></li>
+                <li><a href="/trigonometry/">Trigonometry</a></li>
+                <li><a href="/statistics/">Statistics</a></li>
+                <li><a href="/tools/">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb Navigation with Schema -->
+    <nav class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/" itemprop="item">
+                        <span itemprop="name">Home</span>
+                    </a>
+                    <meta itemprop="position" content="1">
+                </li>
+                <li class="active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">Math Examples</span>
+                    <meta itemprop="position" content="2">
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Position 1: Top Ad -->
+            <div class="ad-container ad-top">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5635114711353420"
+                     data-ad-slot="3137758017"
+                     data-ad-format="horizontal"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <article class="main-content">
+                <header class="page-header">
+                    <h1>Math Examples & Step-by-Step Solutions</h1>
+                    <p>Learn by example with our comprehensive collection of worked math problems. Each example includes detailed step-by-step solutions to help you understand the process.</p>
+                    
+                    <!-- Example Search -->
+                    <div class="example-search">
+                        <input type="text" id="search-examples" placeholder="Search examples (e.g., 'quadratic equations')..." />
+                        <select id="difficulty-filter">
+                            <option value="">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                        <button onclick="searchExamples()">🔍 Search</button>
+                    </div>
+                </header>
+
+                <!-- Featured Examples -->
+                <section class="featured-examples">
+                    <h2>🌟 Featured Examples</h2>
+                    <div class="featured-grid">
+                        <div class="example-card featured" data-difficulty="intermediate">
+                            <div class="example-header">
+                                <h3>Solving Quadratic Equations</h3>
+                                <span class="difficulty intermediate">Intermediate</span>
+                            </div>
+                            <div class="problem">
+                                <h4>Problem:</h4>
+                                <p>Solve $2x^2 - 7x + 3 = 0$ using the quadratic formula.</p>
+                            </div>
+                            <div class="solution-preview">
+                                <h4>Solution Preview:</h4>
+                                <p>Using $x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$ with $a=2$, $b=-7$, $c=3$...</p>
+                            </div>
+                            <a href="/algebra/quadratic-equations/" class="view-solution">View Complete Solution →</a>
+                        </div>
+                        
+                        <div class="example-card featured" data-difficulty="beginner">
+                            <div class="example-header">
+                                <h3>Finding Triangle Area</h3>
+                                <span class="difficulty beginner">Beginner</span>
+                            </div>
+                            <div class="problem">
+                                <h4>Problem:</h4>
+                                <p>Find the area of a triangle with base 8 cm and height 6 cm.</p>
+                            </div>
+                            <div class="solution-preview">
+                                <h4>Solution Preview:</h4>
+                                <p>Using the formula $A = \frac{1}{2}bh$ where $b=8$ and $h=6$...</p>
+                            </div>
+                            <a href="/geometry/" class="view-solution">View Complete Solution →</a>
+                        </div>
+                        
+                        <div class="example-card featured" data-difficulty="advanced">
+                            <div class="example-header">
+                                <h3>Derivative of Composite Functions</h3>
+                                <span class="difficulty advanced">Advanced</span>
+                            </div>
+                            <div class="problem">
+                                <h4>Problem:</h4>
+                                <p>Find $\frac{d}{dx}[\sin(3x^2 + 1)]$ using the chain rule.</p>
+                            </div>
+                            <div class="solution-preview">
+                                <h4>Solution Preview:</h4>
+                                <p>Let $u = 3x^2 + 1$, then $\frac{d}{dx}[\sin u] = \cos u \cdot \frac{du}{dx}$...</p>
+                            </div>
+                            <a href="/calculus/derivative-calculator/" class="view-solution">View Complete Solution →</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Examples by Subject -->
+                <section class="examples-by-subject">
+                    <h2>📚 Examples by Subject</h2>
+                    
+                    <!-- Algebra Examples -->
+                    <div class="subject-section">
+                        <h3>📐 Algebra Examples</h3>
+                        <div class="examples-grid">
+                            <div class="example-card" data-difficulty="beginner">
+                                <div class="example-header">
+                                    <h4>Linear Equations</h4>
+                                    <span class="difficulty beginner">Beginner</span>
+                                </div>
+                                <div class="problem">
+                                    <p><strong>Problem:</strong> Solve $3x + 7 = 22$</p>
+                                </div>
+                                <div class="quick-solution">
+                                    <details>
+                                        <summary>Show Solution</summary>
+                                        <div class="solution-steps">
+                                            <p>Step 1: Subtract 7 from both sides</p>
+                                            <p>$3x = 15$</p>
+                                            <p>Step 2: Divide by 3</p>
+                                            <p>$x = 5$</p>
+                                        </div>
+                                    </details>
+                                </div>
+                                <a href="/algebra/linear-equations/" class="practice-link">Practice More →</a>
+                            </div>
+                            
+                            <div class="example-card" data-difficulty="intermediate">
+                                <div class="example-header">
+                                    <h4>Factoring Polynomials</h4>
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                                <div class="problem">
+                                    <p><strong>Problem:</strong> Factor $x^2 - 9x + 20$</p>
+                                </div>
+                                <div class="quick-solution">
+                                    <details>
+                                        <summary>Show Solution</summary>
+                                        <div class="solution-steps">
+                                            <p>Find factors of 20 that add to -9:</p>
+                                            <p>$-4 \times -5 = 20$ and $-4 + (-5) = -9$</p>
+                                            <p>Therefore: $(x - 4)(x - 5)$</p>
+                                        </div>
+                                    </details>
+                                </div>
+                                <a href="/algebra/factoring/" class="practice-link">Practice More →</a>
+                            </div>
+                            
+                            <div class="example-card" data-difficulty="intermediate">
+                                <div class="example-header">
+                                    <h4>Systems of Equations</h4>
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                                <div class="problem">
+                                    <p><strong>Problem:</strong> Solve the system:</p>
+                                    <p>$\begin{cases} 2x + y = 7 \\ x - y = 2 \end{cases}$</p>
+                                </div>
+                                <div class="quick-solution">
+                                    <details>
+                                        <summary>Show Solution</summary>
+                                        <div class="solution-steps">
+                                            <p>Add equations: $3x = 9$, so $x = 3$</p>
+                                            <p>Substitute: $2(3) + y = 7$, so $y = 1$</p>
+                                            <p>Solution: $(3, 1)$</p>
+                                        </div>
+                                    </details>
+                                </div>
+                                <a href="/algebra/" class="practice-link">Practice More →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Position 2: Mid-content Ad -->
+                    <div class="ad-container in-content">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4431777949"
+                             data-ad-format="rectangle"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+                    <!-- Geometry Examples -->
+                    <div class="subject-section">
+                        <h3>🔺 Geometry Examples</h3>
+                        <div class="examples-grid">
+                            <div class="example-card" data-difficulty="beginner">
+                                <div class="example-header">
+                                    <h4>Pythagorean Theorem</h4>
+                                    <span class="difficulty beginner">Beginner</span>
+                                </div>
+                                <div class="problem">
+                                    <p><strong>Problem:</strong> Find the hypotenuse of a right triangle with legs 3 and 4.</p>
+                                </div>
+                                <div class="quick-solution">
+                                    <details>
+                                        <summary>Show Solution</summary>
+                                        <div class="solution-steps">
+                                            <p>Using $c^2 = a^2 + b^2$:</p>
+                                            <p>$c^2 = 3^2 + 4^2 = 9 + 16 = 25$</p>
+                                            <p>$c = \sqrt{25} = 5$</p>
+                                        </div>
+                                    </details>
+                                </div>
+                                <a href="/geometry/" class="practice-link">Practice More →</a>
+                            </div>
+                            
+                            <div class="example-card" data-difficulty="intermediate">
+                                <div class="example-header">
+                                    <h4>Circle Area and Circumference</h4>
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                                <div class="problem">
+                                    <p><strong>Problem:</strong> Find area and circumference of a circle with radius 5 cm.</p>
+                                </div>
+                                <div class="quick-solution">
+                                    <details>
+                                        <summary>Show Solution</summary>
+                                        <div class="solution-steps">
+                                            <p>Area: $A = \pi r^2 = \pi(5)^2 = 25\pi$ cm²</p>
+                                            <p>Circumference: $C = 2\pi r = 2\pi(5) = 10\pi$ cm</p>
+                                        </div>
+                                    </details>
+                                </div>
+                                <a href="/geometry/" class="practice-link">Practice More →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculus Examples -->
+                    <div class="subject-section">
+                        <h3>📈 Calculus Examples</h3>
+                        <div class="examples-grid">
+                            <div class="example-card" data-difficulty="advanced">
+                                <div class="example-header">
+                                    <h4>Derivative Using Product Rule</h4>
+                                    <span class="difficulty advanced">Advanced</span>
+                                </div>
+                                <div class="problem">
+                                    <p><strong>Problem:</strong> Find $\frac{d}{dx}[x^2 \sin x]$</p>
+                                </div>
+                                <div class="quick-solution">
+                                    <details>
+                                        <summary>Show Solution</summary>
+                                        <div class="solution-steps">
+                                            <p>Using product rule: $(uv)' = u'v + uv'$</p>
+                                            <p>$u = x^2$, $u' = 2x$</p>
+                                            <p>$v = \sin x$, $v' = \cos x$</p>
+                                            <p>Result: $2x \sin x + x^2 \cos x$</p>
+                                        </div>
+                                    </details>
+                                </div>
+                                <a href="/calculus/derivative-calculator/" class="practice-link">Practice More →</a>
+                            </div>
+                            
+                            <div class="example-card" data-difficulty="advanced">
+                                <div class="example-header">
+                                    <h4>Finding Limits</h4>
+                                    <span class="difficulty advanced">Advanced</span>
+                                </div>
+                                <div class="problem">
+                                    <p><strong>Problem:</strong> Find $\lim_{x \to 2} \frac{x^2 - 4}{x - 2}$</p>
+                                </div>
+                                <div class="quick-solution">
+                                    <details>
+                                        <summary>Show Solution</summary>
+                                        <div class="solution-steps">
+                                            <p>Factor numerator: $\frac{(x-2)(x+2)}{x-2}$</p>
+                                            <p>Cancel common factor: $x + 2$</p>
+                                            <p>Evaluate at $x = 2$: $2 + 2 = 4$</p>
+                                        </div>
+                                    </details>
+                                </div>
+                                <a href="/calculus/" class="practice-link">Practice More →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trigonometry Examples -->
+                    <div class="subject-section">
+                        <h3>🌊 Trigonometry Examples</h3>
+                        <div class="examples-grid">
+                            <div class="example-card" data-difficulty="intermediate">
+                                <div class="example-header">
+                                    <h4>Solving Triangles</h4>
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                                <div class="problem">
+                                    <p><strong>Problem:</strong> In triangle ABC, $a = 5$, $b = 7$, $C = 60°$. Find side $c$.</p>
+                                </div>
+                                <div class="quick-solution">
+                                    <details>
+                                        <summary>Show Solution</summary>
+                                        <div class="solution-steps">
+                                            <p>Using Law of Cosines: $c^2 = a^2 + b^2 - 2ab\cos C$</p>
+                                            <p>$c^2 = 5^2 + 7^2 - 2(5)(7)\cos 60°$</p>
+                                            <p>$c^2 = 25 + 49 - 70(0.5) = 39$</p>
+                                            <p>$c = \sqrt{39} \approx 6.24$</p>
+                                        </div>
+                                    </details>
+                                </div>
+                                <a href="/trigonometry/" class="practice-link">Practice More →</a>
+                            </div>
+                            
+                            <div class="example-card" data-difficulty="intermediate">
+                                <div class="example-header">
+                                    <h4>Trigonometric Identities</h4>
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                                <div class="problem">
+                                    <p><strong>Problem:</strong> Simplify $\frac{\sin^2 x}{1 + \cos x}$</p>
+                                </div>
+                                <div class="quick-solution">
+                                    <details>
+                                        <summary>Show Solution</summary>
+                                        <div class="solution-steps">
+                                            <p>Use identity: $\sin^2 x = 1 - \cos^2 x$</p>
+                                            <p>$\frac{1 - \cos^2 x}{1 + \cos x} = \frac{(1-\cos x)(1+\cos x)}{1 + \cos x}$</p>
+                                            <p>Cancel: $1 - \cos x$</p>
+                                        </div>
+                                    </details>
+                                </div>
+                                <a href="/trigonometry/" class="practice-link">Practice More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Study Tips -->
+                <section class="study-tips-section">
+                    <h2>💡 How to Learn from Examples</h2>
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <h3>1. Read Carefully</h3>
+                            <p>Understand what the problem is asking before looking at the solution.</p>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <h3>2. Follow Each Step</h3>
+                            <p>Don't skip steps. Each one builds on the previous to reach the solution.</p>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <h3>3. Practice Similar Problems</h3>
+                            <p>Use our calculators and practice problems to reinforce your understanding.</p>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <h3>4. Check Your Work</h3>
+                            <p>Always verify your answer by substituting back into the original problem.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Position 3: Bottom Ad -->
+                <div class="ad-container ad-bottom">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-format="autorelaxed"
+                         data-ad-client="ca-pub-5635114711353420"
+                         data-ad-slot="2324489353"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Math.help. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Examples page specific styles */
+        .example-search {
+            display: flex;
+            max-width: 600px;
+            margin: 20px auto;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .example-search input {
+            flex: 2;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 16px;
+            min-width: 200px;
+        }
+        
+        .example-search select {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 16px;
+            min-width: 120px;
+        }
+        
+        .example-search button {
+            padding: 12px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .example-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .example-card.featured {
+            border-color: var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .example-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--secondary-color);
+        }
+        
+        .example-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .example-header h3,
+        .example-header h4 {
+            color: var(--primary-color);
+            margin: 0;
+        }
+        
+        .difficulty {
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .difficulty.beginner {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .difficulty.intermediate {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .difficulty.advanced {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .problem {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .problem h4 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+        }
+        
+        .solution-preview {
+            margin: 15px 0;
+            color: #666;
+        }
+        
+        .solution-preview h4 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+        }
+        
+        .quick-solution {
+            margin: 15px 0;
+        }
+        
+        .quick-solution details {
+            background-color: #e8f5e8;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .quick-solution summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-color);
+            padding: 5px;
+        }
+        
+        .solution-steps {
+            margin-top: 15px;
+            padding-left: 10px;
+        }
+        
+        .solution-steps p {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        
+        .view-solution,
+        .practice-link {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+        
+        .view-solution:hover,
+        .practice-link:hover {
+            background-color: #2980b9;
+        }
+        
+        .practice-link {
+            background-color: #28a745;
+            font-size: 0.9em;
+            padding: 8px 15px;
+        }
+        
+        .practice-link:hover {
+            background-color: #218838;
+        }
+        
+        .subject-section {
+            margin: 50px 0;
+            padding: 30px 0;
+            border-top: 2px solid var(--light-gray);
+        }
+        
+        .subject-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 1.5em;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .tip-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-color);
+            text-align: center;
+        }
+        
+        .tip-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .tip-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .example-search {
+                flex-direction: column;
+            }
+            
+            .example-search input,
+            .example-search select,
+            .example-search button {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .featured-grid,
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        function searchExamples() {
+            const query = document.getElementById('search-examples').value.toLowerCase();
+            const difficulty = document.getElementById('difficulty-filter').value;
+            const cards = document.querySelectorAll('.example-card');
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                const cardDifficulty = card.getAttribute('data-difficulty');
+                
+                const matchesQuery = !query || text.includes(query);
+                const matchesDifficulty = !difficulty || cardDifficulty === difficulty;
+                
+                if (matchesQuery && matchesDifficulty) {
+                    card.style.display = 'block';
+                    if (query) {
+                        card.style.border = '2px solid var(--secondary-color)';
+                    }
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Search on Enter key
+        document.getElementById('search-examples').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchExamples();
+            }
+        });
+        
+        // Filter on change
+        document.getElementById('difficulty-filter').addEventListener('change', searchExamples);
+        
+        // Track example interactions
+        document.querySelectorAll('.example-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const exampleTitle = this.querySelector('h3, h4').textContent;
+                const difficulty = this.querySelector('.difficulty').textContent;
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'example_view', {
+                        event_category: 'Examples',
+                        event_label: exampleTitle,
+                        custom_parameters: {
+                            difficulty: difficulty
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Track solution reveals
+        document.querySelectorAll('summary').forEach(summary => {
+            summary.addEventListener('click', function() {
+                const exampleTitle = this.closest('.example-card').querySelector('h3, h4').textContent;
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'solution_reveal', {
+                        event_category: 'Examples',
+                        event_label: exampleTitle
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

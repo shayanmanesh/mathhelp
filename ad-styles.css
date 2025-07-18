@@ -1,0 +1,496 @@
+/**
+ * Advanced Ad Optimization Styles for Math.help
+ * Phase 5: Premium Ad Integration
+ * 
+ * Optimized for:
+ * - Maximum viewability
+ * - Minimal layout shift
+ * - Premium ad network compatibility
+ * - A/B testing variants
+ */
+
+/* Base ad container optimizations */
+.ad-container {
+    position: relative;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    min-height: 250px; /* Prevent layout shift */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.ad-container::before {
+    content: "Advertisement";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 11px;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Enhanced ad container states */
+.ad-container.loaded {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.ad-container.error {
+    background-color: #fff3cd;
+    border-color: #ffeaa7;
+}
+
+.ad-container.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Position-specific optimizations */
+
+/* Header ads - optimized for leaderboard */
+.ad-container.ad-top {
+    margin: 15px 0 25px 0;
+    min-height: 90px;
+    max-height: 280px;
+}
+
+.ad-container.ad-top.variant-leaderboard {
+    min-height: 90px;
+    max-width: 728px;
+    margin: 15px auto 25px auto;
+}
+
+.ad-container.ad-top.variant-banner {
+    min-height: 60px;
+    max-width: 468px;
+    margin: 15px auto 25px auto;
+}
+
+.ad-container.ad-top.variant-responsive {
+    min-height: 90px;
+    width: 100%;
+}
+
+/* Sidebar ads - optimized for skyscraper and rectangles */
+.ad-container.ad-sidebar {
+    margin: 20px 0;
+    width: 100%;
+    min-height: 600px;
+}
+
+.ad-container.ad-sidebar.variant-skyscraper {
+    min-height: 600px;
+    max-width: 160px;
+}
+
+.ad-container.ad-sidebar.variant-rectangle {
+    min-height: 250px;
+    max-width: 300px;
+}
+
+.ad-container.ad-sidebar.sticky {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}
+
+/* Content ads - optimized for native and squares */
+.ad-container.in-content {
+    margin: 30px auto;
+    max-width: 600px;
+    min-height: 250px;
+}
+
+.ad-container.in-content.variant-square {
+    min-height: 250px;
+    max-width: 250px;
+}
+
+.ad-container.in-content.variant-rectangle {
+    min-height: 250px;
+    max-width: 300px;
+}
+
+.ad-container.in-content.variant-native {
+    min-height: 150px;
+    max-width: 100%;
+    background: transparent;
+    border: none;
+}
+
+/* Footer ads */
+.ad-container.ad-bottom {
+    margin: 30px 0 20px 0;
+    min-height: 90px;
+}
+
+.ad-container.ad-bottom.variant-leaderboard {
+    min-height: 90px;
+    max-width: 728px;
+    margin: 30px auto 20px auto;
+}
+
+.ad-container.ad-bottom.variant-responsive {
+    min-height: 90px;
+    width: 100%;
+}
+
+/* Auto-relaxed and matched content ads */
+.ad-container.ad-autorelaxed {
+    min-height: 300px;
+    margin: 40px 0;
+    background: transparent;
+    border: none;
+}
+
+/* AdSense specific optimizations */
+.adsbygoogle {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+}
+
+/* Lazy loading states */
+.ad-container[data-lazy-loaded="false"] {
+    background: #f5f5f5;
+}
+
+.ad-container[data-lazy-loaded="true"] .adsbygoogle {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ad-container.loaded[data-lazy-loaded="true"] .adsbygoogle {
+    opacity: 1;
+}
+
+/* Viewability optimization */
+.ad-container[data-visible="true"] {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+}
+
+/* Premium ad network preparations */
+
+/* Ezoic placeholder styles */
+.ezoic-ad {
+    min-height: 250px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.ezoic-ad::before {
+    content: "Premium Ad Space";
+    font-size: 14px;
+}
+
+/* AdThrive placeholder styles */
+.adthrive-ad {
+    min-height: 250px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+/* Mediavine placeholder styles */
+.mediavine-ad {
+    min-height: 250px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+/* A/B Testing visual indicators (only visible in debug mode) */
+body.debug-ads .ad-container::after {
+    content: attr(data-variant);
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: #007bff;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Core Web Vitals optimizations */
+
+/* Minimize Cumulative Layout Shift (CLS) */
+.ad-container {
+    contain: layout style paint;
+    will-change: contents;
+}
+
+/* Improve Largest Contentful Paint (LCP) */
+.ad-container img,
+.ad-container iframe {
+    max-width: 100%;
+    height: auto;
+    loading: lazy;
+}
+
+/* Responsive design optimizations */
+@media (max-width: 768px) {
+    .ad-container.ad-sidebar {
+        min-height: 250px;
+        max-width: 320px;
+        margin: 20px auto;
+    }
+    
+    .ad-container.ad-top,
+    .ad-container.ad-bottom {
+        min-height: 50px;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .ad-container.in-content {
+        max-width: 320px;
+        margin: 20px auto;
+    }
+    
+    /* Mobile-specific ad variants */
+    .ad-container.variant-leaderboard {
+        min-height: 50px;
+        max-width: 320px;
+    }
+    
+    .ad-container.variant-skyscraper {
+        min-height: 250px;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ad-container {
+        margin: 15px 10px;
+        min-height: 200px;
+    }
+    
+    .ad-container.ad-top,
+    .ad-container.ad-bottom {
+        min-height: 50px;
+        margin: 15px auto;
+    }
+}
+
+/* Print media - hide ads */
+@media print {
+    .ad-container,
+    .ezoic-ad,
+    .adthrive-ad,
+    .mediavine-ad {
+        display: none !important;
+    }
+}
+
+/* Dark mode support for ad containers */
+@media (prefers-color-scheme: dark) {
+    .ad-container {
+        background-color: #2d3748;
+        border-color: #4a5568;
+    }
+    
+    .ad-container::before {
+        color: #a0aec0;
+    }
+    
+    .ad-container.loading {
+        background: linear-gradient(90deg, #2d3748 25%, #4a5568 50%, #2d3748 75%);
+        background-size: 200% 100%;
+    }
+}
+
+/* Accessibility improvements */
+.ad-container {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ad-container:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Performance monitoring indicators */
+.ad-container.slow-loading {
+    border-left: 4px solid #ffc107;
+}
+
+.ad-container.failed-loading {
+    border-left: 4px solid #dc3545;
+    background: linear-gradient(45deg, transparent 40%, rgba(220, 53, 69, 0.1) 50%, transparent 60%);
+}
+
+/* Revenue optimization hints */
+.ad-container.high-value {
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.4);
+}
+
+.ad-container.low-value {
+    opacity: 0.8;
+}
+
+/* Ad blocker detection styles */
+.ad-container.blocked {
+    background: #ffe6e6;
+    border-color: #ffcccc;
+    min-height: 100px;
+}
+
+.ad-container.blocked::after {
+    content: "Please consider disabling your ad blocker to support Math.help";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Enhanced Mobile Ad Optimizations for Revenue Maximization */
+@media (max-width: 768px) {
+    /* Mobile sticky bottom ad for maximum revenue */
+    .ad-mobile-sticky {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 -2px 15px rgba(0,0,0,0.1);
+        z-index: 50;
+        padding: 8px;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+        min-height: 60px;
+        max-height: 90px;
+    }
+    
+    /* Native-style mobile ads for better integration */
+    .ad-container.ad-native {
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 25px 0;
+        min-height: 150px;
+    }
+    
+    /* Enhanced mobile in-content ads */
+    .ad-container.ad-middle {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 30px 0;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    
+    /* Better mobile ad placeholders */
+    .ad-placeholder {
+        min-height: 90px;
+        background: linear-gradient(135deg, #f1f3f4 0%, #e8eaed 100%);
+        border: 1px dashed #dadce0;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        color: #5f6368;
+        font-weight: 500;
+    }
+    
+    /* Mobile-friendly close button for sticky ads */
+    .ad-close-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(0,0,0,0.6);
+        color: white;
+        border: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        font-size: 14px;
+        cursor: pointer;
+        display: none;
+        font-weight: bold;
+        line-height: 1;
+        z-index: 51;
+    }
+    
+    .ad-mobile-sticky .ad-close-btn {
+        display: block;
+    }
+    
+    /* Optimize ad density for mobile UX */
+    .ad-container.ad-middle:nth-of-type(n+3) {
+        display: none; /* Hide excessive middle ads */
+    }
+    
+    /* Mobile content padding adjustments */
+    .main-content {
+        padding-bottom: 80px; /* Space for sticky ad */
+    }
+    
+    /* Mobile banner ad optimization */
+    .ad-container.ad-top {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 12px;
+        margin: 15px 0;
+        border-radius: 10px;
+        min-height: 60px;
+        max-height: 100px;
+    }
+    
+    /* Mobile sidebar replacement - horizontal scroll */
+    .ad-container.ad-sidebar-mobile {
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
+        padding: 15px 0;
+        margin: 20px 0;
+        background: #f8f9fa;
+        border-radius: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .ad-container.ad-sidebar-mobile .ad-item {
+        flex: 0 0 280px;
+        min-height: 150px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+}

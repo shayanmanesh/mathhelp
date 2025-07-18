@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry - Complete Guide with Visual Examples | Math.help</title>
+    <meta name="description" content="Master geometry with our comprehensive visual guide. Learn shapes, angles, proofs, coordinate geometry, and transformations with interactive tools and examples.">
+    <meta name="keywords" content="geometry, triangles, circles, angles, coordinate geometry, proofs, geometry calculator, area, perimeter, volume">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    
+    <!-- KaTeX JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="../katex-lazy.js"></script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MathSolver",
+        "@id": "https://math.help/geometry/",
+        "name": "Geometry Complete Guide",
+        "description": "Comprehensive geometry guide with shapes, angles, proofs, and coordinate geometry",
+        "url": "https://math.help/geometry/",
+        "potentialAction": {
+            "@type": "SolveMathAction",
+            "target": "https://math.help/geometry/calculator/"
+        }
+    }
+    </script>
+    
+    <meta name="google-adsense-account" content="ca-pub-5635114711353420">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ERGV6WWC21', {
+            page_path: window.location.pathname,
+            page_title: document.title,
+            send_page_view: true
+        });
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sgk1r5gd6a");
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Master Mathematics Step by Step</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/">Algebra</a></li>
+                <li><a href="/calculus/">Calculus</a></li>
+                <li><a href="/geometry/" class="active">Geometry</a></li>
+                <li><a href="/trigonometry/">Trigonometry</a></li>
+                <li><a href="/statistics/">Statistics</a></li>
+                <li><a href="/tools/">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li class="active">Geometry</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Main Content Area -->
+                <article class="main-content">
+                    
+                    <!-- Position 1: Below Navigation -->
+                    <div class="ad-container ad-top">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="3137758017"
+                             data-ad-format="horizontal"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+                    <section class="pillar-content">
+                        <h1>Geometry - Complete Guide with Visual Examples</h1>
+                        
+                        <div class="table-of-contents">
+                            <h2>Table of Contents</h2>
+                            <ol>
+                                <li><a href="#introduction">Introduction and Real-World Applications</a></li>
+                                <li><a href="#core-concepts">Core Concepts and Definitions</a></li>
+                                <li><a href="#angles-lines">Angles and Lines</a></li>
+                                <li><a href="#triangles">Triangles: Properties and Theorems</a></li>
+                                <li><a href="#circles">Circles and Their Properties</a></li>
+                                <li><a href="#3d-geometry">3D Geometry and Volume</a></li>
+                                <li><a href="#coordinate">Coordinate Geometry</a></li>
+                                <li><a href="#practice">Practice Problems</a></li>
+                                <li><a href="#visualizations">Interactive Visualizations</a></li>
+                                <li><a href="#related">Related Topics</a></li>
+                            </ol>
+                        </div>
+
+                        <section id="introduction">
+                            <h2>Introduction and Real-World Applications</h2>
+                            <p>Geometry is the branch of mathematics that deals with shapes, sizes, relative positions of figures, and properties of space. It's one of the oldest mathematical sciences and remains crucial in modern applications.</p>
+                            
+                            <h3>Why Learn Geometry?</h3>
+                            <ul>
+                                <li><strong>Architecture & Design</strong>: Plan buildings, create art, design spaces</li>
+                                <li><strong>Engineering</strong>: Build bridges, design machines, create structures</li>
+                                <li><strong>Computer Graphics</strong>: 3D modeling, game design, animation</li>
+                                <li><strong>Navigation</strong>: GPS systems, mapping, route planning</li>
+                                <li><strong>Nature & Science</strong>: Understand crystal structures, molecular shapes</li>
+                            </ul>
+
+                            <div class="concept-box">
+                                <h4>Types of Geometry</h4>
+                                <p><strong>Euclidean Geometry</strong>: Traditional flat geometry with parallel lines</p>
+                                <p><strong>Coordinate Geometry</strong>: Using algebra to solve geometric problems</p>
+                                <p><strong>Solid Geometry</strong>: Three-dimensional shapes and volumes</p>
+                            </div>
+                        </section>
+
+                        <!-- Position 2: In-Article After First Concept -->
+                        <div class="ad-container in-article">
+                            <ins class="adsbygoogle"
+                                 style="display:block; text-align:center;"
+                                 data-ad-layout="in-article"
+                                 data-ad-format="fluid"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="4431777949"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+                        <section id="core-concepts">
+                            <h2>Core Concepts and Definitions</h2>
+                            
+                            <h3>Basic Elements</h3>
+                            <div class="concept-box">
+                                <p><strong>Point</strong>: A location with no dimension (represented as •)</p>
+                                <p><strong>Line</strong>: Extends infinitely in both directions</p>
+                                <p><strong>Line Segment</strong>: Part of a line with two endpoints</p>
+                                <p><strong>Ray</strong>: Part of a line with one endpoint</p>
+                                <p><strong>Plane</strong>: A flat surface extending infinitely</p>
+                            </div>
+
+                            <h3>Fundamental Postulates</h3>
+                            <div class="concept-box">
+                                <ul>
+                                    <li>Through any two points, there is exactly one line</li>
+                                    <li>A line contains at least two points</li>
+                                    <li>If two lines intersect, they intersect at exactly one point</li>
+                                    <li>Through any three non-collinear points, there is exactly one plane</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="angles-lines">
+                            <h2>Angles and Lines</h2>
+                            
+                            <h3>Types of Angles</h3>
+                            <div class="method-box">
+                                <div class="angle-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                                    <div class="angle-type">
+                                        <h4>Acute Angle</h4>
+                                        <p>Less than 90°</p>
+                                        <p>Example: 45°, 60°, 30°</p>
+                                    </div>
+                                    <div class="angle-type">
+                                        <h4>Right Angle</h4>
+                                        <p>Exactly 90°</p>
+                                        <p>Symbol: ⊥</p>
+                                    </div>
+                                    <div class="angle-type">
+                                        <h4>Obtuse Angle</h4>
+                                        <p>Greater than 90°, less than 180°</p>
+                                        <p>Example: 120°, 135°, 150°</p>
+                                    </div>
+                                    <div class="angle-type">
+                                        <h4>Straight Angle</h4>
+                                        <p>Exactly 180°</p>
+                                        <p>Forms a straight line</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Angle Relationships</h3>
+                            <div class="concept-box">
+                                <p><strong>Complementary Angles</strong>: Two angles that sum to 90°</p>
+                                <p>If $\alpha + \beta = 90°$, then $\alpha$ and $\beta$ are complementary</p>
+                                
+                                <p><strong>Supplementary Angles</strong>: Two angles that sum to 180°</p>
+                                <p>If $\alpha + \beta = 180°$, then $\alpha$ and $\beta$ are supplementary</p>
+                                
+                                <p><strong>Vertical Angles</strong>: Opposite angles formed by intersecting lines (always equal)</p>
+                            </div>
+
+                            <h3>Parallel and Perpendicular Lines</h3>
+                            <div class="method-box">
+                                <h4>Parallel Lines (||)</h4>
+                                <p>Lines that never intersect and maintain constant distance</p>
+                                <p><strong>Properties with Transversal:</strong></p>
+                                <ul>
+                                    <li>Corresponding angles are equal</li>
+                                    <li>Alternate interior angles are equal</li>
+                                    <li>Co-interior angles are supplementary</li>
+                                </ul>
+                                
+                                <h4>Perpendicular Lines (⊥)</h4>
+                                <p>Lines that intersect at 90°</p>
+                                <p>Slope relationship: $m_1 \cdot m_2 = -1$</p>
+                            </div>
+                        </section>
+
+                        <section id="triangles">
+                            <h2>Triangles: Properties and Theorems</h2>
+                            
+                            <h3>Triangle Classification</h3>
+                            <div class="concept-box">
+                                <h4>By Sides:</h4>
+                                <ul>
+                                    <li><strong>Equilateral</strong>: All sides equal, all angles 60°</li>
+                                    <li><strong>Isosceles</strong>: Two sides equal, base angles equal</li>
+                                    <li><strong>Scalene</strong>: All sides different</li>
+                                </ul>
+                                
+                                <h4>By Angles:</h4>
+                                <ul>
+                                    <li><strong>Acute</strong>: All angles less than 90°</li>
+                                    <li><strong>Right</strong>: One angle exactly 90°</li>
+                                    <li><strong>Obtuse</strong>: One angle greater than 90°</li>
+                                </ul>
+                            </div>
+
+                            <h3>Triangle Theorems</h3>
+                            <div class="method-box">
+                                <h4>Angle Sum Property</h4>
+                                <p class="highlight-formula">$$\alpha + \beta + \gamma = 180°$$</p>
+                                
+                                <h4>Pythagorean Theorem (Right Triangles)</h4>
+                                <p class="highlight-formula">$$a^2 + b^2 = c^2$$</p>
+                                <p>where c is the hypotenuse</p>
+                                
+                                <h4>Triangle Inequality</h4>
+                                <p>The sum of any two sides must be greater than the third side:</p>
+                                <p>$a + b > c$, $b + c > a$, $a + c > b$</p>
+                            </div>
+
+                            <h3>Area and Perimeter</h3>
+                            <div class="method-box">
+                                <h4>Perimeter</h4>
+                                <p>$P = a + b + c$</p>
+                                
+                                <h4>Area Formulas</h4>
+                                <p><strong>Basic Formula:</strong> $A = \frac{1}{2} \times base \times height$</p>
+                                <p><strong>Heron's Formula:</strong> $A = \sqrt{s(s-a)(s-b)(s-c)}$</p>
+                                <p>where $s = \frac{a+b+c}{2}$ (semi-perimeter)</p>
+                                <p><strong>Using Trigonometry:</strong> $A = \frac{1}{2}ab\sin C$</p>
+                            </div>
+
+                            <h3>Special Right Triangles</h3>
+                            <div class="concept-box">
+                                <h4>30-60-90 Triangle</h4>
+                                <p>Sides in ratio: $1 : \sqrt{3} : 2$</p>
+                                
+                                <h4>45-45-90 Triangle</h4>
+                                <p>Sides in ratio: $1 : 1 : \sqrt{2}$</p>
+                            </div>
+                        </section>
+
+                        <!-- Position 4: Between Problem Sets -->
+                        <div class="ad-container in-content">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="4431777949"
+                                 data-ad-format="rectangle"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+                        <section id="circles">
+                            <h2>Circles and Their Properties</h2>
+                            
+                            <h3>Circle Definitions</h3>
+                            <div class="concept-box">
+                                <p><strong>Circle</strong>: Set of all points equidistant from a center</p>
+                                <p><strong>Radius (r)</strong>: Distance from center to any point on circle</p>
+                                <p><strong>Diameter (d)</strong>: Distance across circle through center, $d = 2r$</p>
+                                <p><strong>Circumference</strong>: Distance around circle, $C = 2\pi r$</p>
+                                <p><strong>Area</strong>: $A = \pi r^2$</p>
+                            </div>
+
+                            <h3>Parts of a Circle</h3>
+                            <div class="method-box">
+                                <ul>
+                                    <li><strong>Chord</strong>: Line segment connecting two points on circle</li>
+                                    <li><strong>Arc</strong>: Part of the circumference</li>
+                                    <li><strong>Sector</strong>: Region bounded by two radii and an arc</li>
+                                    <li><strong>Segment</strong>: Region bounded by a chord and an arc</li>
+                                    <li><strong>Tangent</strong>: Line touching circle at exactly one point</li>
+                                    <li><strong>Secant</strong>: Line intersecting circle at two points</li>
+                                </ul>
+                            </div>
+
+                            <h3>Circle Theorems</h3>
+                            <div class="method-box">
+                                <h4>1. Inscribed Angle Theorem</h4>
+                                <p>An inscribed angle is half the central angle that subtends the same arc</p>
+                                
+                                <h4>2. Tangent Properties</h4>
+                                <ul>
+                                    <li>A tangent is perpendicular to the radius at the point of contact</li>
+                                    <li>Two tangents from an external point are equal in length</li>
+                                </ul>
+                                
+                                <h4>3. Power of a Point</h4>
+                                <p>For secants from external point: $PA \cdot PB = PC \cdot PD$</p>
+                            </div>
+
+                            <h3>Arc Length and Sector Area</h3>
+                            <div class="concept-box">
+                                <p><strong>Arc Length:</strong> $L = \frac{\theta}{360°} \times 2\pi r$ (θ in degrees)</p>
+                                <p><strong>Sector Area:</strong> $A = \frac{\theta}{360°} \times \pi r^2$</p>
+                                <p>For radians: $L = r\theta$ and $A = \frac{1}{2}r^2\theta$</p>
+                            </div>
+                        </section>
+
+                        <section id="3d-geometry">
+                            <h2>3D Geometry and Volume</h2>
+                            
+                            <h3>Common 3D Shapes</h3>
+                            <div class="method-box">
+                                <h4>Prisms</h4>
+                                <p><strong>Volume:</strong> $V = B \times h$ (B = base area, h = height)</p>
+                                <p><strong>Surface Area:</strong> $SA = 2B + Ph$ (P = perimeter of base)</p>
+                                
+                                <h4>Cylinder</h4>
+                                <p><strong>Volume:</strong> $V = \pi r^2 h$</p>
+                                <p><strong>Surface Area:</strong> $SA = 2\pi r^2 + 2\pi rh$</p>
+                                
+                                <h4>Pyramid</h4>
+                                <p><strong>Volume:</strong> $V = \frac{1}{3}Bh$</p>
+                                <p><strong>Surface Area:</strong> $SA = B + \frac{1}{2}Pl$ (l = slant height)</p>
+                                
+                                <h4>Cone</h4>
+                                <p><strong>Volume:</strong> $V = \frac{1}{3}\pi r^2 h$</p>
+                                <p><strong>Surface Area:</strong> $SA = \pi r^2 + \pi rl$</p>
+                                
+                                <h4>Sphere</h4>
+                                <p><strong>Volume:</strong> $V = \frac{4}{3}\pi r^3$</p>
+                                <p><strong>Surface Area:</strong> $SA = 4\pi r^2$</p>
+                            </div>
+
+                            <h3>Platonic Solids</h3>
+                            <div class="concept-box">
+                                <p>The five regular polyhedra:</p>
+                                <ul>
+                                    <li><strong>Tetrahedron</strong>: 4 triangular faces</li>
+                                    <li><strong>Cube</strong>: 6 square faces</li>
+                                    <li><strong>Octahedron</strong>: 8 triangular faces</li>
+                                    <li><strong>Dodecahedron</strong>: 12 pentagonal faces</li>
+                                    <li><strong>Icosahedron</strong>: 20 triangular faces</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="coordinate">
+                            <h2>Coordinate Geometry</h2>
+                            
+                            <h3>Distance and Midpoint</h3>
+                            <div class="method-box">
+                                <h4>Distance Formula</h4>
+                                <p class="highlight-formula">$$d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$</p>
+                                
+                                <h4>Midpoint Formula</h4>
+                                <p class="highlight-formula">$$M = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right)$$</p>
+                            </div>
+
+                            <h3>Lines in Coordinate Plane</h3>
+                            <div class="concept-box">
+                                <h4>Slope Formula</h4>
+                                <p>$$m = \frac{y_2 - y_1}{x_2 - x_1}$$</p>
+                                
+                                <h4>Line Equations</h4>
+                                <ul>
+                                    <li><strong>Slope-intercept:</strong> $y = mx + b$</li>
+                                    <li><strong>Point-slope:</strong> $y - y_1 = m(x - x_1)$</li>
+                                    <li><strong>Standard form:</strong> $Ax + By = C$</li>
+                                </ul>
+                            </div>
+
+                            <h3>Circles in Coordinate Plane</h3>
+                            <div class="method-box">
+                                <h4>Standard Form</h4>
+                                <p>$(x - h)^2 + (y - k)^2 = r^2$</p>
+                                <p>Center: $(h, k)$, Radius: $r$</p>
+                                
+                                <h4>General Form</h4>
+                                <p>$x^2 + y^2 + Dx + Ey + F = 0$</p>
+                            </div>
+                        </section>
+
+                        <section id="practice">
+                            <h2>Practice Problems</h2>
+                            
+                            <div class="practice-section">
+                                <h3>Beginner Level</h3>
+                                <ol class="practice-list">
+                                    <li>Find the area of a triangle with base 12 cm and height 8 cm</li>
+                                    <li>Calculate the circumference of a circle with radius 7 cm</li>
+                                    <li>Find the missing angle in a triangle with angles 45° and 60°</li>
+                                    <li>Calculate the volume of a cube with side length 5 cm</li>
+                                </ol>
+                            </div>
+
+                            <div class="practice-section">
+                                <h3>Intermediate Level</h3>
+                                <ol class="practice-list">
+                                    <li>Find the area of a triangle with sides 5, 12, and 13</li>
+                                    <li>Calculate the surface area of a cylinder with radius 3 cm and height 10 cm</li>
+                                    <li>Find the equation of a line passing through (2, 3) and (5, 9)</li>
+                                    <li>Prove that the diagonals of a rhombus are perpendicular</li>
+                                </ol>
+                            </div>
+
+                            <div class="practice-section">
+                                <h3>Advanced Level</h3>
+                                <ol class="practice-list">
+                                    <li>Find the area of a regular hexagon inscribed in a circle of radius 10</li>
+                                    <li>Calculate the volume of a frustum with radii 4 and 6, height 8</li>
+                                    <li>Prove that the angle inscribed in a semicircle is always 90°</li>
+                                    <li>Find the locus of points equidistant from two given circles</li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="visualizations">
+                            <h2>Interactive Visualizations</h2>
+                            <div class="visualization-container">
+                                <h3>Triangle Explorer</h3>
+                                <p>Explore triangle properties by dragging vertices</p>
+                                <div class="geogebra-embed">
+                                    <iframe src="https://www.geogebra.org/material/iframe/id/mxjdqf8y/width/800/height/450/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/false/ctl/false" 
+                                            width="100%" 
+                                            height="450" 
+                                            style="border:0;" 
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <div class="visualization-container">
+                                <h3>Circle Theorems</h3>
+                                <p>Interactive demonstration of circle properties</p>
+                                <div class="desmos-embed">
+                                    <iframe src="https://www.desmos.com/calculator/lqbjjmuozo?embed" 
+                                            width="100%" 
+                                            height="400" 
+                                            style="border: 1px solid #ccc" 
+                                            frameborder="0"></iframe>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="related">
+                            <h2>Related Topics and Next Steps</h2>
+                            <div class="related-grid">
+                                <div class="related-item">
+                                    <h4>📐 Trigonometry</h4>
+                                    <p>Extend geometry with angle relationships</p>
+                                    <a href="/trigonometry/">Learn Trigonometry →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>📊 Analytic Geometry</h4>
+                                    <p>Advanced coordinate geometry</p>
+                                    <a href="/geometry/analytic/">Explore →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>🎯 Vector Geometry</h4>
+                                    <p>Geometry with vectors and transformations</p>
+                                    <a href="/geometry/vectors/">Learn Vectors →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>🏗️ Applied Geometry</h4>
+                                    <p>Real-world applications</p>
+                                    <a href="/geometry/applications/">Discover →</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Position 5: Before Comments/Footer (AutoRelaxed) -->
+                        <div class="ad-container ad-matched-content">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-format="autorelaxed"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="2324489353"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                    </section>
+                </article>
+                
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Sticky Sidebar Ad (Display Vertical) -->
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <section class="quick-links">
+                        <h3>Geometry Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="/geometry/triangles/">Triangle Properties</a></li>
+                            <li><a href="/geometry/circles/">Circle Theorems</a></li>
+                            <li><a href="/geometry/polygons/">Polygons & Angles</a></li>
+                            <li><a href="/geometry/3d-shapes/">3D Shapes & Volume</a></li>
+                            <li><a href="/geometry/coordinate/">Coordinate Geometry</a></li>
+                            <li><a href="/geometry/transformations/">Transformations</a></li>
+                            <li><a href="/geometry/proofs/">Geometric Proofs</a></li>
+                        </ul>
+                    </section>
+                    
+                    <!-- Calculator Widget -->
+                    <section class="sidebar-calculator">
+                        <h3>Area Calculator</h3>
+                        <div class="mini-calculator">
+                            <select id="shape-select" onchange="updateAreaInputs()">
+                                <option value="triangle">Triangle</option>
+                                <option value="circle">Circle</option>
+                                <option value="rectangle">Rectangle</option>
+                            </select>
+                            <div id="area-inputs">
+                                <input type="number" id="base-input" placeholder="Base">
+                                <input type="number" id="height-input" placeholder="Height">
+                            </div>
+                            <button onclick="calculateArea()">Calculate Area</button>
+                            <div id="area-result"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- Study Tips -->
+                    <section class="study-tips">
+                        <h3>Geometry Study Tips</h3>
+                        <ul class="tips-list">
+                            <li>Draw diagrams for every problem</li>
+                            <li>Label all known measurements</li>
+                            <li>Look for patterns and symmetry</li>
+                            <li>Practice construction with tools</li>
+                            <li>Memorize key theorems and formulas</li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Math.help. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../calculator.js"></script>
+    <script>
+        // Area calculator functionality
+        function updateAreaInputs() {
+            const shape = document.getElementById('shape-select').value;
+            const inputsDiv = document.getElementById('area-inputs');
+            
+            if (shape === 'triangle') {
+                inputsDiv.innerHTML = `
+                    <input type="number" id="base-input" placeholder="Base">
+                    <input type="number" id="height-input" placeholder="Height">
+                `;
+            } else if (shape === 'circle') {
+                inputsDiv.innerHTML = `
+                    <input type="number" id="radius-input" placeholder="Radius">
+                `;
+            } else if (shape === 'rectangle') {
+                inputsDiv.innerHTML = `
+                    <input type="number" id="length-input" placeholder="Length">
+                    <input type="number" id="width-input" placeholder="Width">
+                `;
+            }
+        }
+        
+        function calculateArea() {
+            const shape = document.getElementById('shape-select').value;
+            const resultDiv = document.getElementById('area-result');
+            let area = 0;
+            
+            try {
+                if (shape === 'triangle') {
+                    const base = parseFloat(document.getElementById('base-input').value);
+                    const height = parseFloat(document.getElementById('height-input').value);
+                    area = 0.5 * base * height;
+                } else if (shape === 'circle') {
+                    const radius = parseFloat(document.getElementById('radius-input').value);
+                    area = Math.PI * radius * radius;
+                } else if (shape === 'rectangle') {
+                    const length = parseFloat(document.getElementById('length-input').value);
+                    const width = parseFloat(document.getElementById('width-input').value);
+                    area = length * width;
+                }
+                
+                if (isNaN(area) || area <= 0) {
+                    resultDiv.textContent = 'Please enter valid values';
+                    resultDiv.style.color = 'red';
+                } else {
+                    resultDiv.textContent = `Area = ${area.toFixed(2)}`;
+                    resultDiv.style.color = 'green';
+                }
+            } catch (e) {
+                resultDiv.textContent = 'Error calculating area';
+                resultDiv.style.color = 'red';
+            }
+        }
+        
+        // Track engagement
+        let timeOnPage = 0;
+        setInterval(() => {
+            timeOnPage += 5;
+            if (timeOnPage % 30 === 0 && typeof gtag !== 'undefined') {
+                gtag('event', 'time_on_page', {
+                    event_category: 'Engagement',
+                    event_label: 'Geometry Page',
+                    value: timeOnPage
+                });
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

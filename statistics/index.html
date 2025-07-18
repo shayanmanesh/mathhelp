@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics - Complete Guide with Data Analysis | Math.help</title>
+    <meta name="description" content="Master statistics with our comprehensive guide. Learn descriptive statistics, probability, distributions, hypothesis testing, and data analysis with real examples.">
+    <meta name="keywords" content="statistics, probability, normal distribution, hypothesis testing, data analysis, standard deviation, statistics calculator, mean median mode">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    
+    <!-- KaTeX JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="../katex-lazy.js"></script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MathSolver",
+        "@id": "https://math.help/statistics/",
+        "name": "Statistics Complete Guide",
+        "description": "Comprehensive statistics guide with probability, distributions, and data analysis",
+        "url": "https://math.help/statistics/",
+        "potentialAction": {
+            "@type": "SolveMathAction",
+            "target": "https://math.help/statistics/calculator/"
+        }
+    }
+    </script>
+    
+    <meta name="google-adsense-account" content="ca-pub-5635114711353420">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ERGV6WWC21', {
+            page_path: window.location.pathname,
+            page_title: document.title,
+            send_page_view: true
+        });
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sgk1r5gd6a");
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Master Mathematics Step by Step</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/">Algebra</a></li>
+                <li><a href="/calculus/">Calculus</a></li>
+                <li><a href="/geometry/">Geometry</a></li>
+                <li><a href="/trigonometry/">Trigonometry</a></li>
+                <li><a href="/statistics/" class="active">Statistics</a></li>
+                <li><a href="/tools/">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li class="active">Statistics</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Main Content Area -->
+                <article class="main-content">
+                    
+                    <!-- Position 1: Below Navigation -->
+                    <div class="ad-container ad-top">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="3137758017"
+                             data-ad-format="horizontal"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+                    <section class="pillar-content">
+                        <h1>Statistics - Complete Guide with Data Analysis</h1>
+                        
+                        <div class="table-of-contents">
+                            <h2>Table of Contents</h2>
+                            <ol>
+                                <li><a href="#introduction">Introduction and Real-World Applications</a></li>
+                                <li><a href="#descriptive">Descriptive Statistics</a></li>
+                                <li><a href="#probability">Probability Fundamentals</a></li>
+                                <li><a href="#distributions">Probability Distributions</a></li>
+                                <li><a href="#sampling">Sampling and Estimation</a></li>
+                                <li><a href="#hypothesis">Hypothesis Testing</a></li>
+                                <li><a href="#correlation">Correlation and Regression</a></li>
+                                <li><a href="#practice">Practice Problems</a></li>
+                                <li><a href="#visualizations">Interactive Visualizations</a></li>
+                                <li><a href="#related">Related Topics</a></li>
+                            </ol>
+                        </div>
+
+                        <section id="introduction">
+                            <h2>Introduction and Real-World Applications</h2>
+                            <p>Statistics is the science of collecting, analyzing, interpreting, and presenting data. It provides tools to make sense of uncertainty and variability in the world around us.</p>
+                            
+                            <h3>Why Learn Statistics?</h3>
+                            <ul>
+                                <li><strong>Business & Economics</strong>: Market analysis, risk assessment, forecasting</li>
+                                <li><strong>Medicine & Healthcare</strong>: Clinical trials, epidemiology, treatment efficacy</li>
+                                <li><strong>Social Sciences</strong>: Survey analysis, behavioral studies, policy evaluation</li>
+                                <li><strong>Technology</strong>: A/B testing, machine learning, quality control</li>
+                                <li><strong>Sports Analytics</strong>: Performance metrics, strategy optimization</li>
+                                <li><strong>Daily Decision Making</strong>: Understanding polls, news, and research</li>
+                            </ul>
+
+                            <div class="concept-box">
+                                <h4>Two Branches of Statistics</h4>
+                                <p><strong>Descriptive Statistics</strong>: Summarize and describe data</p>
+                                <p><strong>Inferential Statistics</strong>: Make predictions and test hypotheses</p>
+                            </div>
+                        </section>
+
+                        <!-- Position 2: In-Article After First Concept -->
+                        <div class="ad-container in-article">
+                            <ins class="adsbygoogle"
+                                 style="display:block; text-align:center;"
+                                 data-ad-layout="in-article"
+                                 data-ad-format="fluid"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="4431777949"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+                        <section id="descriptive">
+                            <h2>Descriptive Statistics</h2>
+                            
+                            <h3>Measures of Central Tendency</h3>
+                            <div class="concept-box">
+                                <h4>Mean (Average)</h4>
+                                <p>$$\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}$$</p>
+                                <p>Sum of all values divided by the number of values</p>
+                                
+                                <h4>Median</h4>
+                                <p>Middle value when data is ordered</p>
+                                <ul>
+                                    <li>Odd n: Middle value</li>
+                                    <li>Even n: Average of two middle values</li>
+                                </ul>
+                                
+                                <h4>Mode</h4>
+                                <p>Most frequently occurring value(s)</p>
+                            </div>
+
+                            <h3>Measures of Variability</h3>
+                            <div class="method-box">
+                                <h4>Range</h4>
+                                <p>Range = Maximum - Minimum</p>
+                                
+                                <h4>Variance</h4>
+                                <p>Population variance: $\sigma^2 = \frac{\sum_{i=1}^{N} (x_i - \mu)^2}{N}$</p>
+                                <p>Sample variance: $s^2 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n-1}$</p>
+                                
+                                <h4>Standard Deviation</h4>
+                                <p>Population: $\sigma = \sqrt{\sigma^2}$</p>
+                                <p>Sample: $s = \sqrt{s^2}$</p>
+                                
+                                <h4>Coefficient of Variation</h4>
+                                <p>$CV = \frac{\sigma}{\mu} \times 100\%$ (relative variability)</p>
+                            </div>
+
+                            <h3>Measures of Position</h3>
+                            <div class="concept-box">
+                                <h4>Percentiles and Quartiles</h4>
+                                <ul>
+                                    <li><strong>Q1 (25th percentile)</strong>: First quartile</li>
+                                    <li><strong>Q2 (50th percentile)</strong>: Median</li>
+                                    <li><strong>Q3 (75th percentile)</strong>: Third quartile</li>
+                                    <li><strong>IQR</strong>: Interquartile Range = Q3 - Q1</li>
+                                </ul>
+                                
+                                <h4>Z-Score (Standard Score)</h4>
+                                <p>$$z = \frac{x - \mu}{\sigma}$$</p>
+                                <p>Number of standard deviations from the mean</p>
+                            </div>
+
+                            <h3>Data Visualization</h3>
+                            <div class="method-box">
+                                <h4>Common Charts</h4>
+                                <ul>
+                                    <li><strong>Histogram</strong>: Distribution of continuous data</li>
+                                    <li><strong>Box Plot</strong>: Five-number summary visualization</li>
+                                    <li><strong>Scatter Plot</strong>: Relationship between two variables</li>
+                                    <li><strong>Bar Chart</strong>: Categorical data comparison</li>
+                                    <li><strong>Pie Chart</strong>: Parts of a whole</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="probability">
+                            <h2>Probability Fundamentals</h2>
+                            
+                            <h3>Basic Probability</h3>
+                            <div class="concept-box">
+                                <h4>Probability of an Event</h4>
+                                <p>$$P(A) = \frac{\text{Number of favorable outcomes}}{\text{Total number of possible outcomes}}$$</p>
+                                <p>Properties: $0 \leq P(A) \leq 1$</p>
+                                
+                                <h4>Complement Rule</h4>
+                                <p>$P(A^c) = 1 - P(A)$</p>
+                            </div>
+
+                            <h3>Probability Rules</h3>
+                            <div class="method-box">
+                                <h4>Addition Rule</h4>
+                                <p>$P(A \cup B) = P(A) + P(B) - P(A \cap B)$</p>
+                                <p>For mutually exclusive events: $P(A \cup B) = P(A) + P(B)$</p>
+                                
+                                <h4>Multiplication Rule</h4>
+                                <p>$P(A \cap B) = P(A) \cdot P(B|A)$</p>
+                                <p>For independent events: $P(A \cap B) = P(A) \cdot P(B)$</p>
+                                
+                                <h4>Conditional Probability</h4>
+                                <p>$$P(A|B) = \frac{P(A \cap B)}{P(B)}$$</p>
+                                
+                                <h4>Bayes' Theorem</h4>
+                                <p>$$P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}$$</p>
+                            </div>
+
+                            <h3>Counting Principles</h3>
+                            <div class="concept-box">
+                                <h4>Permutations (Order matters)</h4>
+                                <p>$P(n,r) = \frac{n!}{(n-r)!}$</p>
+                                
+                                <h4>Combinations (Order doesn't matter)</h4>
+                                <p>$C(n,r) = \binom{n}{r} = \frac{n!}{r!(n-r)!}$</p>
+                            </div>
+                        </section>
+
+                        <!-- Position 4: Between Problem Sets -->
+                        <div class="ad-container in-content">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="4431777949"
+                                 data-ad-format="rectangle"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+                        <section id="distributions">
+                            <h2>Probability Distributions</h2>
+                            
+                            <h3>Discrete Distributions</h3>
+                            <div class="method-box">
+                                <h4>Binomial Distribution</h4>
+                                <p>$X \sim B(n,p)$</p>
+                                <p>$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$</p>
+                                <ul>
+                                    <li>Mean: $\mu = np$</li>
+                                    <li>Variance: $\sigma^2 = np(1-p)$</li>
+                                </ul>
+                                
+                                <h4>Poisson Distribution</h4>
+                                <p>$X \sim Poisson(\lambda)$</p>
+                                <p>$P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}$</p>
+                                <ul>
+                                    <li>Mean: $\mu = \lambda$</li>
+                                    <li>Variance: $\sigma^2 = \lambda$</li>
+                                </ul>
+                            </div>
+
+                            <h3>Continuous Distributions</h3>
+                            <div class="concept-box">
+                                <h4>Normal Distribution</h4>
+                                <p>$X \sim N(\mu, \sigma^2)$</p>
+                                <p class="highlight-formula">$$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$</p>
+                                
+                                <h4>Standard Normal Distribution</h4>
+                                <p>$Z \sim N(0, 1)$</p>
+                                <p>68-95-99.7 Rule:</p>
+                                <ul>
+                                    <li>68% within 1 standard deviation</li>
+                                    <li>95% within 2 standard deviations</li>
+                                    <li>99.7% within 3 standard deviations</li>
+                                </ul>
+                                
+                                <h4>t-Distribution</h4>
+                                <p>Used when population standard deviation is unknown</p>
+                                <p>Approaches normal distribution as degrees of freedom increase</p>
+                            </div>
+
+                            <h3>Central Limit Theorem</h3>
+                            <div class="concept-box">
+                                <p>For large sample sizes (n ≥ 30), the sampling distribution of the sample mean approaches a normal distribution:</p>
+                                <p>$$\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)$$</p>
+                                <p>This holds regardless of the population distribution!</p>
+                            </div>
+                        </section>
+
+                        <section id="sampling">
+                            <h2>Sampling and Estimation</h2>
+                            
+                            <h3>Sampling Methods</h3>
+                            <div class="method-box">
+                                <ul>
+                                    <li><strong>Simple Random Sampling</strong>: Every member has equal chance</li>
+                                    <li><strong>Stratified Sampling</strong>: Divide into strata, sample from each</li>
+                                    <li><strong>Cluster Sampling</strong>: Sample entire clusters</li>
+                                    <li><strong>Systematic Sampling</strong>: Select every kth member</li>
+                                </ul>
+                            </div>
+
+                            <h3>Point Estimation</h3>
+                            <div class="concept-box">
+                                <h4>Properties of Good Estimators</h4>
+                                <ul>
+                                    <li><strong>Unbiased</strong>: $E(\hat{\theta}) = \theta$</li>
+                                    <li><strong>Consistent</strong>: Converges to true value as n increases</li>
+                                    <li><strong>Efficient</strong>: Minimum variance among unbiased estimators</li>
+                                </ul>
+                            </div>
+
+                            <h3>Confidence Intervals</h3>
+                            <div class="method-box">
+                                <h4>CI for Mean (σ known)</h4>
+                                <p>$$\bar{x} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}}$$</p>
+                                
+                                <h4>CI for Mean (σ unknown)</h4>
+                                <p>$$\bar{x} \pm t_{\alpha/2, n-1} \frac{s}{\sqrt{n}}$$</p>
+                                
+                                <h4>CI for Proportion</h4>
+                                <p>$$\hat{p} \pm z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$</p>
+                                
+                                <h4>Sample Size Determination</h4>
+                                <p>For mean: $n = \left(\frac{z_{\alpha/2} \sigma}{E}\right)^2$</p>
+                                <p>For proportion: $n = \left(\frac{z_{\alpha/2}}{E}\right)^2 p(1-p)$</p>
+                            </div>
+                        </section>
+
+                        <section id="hypothesis">
+                            <h2>Hypothesis Testing</h2>
+                            
+                            <h3>Steps in Hypothesis Testing</h3>
+                            <div class="method-box">
+                                <div class="step-by-step">
+                                    <div class="step">
+                                        <span class="step-number">Step 1:</span>
+                                        <p>State null and alternative hypotheses</p>
+                                        <p>$H_0$: Status quo, $H_1$: Research claim</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 2:</span>
+                                        <p>Choose significance level (α)</p>
+                                        <p>Common values: 0.01, 0.05, 0.10</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 3:</span>
+                                        <p>Calculate test statistic</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 4:</span>
+                                        <p>Find p-value or critical value</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 5:</span>
+                                        <p>Make decision: Reject or fail to reject $H_0$</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Common Tests</h3>
+                            <div class="concept-box">
+                                <h4>One-Sample t-test</h4>
+                                <p>Test statistic: $t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}$</p>
+                                <p>df = n - 1</p>
+                                
+                                <h4>Two-Sample t-test</h4>
+                                <p>Test statistic: $t = \frac{\bar{x}_1 - \bar{x}_2}{s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}$</p>
+                                
+                                <h4>Chi-Square Test</h4>
+                                <p>Test statistic: $\chi^2 = \sum \frac{(O - E)^2}{E}$</p>
+                                
+                                <h4>ANOVA (F-test)</h4>
+                                <p>Test statistic: $F = \frac{MS_{between}}{MS_{within}}$</p>
+                            </div>
+
+                            <h3>Types of Errors</h3>
+                            <div class="concept-box">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border: 1px solid #ddd; padding: 8px;"></th>
+                                        <th style="border: 1px solid #ddd; padding: 8px;">$H_0$ True</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px;">$H_0$ False</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Reject $H_0$</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Type I Error (α)</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Correct Decision</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Fail to Reject $H_0$</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Correct Decision</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Type II Error (β)</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </section>
+
+                        <section id="correlation">
+                            <h2>Correlation and Regression</h2>
+                            
+                            <h3>Correlation</h3>
+                            <div class="concept-box">
+                                <h4>Pearson Correlation Coefficient</h4>
+                                <p>$$r = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^2}}$$</p>
+                                <ul>
+                                    <li>Range: -1 ≤ r ≤ 1</li>
+                                    <li>r = 1: Perfect positive correlation</li>
+                                    <li>r = -1: Perfect negative correlation</li>
+                                    <li>r = 0: No linear correlation</li>
+                                </ul>
+                            </div>
+
+                            <h3>Simple Linear Regression</h3>
+                            <div class="method-box">
+                                <h4>Regression Line</h4>
+                                <p>$\hat{y} = a + bx$</p>
+                                
+                                <h4>Slope</h4>
+                                <p>$$b = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n} (x_i - \bar{x})^2}$$</p>
+                                
+                                <h4>Intercept</h4>
+                                <p>$a = \bar{y} - b\bar{x}$</p>
+                                
+                                <h4>Coefficient of Determination</h4>
+                                <p>$R^2 = r^2$ (proportion of variance explained)</p>
+                            </div>
+
+                            <h3>Multiple Regression</h3>
+                            <div class="concept-box">
+                                <p>$\hat{y} = b_0 + b_1x_1 + b_2x_2 + ... + b_kx_k$</p>
+                                <p>Uses matrix algebra to find coefficients</p>
+                                <p>Adjusted $R^2$ accounts for number of predictors</p>
+                            </div>
+                        </section>
+
+                        <section id="practice">
+                            <h2>Practice Problems</h2>
+                            
+                            <div class="practice-section">
+                                <h3>Beginner Level</h3>
+                                <ol class="practice-list">
+                                    <li>Find the mean, median, and mode of: 2, 4, 4, 7, 9, 10, 12</li>
+                                    <li>Calculate the standard deviation of: 10, 12, 15, 18, 20</li>
+                                    <li>If P(A) = 0.3 and P(B) = 0.4, find P(A∪B) if A and B are mutually exclusive</li>
+                                    <li>Find the z-score for x = 85 if μ = 75 and σ = 8</li>
+                                </ol>
+                            </div>
+
+                            <div class="practice-section">
+                                <h3>Intermediate Level</h3>
+                                <ol class="practice-list">
+                                    <li>A coin is flipped 10 times. Find P(exactly 6 heads)</li>
+                                    <li>Construct a 95% confidence interval for μ if n = 36, x̄ = 42, s = 6</li>
+                                    <li>Test H₀: μ = 50 vs H₁: μ ≠ 50 with α = 0.05, n = 25, x̄ = 52, s = 5</li>
+                                    <li>Find the regression line for: (1,2), (2,4), (3,5), (4,8), (5,10)</li>
+                                </ol>
+                            </div>
+
+                            <div class="practice-section">
+                                <h3>Advanced Level</h3>
+                                <ol class="practice-list">
+                                    <li>A factory produces items with 5% defect rate. Find P(at most 2 defects in 20 items)</li>
+                                    <li>Test if two population means are equal using a two-sample t-test</li>
+                                    <li>Perform a chi-square test for independence on a 3×2 contingency table</li>
+                                    <li>Calculate the power of a hypothesis test given α, effect size, and sample size</li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="visualizations">
+                            <h2>Interactive Visualizations</h2>
+                            <div class="visualization-container">
+                                <h3>Normal Distribution Explorer</h3>
+                                <p>Adjust parameters to see how the normal distribution changes</p>
+                                <div class="desmos-embed">
+                                    <iframe src="https://www.desmos.com/calculator/2kmx5ohxba?embed" 
+                                            width="100%" 
+                                            height="400" 
+                                            style="border: 1px solid #ccc" 
+                                            frameborder="0"></iframe>
+                                </div>
+                            </div>
+
+                            <div class="visualization-container">
+                                <h3>Central Limit Theorem Demonstration</h3>
+                                <p>See how sample means form a normal distribution</p>
+                                <div class="geogebra-embed">
+                                    <iframe src="https://www.geogebra.org/material/iframe/id/ysyfbcvg/width/800/height/450/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/false/ctl/false" 
+                                            width="100%" 
+                                            height="450" 
+                                            style="border:0;" 
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="related">
+                            <h2>Related Topics and Next Steps</h2>
+                            <div class="related-grid">
+                                <div class="related-item">
+                                    <h4>📊 Data Science</h4>
+                                    <p>Machine learning and predictive analytics</p>
+                                    <a href="/statistics/data-science/">Explore Data Science →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>🧪 Experimental Design</h4>
+                                    <p>Design efficient and valid experiments</p>
+                                    <a href="/statistics/experimental-design/">Learn Design →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>📈 Time Series Analysis</h4>
+                                    <p>Analyze data over time</p>
+                                    <a href="/statistics/time-series/">Study Time Series →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>🎯 Bayesian Statistics</h4>
+                                    <p>Alternative approach to inference</p>
+                                    <a href="/statistics/bayesian/">Discover Bayesian →</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Position 5: Before Comments/Footer (AutoRelaxed) -->
+                        <div class="ad-container ad-matched-content">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-format="autorelaxed"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="2324489353"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                    </section>
+                </article>
+                
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Sticky Sidebar Ad (Display Vertical) -->
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <section class="quick-links">
+                        <h3>Statistics Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="/statistics/descriptive/">Descriptive Statistics</a></li>
+                            <li><a href="/statistics/probability/">Probability Theory</a></li>
+                            <li><a href="/statistics/distributions/">Distributions</a></li>
+                            <li><a href="/statistics/hypothesis-testing/">Hypothesis Testing</a></li>
+                            <li><a href="/statistics/regression/">Regression Analysis</a></li>
+                            <li><a href="/statistics/anova/">ANOVA</a></li>
+                            <li><a href="/statistics/nonparametric/">Nonparametric Tests</a></li>
+                        </ul>
+                    </section>
+                    
+                    <!-- Calculator Widget -->
+                    <section class="sidebar-calculator">
+                        <h3>Statistics Calculator</h3>
+                        <div class="mini-calculator">
+                            <textarea id="data-input" placeholder="Enter data (comma separated)&#10;e.g., 1,2,3,4,5" rows="3"></textarea>
+                            <button onclick="calculateStats()">Calculate Stats</button>
+                            <div id="stats-result"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- Study Tips -->
+                    <section class="study-tips">
+                        <h3>Statistics Study Tips</h3>
+                        <ul class="tips-list">
+                            <li>Understand concepts before formulas</li>
+                            <li>Practice with real datasets</li>
+                            <li>Visualize data whenever possible</li>
+                            <li>Learn to use statistical software</li>
+                            <li>Focus on interpretation, not just calculation</li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Math.help. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../calculator.js"></script>
+    <script>
+        // Statistics calculator functionality
+        function calculateStats() {
+            const input = document.getElementById('data-input').value;
+            const resultDiv = document.getElementById('stats-result');
+            
+            try {
+                // Parse input
+                const data = input.split(',').map(x => parseFloat(x.trim())).filter(x => !isNaN(x));
+                
+                if (data.length === 0) {
+                    resultDiv.innerHTML = '<p style="color: red;">Please enter valid numbers</p>';
+                    return;
+                }
+                
+                // Calculate statistics
+                const n = data.length;
+                const mean = data.reduce((a, b) => a + b, 0) / n;
+                
+                // Sort for median
+                const sorted = [...data].sort((a, b) => a - b);
+                const median = n % 2 === 0 
+                    ? (sorted[n/2 - 1] + sorted[n/2]) / 2 
+                    : sorted[Math.floor(n/2)];
+                
+                // Mode (simple version - first most frequent)
+                const freq = {};
+                data.forEach(x => freq[x] = (freq[x] || 0) + 1);
+                const maxFreq = Math.max(...Object.values(freq));
+                const modes = Object.keys(freq).filter(x => freq[x] === maxFreq);
+                
+                // Variance and standard deviation
+                const variance = data.reduce((sum, x) => sum + Math.pow(x - mean, 2), 0) / (n - 1);
+                const stdDev = Math.sqrt(variance);
+                
+                // Display results
+                resultDiv.innerHTML = `
+                    <p><strong>n:</strong> ${n}</p>
+                    <p><strong>Mean:</strong> ${mean.toFixed(4)}</p>
+                    <p><strong>Median:</strong> ${median.toFixed(4)}</p>
+                    <p><strong>Mode:</strong> ${modes.join(', ')}</p>
+                    <p><strong>Std Dev:</strong> ${stdDev.toFixed(4)}</p>
+                    <p><strong>Variance:</strong> ${variance.toFixed(4)}</p>
+                `;
+                resultDiv.style.color = 'green';
+                
+                // Track usage
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'stats_calculation', {
+                        event_category: 'Calculator',
+                        event_label: 'Statistics',
+                        value: n
+                    });
+                }
+                
+            } catch (e) {
+                resultDiv.innerHTML = '<p style="color: red;">Error calculating statistics</p>';
+            }
+        }
+        
+        // Track engagement
+        let timeOnPage = 0;
+        setInterval(() => {
+            timeOnPage += 5;
+            if (timeOnPage % 30 === 0 && typeof gtag !== 'undefined') {
+                gtag('event', 'time_on_page', {
+                    event_category: 'Engagement',
+                    event_label: 'Statistics Page',
+                    value: timeOnPage
+                });
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

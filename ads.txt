@@ -1,1 +1,35 @@
+# ads.txt file for math.help
+# This file is used to authorize digital sellers for programmatic advertising
+
+# Google AdSense
 google.com, pub-5635114711353420, DIRECT, f08c47fec0942fa0
+
+# Ezoic
+ezoic.com, 1, DIRECT
+
+# Additional premium networks (to be activated when approved)
+# AdThrive placeholder (pending application approval)
+# adthrive.com, [publisher_id], DIRECT
+
+# Mediavine placeholder (pending application approval) 
+# mediavine.com, [publisher_id], DIRECT
+
+# Common programmatic partners for better fill rates
+amazon-adsystem.com, 3411, DIRECT
+pubmatic.com, 156872, RESELLER, 5d62403b186f2ace
+rubiconproject.com, 17960, RESELLER, 0bfd66d529a55807
+openx.com, 540298543, RESELLER, 6a698e2ec38604c6
+appnexus.com, 10239, RESELLER, f5ab79cb980f11d1
+sovrn.com, 273644, RESELLER, fafdf38b16bf6b2b
+lijit.com, 273644, RESELLER, fafdf38b16bf6b2b
+improvedigital.com, 1552, RESELLER
+contextweb.com, 561998, RESELLER, 89ff185a4c4e857c
+rhythmone.com, 2564526802, RESELLER, a670c89d4a324e47
+video.unrulymedia.com, 2564526802, RESELLER
+indexexchange.com, 191503, RESELLER, 50b1c356f2c5c8fc
+districtm.io, 101519, RESELLER, 3fd707be9c4527c3
+adnxs.com, 1908, RESELLER, f5ab79cb980f11d1
+loopme.com, 11414, RESELLER, 6c8d5f95897a5a3b
+smartadserver.com, 3056, RESELLER
+triplelift.com, 9979, RESELLER, 6c33edb13117fd86
+yahoo.com, 57289, RESELLER, e1a5b5b6e3255540

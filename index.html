@@ -3,80 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Help - Mathematics Resources and Solutions Coming Soon</title>
-    <meta name="description" content="Math.help - Your premier destination for mathematics resources, tutorials, and problem-solving tools. Educational content coming soon.">
-    <meta name="keywords" content="math help, mathematics, algebra, calculus, geometry, math resources, math tutoring, math solutions">
+    <title>Math.help - Master Mathematics Step by Step | Free Calculators & Guides</title>
+    <meta name="description" content="Master mathematics with comprehensive guides, step-by-step solutions, and interactive calculators. Free algebra, calculus, geometry, and statistics resources for all levels.">
+    <meta name="keywords" content="math help, how to solve math problems step by step, free online math calculator, quadratic equation solver, derivative calculator, linear algebra help, calculus homework help, geometry formulas, statistics calculator, trigonometry identities, math study guides, algebra word problems solver, step by step math solutions">
     <meta name="robots" content="index, follow">
     
-    <link rel="stylesheet" href="styles.css">
+    <!-- Critical CSS - Inline for fastest loading -->
+    <style>
+        :root{--primary-color:#2c3e50;--secondary-color:#3498db;--accent-color:#e74c3c;--success-color:#27ae60;--background-color:#ffffff;--text-color:#333333;--light-gray:#f8f9fa;--border-color:#e0e0e0;--max-width:1200px;--content-width:740px;--sidebar-width:340px;--mobile-breakpoint:768px;--tablet-breakpoint:1024px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.7;color:var(--text-color);background-color:var(--background-color);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}.content-wrapper{display:flex;gap:30px;margin-top:30px}.main-content{flex:1;max-width:var(--content-width)}.sidebar{width:var(--sidebar-width);position:sticky;top:20px;height:fit-content}.site-header{background:linear-gradient(135deg,var(--primary-color) 0%,var(--secondary-color) 100%);color:white;padding:40px 0;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.1)}.site-title{font-size:3em;font-weight:700;margin-bottom:10px;letter-spacing:-1px}.tagline{font-size:1.2em;opacity:0.9;font-weight:300}.main-nav{background-color:var(--primary-color);position:sticky;top:0;z-index:100;box-shadow:0 2px 5px rgba(0,0,0,0.1)}.nav-list{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;padding:0}.nav-item{margin:0}.nav-link{display:block;padding:15px 20px;color:white;text-decoration:none;font-weight:500;transition:background-color 0.3s ease}.nav-link:hover,.nav-link.active{background-color:var(--secondary-color)}.calculator-section{background:var(--light-gray);padding:40px 0;text-align:center}.calculator-widget{max-width:400px;margin:0 auto;background:white;padding:30px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}.mobile-menu-toggle{display:none;background:none;border:none;color:white;font-size:1.5rem;padding:10px;cursor:pointer;position:absolute;right:20px;top:50%;transform:translateY(-50%)}.mobile-tools{display:none;background:var(--light-gray);padding:15px 0;border-top:1px solid var(--border-color)}.mobile-tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;padding:0 20px}.mobile-tool-btn{background:var(--secondary-color);color:white;border:none;padding:12px 8px;border-radius:6px;font-size:0.9rem;text-decoration:none;display:block;text-align:center;transition:background-color 0.3s}@media (max-width:768px){.content-wrapper{flex-direction:column}.sidebar{display:none}.site-title{font-size:2.2em}.main-nav{position:relative}.mobile-menu-toggle{display:block}.nav-list{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--primary-color);box-shadow:0 2px 10px rgba(0,0,0,0.1)}.nav-list.active{display:flex}.nav-link{text-align:center;border-bottom:1px solid rgba(255,255,255,0.1)}.mobile-tools{display:block}}
+    </style>
+    
+    <!-- Load full CSS after critical content -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="ad-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="ad-styles.css">
+    </noscript>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
+    <!-- Resource hints for faster loading -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preconnect" href="https://www.ezojs.com" crossorigin>
+    <link rel="dns-prefetch" href="//cmp.gatekeeperconsent.com">
+    <link rel="dns-prefetch" href="//the.gatekeeperconsent.com">
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    
+    <!-- Ezoic Integration Scripts -->
+    <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
+    <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    
+    <!-- KaTeX JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="katex-lazy.js"></script>
+    
+    <!-- Enhanced Schema Markup for SEO -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Math.help",
-        "description": "Your premier destination for mathematics resources, tutorials, and problem-solving tools",
-        "url": "https://math.help",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://math.help/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Math.help",
-            "url": "https://math.help"
-        },
-        "inLanguage": "en-US",
-        "copyrightYear": "2024",
-        "genre": "Education",
-        "audience": {
-            "@type": "EducationalAudience",
-            "@id": "https://math.help",
-            "educationalRole": ["student", "teacher", "parent"]
-        }
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://math.help/#website",
+                "name": "Math.help",
+                "description": "Master mathematics with comprehensive guides, interactive calculators, and step-by-step solutions for algebra, calculus, geometry, and more.",
+                "url": "https://math.help",
+                "inLanguage": "en-US",
+                "copyrightYear": "2024",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://math.help/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                },
+                "publisher": {
+                    "@id": "https://math.help/#organization"
+                }
+            },
+            {
+                "@type": "EducationalOrganization",
+                "@id": "https://math.help/#organization",
+                "name": "Math.help",
+                "url": "https://math.help",
+                "description": "Educational platform providing free mathematics resources, calculators, and learning materials",
+                "sameAs": [
+                    "https://math.help/about",
+                    "https://math.help/contact"
+                ],
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Mathematics Learning Resources",
+                    "itemListElement": [
+                        {
+                            "@type": "EducationalOccupationalProgram",
+                            "name": "Algebra Course",
+                            "description": "Complete algebra curriculum with interactive tools",
+                            "url": "https://math.help/algebra/",
+                            "educationalLevel": "High School",
+                            "timeToComplete": "P3M"
+                        },
+                        {
+                            "@type": "EducationalOccupationalProgram", 
+                            "name": "Calculus Course",
+                            "description": "Comprehensive calculus with step-by-step solutions",
+                            "url": "https://math.help/calculus/",
+                            "educationalLevel": "College",
+                            "timeToComplete": "P6M"
+                        },
+                        {
+                            "@type": "EducationalOccupationalProgram",
+                            "name": "Geometry Course", 
+                            "description": "Visual geometry learning with interactive tools",
+                            "url": "https://math.help/geometry/",
+                            "educationalLevel": "High School",
+                            "timeToComplete": "P4M"
+                        }
+                    ]
+                },
+                "audience": {
+                    "@type": "EducationalAudience",
+                    "educationalRole": ["student", "teacher", "parent", "researcher"],
+                    "educationalLevel": ["Middle School", "High School", "College", "Graduate"]
+                }
+            },
+            {
+                "@type": "Service",
+                "@id": "https://math.help/#service",
+                "name": "Mathematics Education Service",
+                "description": "Free online mathematics education with interactive calculators and step-by-step solutions",
+                "provider": {
+                    "@id": "https://math.help/#organization"
+                },
+                "serviceType": "Educational Service",
+                "areaServed": "Worldwide",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "InStock",
+                    "validFrom": "2024-01-01"
+                },
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Math Tools and Resources",
+                    "itemListElement": [
+                        {
+                            "@type": "SoftwareApplication",
+                            "name": "Equation Solver",
+                            "applicationCategory": "EducationalApplication",
+                            "url": "https://math.help/tools/"
+                        },
+                        {
+                            "@type": "SoftwareApplication", 
+                            "name": "Graphing Calculator",
+                            "applicationCategory": "EducationalApplication",
+                            "url": "https://math.help/tools/"
+                        }
+                    ]
+                }
+            }
+        ]
     }
     </script>
     
     <meta name="google-adsense-account" content="ca-pub-5635114711353420">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ERGV6WWC21', {
+            page_path: window.location.pathname,
+            page_title: document.title,
+            send_page_view: true
+        });
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sgk1r5gd6a");
+    </script>
 </head>
 <body>
     <header class="site-header">
         <div class="container">
             <h1 class="site-title">Math.help</h1>
-            <p class="tagline">Your Mathematics Resource - Coming Soon</p>
+            <p class="tagline">Master Mathematics Step by Step</p>
         </div>
     </header>
-
-    <main class="main-content">
+    
+    <nav class="main-nav">
         <div class="container">
-            
-            <div class="ad-container ad-top">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5635114711353420"
-                     data-ad-slot="3137758017"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">☰</button>
+            <ul class="nav-list" id="navList">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/">Algebra</a></li>
+                <li><a href="/calculus/">Calculus</a></li>
+                <li><a href="/geometry/">Geometry</a></li>
+                <li><a href="/trigonometry/">Trigonometry</a></li>
+                <li><a href="/statistics/">Statistics</a></li>
+                <li><a href="/tools/">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Mobile Tools Section -->
+    <div class="mobile-tools">
+        <div class="container">
+            <div class="mobile-tools-grid">
+                <a href="/algebra/quadratic-equations/" class="mobile-tool-btn">🧮 Quadratic</a>
+                <a href="/calculus/derivative-calculator/" class="mobile-tool-btn">📊 Derivative</a>
+                <a href="/algebra/linear-equations/" class="mobile-tool-btn">📐 Linear</a>
+                <a href="/tools/" class="mobile-tool-btn">⚡ All Tools</a>
             </div>
+        </div>
+    </div>
 
-            <section class="welcome-section">
-                <h2>Welcome to Math.help</h2>
-                <p>We're building something amazing for mathematics enthusiasts, students, and educators. Our comprehensive resource platform will soon provide tools, tutorials, and solutions to help you master mathematics at every level.</p>
-            </section>
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Main Content Area -->
+                <div class="main-content">
+                    
+                    <!-- Position 1: Below Navigation (Display Horizontal) -->
+                    <div class="ad-container ad-top">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="3137758017"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
 
-            <section class="daily-tip">
-                <h3>💡 Daily Math Insight</h3>
-                <div class="tip-content">
-                    <p><strong>Did you know?</strong> The number π (pi) has been calculated to over 100 trillion decimal places, but for most practical applications, just 39 decimal places are sufficient to calculate the circumference of the observable universe accurate to the width of a hydrogen atom!</p>
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>Master Mathematics Step by Step</h1>
+                    <p>Comprehensive guides, interactive calculators, and thousands of worked examples to help you excel in algebra, calculus, geometry, and more.</p>
+                    <div class="hero-actions">
+                        <a href="/study-guides/" class="cta-button primary">Explore Study Guides</a>
+                        <a href="/tools/" class="cta-button secondary">Use Calculators</a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label">Interactive Calculators</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Worked Examples</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Subject Areas</span>
+                    </div>
                 </div>
             </section>
 
+            <!-- Featured Topics -->
+            <section class="featured-topics">
+                <h2>Start Learning Today</h2>
+                <div class="topics-grid">
+                    <div class="topic-card featured">
+                        <div class="topic-icon">📐</div>
+                        <h3>Algebra</h3>
+                        <p>Master equations, polynomials, and algebraic thinking with step-by-step guides and interactive calculators.</p>
+                        <ul class="topic-highlights">
+                            <li><a href="/algebra/linear-equations/">Linear Equations</a></li>
+                            <li><a href="/algebra/quadratic-equations/">Quadratic Equations</a></li>
+                            <li><a href="/algebra/factoring/">Factoring</a></li>
+                        </ul>
+                        <a href="/algebra/" class="topic-link">Explore Algebra →</a>
+                    </div>
+                    
+                    <div class="topic-card featured">
+                        <div class="topic-icon">📈</div>
+                        <h3>Calculus</h3>
+                        <p>Understand limits, derivatives, and integrals with visual explanations and practical applications.</p>
+                        <ul class="topic-highlights">
+                            <li><a href="/calculus/derivative-calculator/">Derivative Calculator</a></li>
+                            <li><a href="/calculus/">Limits & Continuity</a></li>
+                            <li><a href="/calculus/">Integration Techniques</a></li>
+                        </ul>
+                        <a href="/calculus/" class="topic-link">Learn Calculus →</a>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <div class="topic-icon">🔺</div>
+                        <h3>Geometry</h3>
+                        <p>Explore shapes, angles, and spatial relationships through interactive visualizations.</p>
+                        <ul class="topic-highlights">
+                            <li><a href="/geometry/">Triangles & Polygons</a></li>
+                            <li><a href="/geometry/">Circles & Arcs</a></li>
+                            <li><a href="/geometry/">3D Geometry</a></li>
+                        </ul>
+                        <a href="/geometry/" class="topic-link">Study Geometry →</a>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <div class="topic-icon">🌊</div>
+                        <h3>Trigonometry</h3>
+                        <p>Master angles, triangles, and periodic functions with comprehensive examples.</p>
+                        <ul class="topic-highlights">
+                            <li><a href="/trigonometry/">Unit Circle</a></li>
+                            <li><a href="/trigonometry/">Trig Functions</a></li>
+                            <li><a href="/trigonometry/">Identities</a></li>
+                        </ul>
+                        <a href="/trigonometry/" class="topic-link">Explore Trigonometry →</a>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <div class="topic-icon">📊</div>
+                        <h3>Statistics</h3>
+                        <p>Analyze data and understand probability with practical examples and real applications.</p>
+                        <ul class="topic-highlights">
+                            <li><a href="/statistics/">Descriptive Statistics</a></li>
+                            <li><a href="/statistics/">Probability</a></li>
+                            <li><a href="/statistics/">Hypothesis Testing</a></li>
+                        </ul>
+                        <a href="/statistics/" class="topic-link">Learn Statistics →</a>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <div class="topic-icon">🧮</div>
+                        <h3>Calculators & Tools</h3>
+                        <p>Access powerful math calculators for instant solutions and step-by-step explanations.</p>
+                        <ul class="topic-highlights">
+                            <li><a href="/tools/">Equation Solvers</a></li>
+                            <li><a href="/tools/">Graphing Tools</a></li>
+                            <li><a href="/tools/">Area Calculators</a></li>
+                        </ul>
+                        <a href="/tools/" class="topic-link">Use Tools →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Examples -->
+            <section class="featured-examples">
+                <h2>Popular Examples</h2>
+                <div class="examples-showcase">
+                    <div class="example-card">
+                        <h4>Solving Quadratic Equations</h4>
+                        <p>Learn to solve $2x^2 - 7x + 3 = 0$ using the quadratic formula with step-by-step instructions.</p>
+                        <div class="example-preview">$$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$</div>
+                        <a href="/algebra/quadratic-equations/" class="example-link">View Solution →</a>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4>Finding Derivatives</h4>
+                        <p>Calculate the derivative of $f(x) = x^2 \sin x$ using the product rule.</p>
+                        <div class="example-preview">$$\frac{d}{dx}[x^2 \sin x] = 2x \sin x + x^2 \cos x$$</div>
+                        <a href="/calculus/derivative-calculator/" class="example-link">Try Calculator →</a>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4>Triangle Area Calculation</h4>
+                        <p>Find the area of any triangle using base and height, or Heron's formula.</p>
+                        <div class="example-preview">$$A = \frac{1}{2}bh$$</div>
+                        <a href="/geometry/" class="example-link">Learn More →</a>
+                    </div>
+                </div>
+                <div class="examples-cta">
+                    <a href="/examples/" class="cta-button">View All Examples →</a>
+                </div>
+            </section>
+
+            <!-- Position 2: In-Content (Display Responsive Square) -->
             <div class="ad-container ad-middle">
                 <ins class="adsbygoogle"
                      style="display:block"
@@ -89,38 +381,36 @@
                 </script>
             </div>
 
-            <section class="resources-section">
-                <h3>🔗 Featured Math Resources</h3>
-                <div class="resources-grid">
-                    <div class="resource-item">
-                        <h4>Khan Academy</h4>
-                        <p>Free online courses for algebra, calculus, and more</p>
-                        <a href="https://www.khanacademy.org/math" target="_blank" rel="noopener">Visit Khan Academy</a>
+            <!-- Quick Access Section -->
+            <section class="quick-access">
+                <h2>Popular Resources</h2>
+                <div class="quick-access-grid">
+                    <div class="access-card">
+                        <div class="access-icon">📚</div>
+                        <h3>Study Guides</h3>
+                        <p>Comprehensive guides for every math topic</p>
+                        <a href="/study-guides/" class="access-link">Browse Guides →</a>
                     </div>
-                    <div class="resource-item">
-                        <h4>Wolfram Alpha</h4>
-                        <p>Computational engine for mathematical problems</p>
-                        <a href="https://www.wolframalpha.com/" target="_blank" rel="noopener">Try Wolfram Alpha</a>
+                    
+                    <div class="access-card">
+                        <div class="access-icon">📋</div>
+                        <h3>Formula Reference</h3>
+                        <p>Essential formulas organized by subject</p>
+                        <a href="/formulas/" class="access-link">View Formulas →</a>
                     </div>
-                    <div class="resource-item">
-                        <h4>Desmos Graphing Calculator</h4>
-                        <p>Free online graphing calculator for functions</p>
-                        <a href="https://www.desmos.com/calculator" target="_blank" rel="noopener">Open Calculator</a>
+                    
+                    <div class="access-card">
+                        <div class="access-icon">💡</div>
+                        <h3>Worked Examples</h3>
+                        <p>Step-by-step solutions to common problems</p>
+                        <a href="/examples/" class="access-link">See Examples →</a>
                     </div>
-                    <div class="resource-item">
-                        <h4>MIT OpenCourseWare</h4>
-                        <p>Free mathematics courses from MIT</p>
-                        <a href="https://ocw.mit.edu/courses/mathematics/" target="_blank" rel="noopener">Browse Courses</a>
-                    </div>
-                    <div class="resource-item">
-                        <h4>Math Stack Exchange</h4>
-                        <p>Q&A community for mathematical questions</p>
-                        <a href="https://math.stackexchange.com/" target="_blank" rel="noopener">Join Community</a>
-                    </div>
-                    <div class="resource-item">
-                        <h4>GeoGebra</h4>
-                        <p>Interactive geometry, algebra, and calculus</p>
-                        <a href="https://www.geogebra.org/" target="_blank" rel="noopener">Explore GeoGebra</a>
+                    
+                    <div class="access-card">
+                        <div class="access-icon">🔧</div>
+                        <h3>Interactive Tools</h3>
+                        <p>Calculators and solvers for instant help</p>
+                        <a href="/tools/" class="access-link">Use Tools →</a>
                     </div>
                 </div>
             </section>
@@ -158,6 +448,7 @@
                 </div>
             </section>
 
+            <!-- Position 4: Bottom Content (Display Vertical) -->
             <div class="ad-container ad-bottom">
                 <ins class="adsbygoogle"
                      style="display:block"
@@ -181,16 +472,78 @@
                 </script>
             </div>
 
-            <section class="coming-soon">
-                <h3>🚀 What's Coming</h3>
-                <ul>
-                    <li>Interactive math tutorials and step-by-step solutions</li>
-                    <li>Advanced calculator with graphing capabilities</li>
-                    <li>Personalized learning paths for different skill levels</li>
-                    <li>Community forum for math discussions and help</li>
-                    <li>Mobile app for learning on the go</li>
-                </ul>
+            <!-- Learning Paths -->
+            <section class="learning-paths">
+                <h2>Recommended Learning Paths</h2>
+                <div class="paths-grid">
+                    <div class="path-card">
+                        <h3>🎓 High School Track</h3>
+                        <div class="path-steps">
+                            <span class="step">1. <a href="/algebra/">Algebra Fundamentals</a></span>
+                            <span class="step">2. <a href="/geometry/">Geometry Basics</a></span>
+                            <span class="step">3. <a href="/trigonometry/">Trigonometry</a></span>
+                            <span class="step">4. <a href="/statistics/">Statistics</a></span>
+                        </div>
+                        <a href="/study-guides/" class="path-link">Start Learning →</a>
+                    </div>
+                    
+                    <div class="path-card">
+                        <h3>🏫 College Prep Track</h3>
+                        <div class="path-steps">
+                            <span class="step">1. <a href="/algebra/">Advanced Algebra</a></span>
+                            <span class="step">2. <a href="/trigonometry/">Pre-Calculus</a></span>
+                            <span class="step">3. <a href="/calculus/">Calculus I</a></span>
+                            <span class="step">4. <a href="/statistics/">Applied Statistics</a></span>
+                        </div>
+                        <a href="/calculus/" class="path-link">Begin Calculus →</a>
+                    </div>
+                </div>
             </section>
+                </div>
+                
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Position 3: Sticky Sidebar (Display Vertical) -->
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                    
+                    <!-- Related Topics -->
+                    <section class="related-topics">
+                        <h3>Popular Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="/algebra/quadratic-equations/">Quadratic Equations</a></li>
+                            <li><a href="/calculus/derivative-calculator/">Derivative Calculator</a></li>
+                            <li><a href="/geometry/">Triangle Properties</a></li>
+                            <li><a href="/statistics/">Normal Distribution</a></li>
+                            <li><a href="/trigonometry/">Unit Circle</a></li>
+                            <li><a href="/algebra/linear-equations/">Linear Equations</a></li>
+                            <li><a href="/algebra/factoring/">Factoring</a></li>
+                        </ul>
+                    </section>
+                    
+                    <!-- Quick Tools -->
+                    <section class="quick-tools">
+                        <h3>Quick Tools</h3>
+                        <ul class="tool-list">
+                            <li><a href="/tools/">Equation Solver</a></li>
+                            <li><a href="/tools/">Graphing Calculator</a></li>
+                            <li><a href="/tools/">Area Calculator</a></li>
+                            <li><a href="/tools/">Statistics Calculator</a></li>
+                            <li><a href="/formulas/">Formula Reference</a></li>
+                            <li><a href="/examples/">Worked Examples</a></li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
         </div>
     </main>
 
@@ -206,5 +559,46 @@
     </footer>
 
     <script src="calculator.js"></script>
+    <script src="ad-optimization.js"></script>
+    
+    <!-- Mobile navigation functionality -->
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navList = document.getElementById('navList');
+            
+            if (mobileToggle && navList) {
+                mobileToggle.addEventListener('click', function() {
+                    navList.classList.toggle('active');
+                    this.setAttribute('aria-expanded', navList.classList.contains('active'));
+                });
+                
+                // Close menu when clicking on a link
+                navList.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A') {
+                        navList.classList.remove('active');
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- Defer heavy analytics until after initial load -->
+    <script>
+        // Load analytics after 2 seconds to prioritize core experience
+        setTimeout(() => {
+            const analyticsScript = document.createElement('script');
+            analyticsScript.src = 'analytics-optimization.js';
+            analyticsScript.async = true;
+            document.head.appendChild(analyticsScript);
+            
+            const reportingScript = document.createElement('script');
+            reportingScript.src = 'performance-reporting.js';
+            reportingScript.async = true;
+            document.head.appendChild(reportingScript);
+        }, 2000);
+    </script>
 </body>
 </html>

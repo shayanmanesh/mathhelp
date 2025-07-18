@@ -1,0 +1,20 @@
+# Redirect rules for Math.help
+
+# Force trailing slashes for directories
+/algebra /algebra/ 301
+/calculus /calculus/ 301
+/geometry /geometry/ 301
+/trigonometry /trigonometry/ 301
+/statistics /statistics/ 301
+/tools /tools/ 301
+
+# Common variations
+/calc /calculus/ 301
+/trig /trigonometry/ 301
+/stats /statistics/ 301
+/alg /algebra/ 301
+
+# Future content redirects
+/quadratic /algebra/quadratic-equations/ 301
+/derivatives /calculus/derivatives/ 301
+/triangles /geometry/triangles/ 301

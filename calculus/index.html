@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculus - Complete Guide with Examples | Math.help</title>
+    <meta name="description" content="Master calculus with our comprehensive guide. Learn derivatives, integrals, limits, and applications with step-by-step examples and interactive calculators.">
+    <meta name="keywords" content="calculus, derivatives, integrals, limits, differential calculus, integral calculus, calculus solver, calculus calculator">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    
+    <!-- Ezoic Integration Scripts -->
+    <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
+    <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+    
+    <!-- KaTeX JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="../katex-lazy.js"></script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MathSolver",
+        "@id": "https://math.help/calculus/",
+        "name": "Calculus Complete Guide",
+        "description": "Comprehensive calculus guide with derivatives, integrals, and applications",
+        "url": "https://math.help/calculus/",
+        "potentialAction": {
+            "@type": "SolveMathAction",
+            "target": "https://math.help/calculus/solver/"
+        }
+    }
+    </script>
+    
+    <meta name="google-adsense-account" content="ca-pub-5635114711353420">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ERGV6WWC21', {
+            page_path: window.location.pathname,
+            page_title: document.title,
+            send_page_view: true
+        });
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sgk1r5gd6a");
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Master Mathematics Step by Step</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/">Algebra</a></li>
+                <li><a href="/calculus/" class="active">Calculus</a></li>
+                <li><a href="/geometry/">Geometry</a></li>
+                <li><a href="/trigonometry/">Trigonometry</a></li>
+                <li><a href="/statistics/">Statistics</a></li>
+                <li><a href="/tools/">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li class="active">Calculus</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Main Content Area -->
+                <article class="main-content">
+                    
+                    <!-- Position 1: Below Navigation -->
+                    <div class="ad-container ad-top">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="3137758017"
+                             data-ad-format="horizontal"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+                    <section class="pillar-content">
+                        <h1>Calculus - Complete Guide with Examples and Practice</h1>
+                        
+                        <div class="table-of-contents">
+                            <h2>Table of Contents</h2>
+                            <ol>
+                                <li><a href="#introduction">Introduction and Real-World Applications</a></li>
+                                <li><a href="#core-concepts">Core Concepts and Definitions</a></li>
+                                <li><a href="#limits">Understanding Limits</a></li>
+                                <li><a href="#derivatives">Derivatives: Step-by-Step Methods</a></li>
+                                <li><a href="#integrals">Integrals: Techniques and Applications</a></li>
+                                <li><a href="#practice">Practice Problems (Progressive Difficulty)</a></li>
+                                <li><a href="#visualizations">Interactive Visualizations</a></li>
+                                <li><a href="#related">Related Topics and Next Steps</a></li>
+                            </ol>
+                        </div>
+
+                        <section id="introduction">
+                            <h2>Introduction and Real-World Applications</h2>
+                            <p>Calculus is the mathematical study of continuous change. It's the foundation for understanding motion, growth, optimization, and countless phenomena in science, engineering, and economics.</p>
+                            
+                            <h3>Why Learn Calculus?</h3>
+                            <ul>
+                                <li><strong>Physics & Engineering</strong>: Model motion, forces, and energy</li>
+                                <li><strong>Economics & Finance</strong>: Optimize profits, analyze market trends</li>
+                                <li><strong>Medicine & Biology</strong>: Model population growth, drug dosages</li>
+                                <li><strong>Computer Science</strong>: Machine learning, graphics, optimization</li>
+                                <li><strong>Data Science</strong>: Statistical modeling and analysis</li>
+                            </ul>
+
+                            <div class="concept-box">
+                                <h4>The Two Branches of Calculus</h4>
+                                <p><strong>Differential Calculus</strong>: Studies rates of change (derivatives)</p>
+                                <p><strong>Integral Calculus</strong>: Studies accumulation of quantities (integrals)</p>
+                                <p class="highlight-formula">$$\text{Fundamental Theorem: } \int_a^b f'(x)\,dx = f(b) - f(a)$$</p>
+                            </div>
+                        </section>
+
+                        <!-- Position 2: In-Article After First Concept -->
+                        <div class="ad-container in-article">
+                            <ins class="adsbygoogle"
+                                 style="display:block; text-align:center;"
+                                 data-ad-layout="in-article"
+                                 data-ad-format="fluid"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="4431777949"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+                        <section id="core-concepts">
+                            <h2>Core Concepts and Definitions</h2>
+                            
+                            <h3>1. Functions and Continuity</h3>
+                            <div class="concept-box">
+                                <p><strong>Function</strong>: A relation that assigns each input exactly one output</p>
+                                <p><strong>Continuous Function</strong>: A function with no breaks, jumps, or holes</p>
+                                <div class="math-example">
+                                    <p>Continuous: $f(x) = x^2 + 3x - 1$</p>
+                                    <p>Discontinuous: $f(x) = \frac{1}{x}$ at $x = 0$</p>
+                                </div>
+                            </div>
+
+                            <h3>2. Rate of Change</h3>
+                            <div class="concept-box">
+                                <p><strong>Average Rate of Change</strong>: Change over an interval</p>
+                                <p>$$\text{Average Rate} = \frac{f(b) - f(a)}{b - a}$$</p>
+                                <p><strong>Instantaneous Rate of Change</strong>: Rate at a specific point (derivative)</p>
+                                <p>$$f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}$$</p>
+                            </div>
+                        </section>
+
+                        <section id="limits">
+                            <h2>Understanding Limits</h2>
+                            
+                            <h3>What is a Limit?</h3>
+                            <div class="method-box">
+                                <p>A limit describes the value a function approaches as the input approaches a certain value.</p>
+                                <p class="highlight-formula">$$\lim_{x \to a} f(x) = L$$</p>
+                                <p>Read as: "The limit of f(x) as x approaches a equals L"</p>
+                            </div>
+
+                            <h3>Evaluating Limits: Step-by-Step</h3>
+                            <div class="method-box">
+                                <h4>Example: Find $\lim_{x \to 2} \frac{x^2 - 4}{x - 2}$</h4>
+                                <div class="step-by-step">
+                                    <div class="step">
+                                        <span class="step-number">Step 1:</span>
+                                        <p>Direct substitution gives $\frac{0}{0}$ (indeterminate)</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 2:</span>
+                                        <p>Factor the numerator: $x^2 - 4 = (x + 2)(x - 2)$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 3:</span>
+                                        <p>Simplify: $\frac{(x + 2)(x - 2)}{x - 2} = x + 2$ for $x \neq 2$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 4:</span>
+                                        <p>Now evaluate: $\lim_{x \to 2} (x + 2) = 4$</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Important Limit Rules</h3>
+                            <div class="concept-box">
+                                <ul>
+                                    <li>Sum Rule: $\lim(f + g) = \lim f + \lim g$</li>
+                                    <li>Product Rule: $\lim(f \cdot g) = \lim f \cdot \lim g$</li>
+                                    <li>Quotient Rule: $\lim\frac{f}{g} = \frac{\lim f}{\lim g}$ (if $\lim g \neq 0$)</li>
+                                    <li>Special Limit: $\lim_{x \to 0} \frac{\sin x}{x} = 1$</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="derivatives">
+                            <h2>Derivatives: Step-by-Step Methods</h2>
+                            
+                            <h3>Definition of a Derivative</h3>
+                            <div class="concept-box">
+                                <p>The derivative of a function f(x) at a point measures the instantaneous rate of change:</p>
+                                <p class="highlight-formula">$$f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}$$</p>
+                            </div>
+
+                            <h3>Basic Derivative Rules</h3>
+                            <div class="method-box">
+                                <h4>Power Rule</h4>
+                                <p>If $f(x) = x^n$, then $f'(x) = nx^{n-1}$</p>
+                                <div class="math-examples">
+                                    <div class="math-example">
+                                        <p>$f(x) = x^3$ → $f'(x) = 3x^2$</p>
+                                    </div>
+                                    <div class="math-example">
+                                        <p>$f(x) = x^{1/2}$ → $f'(x) = \frac{1}{2}x^{-1/2}$</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="method-box">
+                                <h4>Product Rule</h4>
+                                <p>If $f(x) = u(x) \cdot v(x)$, then:</p>
+                                <p class="highlight-formula">$$f'(x) = u'(x)v(x) + u(x)v'(x)$$</p>
+                                
+                                <h4>Example: Find the derivative of $f(x) = x^2 \sin x$</h4>
+                                <div class="step-by-step">
+                                    <div class="step">
+                                        <span class="step-number">Step 1:</span>
+                                        <p>Identify $u = x^2$ and $v = \sin x$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 2:</span>
+                                        <p>Find derivatives: $u' = 2x$ and $v' = \cos x$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 3:</span>
+                                        <p>Apply product rule: $f'(x) = 2x \cdot \sin x + x^2 \cdot \cos x$</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="method-box">
+                                <h4>Chain Rule</h4>
+                                <p>If $f(x) = g(h(x))$, then:</p>
+                                <p class="highlight-formula">$$f'(x) = g'(h(x)) \cdot h'(x)$$</p>
+                                <p>Or in Leibniz notation: $\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}$</p>
+                            </div>
+
+                            <h3>Common Derivatives</h3>
+                            <div class="concept-box">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border: 1px solid #ddd; padding: 8px;">Function</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px;">Derivative</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">$\sin x$</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">$\cos x$</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">$\cos x$</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">$-\sin x$</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">$e^x$</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">$e^x$</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">$\ln x$</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">$\frac{1}{x}$</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">$a^x$</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">$a^x \ln a$</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </section>
+
+                        <!-- Position 4: Between Problem Sets -->
+                        <div class="ad-container in-content">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="4431777949"
+                                 data-ad-format="rectangle"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+                        <section id="integrals">
+                            <h2>Integrals: Techniques and Applications</h2>
+                            
+                            <h3>Definition of an Integral</h3>
+                            <div class="concept-box">
+                                <p><strong>Indefinite Integral</strong>: The antiderivative of a function</p>
+                                <p>$$\int f(x)\,dx = F(x) + C$$</p>
+                                <p>where $F'(x) = f(x)$ and C is the constant of integration</p>
+                                
+                                <p><strong>Definite Integral</strong>: The area under a curve</p>
+                                <p>$$\int_a^b f(x)\,dx = F(b) - F(a)$$</p>
+                            </div>
+
+                            <h3>Basic Integration Rules</h3>
+                            <div class="method-box">
+                                <h4>Power Rule for Integration</h4>
+                                <p>$$\int x^n\,dx = \frac{x^{n+1}}{n+1} + C \quad (n \neq -1)$$</p>
+                                
+                                <h4>Special Case</h4>
+                                <p>$$\int \frac{1}{x}\,dx = \ln|x| + C$$</p>
+                            </div>
+
+                            <h3>Integration by Substitution</h3>
+                            <div class="method-box">
+                                <h4>Example: Evaluate $\int 2x(x^2 + 1)^3\,dx$</h4>
+                                <div class="step-by-step">
+                                    <div class="step">
+                                        <span class="step-number">Step 1:</span>
+                                        <p>Let $u = x^2 + 1$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 2:</span>
+                                        <p>Find $du = 2x\,dx$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 3:</span>
+                                        <p>Substitute: $\int u^3\,du$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 4:</span>
+                                        <p>Integrate: $\frac{u^4}{4} + C = \frac{(x^2 + 1)^4}{4} + C$</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Integration by Parts</h3>
+                            <div class="method-box">
+                                <p class="highlight-formula">$$\int u\,dv = uv - \int v\,du$$</p>
+                                
+                                <h4>Example: Evaluate $\int x e^x\,dx$</h4>
+                                <div class="step-by-step">
+                                    <div class="step">
+                                        <span class="step-number">Step 1:</span>
+                                        <p>Let $u = x$ and $dv = e^x\,dx$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 2:</span>
+                                        <p>Then $du = dx$ and $v = e^x$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 3:</span>
+                                        <p>Apply formula: $xe^x - \int e^x\,dx$</p>
+                                    </div>
+                                    <div class="step">
+                                        <span class="step-number">Step 4:</span>
+                                        <p>Final answer: $xe^x - e^x + C = e^x(x - 1) + C$</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="practice">
+                            <h2>Practice Problems (Progressive Difficulty)</h2>
+                            
+                            <div class="practice-section">
+                                <h3>Beginner Level - Limits</h3>
+                                <ol class="practice-list">
+                                    <li>Evaluate: $\lim_{x \to 3} (2x + 1)$</li>
+                                    <li>Find: $\lim_{x \to 0} \frac{x^2 + 3x}{x}$</li>
+                                    <li>Calculate: $\lim_{x \to \infty} \frac{1}{x}$</li>
+                                    <li>Determine: $\lim_{x \to 2} \frac{x^2 - 4}{x - 2}$</li>
+                                </ol>
+                            </div>
+
+                            <div class="practice-section">
+                                <h3>Intermediate Level - Derivatives</h3>
+                                <ol class="practice-list">
+                                    <li>Find $f'(x)$ if $f(x) = 3x^4 - 2x^2 + 5x - 1$</li>
+                                    <li>Differentiate: $y = x^2 \cos x$</li>
+                                    <li>Find $\frac{dy}{dx}$ if $y = \ln(x^2 + 1)$</li>
+                                    <li>Calculate: $\frac{d}{dx}[e^{3x} \sin x]$</li>
+                                </ol>
+                            </div>
+
+                            <div class="practice-section">
+                                <h3>Advanced Level - Integrals</h3>
+                                <ol class="practice-list">
+                                    <li>Evaluate: $\int x \sqrt{x^2 + 1}\,dx$</li>
+                                    <li>Find: $\int \frac{\ln x}{x}\,dx$</li>
+                                    <li>Calculate: $\int_0^{\pi} x \sin x\,dx$</li>
+                                    <li>Solve: $\int \frac{x^3}{x^2 + 1}\,dx$</li>
+                                </ol>
+                            </div>
+
+                            <div class="practice-section">
+                                <h3>Applications</h3>
+                                <ol class="practice-list">
+                                    <li>Find the area between $y = x^2$ and $y = 2x$ from $x = 0$ to $x = 2$</li>
+                                    <li>A particle moves with velocity $v(t) = 3t^2 - 6t$. Find the displacement from $t = 0$ to $t = 4$</li>
+                                    <li>Find the volume of the solid formed by rotating $y = \sqrt{x}$ about the x-axis from $x = 0$ to $x = 4$</li>
+                                    <li>Optimize: Find the dimensions of a rectangular box with volume 1000 cubic units that minimizes surface area</li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="visualizations">
+                            <h2>Interactive Visualizations</h2>
+                            <div class="visualization-container">
+                                <h3>Derivative Visualizer</h3>
+                                <p>Explore how the derivative represents the slope of the tangent line</p>
+                                <div class="desmos-embed">
+                                    <iframe src="https://www.desmos.com/calculator/zrqnzfwbfm?embed" 
+                                            width="100%" 
+                                            height="400" 
+                                            style="border: 1px solid #ccc" 
+                                            frameborder="0"></iframe>
+                                </div>
+                            </div>
+
+                            <div class="visualization-container">
+                                <h3>Integral as Area</h3>
+                                <p>Visualize how integrals calculate the area under curves</p>
+                                <div class="desmos-embed">
+                                    <iframe src="https://www.desmos.com/calculator/tgyr4zo8fq?embed" 
+                                            width="100%" 
+                                            height="400" 
+                                            style="border: 1px solid #ccc" 
+                                            frameborder="0"></iframe>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="related">
+                            <h2>Related Topics and Next Steps</h2>
+                            <div class="related-grid">
+                                <div class="related-item">
+                                    <h4>📊 Multivariable Calculus</h4>
+                                    <p>Extend calculus to functions of several variables</p>
+                                    <a href="/calculus/multivariable/">Learn More →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>🔄 Differential Equations</h4>
+                                    <p>Solve equations involving derivatives</p>
+                                    <a href="/calculus/differential-equations/">Explore →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>📈 Applications in Physics</h4>
+                                    <p>Apply calculus to motion and forces</p>
+                                    <a href="/calculus/physics-applications/">Discover →</a>
+                                </div>
+                                <div class="related-item">
+                                    <h4>💰 Economics Applications</h4>
+                                    <p>Optimization and marginal analysis</p>
+                                    <a href="/calculus/economics/">Learn More →</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Position 5: Before Comments/Footer (AutoRelaxed) -->
+                        <div class="ad-container ad-matched-content">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-format="autorelaxed"
+                                 data-ad-client="ca-pub-5635114711353420"
+                                 data-ad-slot="2324489353"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                    </section>
+                </article>
+                
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Sticky Sidebar Ad (Display Vertical) -->
+                    <div class="ad-container ad-sidebar sticky">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5635114711353420"
+                             data-ad-slot="4175507517"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <section class="quick-links">
+                        <h3>Calculus Topics</h3>
+                        <ul class="topic-list">
+                            <li><a href="/calculus/limits/">Limits & Continuity</a></li>
+                            <li><a href="/calculus/derivatives/">Derivative Rules</a></li>
+                            <li><a href="/calculus/applications-derivatives/">Applications of Derivatives</a></li>
+                            <li><a href="/calculus/integrals/">Integration Techniques</a></li>
+                            <li><a href="/calculus/applications-integrals/">Applications of Integrals</a></li>
+                            <li><a href="/calculus/series/">Sequences & Series</a></li>
+                            <li><a href="/calculus/differential-equations/">Differential Equations</a></li>
+                        </ul>
+                    </section>
+                    
+                    <!-- Calculator Widget -->
+                    <section class="sidebar-calculator">
+                        <h3>Derivative Calculator</h3>
+                        <div class="mini-calculator">
+                            <input type="text" id="derivative-input" placeholder="Enter function (e.g., x^2)">
+                            <button onclick="calculateDerivative()">Find Derivative</button>
+                            <div id="derivative-result"></div>
+                        </div>
+                    </section>
+                    
+                    <!-- Study Tips -->
+                    <section class="study-tips">
+                        <h3>Calculus Study Tips</h3>
+                        <ul class="tips-list">
+                            <li>Master algebra before calculus</li>
+                            <li>Visualize concepts with graphs</li>
+                            <li>Practice daily with varied problems</li>
+                            <li>Connect concepts to real applications</li>
+                            <li>Work through proofs for understanding</li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Math.help. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../calculator.js"></script>
+    <script>
+        // Simple derivative calculator for common functions
+        function calculateDerivative() {
+            const input = document.getElementById('derivative-input').value;
+            const resultDiv = document.getElementById('derivative-result');
+            
+            try {
+                // Basic pattern matching for simple derivatives
+                let result = '';
+                
+                if (input.match(/^x\^(\d+)$/)) {
+                    const power = parseInt(input.match(/^x\^(\d+)$/)[1]);
+                    if (power === 1) {
+                        result = '1';
+                    } else {
+                        result = `${power}x^${power - 1}`;
+                    }
+                } else if (input === 'sin(x)' || input === 'sinx') {
+                    result = 'cos(x)';
+                } else if (input === 'cos(x)' || input === 'cosx') {
+                    result = '-sin(x)';
+                } else if (input === 'e^x') {
+                    result = 'e^x';
+                } else if (input === 'ln(x)' || input === 'lnx') {
+                    result = '1/x';
+                } else if (input.match(/^(\d+)x$/)) {
+                    const coeff = input.match(/^(\d+)x$/)[1];
+                    result = coeff;
+                } else if (input === 'x') {
+                    result = '1';
+                } else if (input.match(/^\d+$/)) {
+                    result = '0';
+                } else {
+                    result = 'Use power, product, or chain rule';
+                }
+                
+                resultDiv.textContent = `f'(x) = ${result}`;
+                resultDiv.style.color = 'green';
+            } catch (e) {
+                resultDiv.textContent = 'Enter a simple function';
+                resultDiv.style.color = 'red';
+            }
+        }
+        
+        // Track engagement
+        let timeOnPage = 0;
+        setInterval(() => {
+            timeOnPage += 5;
+            if (timeOnPage % 30 === 0 && typeof gtag !== 'undefined') {
+                gtag('event', 'time_on_page', {
+                    event_category: 'Engagement',
+                    event_label: 'Calculus Page',
+                    value: timeOnPage
+                });
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

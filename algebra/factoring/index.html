@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factoring Calculator - Factor Polynomials Step by Step | Math.help</title>
+    <meta name="description" content="Factor polynomials instantly with step-by-step solutions. Factor quadratics, difference of squares, perfect square trinomials, and more.">
+    <meta name="keywords" content="factoring calculator, factor polynomials, quadratic factoring, difference of squares, factor by grouping, polynomial factorization">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    
+    <!-- KaTeX JavaScript -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="../../katex-lazy.js"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MathSolver",
+        "@id": "https://math.help/algebra/factoring/",
+        "name": "Factoring Calculator",
+        "description": "Factor polynomials with step-by-step solutions",
+        "url": "https://math.help/algebra/factoring/",
+        "potentialAction": {
+            "@type": "SolveMathAction",
+            "mathExpression-input": "required name=polynomial"
+        }
+    }
+    </script>
+    
+    <meta name="google-adsense-account" content="ca-pub-5635114711353420">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5635114711353420" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERGV6WWC21"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ERGV6WWC21');
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sgk1r5gd6a");
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Math.help</h1>
+            <p class="tagline">Master Mathematics Step by Step</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/" class="active">Algebra</a></li>
+                <li><a href="/calculus/">Calculus</a></li>
+                <li><a href="/geometry/">Geometry</a></li>
+                <li><a href="/trigonometry/">Trigonometry</a></li>
+                <li><a href="/statistics/">Statistics</a></li>
+                <li><a href="/tools/">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/algebra/">Algebra</a></li>
+                <li class="active">Factoring</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Position 1: Top Ad -->
+            <div class="ad-container ad-top">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5635114711353420"
+                     data-ad-slot="3137758017"
+                     data-ad-format="horizontal"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <article class="main-content">
+                <h1>Polynomial Factoring Calculator</h1>
+                
+                <!-- Interactive Solver -->
+                <section class="solver-section">
+                    <div class="solver-box">
+                        <h2>Enter Your Polynomial</h2>
+                        <p>Enter a polynomial to factor (e.g., x² - 5x + 6)</p>
+                        <div class="polynomial-input">
+                            <input type="text" id="polynomial-input" placeholder="e.g., x^2 - 5x + 6" value="x^2 - 5x + 6">
+                            <button onclick="factorPolynomial()" class="solve-button">Factor</button>
+                        </div>
+                        
+                        <div id="solution-display" class="solution-display"></div>
+                    </div>
+                </section>
+
+                <!-- Quick Theory -->
+                <section class="theory-section">
+                    <h2>Factoring Methods</h2>
+                    
+                    <div class="method-grid">
+                        <div class="method-box">
+                            <h3>1. Common Factor</h3>
+                            <p>Factor out the GCF first</p>
+                            <p class="example">$6x^2 + 9x = 3x(2x + 3)$</p>
+                        </div>
+                        
+                        <div class="method-box">
+                            <h3>2. Difference of Squares</h3>
+                            <p>$a^2 - b^2 = (a+b)(a-b)$</p>
+                            <p class="example">$x^2 - 9 = (x+3)(x-3)$</p>
+                        </div>
+                        
+                        <div class="method-box">
+                            <h3>3. Perfect Square Trinomial</h3>
+                            <p>$a^2 ± 2ab + b^2 = (a±b)^2$</p>
+                            <p class="example">$x^2 + 6x + 9 = (x+3)^2$</p>
+                        </div>
+                        
+                        <div class="method-box">
+                            <h3>4. Quadratic Trinomial</h3>
+                            <p>$ax^2 + bx + c$ → find factors</p>
+                            <p class="example">$x^2 + 5x + 6 = (x+2)(x+3)$</p>
+                        </div>
+                        
+                        <div class="method-box">
+                            <h3>5. Grouping</h3>
+                            <p>Group terms and factor</p>
+                            <p class="example">$x^3 + x^2 + 2x + 2 = (x+1)(x^2+2)$</p>
+                        </div>
+                        
+                        <div class="method-box">
+                            <h3>6. Sum/Difference of Cubes</h3>
+                            <p>$a^3 ± b^3 = (a±b)(a^2 ∓ ab + b^2)$</p>
+                            <p class="example">$x^3 + 8 = (x+2)(x^2-2x+4)$</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Position 2: Mid-content Ad -->
+                <div class="ad-container in-content">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5635114711353420"
+                         data-ad-slot="4431777949"
+                         data-ad-format="rectangle"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+                <!-- Examples -->
+                <section class="examples-section">
+                    <h2>Detailed Examples</h2>
+                    
+                    <div class="example-box">
+                        <h3>Example 1: Simple Quadratic</h3>
+                        <p>Factor: $x^2 - 7x + 12$</p>
+                        <div class="solution-steps">
+                            <p>Find two numbers that multiply to 12 and add to -7</p>
+                            <p>Factors of 12: (1,12), (2,6), (3,4)</p>
+                            <p>-3 × -4 = 12 and -3 + (-4) = -7 ✓</p>
+                            <p><strong>Answer:</strong> $(x - 3)(x - 4)$</p>
+                        </div>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 2: Difference of Squares</h3>
+                        <p>Factor: $4x^2 - 25$</p>
+                        <div class="solution-steps">
+                            <p>Recognize: $4x^2 = (2x)^2$ and $25 = 5^2$</p>
+                            <p>Apply formula: $a^2 - b^2 = (a+b)(a-b)$</p>
+                            <p><strong>Answer:</strong> $(2x + 5)(2x - 5)$</p>
+                        </div>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3>Example 3: Factor by Grouping</h3>
+                        <p>Factor: $2x^3 + 4x^2 + 3x + 6$</p>
+                        <div class="solution-steps">
+                            <p>Group: $(2x^3 + 4x^2) + (3x + 6)$</p>
+                            <p>Factor each group: $2x^2(x + 2) + 3(x + 2)$</p>
+                            <p>Factor out $(x + 2)$: $(x + 2)(2x^2 + 3)$</p>
+                            <p><strong>Answer:</strong> $(x + 2)(2x^2 + 3)$</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Special Patterns -->
+                <section class="patterns-section">
+                    <h2>Special Factoring Patterns</h2>
+                    <div class="pattern-grid">
+                        <div class="pattern-box">
+                            <h4>Perfect Squares</h4>
+                            <ul>
+                                <li>$x^2 + 2xy + y^2 = (x+y)^2$</li>
+                                <li>$x^2 - 2xy + y^2 = (x-y)^2$</li>
+                            </ul>
+                        </div>
+                        <div class="pattern-box">
+                            <h4>Cubes</h4>
+                            <ul>
+                                <li>$x^3 + y^3 = (x+y)(x^2-xy+y^2)$</li>
+                                <li>$x^3 - y^3 = (x-y)(x^2+xy+y^2)$</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Practice Problems -->
+                <section class="practice-section">
+                    <h2>Practice Problems</h2>
+                    <ol class="practice-list">
+                        <li>Factor: $x^2 + 8x + 15$</li>
+                        <li>Factor: $x^2 - 16$</li>
+                        <li>Factor: $2x^2 + 7x + 3$</li>
+                        <li>Factor: $x^3 - 27$</li>
+                        <li>Factor: $6x^2 - 13x + 6$</li>
+                        <li>Factor: $x^4 - 81$</li>
+                    </ol>
+                    <details>
+                        <summary>Show Answers</summary>
+                        <ol>
+                            <li>$(x + 3)(x + 5)$</li>
+                            <li>$(x + 4)(x - 4)$</li>
+                            <li>$(2x + 1)(x + 3)$</li>
+                            <li>$(x - 3)(x^2 + 3x + 9)$</li>
+                            <li>$(2x - 3)(3x - 2)$</li>
+                            <li>$(x^2 + 9)(x + 3)(x - 3)$</li>
+                        </ol>
+                    </details>
+                </section>
+
+                <!-- Related Topics -->
+                <section class="related-section">
+                    <h2>Related Topics</h2>
+                    <div class="related-links">
+                        <a href="/algebra/quadratic-equations/">Quadratic Equations</a>
+                        <a href="/algebra/polynomials/">Polynomials</a>
+                        <a href="/algebra/rational-expressions/">Rational Expressions</a>
+                        <a href="/algebra/completing-square/">Completing the Square</a>
+                    </div>
+                </section>
+
+                <!-- Position 3: Bottom Ad -->
+                <div class="ad-container ad-bottom">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-format="autorelaxed"
+                         data-ad-client="ca-pub-5635114711353420"
+                         data-ad-slot="2324489353"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Math.help. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Service</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Solver specific styles */
+        .solver-box {
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .polynomial-input {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            align-items: center;
+        }
+        
+        #polynomial-input {
+            flex: 1;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+        }
+        
+        .solve-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+        
+        .solve-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .solution-display {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .solution-display.show {
+            display: block;
+        }
+        
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .method-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+        }
+        
+        .method-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .method-box .example {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: monospace;
+        }
+        
+        .example-box {
+            background-color: white;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .solution-steps {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        
+        .solution-steps p {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+        
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .pattern-box {
+            background-color: #fff3cd;
+            border: 2px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .pattern-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .pattern-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .pattern-box li {
+            margin: 10px 0;
+            padding: 5px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .related-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .related-links a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .practice-list {
+            background-color: var(--light-gray);
+            padding: 20px 40px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .practice-list li {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        
+        details {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .polynomial-input {
+                flex-direction: column;
+            }
+            
+            #polynomial-input {
+                width: 100%;
+            }
+            
+            .solve-button {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <script>
+        function gcd(a, b) {
+            a = Math.abs(a);
+            b = Math.abs(b);
+            while (b) {
+                let temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+        
+        function factorQuadratic(a, b, c) {
+            // Try to factor ax^2 + bx + c
+            const discriminant = b * b - 4 * a * c;
+            
+            // Check if it's a perfect square trinomial
+            if (discriminant === 0) {
+                const root = -b / (2 * a);
+                if (Number.isInteger(root)) {
+                    return { 
+                        type: 'perfect_square',
+                        factors: [`(x ${root >= 0 ? '-' : '+'} ${Math.abs(root)})²`],
+                        explanation: 'Perfect square trinomial'
+                    };
+                }
+            }
+            
+            // Try factoring by finding integer roots
+            if (Number.isInteger(a) && Number.isInteger(b) && Number.isInteger(c)) {
+                // For simple case where a = 1
+                if (a === 1) {
+                    // Find factors of c that add to b
+                    for (let i = 1; i <= Math.abs(c); i++) {
+                        if (c % i === 0) {
+                            const factor1 = i;
+                            const factor2 = c / i;
+                            
+                            if (factor1 + factor2 === b) {
+                                return {
+                                    type: 'simple_quadratic',
+                                    factors: [`(x + ${factor1})`, `(x + ${factor2})`],
+                                    explanation: `Factors of ${c} that add to ${b}: ${factor1} and ${factor2}`
+                                };
+                            } else if (-factor1 - factor2 === b) {
+                                return {
+                                    type: 'simple_quadratic',
+                                    factors: [`(x - ${factor1})`, `(x - ${factor2})`],
+                                    explanation: `Factors of ${c} that add to ${b}: ${-factor1} and ${-factor2}`
+                                };
+                            } else if (factor1 - factor2 === b) {
+                                return {
+                                    type: 'simple_quadratic',
+                                    factors: [`(x + ${factor1})`, `(x - ${factor2})`],
+                                    explanation: `Factors of ${c} that add to ${b}: ${factor1} and ${-factor2}`
+                                };
+                            } else if (-factor1 + factor2 === b) {
+                                return {
+                                    type: 'simple_quadratic',
+                                    factors: [`(x - ${factor1})`, `(x + ${factor2})`],
+                                    explanation: `Factors of ${c} that add to ${b}: ${-factor1} and ${factor2}`
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // Check if it factors nicely using the quadratic formula
+            if (discriminant >= 0) {
+                const sqrtDisc = Math.sqrt(discriminant);
+                if (Number.isInteger(sqrtDisc)) {
+                    const root1 = (-b + sqrtDisc) / (2 * a);
+                    const root2 = (-b - sqrtDisc) / (2 * a);
+                    
+                    if (Number.isInteger(root1) && Number.isInteger(root2)) {
+                        return {
+                            type: 'factored',
+                            factors: [`(x ${root1 >= 0 ? '-' : '+'} ${Math.abs(root1)})`, `(x ${root2 >= 0 ? '-' : '+'} ${Math.abs(root2)})`],
+                            explanation: `Roots are ${root1} and ${root2}`
+                        };
+                    }
+                }
+            }
+            
+            return null;
+        }
+        
+        function parsePolynomial(input) {
+            // Normalize input
+            input = input.replace(/\s/g, '').toLowerCase();
+            input = input.replace(/\^/g, '**');
+            
+            // Simple parsing for basic polynomials
+            const terms = [];
+            
+            // Match pattern like ax^2 + bx + c
+            const quadraticMatch = input.match(/([+-]?\d*)x\*\*2([+-]?\d*)x?([+-]?\d+)?/);
+            if (quadraticMatch) {
+                const a = quadraticMatch[1] === '' || quadraticMatch[1] === '+' ? 1 : 
+                         quadraticMatch[1] === '-' ? -1 : parseInt(quadraticMatch[1]);
+                const bPart = quadraticMatch[2] || '0';
+                const b = bPart === '' || bPart === '+' ? 1 : 
+                         bPart === '-' ? -1 : parseInt(bPart);
+                const c = parseInt(quadraticMatch[3] || '0');
+                
+                return { degree: 2, coefficients: [a, b, c] };
+            }
+            
+            // Check for difference of squares pattern x^2 - n
+            const diffSquaresMatch = input.match(/([+-]?\d*)x\*\*2([+-]\d+)$/);
+            if (diffSquaresMatch) {
+                const a = diffSquaresMatch[1] === '' || diffSquaresMatch[1] === '+' ? 1 : 
+                         diffSquaresMatch[1] === '-' ? -1 : parseInt(diffSquaresMatch[1]);
+                const c = parseInt(diffSquaresMatch[2]);
+                return { degree: 2, coefficients: [a, 0, c] };
+            }
+            
+            return null;
+        }
+        
+        function factorPolynomial() {
+            const input = document.getElementById('polynomial-input').value;
+            const display = document.getElementById('solution-display');
+            
+            try {
+                const polynomial = parsePolynomial(input);
+                
+                if (!polynomial) {
+                    throw new Error('Could not parse polynomial. Please enter in format: ax^2 + bx + c');
+                }
+                
+                let html = '<h3>Factoring Result:</h3>';
+                html += `<p><strong>Original:</strong> ${input}</p>`;
+                
+                if (polynomial.degree === 2) {
+                    const [a, b, c] = polynomial.coefficients;
+                    
+                    // Check for common factor first
+                    const commonFactor = gcd(gcd(a, b), c);
+                    let factorOut = '';
+                    let newA = a, newB = b, newC = c;
+                    
+                    if (commonFactor > 1) {
+                        factorOut = commonFactor;
+                        newA = a / commonFactor;
+                        newB = b / commonFactor;
+                        newC = c / commonFactor;
+                        html += `<p><strong>Step 1:</strong> Factor out ${commonFactor}</p>`;
+                        html += `<p>${commonFactor}(${newA}x² ${newB >= 0 ? '+' : ''} ${newB}x ${newC >= 0 ? '+' : ''} ${newC})</p>`;
+                    }
+                    
+                    // Check for special patterns
+                    if (newB === 0 && newC < 0) {
+                        // Difference of squares
+                        const sqrtA = Math.sqrt(Math.abs(newA));
+                        const sqrtC = Math.sqrt(Math.abs(newC));
+                        
+                        if (Number.isInteger(sqrtA) && Number.isInteger(sqrtC)) {
+                            html += '<p><strong>Pattern:</strong> Difference of squares</p>';
+                            const factor1 = sqrtA === 1 ? 'x' : `${sqrtA}x`;
+                            html += `<p><strong>Factored form:</strong> `;
+                            if (factorOut) html += `${factorOut}`;
+                            html += `(${factor1} + ${sqrtC})(${factor1} - ${sqrtC})</p>`;
+                            display.innerHTML = html;
+                            display.classList.add('show');
+                            return;
+                        }
+                    }
+                    
+                    // Try standard factoring
+                    const result = factorQuadratic(newA, newB, newC);
+                    
+                    if (result) {
+                        html += `<p><strong>Method:</strong> ${result.explanation}</p>`;
+                        html += `<p><strong>Factored form:</strong> `;
+                        if (factorOut) html += `${factorOut}`;
+                        html += result.factors.join('')+'</p>';
+                    } else {
+                        html += '<p><strong>Result:</strong> This polynomial cannot be factored using integer coefficients.</p>';
+                        html += '<p>It may require the quadratic formula or remain in its current form.</p>';
+                    }
+                }
+                
+                display.innerHTML = html;
+                display.classList.add('show');
+                
+                // Track calculation
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'factor_polynomial', {
+                        event_category: 'Calculator',
+                        event_label: 'Factoring Calculator'
+                    });
+                }
+                
+            } catch (error) {
+                display.innerHTML = `<p style="color: red;"><strong>Error:</strong> ${error.message}</p>`;
+                display.classList.add('show');
+            }
+        }
+        
+        // Factor on Enter key
+        document.getElementById('polynomial-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                factorPolynomial();
+            }
+        });
+        
+        // Factor default polynomial on load
+        window.addEventListener('DOMContentLoaded', function() {
+            factorPolynomial();
+        });
+    </script>
+</body>
+</html>
